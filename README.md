@@ -1,24 +1,10 @@
-# README
+# Coinface
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Coinface is a web application that allows users to simulate the purchase of cryptocurrencies with fake $USD. Users can transfer their crypto assets amongst each other.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Live updates of asset prices in ratio with $USD.
+* Calculate the user's $USD value of their asset(s).
+* Provide users with crypto addresses.
+* Allow users to send & receive assets to other users with the aforementioned addresses.
