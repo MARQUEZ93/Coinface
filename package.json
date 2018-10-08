@@ -1,5 +1,33 @@
 {
   "name": "Coinface",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.11",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "description": "Coinface is a web application that allows users to simulate the purchase of cryptocurrencies with fake $USD. Users can transfer their crypto assets amongst each other.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "webpack": "webpack --mode=development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
