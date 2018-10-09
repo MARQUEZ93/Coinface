@@ -2,7 +2,7 @@ class Wallet < ApplicationRecord
 
   belongs_to :user, foreign_key: :user_id, class_name: :User
 
-  validates :asset, :user_id, presence: true
+  validates :asset_type, :user_id, presence: true
 
   validates :amount, :address, allow_nil: true
 
