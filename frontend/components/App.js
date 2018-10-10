@@ -9,17 +9,15 @@ import {
 } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+//components
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import Welcome from './Welcome/Welcome';
 
 const App = () => (
   <div>
-    <header>
-      <Link to="/" className="header-link">
-        <h1>Coinface</h1>
-      </Link>
-    </header>
     <Switch>
+      <Route path="/" exact component={Welcome} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     </Switch>

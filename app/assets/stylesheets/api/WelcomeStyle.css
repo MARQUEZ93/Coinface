@@ -1,0 +1,31 @@
+body {
+  height: 1000px;
+}
+
+.Welcome-Header {
+  display: flex;
+  justify-content: space-between;
+}
+.Welcome-Logo {
+  justify-content: flex-start;
+}
+.Welcome-Sessions {
+  display: flex;
+}
+.Welcome-Log {
+  margin-right: 5px;
+}
+.Welcome {
+  background-color: #0667d0;
+  width: cover;
+  height: 632px;
+}
+.Welcome h3 {
+  font-size: 16px;
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.Welcome .Welcome-Buy {
+  justify-content: center;
+}
