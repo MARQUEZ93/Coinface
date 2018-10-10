@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  validates :password, length: { minimum: 6}
+  validates :password, length: { minimum: 6 }, allow_nil: true
+
   attr_reader :password
 
   #redux form will handle password validations
@@ -33,8 +34,6 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
-
-  private
 
   def generate_wallets
     #should I change self.id to self.email?
