@@ -14,7 +14,8 @@ export const signup = user => (
   })
 );
 
-//logout deletes session token, so no argument is needed
+//logout deletes session token, and sets current_uset to nil,
+//so no argument is needed
 export const logout = () => (
   $.ajax({
     method: 'DELETE',
