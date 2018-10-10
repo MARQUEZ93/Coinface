@@ -4,9 +4,11 @@ class Wallet < ApplicationRecord
 
   validates :asset_type, :user_id, presence: true
 
-  validates :amount, :address, allow_nil: true
+  # validates :amount, :address, allow_nil: true
 
   after_initialize :generate_address
+
+  attr_accessor :address
 
   private
 
