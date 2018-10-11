@@ -11,21 +11,60 @@ body {
 }
 .Welcome-Sessions {
   display: flex;
+  align-items: center;
+  font-size: 16px;
 }
-.Welcome-Log {
-  margin-right: 5px;
+.Welcome p {
+  font-weight: 500;
+  margin-top: 21px;
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.Welcome-Login {
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+
+  margin-right: 35px;
+}
+
+.Welcome-Signin {
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  
+  margin-right: 48px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .Welcome {
   background-color: #0667d0;
   width: cover;
-  height: 632px;
+  height: 600px;
 }
-.Welcome h3 {
-  font-size: 16px;
-  color: white;
-  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+.Welcome-Logo {
+  letter-spacing: -1px;
+  margin-left: 60px;
+  font-size: 26px;
 }
 
-.Welcome .Welcome-Buy {
+ .Welcome-Buy {
+   display:flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Welcome-Buy-pTag-Center {
+  font-size: 36px;
+  color:white;
+}
+
+.Welcome-pTag {
+  font-size: 16px;
 }

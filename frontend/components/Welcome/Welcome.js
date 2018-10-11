@@ -1,31 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Welcome extends React.Component {
-
-  signUpLink() {
-    this.props.history.push('/signup');
-  }
-
-  loginLink() {
-    this.props.history.push('/login');
-  }
 
   render() {
     return (
       <div className="Welcome">
         <div className="Welcome-Header">
           <div className="Welcome-Logo">
-            <h3>coinface</h3>
+            <p>coinface</p>
           </div>
           <div className="Welcome-Sessions">
-            <h3 className="Welcome-Log"> Log in </h3>
-            <h3 className="Welcome-Sign"> Sign up </h3>
+            <Link to="/login" className="Welcome-Login"> Log in </Link>
+            <Link to="/signup" className="Welcome-Signin"> Sign up </Link>
           </div>
         </div>
         <div className="Welcome-Buy">
-          <p> Buy and sell digital currency </p>
-          <p> Coinface is the easiest and most trusted place to buy, </p>
-          <p> sell, and manage your digital currency. </p>
+          <p className="Welcome-Buy-pTag-Center"> Buy and sell digital currency </p>
+          <p className="Welcome-pTag"> Coinface is the easiest and most trusted place to buy, </p>
+          <p className="Welcome-pTag"> sell, and manage your digital currency. </p>
         </div>
         <div className="Welcome-EmailBox">
         </div>
