@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import ChartList from 'ChartList';
 
-class Welcome extends React.Component {
+class Welcome extends Component {
 
   render() {
     return (
@@ -27,4 +29,4 @@ class Welcome extends React.Component {
   }
 }
 
-export default Welcome;
+export default connect(msp, mdp) (Welcome);
