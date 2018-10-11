@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+//components
+import Header from './Header';
+import Center from './Center';
 import ChartList from 'ChartList';
+//action creators 
+import { fetchSparklines, fetchAssets } from '../actions/welcome_actions';
 
 class Welcome extends Component {
 
   render() {
     return (
-      <div className="Welcome">
-        <div className="Welcome-Header">
-          <div className="Welcome-Logo">
-            <p>coinface</p>
-          </div>
-          <div className="Welcome-Sessions">
-            <Link to="/login" className="Welcome-Login"> Log in </Link>
-            <Link to="/signup" className="Welcome-Signin"> Sign up </Link>
-          </div>
-        </div>
-        <div className="Welcome-Buy">
-          <p className="Welcome-Buy-pTag-Center"> Buy and sell digital currency </p>
-          <p className="Welcome-pTag"> Coinface is the easiest and most trusted place to buy, </p>
-          <p className="Welcome-pTag"> sell, and manage your digital currency. </p>
-        </div>
-        <div className="Welcome-EmailBox">
-        </div>
+        <Header />
+        <Center />
+        <ChartList
+          chartData={this.props.entities.chartData}
+          assetData={this.props.entities.assetData}
+          fetchSparklines={this.props.fetchSparklines}
+          fetchAsset={this.props.fetchAssets}
+        />
       </div>
     );
   }
 }
 
-export default connect(msp, mdp) (Welcome);
+function msp({ entities }) { //es6 syntax - destructure entities
+  return { entities };
+}
+
+function mdp(dispatch) {
+  fetchSparklines: type => dispatch(fetchSparklines(type)),
+  fetchAssets: type => dispatch(fetchAssets(type))
+}
+
+export default connect(msp, mdp)(Welcome);

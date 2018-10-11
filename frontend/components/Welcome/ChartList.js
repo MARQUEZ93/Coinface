@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import Chart from './Chart';
 
 class ChartList extends Component {
-  renderWeather(cityData) {
-    const name = cityData.city.name;
-    const temps = cityData.list.map(weather => ((9/5)*(weather.main.temp - 273) + 32));
-    const pressures = cityData.list.map(weather => weather.main.pressure);
-    const humidities = cityData.list.map(weather => weather.main.humidity);
-    const { lon, lat } = cityData.city.coord;
+
+  renderCharts(sparklinesData) {
+    const temps = sparklinesData.list.map(weather => ((9/5)*(weather.main.temp - 273) + 32));
+    const pressures = sparklinesData.list.map(weather => weather.main.pressure);
+    const humidities = sparklinesData.list.map(weather => weather.main.humidity);
     return (
-    <tr key={name}>
-      <td><GoogleMap lat={lat} lon={lon}/></td>
-      <td><Chart data={temps} color="orange" units="F"/></td>
-      <td><Chart data={pressures} color="green" units="hPa"/></td>
-      <td><Chart data={humidities} color="black" units=""/></td>
+    <tr>
+      <td><Chart data={temps} color="#FF9900" symbol="BTC"/></td>
+      <td><Chart data={pressures} color="#4cca47" symbol="BCH"/></td>
+      <td><Chart data={humidities} color="#4169E1" symbol="ETH"/></td>
+      <td><Chart data={humidities} color="#b8b8b8" symbol="LTC"/></td>
+      <td><Chart data={pressures} color="#669073" symbol="EJC"/></td>
     </tr>
   );
 
@@ -22,23 +22,12 @@ class ChartList extends Component {
   render() {
     return (
       <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>City</th>
-            <th>Temperature (F)</th>
-            <th>Pressure (hPa)</th>
-            <th>Humidity (%)</th>
-          </tr>
-        </thead>
         <tbody>
-          {this.props.weather.map(this.renderWeather)}
+          {this.props.sparkLinesData.map(this.renderCharts)}
         </tbody>
       </table>
     );
   }
 }
-
-function msp({ data }) {
-  return { data };// ES6 syntax
-}
-export default connect(msp)(ChartList);
+å
+export default ChartList;
