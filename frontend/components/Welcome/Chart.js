@@ -1,19 +1,44 @@
-import React from 'react';
-import _ from 'lodash';
+import React, { Component } from 'react';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
+import axios from 'axios';
+import { GridLoader } from 'halogenium'
 
-function average(data) {
-  return _.round(_.sum(data)/data.length);
+const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
+const URL_END = `&tsym=USD&limit=10`;
+
+class Chart extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
+
+  componentDidMount() {
+    const url = `${URL}`+`${this.props.symbol}`+`${URL_END}`;
+    axios.get(url).then(res => {
+      let prices = res.data.Data.map(el=>(el.open));
+      this.setState( { data: prices });
+    });
+  }
+
+  render() {
+    if (!this.state.data || this.state.data.length < 1) {
+      return (
+        <div className='loadbar'>
+          <GridLoader color="#6495ED" size="10px" margin="4px"/>
+        </div>
+      );
+    }
+    const props = this.props;
+    return (
+      <div>
+        <Sparklines height={500} width={500} data={this.state.data}>
+          <SparklinesLine color={props.color} />
+          <SparklinesReferenceLine type="avg" />
+        </Sparklines>
+      </div>
+    );
+  }
 }
 
-export default (props) => {
-  return (
-    <div>
-      <Sparklines height={120} width={180} data={props.data}>
-        <SparklinesLine color={props.color} />
-        <SparklinesReferenceLine type="avg" />
-      </Sparklines>
-      <div>{average(props.data)} {props.units}</div>
-    </div>
-  );
-}
+export default Chart;
