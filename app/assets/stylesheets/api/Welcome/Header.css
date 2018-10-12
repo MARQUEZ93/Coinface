@@ -1,7 +1,3 @@
-body {
-  height: 1000px;
-}
-
 .Welcome-Header {
   display: flex;
   justify-content: space-between;
@@ -14,12 +10,7 @@ body {
   align-items: center;
   font-size: 16px;
 }
-.Welcome p {
-  font-weight: 500;
-  margin-top: 21px;
-  color: white;
-  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
+
 .Welcome-Login {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -42,29 +33,9 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-.Welcome {
-  background-color: #0667d0;
-  width: cover;
-  height: 600px;
-}
+
 .Welcome-Logo {
   letter-spacing: -1px;
   margin-left: 60px;
   font-size: 26px;
-}
-
- .Welcome-Buy {
-   display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.Welcome-Buy-pTag-Center {
-  font-size: 36px;
-  color:white;
-}
-
-.Welcome-pTag {
-  font-size: 16px;
 }

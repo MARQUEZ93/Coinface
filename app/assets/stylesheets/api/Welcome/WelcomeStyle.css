@@ -1,0 +1,26 @@
+body {
+  height: 1000px;
+}
+
+.Welcome p {
+  font-weight: 500;
+  margin-top: 21px;
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.Welcome {
+  background-color: #0667d0;
+  width: cover;
+  height: 600px;
+}
+
+.Welcome-pTag {
+  font-size: 16px;
+}
+
+.loadbar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

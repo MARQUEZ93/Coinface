@@ -1,0 +1,11 @@
+.Welcome-Buy {
+  display:flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+}
+
+.Welcome-Buy-pTag-Center {
+ font-size: 36px;
+ color:white;
+}
