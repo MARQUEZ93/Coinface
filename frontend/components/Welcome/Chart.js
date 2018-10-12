@@ -4,7 +4,7 @@ import axios from 'axios';
 import { GridLoader } from 'halogenium'
 
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
-const URL_END = `&tsym=USD&limit=10`;
+const URL_END = `&tsym=USD&limit=130`;
 
 class Chart extends Component {
 
@@ -31,11 +31,12 @@ class Chart extends Component {
     }
     const props = this.props;
     return (
-      <div>
-        <Sparklines height={500} width={500} data={this.state.data}>
-          <SparklinesLine color={props.color} />
-          <SparklinesReferenceLine type="avg" />
-        </Sparklines>
+      <div className="Chart">
+        <div className="Sparklines">
+          <Sparklines margin={5} svgHeight={104} svgWidth={108} data={this.state.data}>
+            <SparklinesLine style={{ fill: "none" }} color={props.color} />
+          </Sparklines>
+        </div>
       </div>
     );
   }
