@@ -1,10 +1,10 @@
-.Five {
+.FiveBoxes {
   width: cover;
   display: flex;
   justify-content: center;
 }
 
-.chartBox {
+.Box {
   margin-right: 20px;
   margin-left: 20px;
   z-index:1;
@@ -13,4 +13,14 @@
   height: 210px;
   border-radius: 5px;
   border: 1px solid grey;
+}
+
+.imageAsset {
+  height: 24px;
+  width: 24px;
+}
+
+.TwentyFour {
+  color: white;
+  background-color: grey;
 }

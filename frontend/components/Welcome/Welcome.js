@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //components
 import Header from './Header';
 import CenterMessage from './CenterMessage';
-import Five from './Five';
+import FiveBoxes from './FiveBoxes';
 
 class Welcome extends Component {
 

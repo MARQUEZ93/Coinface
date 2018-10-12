@@ -6,7 +6,7 @@ import { GridLoader } from 'halogenium'
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
 const URL_END = `&tsym=USD&limit=130`;
 
-class Chart extends Component {
+class BottomLayer extends Component {
 
   constructor(props) {
     super(props);
@@ -40,4 +40,4 @@ class Chart extends Component {
   }
 }
 
-export default Chart;
+export default BottomLayer;
