@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //components
 import Header from './Header';
-import Center from './Center';
-import ChartList from './ChartList';
+import CenterMessage from './CenterMessage';
+import Five from './Five';
 
 class Welcome extends Component {
 
@@ -10,9 +10,8 @@ class Welcome extends Component {
     return (
       <div className="Welcome">
         <Header />
-        <Center />
-        <ChartList />
-
+        <CenterMessage />
+        <Five />
       </div>
     );
   }

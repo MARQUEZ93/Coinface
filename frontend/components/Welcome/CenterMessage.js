@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Center = () => {
+const CenterMessage = () => {
   return (
     <div className="Welcome-Buy">
       <p className="Welcome-Buy-pTag-Center"> Buy and sell digital currency </p>
@@ -10,4 +10,4 @@ const Center = () => {
   );
 }
 
-export default Center;
+export default CenterMessage;

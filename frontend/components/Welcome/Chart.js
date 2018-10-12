@@ -31,12 +31,10 @@ class Chart extends Component {
     }
     const props = this.props;
     return (
-      <div className="Chart">
-        <div className="Sparklines">
-          <Sparklines margin={5} svgHeight={104} svgWidth={108} data={this.state.data}>
+      <div className="Sparklines">
+          <Sparklines data={this.state.data}>
             <SparklinesLine style={{ fill: "none" }} color={props.color} />
           </Sparklines>
-        </div>
       </div>
     );
   }
