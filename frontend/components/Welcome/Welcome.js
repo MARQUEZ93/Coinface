@@ -11,7 +11,7 @@ class Welcome extends Component {
       <div className="Welcome">
         <Header />
         <CenterMessage />
-        <Five />
+        <FiveBoxes />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
 import axios from 'axios';
-import { GridLoader } from 'halogenium'
+import { GridLoader } from 'halogenium';
 
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
 const URL_END = `&tsym=USD&limit=130`;
@@ -22,7 +22,7 @@ class BottomLayer extends Component {
   }
 
   render() {
-    if (!this.state.data || this.state.data.length < 1) {
+    if (!this.state.data || this.state.data.length < 130) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>

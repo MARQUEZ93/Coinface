@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-      <div className="Welcome-Header">
+      <div className="WelcomeHeader">
         <div className="Welcome-Logo">
           <p> coinface </p>
         </div>

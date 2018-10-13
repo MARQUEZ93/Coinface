@@ -13,11 +13,11 @@ class FiveBoxes extends Component {
   render() {
     return (
       <div className="FiveBoxes">
-        <Box src={btc} symbol="BTC" name="Bitcoin"/>
-        <Box src={bch} symbol="BCH" name="Bitcoin Cash"/>
-        <Box src={eth} symbol="ETH" name="Ethereum"/>
-        <Box src={ltc} symbol="LTC" name="Litecoin"/>
-        <Box src={etc} symbol="ETC" name="Ethereum Classic"/>
+        <Box color="#FF9900" src={btc} symbol="BTC" name="Bitcoin"/>
+        <Box color="#4cca47" src={bch} symbol="BCH" name="Bitcoin Cash"/>
+        <Box color="#4169E1" src={eth} symbol="ETH" name="Ethereum"/>
+        <Box color="#b8b8b8" src={ltc} symbol="LTC" name="Litecoin"/>
+        <Box color="#669073" src={etc} symbol="ETC" name="Ethereum Classic"/>
       </div>
     );
   }

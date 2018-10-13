@@ -13,14 +13,6 @@
   height: 210px;
   border-radius: 5px;
   border: 1px solid grey;
-}
-
-.imageAsset {
-  height: 24px;
-  width: 24px;
-}
-
-.TwentyFour {
-  color: white;
-  background-color: grey;
+  display: flex;
+  flex-direction: column;
 }

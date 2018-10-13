@@ -1,0 +1,28 @@
+.TopLayer {
+  margin-top: 10px;
+  height: 25%;
+  display: flex;
+  justify-content: space-around;
+}
+.TopLayer2{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+.imageAsset {
+  height: 24px;
+  width: 24px;
+}
+
+.TopLayerName {
+  color: #585858;
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+.TwentyFour {
+  float: right;
+  height: 25px;
+  color: white;
+  background-color: #DCDCDC;
+}

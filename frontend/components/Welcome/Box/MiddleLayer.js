@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import GridLoader from 'halogenium';
+import { GridLoader } from 'halogenium';
+import _ from 'lodash';
 
 import axios from 'axios';
 
@@ -16,14 +17,14 @@ class MiddleLayer extends Component {
   componentDidMount() {
     const url = `${URL}`+`${this.props.symbol}`+`${URL_END}`;
     axios.get(url).then(res => {
-      let price = res.data.Raw.price;
-      let change = res.data.Raw.CHANGEPCT24HOUR;
-      this.setState( { price: price, change: change });
+      const price = _.round(res.data.RAW.PRICE, 2);
+      const change = _.round(res.data.RAW.CHANGEPCT24HOUR, 2);
+      this.setState( { price: price, change: change } );
     });
   }
 
   render() {
-    if (!this.state.price) {
+    if (!this.state.price || !this.state.change) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
@@ -31,9 +32,9 @@ class MiddleLayer extends Component {
       );
     }
     return (
-      <div>
-        <p className="WelcomePrice"> ${ this.state.price } </p>
-        <p className="WelcomePriceChange"> +{ this.state.change }% </p>
+      <div className="MiddleLayer">
+        <p className="WelcomePrice"> { "$" + this.state.price } </p>
+        <p className="WelcomePriceChange"> {"+" + this.state.change + "%"} </p>
       </div>
     );
   }

@@ -4,10 +4,12 @@ class TopLayer extends Component {
 
   render() {
     return (
-      <div>
-        <img src={ this.props.src } className="imageAsset" />
-        <p> { this.props.name } </p>
-        <div className="24">24h</div>
+      <div className="TopLayer">
+        <div className="TopLayer2">
+          <img src={ this.props.src } className="imageAsset" />
+          <p className="TopLayerName"> { this.props.name } </p>
+        </div>
+        <div className="TwentyFour">24h</div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TopLayer from './TopLayer';
 import MiddleLayer from './MiddleLayer';
-import Chart from './BottomLayer';
+import BottomLayer from './BottomLayer';
 
 class Box extends Component {
 
@@ -10,7 +10,7 @@ class Box extends Component {
       <div className="Box">
         <TopLayer name={this.props.name} src={this.props.src} />
         <MiddleLayer symbol={this.props.symbol} />
-        <BottomLayer />
+        <BottomLayer symbol={this.props.symbol} color={this.props.color}/>
       </div>
     );
   }
