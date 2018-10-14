@@ -8,11 +8,13 @@ class Welcome extends Component {
 
   render() {
     return (
+      <div>
       <div className="Welcome">
         <Header />
         <CenterMessage />
-        <FiveBoxes />
       </div>
+      <FiveBoxes />
+    </div>
     );
   }
 }

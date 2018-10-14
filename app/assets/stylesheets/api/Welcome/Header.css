@@ -16,15 +16,15 @@
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
 
-  margin-right: 35px;
+  margin-right: 5px;
 }
 
 .Welcome-Signin {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
-
-  margin-right: 48px;
+  margin-left: 10px;
+  margin-right: 18px;
   box-sizing: border-box;
   border: 1px solid white;
   border-radius: 5px;
@@ -36,6 +36,6 @@
 
 .Welcome-Logo {
   letter-spacing: -1px;
-  margin-left: 60px;
+  margin-left: 25px;
   font-size: 26px;
 }

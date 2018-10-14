@@ -10,17 +10,11 @@ body {
 }
 
 .Welcome {
-  background-color: #0667d0;
+  background-color: #1652f0;
   width: cover;
   height: 600px;
 }
 
 .Welcome-pTag {
   font-size: 16px;
-}
-
-.loadbar {
-  position: fixed;
-  top: 50%;
-  left: 50%;
 }
