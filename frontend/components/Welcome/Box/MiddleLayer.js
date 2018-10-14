@@ -31,10 +31,11 @@ class MiddleLayer extends Component {
         </div>
       );
     }
+    const changeDirection = this.state.change > 0 ? "+":"";
     return (
       <div className="MiddleLayer">
         <p className="WelcomePrice"> { "$" + this.state.price } </p>
-        <p className="WelcomePriceChange"> {"+" + this.state.change + "%"} </p>
+        <p className="WelcomePriceChange"> {changeDirection + this.state.change + "%"} </p>
       </div>
     );
   }

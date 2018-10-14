@@ -6,6 +6,39 @@
 }
 
 .Welcome-Buy-pTag-Center {
- font-size: 36px;
+ font-size: 48px;
  color:white;
+ font-weight: 500;
+ line-height: 56.16px;
+}
+
+.Welcome-pTag {
+  font-weight: lighter;
+  font-size: 16px;
+  color:#ffffff;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.centerForm {
+  display: flex;
+  font-size: 16px;
+  font-family: Graphik, sans-serif;
+}
+.centerInput {
+  background-color: white;
+  width: 306px;
+  height: 58px;
+  margin-right: 10px;
+  text-align: start;
+  border-radius: 4px;
+}
+.centerButton{
+  width: 138px;
+  height: 58px;
+  background-color: #3acc8a;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
 }

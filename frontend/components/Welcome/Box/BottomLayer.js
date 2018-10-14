@@ -4,7 +4,7 @@ import axios from 'axios';
 import { GridLoader } from 'halogenium';
 
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
-const URL_END = `&tsym=USD&limit=130`;
+const URL_END = `&tsym=USD&limit=60`;
 
 class BottomLayer extends Component {
 
@@ -22,7 +22,7 @@ class BottomLayer extends Component {
   }
 
   render() {
-    if (!this.state.data || this.state.data.length < 130) {
+    if (!this.state.data) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
