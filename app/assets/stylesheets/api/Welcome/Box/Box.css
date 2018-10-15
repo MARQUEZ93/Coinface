@@ -1,18 +1,21 @@
 .FiveBoxes {
   width: cover;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin-top: -75px;
+  margin-left: 55px;
+  margin-right: 55px;
 }
 
 .Box {
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
   z-index:1;
   background-color: white;
   width: 216px;
   height: 210px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid #DCDCDC;
   display: flex;
   flex-direction: column;
 }

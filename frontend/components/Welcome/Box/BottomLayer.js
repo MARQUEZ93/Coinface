@@ -4,7 +4,7 @@ import axios from 'axios';
 import { GridLoader } from 'halogenium';
 
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
-const URL_END = `&tsym=USD&limit=60`;
+const URL_END = `&tsym=USD&limit=30`;
 
 class BottomLayer extends Component {
 

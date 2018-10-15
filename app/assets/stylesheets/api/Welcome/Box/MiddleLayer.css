@@ -1,12 +1,16 @@
 .MiddleLayer {
   display: flex;
   height: 25%;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 8px;
   align-items: center;
 }
 .WelcomePrice {
-  font-size: 26px;
+  font-size: 30px;
+  font-weight: 400;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .WelcomePriceChange {
   color: #33cc33;
+  margin-left: 5px;
 }
