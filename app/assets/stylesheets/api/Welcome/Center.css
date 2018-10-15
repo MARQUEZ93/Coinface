@@ -2,11 +2,12 @@
   margin-top: 55px;
  display:flex;
  justify-content: center;
- align-items: center;
+ align-items: flex-start;
  flex-direction: column;
+ margin-left: 25px;
 }
 
-.Welcome-Buy-pTag-Center {
+.Welcome-Center-Header {
  font-size: 48px;
  color:white;
  font-weight: 500;
@@ -15,34 +16,33 @@
  padding-bottom: 24px;
 }
 
-.Welcome-pTag {
+.Welcome-Center-pTag-Div {
   font-weight: lighter;
   font-size: 16px;
   color:#ffffff;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  display: flex;
-  flex-wrap: nowrap;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .centerForm {
   display: flex;
   font-size: 16px;
   font-family: Graphik, sans-serif;
-  padding-top: 13px;
-  padding-bottom: 15px;
 }
 .centerInput {
   background-color: white;
-  width: 306px;
-  height: 58px;
+  width: 317px;
+  height: 50px;
   margin-right: 10px;
   text-align: start;
   border-radius: 4px;
   padding-left: 16px;
+  padding-top:
 }
 .centerButton{
-  width: 138px;
-  height: 58px;
+  width: 152px;
+  height: 50px;
   background-color: #3acc8a;
   text-align: center;
   color: white;
