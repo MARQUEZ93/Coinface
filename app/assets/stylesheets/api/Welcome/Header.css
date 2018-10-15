@@ -4,7 +4,11 @@
 }
 .Welcome-Logo {
   justify-content: flex-start;
+  letter-spacing: -1px;
+  margin-left: 25px;
+  font-size: 31px;
 }
+
 .Welcome-Sessions {
   display: flex;
   align-items: center;
@@ -32,10 +36,4 @@
   padding-left: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-}
-
-.Welcome-Logo {
-  letter-spacing: -1px;
-  margin-left: 25px;
-  font-size: 26px;
 }

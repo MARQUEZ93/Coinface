@@ -1,6 +1,6 @@
 # Coinface
 
-Coinface is a web application that allows users to simulate the purchase of cryptocurrencies with fake $USD. Users can transfer their crypto assets amongst each other.
+Coinface is a web application that allows users to simulate the purchase of cryptocurrencies with fake $USD. Users can transfer their crypto assets amongst each other. Live site: https://coinface1.herokuapp.com/
 
 ## Features
 

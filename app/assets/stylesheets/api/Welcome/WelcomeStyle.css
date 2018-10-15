@@ -10,9 +10,17 @@ body {
 }
 
 .Welcome {
+
   background-color: #1652f0;
-  width: cover;
-  height: 600px;
+  background-size: 741px;
+  height: 540px;
+
+
+  background-color: rgb(22, 82, 240);
+  background-image: url(https://www2.coinbase.com/assets/topBackground.png);
+
+  background-position: right top;
+  background-repeat: no-repeat;
 }
 
 .Welcome-pTag {

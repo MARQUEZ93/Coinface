@@ -1,5 +1,6 @@
-.Welcome-Buy {
-  display:flex;
+.Welcome-CenterMessage {
+  margin-top: 55px;
+ display:flex;
  justify-content: center;
  align-items: center;
  flex-direction: column;
@@ -10,6 +11,8 @@
  color:white;
  font-weight: 500;
  line-height: 56.16px;
+ padding-top: 24px;
+ padding-bottom: 24px;
 }
 
 .Welcome-pTag {
@@ -25,6 +28,8 @@
   display: flex;
   font-size: 16px;
   font-family: Graphik, sans-serif;
+  padding-top: 13px;
+  padding-bottom: 15px;
 }
 .centerInput {
   background-color: white;
@@ -33,6 +38,7 @@
   margin-right: 10px;
   text-align: start;
   border-radius: 4px;
+  padding-left: 16px;
 }
 .centerButton{
   width: 138px;
