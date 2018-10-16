@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const Header = () => {
   return (
       <div className="WelcomeHeader">
         <div className="Welcome-Logo">
-          <p> coinface </p>
+          <Link className="HeaderLink" to="/"> <p> coinface </p> </Link>
         </div>
         <div className="Welcome-Sessions">
-          <Link to="/login" className="Welcome-Login"> Sign in </Link>
-          <Link to="/signup" className="Welcome-Signin"> Get started </Link>
+          <Link to="/login" style={{ textDecoration: 'none' }} className="Welcome-Login"> Sign in </Link>
+          <Link to="/signup" style={{ textDecoration: 'none' }} className="Welcome-Signin"> Get started </Link>
         </div>
       </div>
   );

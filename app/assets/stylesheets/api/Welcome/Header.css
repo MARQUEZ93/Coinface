@@ -22,6 +22,22 @@
   margin-right: 5px;
 }
 
+.Welcome-Login:hover{
+  color: white;
+}
+
+.Welcome-Signin:hover{
+  color: white;
+}
+
+.HeaderLink {
+  text-decoration: none;
+}
+
+.HeaderLink:hover {
+  text-decoration: none;
+}
+
 .Welcome-Signin {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

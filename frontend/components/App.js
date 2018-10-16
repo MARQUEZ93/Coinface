@@ -10,15 +10,15 @@ import {
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 //components
-import SignUp from './session_form/Signup';
-import LogIn from './session_form/Login';
+import SignUp from './session_form/SignUp_container';
+import SignIn from './session_form/SignIn_container';
 import Welcome from './Welcome/Welcome';
 
 const App = () => (
   <div>
     <Switch>
       <Route path="/" exact component={Welcome} />
-      <AuthRoute exact path="/login" component={LogIn} />
+      <AuthRoute exact path="/login" component={SignIn} />
       <AuthRoute exact path="/signup" component={SignUp} />
     </Switch>
   </div>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
-class SessionForm extends Component {
+import { connect } from 'react-redux';
+import { login } from '../../actions/session_actions';
+
+import Header from '../Welcome/Header';
+
+class SignIn extends Component {
   constructor(props) {
     super(props);
-    let email = "";
-    if (typeof this.props.history.location.state != 'undefined') {
-      email = this.props.history.location.state.email;
-    }
     this.state = {
-      email: email,
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,19 +42,20 @@ class SessionForm extends Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+      <div className="SignIn">
+        <Header />
+        <form onSubmit={this.handleSubmit} className="SignIn-form-box">
           Welcome to Coinface!
           <br/>
           Please {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
-          <div className="login-form">
+          <div className="SignIn-form">
             <br/>
             <label>Email:
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="login-input"
+                className="SignIn-input"
               />
             </label>
             <br/>
@@ -61,11 +63,11 @@ class SessionForm extends Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                className="SignIn-input"
               />
             </label>
             <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input className="SignInSubmit" type="submit" value={"Sign In"} />
           </div>
         </form>
       </div>
@@ -73,4 +75,4 @@ class SessionForm extends Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SignIn);

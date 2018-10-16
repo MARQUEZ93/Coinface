@@ -1,0 +1,25 @@
+.SignUp {
+  background-color: #1652f0;
+  height: 1000px;
+  font-family: "helvetica neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.SignUpHeader1 {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-weight: 300;
+  padding-bottom: 40px;
+}
+
+.SignUpForm{
+  margin: auto;
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 32px;
+  height: 352px;
+  width: 349px;
+  border-radius: 4px;
+}
