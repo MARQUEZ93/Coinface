@@ -17,7 +17,7 @@ class FiveBoxes extends Component {
         <Box color="#4cca47" src={bch} symbol="BCH" name="Bitcoin Cash"/>
         <Box color="#4169E1" src={eth} symbol="ETH" name="Ethereum"/>
         <Box color="#b8b8b8" src={ltc} symbol="LTC" name="Litecoin"/>
-        <Box color="#669073" src={etc} symbol="ETC" name="Ethereum Classic"/>
+        <Box color="#00cc99" src={etc} symbol="ETC" name="Ethereum Classic"/>
       </div>
     );
   }

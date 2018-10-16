@@ -1,8 +1,8 @@
 .TopLayer {
   margin-top: 10px;
-  height: 25%;
+  height: 42px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .TopLayer2{
@@ -15,6 +15,7 @@
 .imageAsset {
   height: 24px;
   width: 24px;
+  margin-left: 10px;
 }
 
 .TopLayerName {
@@ -32,4 +33,5 @@
   background-color: #E9EAEA;
   border-radius: 3px;
   text-align: center;
+  margin-right: 5px;
 }

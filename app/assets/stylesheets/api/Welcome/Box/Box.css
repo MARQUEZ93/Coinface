@@ -17,6 +17,4 @@
   height: 210px;
   border-radius: 5px;
   border: 1px solid #DCDCDC;
-  display: flex;
-  flex-direction: column;
 }

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { GridLoader } from 'halogenium';
 
 const URL = `https://min-api.cryptocompare.com/data/histoday?fsym=`;
-const URL_END = `&tsym=USD&limit=30`;
+const URL_END = `&tsym=USD&limit=60`;
 
 class BottomLayer extends Component {
 
@@ -31,9 +31,9 @@ class BottomLayer extends Component {
     }
     const props = this.props;
     return (
-      <div className="Sparklines">
-          <Sparklines data={this.state.data}>
-            <SparklinesLine style={{ fill: "none" }} color={props.color} />
+      <div className="BottomLayer">
+          <Sparklines height={126} data={this.state.data}>
+            <SparklinesLine style={{ fill: "none", strokeWidth: 3 }} color={props.color} />
           </Sparklines>
       </div>
     );
