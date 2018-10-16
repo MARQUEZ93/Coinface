@@ -8,11 +8,12 @@ import Footer from './Footer';
 class Welcome extends Component {
 
   render() {
+    const history = this.props.history;
     return (
       <div>
         <div className="Welcome">
           <Header />
-          <CenterMessage />
+          <CenterMessage history={history}/>
         </div>
         <FiveBoxes />
         <Footer />

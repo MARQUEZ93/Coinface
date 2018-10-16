@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+class SessionForm extends Component {
   constructor(props) {
     super(props);
+    let email = "";
+    if (typeof this.props.history.location.state != 'undefined') {
+      email = this.props.history.location.state.email;
+    }
     this.state = {
-      username: '',
+      email: email,
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,10 +49,10 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <div className="login-form">
             <br/>
-            <label>Username:
+            <label>Email:
               <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.email}
+                onChange={this.update('email')}
                 className="login-input"
               />
             </label>
