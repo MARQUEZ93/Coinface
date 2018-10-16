@@ -1,0 +1,27 @@
+.WelcomeFooter {
+  padding-top: 40px;
+  background-color: #233143;
+  font-size: 16px;
+  width: cover;
+  height: 300px;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.WelcomeFooterInfo {
+  color: #B0B0B0;
+  margin-left: 25px;
+}
+
+.FooterLogo {
+  color: white;
+  letter-spacing: -1px;
+  margin-left: 25px;
+  font-size: 31px;
+}
+
+.copyright {
+  margin-top: 40px;
+  font-size: 12px;
+  margin-left: 25px;
+  color: #B0B0B0;
+}

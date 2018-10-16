@@ -17,7 +17,7 @@ class MiddleLayer extends Component {
   componentDidMount() {
     const url = `${URL}`+`${this.props.symbol}`+`${URL_END}`;
     axios.get(url).then(res => {
-      const price = _.round(res.data.RAW.PRICE, 2);
+      const price = res.data.RAW.PRICE.toFixed(2);
       const change = _.round(res.data.RAW.CHANGEPCT24HOUR, 2);
       this.setState( { price: price, change: change } );
     });
