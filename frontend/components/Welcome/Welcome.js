@@ -4,6 +4,7 @@ import Header from './Header';
 import CenterMessage from './CenterMessage';
 import FiveBoxes from './FiveBoxes';
 import Footer from './Footer';
+import GetStarted from './GetStarted';
 
 class Welcome extends Component {
 
@@ -16,6 +17,7 @@ class Welcome extends Component {
           <CenterMessage history={history}/>
         </div>
         <FiveBoxes />
+        <GetStarted />
         <Footer />
     </div>
     );
