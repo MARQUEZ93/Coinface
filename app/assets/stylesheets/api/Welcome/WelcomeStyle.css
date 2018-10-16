@@ -12,12 +12,12 @@ body {
 .Welcome {
 
   background-color: #1652f0;
-  background-size: 741px;
+  background-size: 670px;
   height: 540px;
 
   background-image: url(https://www2.coinbase.com/assets/topBackground.png);
 
-  background-position: 100% 50%;
+  background-position: 100% 0%;
   background-repeat: no-repeat;
 }
 
