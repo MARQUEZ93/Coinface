@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Header from '../Welcome/Header';
 
-class SessionForm extends Component {
+class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     //grab email from welcome page
