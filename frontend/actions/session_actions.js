@@ -1,34 +1,32 @@
 import * as APIUtil from '../util/session_api_util';
 
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS } from './types';
+export const LOGIN_USER = 'LOGIN_USER';
+export const SIGNUP_USER = 'SIGNUP_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
+export const signUpUser = user => ({
+  type: SIGNUP_USER,
+  user
+});
+
+export const loginUser = user => ({
+  type: LOGIN_USER,
+  user
 });
 
 export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_SESSION_ERRORS,
-  errors
-});
-
 export const signup = user => dispatch => (
-APIUtil.signup(user).then(user => (
-  dispatch(receiveCurrentUser(user))
-), err => (
-  dispatch(receiveErrors(err.responseJSON))
-))
+  APIUtil.signup(user).then(user => (
+    dispatch(signUpUser(user))
+  ))
 );
 
 export const login = user => dispatch => (
   APIUtil.login(user).then(user => (
-    dispatch(receiveCurrentUser(user))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(loginUser(user))
   ))
 );
 

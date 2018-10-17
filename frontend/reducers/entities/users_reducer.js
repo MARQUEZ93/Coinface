@@ -1,15 +1,23 @@
+import {
+  SIGNUP_USER
+} from '../../actions/session_actions';
+
+import {
+  GET_USER
+} from '../../actions/user_actions';
+
 import merge from 'lodash/merge';
 
-import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
-
-const usersReducer = (state = {}, action) => {
-  Object.freeze(state);
-  switch(action.type) {
-    case RECEIVE_CURRENT_USER:
-      return merge({}, state, { [action.currentUser.id]: action.currentUser });
+const UsersReducer = (oldState = {}, action) => {
+  Object.freeze(oldState);
+  switch (action.type) {
+    case SIGNUP_USER:
+      return merge({}, oldState, {[action.user.id]:action.user});
+    case GET_USER:
+      return merge({}, oldState, {[action.user.id]:action.user});
     default:
-      return state;
+      return oldState;
   }
 };
 
-export default usersReducer;
+export default UsersReducer;

@@ -16,14 +16,12 @@ import Welcome from './Welcome/Welcome';
 import Feature from './Feature';
 
 const App = () => (
-  <div>
     <Switch>
-      <Route path="/" exact component={Welcome} />
+      <Route exact path="/" component={Welcome} />
       <AuthRoute exact path="/login" component={SignIn} />
       <AuthRoute exact path="/signup" component={SignUp} />
       <ProtectedRoute exact path="/dashboard" component={Feature} />
     </Switch>
-  </div>
 );
 
 export default App;
