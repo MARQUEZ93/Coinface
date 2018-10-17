@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
