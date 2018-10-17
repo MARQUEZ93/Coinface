@@ -6,8 +6,9 @@ import SignUp from './SignUp';
 
 const mapStateToProps = ({ errors }) => {
   return {
+    header: "Create your account",
     errors: errors.session,
-    navLink: <Link to="/signup">sign up instead</Link>,
+    navLink: <Link to="/signup">Already have an account?</Link>,
   };
 };
 

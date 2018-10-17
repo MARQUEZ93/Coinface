@@ -6,13 +6,16 @@ import { login } from '../../actions/session_actions';
 
 import Header from '../Welcome/Header';
 
-class SignUp extends Component {
+class SessionsForm extends Component {
   constructor(props) {
     super(props);
+    //grab email from welcome page 
+    let email = "";
+    if (typeof this.props.history.location.state != 'undefined') {
+      email = this.props.history.location.state.email;
+    }
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
+      email: email,
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,26 +49,11 @@ class SignUp extends Component {
     return (
       <div className="SignUp">
         <Header />
-        <h2 className="SignUpHeader1"> Create your account </h2>
+        <h2 className="SignUpH2"> Create your account </h2>
         <form onSubmit={this.handleSubmit} className="SignUpForm">
           <br/>
           {this.renderErrors()}
           <div className="SignUpFormDiv">
-            <label>First Name:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('firstName')}
-                className="SignUpInput"
-              />
-            </label>
-            <br/>
-            <label>Last Name:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('lastName')}
-                className="SignUpInput"
-              />
-            </label>
             <br/>
             <label>Email:
               <input type="text"

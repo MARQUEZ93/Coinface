@@ -11,7 +11,7 @@ class Welcome extends Component {
   render() {
     const history = this.props.history;
     return (
-      <div>
+      <div className="Welcome">
         <div className="Welcome">
           <Header />
           <CenterMessage history={history}/>
@@ -19,7 +19,7 @@ class Welcome extends Component {
         <FiveBoxes />
         <GetStarted />
         <Footer />
-    </div>
+      </div>
     );
   }
 }
