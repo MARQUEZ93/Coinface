@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
 
 import Header from '../Welcome/Header';
 
-class SessionsForm extends Component {
+class SessionForm extends Component {
   constructor(props) {
     super(props);
-    //grab email from welcome page 
+    //grab email from welcome page
     let email = "";
     if (typeof this.props.history.location.state != 'undefined') {
       email = this.props.history.location.state.email;
@@ -47,36 +45,33 @@ class SessionsForm extends Component {
 
   render() {
     return (
-      <div className="SignUp">
+      <div className="Sessions">
         <Header />
-        <h2 className="SignUpH2"> Create your account </h2>
-        <form onSubmit={this.handleSubmit} className="SignUpForm">
-          <br/>
-          {this.renderErrors()}
-          <div className="SignUpFormDiv">
-            <br/>
-            <label>Email:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="SignUpInput"
-              />
-            </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="SignUpInput"
-              />
-            </label>
-            <br/>
-            <input className="SignUpSubmit" type="submit" value={"Sign Up"} />
-          </div>
+        <h2 className="SessionsHeader"> {this.props.header} </h2>
+        <form onSubmit={this.handleSubmit} className="SessionsForm">
+            {this.renderErrors()}
+            <div className="SessionsInputsDiv">
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className="SessionsInput"
+                  placeholder="Email"
+                />
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="SessionsInput"
+                  placeholder="Password"
+                />
+            </div>
+            <div className="SessionsSubmitDiv">
+              <input className="SessionsSubmit" type="submit" value={this.props.button} />
+            </div>
         </form>
+        <div className="SessionsNavDiv">{this.props.navLink}</div>
       </div>
     );
   }
 }
 
-export default withRouter(SignUp);
+export default withRouter(SessionForm);

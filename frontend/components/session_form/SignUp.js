@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
-import SignUp from './SignUp';
+import { signup } from '../../actions/session_actions';
+import SessionsForm from './SessionsForm';
 
 const mapStateToProps = ({ errors }) => {
   return {
     header: "Create your account",
+    button: "CREATE ACCOUNT",
     errors: errors.session,
-    navLink: <Link to="/signup">Already have an account?</Link>,
+    navLink: <Link to="/signup" className="SessionsNav">Already have an account?</Link>
   };
 };
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionsForm);

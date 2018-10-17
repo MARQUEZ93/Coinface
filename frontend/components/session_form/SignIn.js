@@ -1,78 +1,22 @@
-import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
+import SessionsForm from './SessionsForm';
 
-import Header from '../Welcome/Header';
+const mapStateToProps = ({ errors }) => {
+  return {
+    header: "Sign in to Coinface",
+    button: "SIGN IN",
+    errors: errors.session,
+    navLink: <Link to="/signup" className="SessionsNav">Don't have an account?</Link>
+  };
+};
 
-class SignIn extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: ''
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const mapDispatchToProps = dispatch => {
+  return {
+    processForm: (user) => dispatch(login(user)),
+  };
+};
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user);
-  }
-
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  render() {
-    return (
-      <div className="SignIn">
-        <Header />
-        <form onSubmit={this.handleSubmit} className="SignIn-form-box">
-          Welcome to Coinface!
-          <br/>
-          Please {this.props.formType} or {this.props.navLink}
-          {this.renderErrors()}
-          <div className="SignIn-form">
-            <br/>
-            <label>Email:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="SignIn-input"
-              />
-            </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="SignIn-input"
-              />
-            </label>
-            <br/>
-            <input className="SignInSubmit" type="submit" value={"Sign In"} />
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
-
-export default withRouter(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionsForm);

@@ -10,8 +10,8 @@ import {
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 //components
-import SignUp from './session_form/SignUp_container';
-import SignIn from './session_form/SignIn_container';
+import SignUp from './session_form/SignUp';
+import SignIn from './session_form/SignIn';
 import Welcome from './Welcome/Welcome';
 
 const App = () => (

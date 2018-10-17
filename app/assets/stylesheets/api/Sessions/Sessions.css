@@ -1,0 +1,77 @@
+.Sessions {
+  background-color: #1652f0;
+  height: 100vh;
+  font-family: "helvetica neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.SessionsHeader {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 40px;
+  font-family: proxima-nova, "helvetica neue", Helvetica, Arial, sans-serif;
+}
+
+.SessionsForm {
+  margin: auto;
+  text-align: start;
+  color: black;
+  background-color: white;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 161px;
+  width: 352px;
+  border-radius: 4px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.SessionsInput {
+  font-size: 14px;
+  text-align: start;
+  padding: 9px;
+  width: 334px;
+  height: 24px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.SessionsSubmitDiv {
+  text-align: center;
+}
+
+.SessionsSubmit {
+  width: 96px;
+  height: 20px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background-color: #1652f0;
+  color: white;
+  border-radius: 2px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.SessionsInputsDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.SessionsInput:active, .SessionsInput:hover {
+  border: 1px solid #1652f0;
+}
+
+.SessionsNav{
+  color: white;
+  font-size: 15px;
+}
+
+.SessionsNavDiv{
+  margin-top: 15px;
+  text-align: center;
+}
