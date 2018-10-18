@@ -4,7 +4,7 @@
 }
 .WelcomeLogo {
   letter-spacing: -1px;
-  margin-left: 45px;
+  margin-left: 25px;
   font-size: 31px;
   cursor: pointer;
 }
@@ -15,7 +15,7 @@
 }
 
 .Welcome-Sessions {
-  margin-right: 45px;
+  margin-right: 25px;
   display: flex;
   align-items: center;
   font-size: 16px;

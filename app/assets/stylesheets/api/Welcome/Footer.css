@@ -8,8 +8,15 @@
 }
 
 .WelcomeFooterInfo {
+  margin-top: 5px;
   color: #B0B0B0;
   margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.FooterATag{
+  margin-bottom: 5px;
 }
 
 .FooterLogo {

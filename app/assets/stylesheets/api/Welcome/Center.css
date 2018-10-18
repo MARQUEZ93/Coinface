@@ -8,9 +8,10 @@
 }
 
 .Welcome-Center-Header {
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
  font-size: 48px;
  color:white;
- font-weight: 500;
+ font-weight: 600;
  padding-top: 24px;
  padding-bottom: 24px;
 }
@@ -53,5 +54,5 @@
 }
 
 .centerButton:hover {
-  background-color: #53c653;
+  background-color: #00a86c;
 }

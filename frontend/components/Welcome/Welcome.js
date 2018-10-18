@@ -8,6 +8,7 @@ import GetStarted from './GetStarted';
 
 class Welcome extends Component {
 
+
   render() {
     return (
       <div className="WelcomeComponent">
