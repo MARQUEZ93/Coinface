@@ -2,13 +2,20 @@
   display: flex;
   justify-content: space-between;
 }
-.Welcome-Logo {
+.WelcomeLogo {
   letter-spacing: -1px;
-  margin-left: 25px;
+  margin-left: 45px;
   font-size: 31px;
+  cursor: pointer;
+}
+
+.WelcomeLogo:hover, .WelcomeLogo:active, .WelcomeLogo:focus{
+  cursor: pointer;
+  user-select: none;
 }
 
 .Welcome-Sessions {
+  margin-right: 45px;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -18,8 +25,9 @@
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
-
   margin-right: 5px;
+
+
 }
 
 .WelcomeLogin:hover{
@@ -31,7 +39,7 @@
   color: #1652f0;
 }
 
-.HeaderLink {
+.HeaderLink, .HeaderLink:hover, .HeaderLink:active, .HeaderLink:focus {
   text-decoration: none;
 }
 
@@ -44,7 +52,7 @@
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
   margin-left: 10px;
-  margin-right: 18px;
+
   box-sizing: border-box;
   border: 1px solid white;
   border-radius: 5px;
