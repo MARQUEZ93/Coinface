@@ -17,12 +17,19 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoSubmit = this.demoSubmit.bind(this);
   }
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  demoSubmit(e) {
+    e.preventDefault();
+    const user = Object.assign({}, { email: "guest@coinface.com", password: "12345678" });
+    this.props.processForm(user);
   }
 
   handleSubmit(e) {
@@ -44,6 +51,15 @@ class SessionForm extends React.Component {
   }
 
   render() {
+
+    let Demo = <input className="SessionsSubmit" type="submit" value={this.props.button} />;
+    if (this.props.button == "SIGN IN") {
+      Demo = (<div className="SessionsSubmitDemo">
+      <input className="SessionsSubmit" type="submit" value={this.props.button} />
+      <input className="SessionsSubmit" onClick={this.demoSubmit} type="submit" value="DEMO" />
+      </div>);
+    }
+
     return (
       <div className="Sessions">
         <Header />
@@ -64,8 +80,8 @@ class SessionForm extends React.Component {
                   placeholder="Password"
                 />
             </div>
-            <div className="SessionsSubmitDiv">
-              <input className="SessionsSubmit" type="submit" value={this.props.button} />
+            <div className="SessionsSubmitDivs">
+              {Demo}
             </div>
         </form>
         <div className="SessionsNavDiv">{this.props.navLink}</div>

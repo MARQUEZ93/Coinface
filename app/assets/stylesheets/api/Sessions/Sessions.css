@@ -6,6 +6,7 @@
 }
 
 .SessionsHeader {
+  margin-top: 40px;
   text-align: center;
   font-size: 30px;
   color: white;
@@ -21,29 +22,35 @@
   background-color: white;
   padding-left: 24px;
   padding-right: 24px;
-  height: 161px;
-  width: 352px;
+  height: 150px;
+  width: 340px;
   border-radius: 4px;
   padding-top: 32px;
   padding-bottom: 32px;
+  border: 1px solid #474a54;
 }
 
 .SessionsInput {
   font-size: 14px;
   text-align: start;
   padding: 9px;
-  width: 334px;
+  width: 310px;
   height: 24px;
   border: 1px solid lightgrey;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-bottom: 10px;
 }
 
-.SessionsSubmitDiv {
+.SessionsInput::placeholder {
+  color: #B0B0B0;
+}
+
+.SessionsSubmitDivs {
   text-align: center;
 }
 
 .SessionsSubmit {
+  margin-top: 5px;
   width: 96px;
   height: 20px;
   padding-left: 22px;
@@ -57,6 +64,11 @@
   text-align: center;
 }
 
+.SessionsSubmitDemo {
+  display: flex;
+  justify-content: space-around;
+}
+
 .SessionsSubmit:hover {
   filter: brightness(90%);
 }
@@ -64,9 +76,10 @@
 .SessionsInputsDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.SessionsInput:active, .SessionsInput:hover {
+.SessionsInput:active, .SessionsInput:hover, .SessionsInput:focus  {
   border: 1px solid #1652f0;
 }
 
