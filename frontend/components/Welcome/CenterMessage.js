@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class CenterMessage extends Component {
 
@@ -40,4 +39,4 @@ class CenterMessage extends Component {
   }
 }
 
-export default CenterMessage;
+export default withRouter(CenterMessage);

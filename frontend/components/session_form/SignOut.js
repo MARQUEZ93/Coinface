@@ -11,6 +11,7 @@ class SignOut extends React.Component {
   signOut(e){
     e.preventDefault();
     this.props.action();
+    this.props.history.push('/');
   }
 
   render() {

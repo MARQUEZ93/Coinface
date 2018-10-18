@@ -26,17 +26,18 @@
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
   margin-right: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-
+.WelcomeLogin:hover, .WelcomeLogin:active, .WelcomeLogin:focus{
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
 }
 
 .WelcomeLogin:hover{
   color: lightgrey;
-}
-
-.WelcomeSignup:hover{
-  background-color: white;
-  color: #1652f0;
 }
 
 .HeaderLink, .HeaderLink:hover, .HeaderLink:active, .HeaderLink:focus {
@@ -60,4 +61,12 @@
   padding-left: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.WelcomeSignup:hover{
+  background-color: white;
+  color: #1652f0;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
 }

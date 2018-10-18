@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 import axios from 'axios';
 import { GridLoader } from 'halogenium';
 
