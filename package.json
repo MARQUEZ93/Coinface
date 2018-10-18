@@ -1,6 +1,13 @@
 {
   "name": "Coinface",
   "private": true,
+  "bugs": {
+    "url": "https://github.com/marquez93/Coinface/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marquez93/Coinface.git"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
@@ -21,7 +28,7 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   },
-  "description": "Coinface is a web application that allows users to simulate the purchase of cryptocurrencies with fake $USD. Users can transfer their crypto assets amongst each other.",
+  "description": "Coinbase clone!",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -37,6 +44,7 @@
     "webpack": "webpack --mode=development --watch"
   },
   "keywords": [],
+  "homepage": "https://github.com/marquez93/Coinface#readme",
   "author": "",
   "license": "ISC"
 }
