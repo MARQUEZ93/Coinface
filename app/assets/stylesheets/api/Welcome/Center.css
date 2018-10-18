@@ -37,6 +37,12 @@
   border-radius: 4px;
   padding-left: 16px;
 }
+
+.centerInput:focus{
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 20px #9ecaed;
+}
 .centerButton{
   width: 152px;
   height: 50px;
@@ -44,4 +50,8 @@
   text-align: center;
   color: white;
   border-radius: 4px;
+}
+
+.centerButton:hover {
+  background-color: #53c653;
 }

@@ -9,7 +9,7 @@ const mapStateToProps = ({ errors }) => {
     header: "Create your account",
     button: "CREATE ACCOUNT",
     errors: errors.session,
-    navLink: <Link to="/signin" className="SessionsNav">Already have an account?</Link>
+    navLink: <Link to="/login" className="SessionsNav">Already have an account?</Link>
   };
 };
 

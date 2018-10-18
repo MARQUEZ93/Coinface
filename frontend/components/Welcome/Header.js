@@ -8,8 +8,8 @@ const Header = () => {
           <Link className="HeaderLink" to="/"> <p> coinface </p> </Link>
         </div>
         <div className="Welcome-Sessions">
-          <Link to="/login" style={{ textDecoration: 'none' }} className="Welcome-Login"> Sign in </Link>
-          <Link to="/signup" style={{ textDecoration: 'none' }} className="Welcome-Signin"> Get started </Link>
+          <Link to="/login" style={{ textDecoration: 'none' }} className="WelcomeLogin"> Sign in </Link>
+          <Link to="/signup" style={{ textDecoration: 'none' }} className="WelcomeSignup"> Get started </Link>
         </div>
       </div>
   );

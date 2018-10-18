@@ -4,6 +4,11 @@ import { withRouter } from 'react-router-dom';
 import Header from './Welcome/Header';
 
 class PageNotFound extends Component {
+
+  constructor(props){
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
   onClick() {
     this.props.history.push('/');
   }

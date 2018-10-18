@@ -14,7 +14,7 @@
   font-size: 16px;
 }
 
-.Welcome-Login {
+.WelcomeLogin {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
@@ -22,12 +22,13 @@
   margin-right: 5px;
 }
 
-.Welcome-Login:hover{
-  color: white;
+.WelcomeLogin:hover{
+  color: lightgrey;
 }
 
-.Welcome-Signin:hover{
-  color: white;
+.WelcomeSignup:hover{
+  background-color: white;
+  color: #1652f0;
 }
 
 .HeaderLink {
@@ -38,7 +39,7 @@
   text-decoration: none;
 }
 
-.Welcome-Signin {
+.WelcomeSignup {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
