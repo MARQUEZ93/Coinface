@@ -14,7 +14,6 @@ class SignOut extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <form className="SignOutForm" onSubmit={this.signOut}>
         <p className="userEmail">{this.props.email}</p>

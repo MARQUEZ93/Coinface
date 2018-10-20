@@ -1,0 +1,13 @@
+.navBar{
+
+}
+
+.unorderedListNavBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.listItemNavBar{
+  margin-right: 5px;
+}
