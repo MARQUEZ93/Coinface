@@ -1,6 +1,8 @@
 .WelcomeHeader {
   display: flex;
   justify-content: space-between;
+  height: 70px;
+  align-items: center;
 }
 .WelcomeLogo {
   letter-spacing: -1px;
@@ -41,10 +43,6 @@
 }
 
 .HeaderLink, .HeaderLink:hover, .HeaderLink:active, .HeaderLink:focus {
-  text-decoration: none;
-}
-
-.HeaderLink:hover {
   text-decoration: none;
 }
 

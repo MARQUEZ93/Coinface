@@ -13,7 +13,7 @@ import { AuthRoute, ProtectedRoute, LoggedInRoute } from '../util/route_util';
 import SignUp from './session_form/SignUp';
 import SignIn from './session_form/SignIn';
 import Welcome from './Welcome/Welcome';
-import Feature from './Feature';
+import Feature from './Dashboard/Feature';
 import PageNotFound from './PageNotFound';
 
 const App = () => (

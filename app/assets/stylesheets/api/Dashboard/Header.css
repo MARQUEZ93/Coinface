@@ -1,0 +1,22 @@
+.dashboardHeader{
+  height: 70px;
+  background-color: #1652f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboardLogo {
+  letter-spacing: -1px;
+  margin-left: 25px;
+  font-size: 31px;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.dashboardLogo:hover, .dashboardLogo:active, .dashboardLogo:focus{
+  cursor: pointer;
+  user-select: none;
+}

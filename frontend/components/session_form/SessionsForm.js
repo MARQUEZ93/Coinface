@@ -18,6 +18,8 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoSubmit = this.demoSubmit.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
 
   update(field) {
@@ -26,11 +28,47 @@ class SessionForm extends React.Component {
     });
   }
 
-  demoSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, { email: "Alejandro@coinface.com", password: "password" });
-    this.props.processForm(user);
+
+  //full transparency: I took this setTimeout code from Oliver Ball
+  //https://github.com/OhBall/Taut
+  // of my app academy cohort. I loved it, and wanted it in my app!
+
+  loginAsGuest() {
+    const emailArray = 'Alejandro@coinface.com'.split('');
+    const passwordArray = 'password'.split('');
+    const button = document.getElementById('login');
+    this.setState({email: '', password: ''}, () =>
+      this.loginAsGuestHelper(emailArray, passwordArray, button)
+    );
   }
+
+  loginAsGuestHelper(emailArray, passwordArray, button){
+    if (emailArray.length > 0) {
+      this.setState(
+        { email: this.state.email + emailArray.shift() }, () => {
+          window.setTimeout( () =>
+            this.loginAsGuestHelper(emailArray, passwordArray, button), 75);
+        }
+      );
+    } else if (passwordArray.length > 0) {
+      this.setState(
+        { password: this.state.password + passwordArray.shift() }, () => {
+          window.setTimeout( () =>
+            this.loginAsGuestHelper(emailArray, passwordArray, button), 100);
+        }
+      );
+    } else {
+      button.click();
+    }
+  }
+  
+  //BELOW was my demo submit code before I implemented Oliver's code
+
+  // demoSubmit(e) {
+  //   e.preventDefault();
+  //   const user = Object.assign({}, { email: "Alejandro@coinface.com", password: "password" });
+  //   this.props.processForm(user);
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -55,8 +93,8 @@ class SessionForm extends React.Component {
     let Demo = <input className="SessionsSubmit" type="submit" value={this.props.button} />;
     if (this.props.button == "SIGN IN") {
       Demo = (<div className="SessionsSubmitDemo">
-      <input className="SessionsSubmit" type="submit" value={this.props.button} />
-      <input className="SessionsSubmit" onClick={this.demoSubmit} type="submit" value="DEMO" />
+      <input id="login" className="SessionsSubmit" type="submit" value={this.props.button} />
+      <input className="SessionsSubmit" onClick={this.loginAsGuest} type="submit" value="GUEST" />
       </div>);
     }
 
