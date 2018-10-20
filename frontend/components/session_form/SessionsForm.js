@@ -14,10 +14,10 @@ class SessionForm extends React.Component {
     }
     this.state = {
       email: email,
-      password: ''
+      password: '',
+      submit: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoSubmit = this.demoSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
@@ -58,22 +58,17 @@ class SessionForm extends React.Component {
         }
       );
     } else {
+      this.setState( { submit: true });
       button.click();
     }
   }
-  
-  //BELOW was my demo submit code before I implemented Oliver's code
-
-  // demoSubmit(e) {
-  //   e.preventDefault();
-  //   const user = Object.assign({}, { email: "Alejandro@coinface.com", password: "password" });
-  //   this.props.processForm(user);
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (this.state.submit || this.props.button === "CREATE ACCOUNT" ) {
+      this.props.processForm(user);
+    }
   }
 
   renderErrors() {
@@ -90,12 +85,14 @@ class SessionForm extends React.Component {
 
   render() {
 
-    let Demo = <input className="SessionsSubmit" type="submit" value={this.props.button} />;
+    let SignIn = <input className="SessionsSubmit" type="submit" value={this.props.button} />;
     if (this.props.button == "SIGN IN") {
-      Demo = (<div className="SessionsSubmitDemo">
-      <input id="login" className="SessionsSubmit" type="submit" value={this.props.button} />
-      <input className="SessionsSubmit" onClick={this.loginAsGuest} type="submit" value="GUEST" />
-      </div>);
+      SignIn = (
+        <div className="SessionsSubmitDemo">
+          <input id="login" className="SessionsSubmit" type="submit" value={this.props.button} />
+          <input className="SessionsSubmit" onClick={this.loginAsGuest} type="submit" value="GUEST" />
+      </div>
+      );
     }
 
     return (
@@ -119,7 +116,7 @@ class SessionForm extends React.Component {
                 />
             </div>
             <div className="SessionsSubmitDivs">
-              {Demo}
+              {SignIn}
             </div>
         </form>
         <div className="SessionsNavDiv">{this.props.navLink}</div>
