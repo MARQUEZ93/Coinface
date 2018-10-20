@@ -30,8 +30,11 @@
   font-size: 12px;
   width: 25px;
   color: white;
-  background-color: #E9EAEA;
+  background-color: rgb(218, 225, 233);
   border-radius: 3px;
   text-align: center;
   margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

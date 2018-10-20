@@ -13,7 +13,7 @@ import { AuthRoute, ProtectedRoute, LoggedInRoute } from '../util/route_util';
 import SignUp from './session_form/SignUp';
 import SignIn from './session_form/SignIn';
 import Welcome from './Welcome/Welcome';
-import Feature from './Dashboard/Feature';
+import Dashboard from './Dashboard/Dashboard';
 import PageNotFound from './PageNotFound';
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       <LoggedInRoute exact path="/" component={Welcome} />
       <AuthRoute exact path="/login" component={SignIn} />
       <AuthRoute exact path="/signup" component={SignUp} />
-      <ProtectedRoute exact path="/dashboard" component={Feature} />
+      <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       <Route component={PageNotFound} />
     </Switch>
 );

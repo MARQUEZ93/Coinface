@@ -20,3 +20,28 @@
   cursor: pointer;
   user-select: none;
 }
+
+.SignOutForm {
+  color: white;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  margin-right: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+}
+
+.SignOutInput:hover, .SignOutInput:active, .SignOutInput:focus{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.SignOutInput:hover {
+  color: lightgrey;
+}
+
+.SignOutInput {
+  margin-left: 25px;
+}

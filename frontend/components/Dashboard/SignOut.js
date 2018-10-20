@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SignOut extends React.Component {
 
@@ -14,8 +14,10 @@ class SignOut extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <form className="SignOutForm" onSubmit={this.signOut}>
+        <p className="userEmail">{this.props.email}</p>
         <input type="submit" className="SignOutInput" value="Sign Out"></input>
       </form>
     );
