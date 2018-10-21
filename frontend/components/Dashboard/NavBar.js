@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class NavBar extends React.Component {
   }
   renderSvg(pathArg) {
     return (
-      <svg width="16" height="16" viewBox="0 0 16 16">
+      <svg className="svgNav" width="16" height="16" fill="#1652f0" viewBox="0 0 16 16">
         <path d={pathArg}> </path>
       </svg>
     );
@@ -24,15 +25,15 @@ class NavBar extends React.Component {
           </li>
           <li className="listItemNavBar">
             {this.renderSvg(buyImg)}
-            Dashboard
+            Buy/Sell
           </li>
           <li className="listItemNavBar">
             {this.renderSvg(accountsImg)}
-            Dashboard
+            Accounts
           </li>
         </ul>
       </div>
     );
   }
 }
-export default NavBar;
+export default withRouter(NavBar);

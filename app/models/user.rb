@@ -10,7 +10,8 @@ class User < ApplicationRecord
 
   #redux form will handle password validations
 
-  after_initialize :ensure_session_token, :generate_wallets
+  after_initialize :ensure_session_token
+  after_create :generate_wallets
 
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
 
@@ -36,13 +37,17 @@ class User < ApplicationRecord
   end
 
   def generate_wallets
-    #should I change self.id to self.email?
-    #difference between after_initialize && after_create??
-    Wallet.new(:asset_type => 'BTC', :user_id => self.id)
-    Wallet.new(:asset_type => 'BCH', :user_id => self.id)
-    Wallet.new(:asset_type => 'ETH', :user_id => self.id)
-    Wallet.new(:asset_type => 'ETC', :user_id => self.id)
-    Wallet.new(:asset_type => 'LTC', :user_id => self.id)
+    btc = Wallet.new(:asset_type => 'BTC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+    bch = Wallet.new(:asset_type => 'BCH', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+    eth = Wallet.new(:asset_type => 'ETH', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+    etc = Wallet.new(:asset_type => 'ETC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+    ltc = Wallet.new(:asset_type => 'LTC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+
+    btc.save!
+    bch.save!
+    eth.save!
+    etc.save!
+    ltc.save!
   end
 
   def ensure_session_token

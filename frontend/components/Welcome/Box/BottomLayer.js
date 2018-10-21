@@ -34,7 +34,7 @@ class BottomLayer extends Component {
       <div className="BottomLayer">
           <Sparklines height={126} data={this.state.data}>
             <SparklinesLine style={{ fill: "none", strokeWidth: 3 }} color={props.color} />
-          </Sparklines>
+        </Sparklines>
       </div>
     );
   }
