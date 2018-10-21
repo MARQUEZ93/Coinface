@@ -11,6 +11,7 @@ class PortfolioValue extends React.Component {
       "ETH": null, "LTC": null
     };
     this.getPrice = this.getPrice.bind(this);
+    this.getValue = this.getValue.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +44,11 @@ class PortfolioValue extends React.Component {
     });
   }
 
+  getValue(wallet) {
+    const asset = wallet.asset_type;
+    return (this.state[asset] * wallet.amount);
+  }
+
   render() {
     const values = Object.values(this.state);
     let stillFetchingData = false;
@@ -59,10 +65,12 @@ class PortfolioValue extends React.Component {
         </div>
       );
     }
-    let portfolioValue;
-    console.log(this.state);
-    console.log(this.props.wallets);
-    return <div></div>;
+    const wallets = this.props.wallets;
+    let portfolioValue = 0;
+    for (let i = 0; i < wallets.length; i++) {
+      portfolioValue+=this.getValue(wallets[i]);
+    }
+    return <div>${portfolioValue}</div>;
   }
 
 }
