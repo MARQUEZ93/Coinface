@@ -13,9 +13,9 @@ const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch(action.type) {
     case SIGNUP_USER:
-      return { id: action.user.id, email: action.user.email };
+      return { id: action.user.id, email: action.user.email, wallets: action.user.wallets };
     case LOGIN_USER:
-      return { id: action.user.id, email: action.user.email };
+      return { id: action.user.id, email: action.user.email, wallets: action.user.wallets };
     case LOGOUT_CURRENT_USER:
       return _nullUser;
     default:

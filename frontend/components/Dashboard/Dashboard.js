@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Header from './Header';
 import NavBar from './NavBar';
+import PortfolioValue from './PortfolioValue';
 
 class Dashboard extends Component {
   render() {
@@ -10,6 +11,7 @@ class Dashboard extends Component {
       <div className="Dashboard">
         <Header email={this.props.email} action={this.props.action}/>
         <NavBar />
+        <PortfolioValue wallets={this.props.wallets} />
       </div>
     );
   }
@@ -23,7 +25,7 @@ const mdp = (dispatch) => (
 
 const msp = ({ session }) => (
   {
-    email: session.email
+    email: session.email, wallets: session.wallets
   }
 );
 
