@@ -100,7 +100,7 @@ class PortfolioValue extends React.Component {
           wallets={this.props.wallets} portfolioValue={portfolioValue}
           btcPrice={this.state["BTC"]} bchPrice={this.state["BCH"]}
           etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
-          ltcPrice={this.state["LTC"]} 
+          ltcPrice={this.state["LTC"]}
           />
       </div>
     );

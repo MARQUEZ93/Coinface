@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridLoader } from 'halogenium';
+import _ from 'lodash';
 
 const btcSrc = "https://www.coinbase.com/assets/assets/1-8022fd53c251f18cb39cefede445f1c78a3b265989232f0bb46b9c4622e55a9e.png";
 const bchSrc = "https://www.coinbase.com/assets/assets/1831-03a53cc37436a99ba854e42df693fa52d92d88cbbce362fa217efd0e85be5e1f.png";
@@ -15,6 +16,8 @@ class YourPortfolio extends React.Component {
     this.state = { "btcAmount": null, "etcAmount": null,
       "ethAmount": null, "bchAmount": null, "ltcAmount": null, "gotAmounts": false };
     this.getAmounts = this.getAmounts.bind(this);
+    this.renderTableRow = this.renderTableRow.bind(this);
+    this.renderTable = this.renderTable.bind(this);
   }
 
   componentDidMount() {
@@ -41,25 +44,39 @@ class YourPortfolio extends React.Component {
   }
 
   getPercentage(amount, price) {
-    return (( (amount * price) / this.props.portfolioValue) * 100);
+    return _.round((( (amount * price) / this.props.portfolioValue) * 100));
+  }
+
+  displayPrice(price) {
+
   }
 
   renderTable() {
-    let listItems;
-    listItems+=this.renderTableRow(btcSrc, "Bitcoin", this.state["btcAmount"], this.getPercentage(this.state["btcAmount"]), this.state["btcAmount"] * this.btcPrice );
-    listItems+=this.renderTableRow(ethSrc, "Ethereum", this.state["ethAmount"], this.getPercentage(this.state["ethAmount"]), this.state["ethAmount"] * this.ethPrice );
-    listItems+=this.renderTableRow(ltcSrc, "Litecoin", this.state["ltcAmount"], this.getPercentage(this.state["ltcAmount"]), this.state["ltcAmount"] * this.ltcPrice );
-    listItems+=this.renderTableRow(bchSrc, "Bitcoin Cash", this.state["bchAmount"], this.getPercentage(this.state["bchAmount"]), this.state["bchAmount"] * this.bchPrice );
-    listItems+=this.renderTableRow(etcSrc, "Ethereum Classic", this.state["etcAmount"], this.getPercentage(this.state["etcAmount"]), this.state["etcAmount"] * this.etcPrice );
+    let listItems = [];
+    listItems.push(this.renderTableRow(btcSrc, "Bitcoin", this.getPercentage(this.state["btcAmount"], this.props.btcPrice),
+    this.state["btcAmount"], "BTC", (this.state["btcAmount"] * this.props.btcPrice).toFixed(2) ));
+
+    listItems.push(this.renderTableRow(ethSrc, "Ethereum", this.getPercentage(this.state["ethAmount"], this.props.ethPrice),
+    this.state["ethAmount"], "ETH", (this.state["ethAmount"] * this.props.ethPrice).toFixed(2) ));
+
+    listItems.push(this.renderTableRow(ltcSrc, "Litecoin", this.getPercentage(this.state["ltcAmount"], this.props.ltcPrice),
+    this.state["ltcAmount"], "LTC", (this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2) ));
+
+    listItems.push(this.renderTableRow(bchSrc, "Bitcoin Cash", this.getPercentage(this.state["bchAmount"], this.props.bchPrice),
+    this.state["bchAmount"], "BCH", (this.state["bchAmount"] * this.props.bchPrice).toFixed(2) ));
+
+    listItems.push(this.renderTableRow(etcSrc, "Ethereum Classic", this.getPercentage(this.state["etcAmount"], this.props.etcPrice),
+    this.state["etcAmount"], "ETC", (this.state["etcAmount"] * this.props.etcPrice ).toFixed(2)));
+
     return listItems;
   }
-  renderTableRow(imgLink, name, percentage, amount, sum) {
+  renderTableRow(imgLink, name, percentage, amount, symbol, sum) {
     return (
-      <tr>
+      <tr key={symbol} className="ypTr">
         <td><img className="imgYP" src={imgLink} /></td>
         <td>{name}</td>
         <td>{percentage}</td>
-        <td>{amount}</td>
+        <td>{amount} {symbol}</td>
         <td>{sum}</td>
       </tr>
     );
@@ -76,13 +93,7 @@ class YourPortfolio extends React.Component {
       <div className="YourPortfolio">
         <p>Your Portfolio</p>
         <table>
-        <tr className="yourPortfolioTR">
-          <td><img className="imgYP" src={btcSrc} /></td>
-          <td>Bitcoin</td>
-          <td>{this.getPercentage(this.state["btcAmount"], this.props.btcPrice)} </td>
-          <td>{this.state["btcAmount"]}</td>
-          <td>{this.state["btcAmount"] * this.props.btcPrice}</td>
-        </tr>
+          {this.renderTable()}
         </table>
       </div>
     );
