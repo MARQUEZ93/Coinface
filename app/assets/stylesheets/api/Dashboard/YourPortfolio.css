@@ -1,0 +1,80 @@
+.imgYP{
+  height: 38px;
+  width: 38px;
+  margin-left: 24px;
+}
+
+.trYP {
+  display: flex;
+  align-items: center;
+  border: 1px solid #E8E8E8;
+  height: 68px;
+  font-size: 16px;
+}
+
+.imgNameTD{
+  display: flex;
+  align-items: center;
+  width: 229px;
+}
+.nameYP {
+font-size: 18px;
+padding-left: 22px;
+}
+
+.sumYP {
+  color: #9ba6b2;
+  padding-right: 22px;
+}
+
+.tableYP{
+  margin-left: 25px;
+  width: 576px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-collapse: collapse;
+}
+.divHeaderTR{
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+.headerTR{
+  border: 1px solid #E8E8E8;
+  height: 54px;
+  font-size: 18px;
+  color: #1652f0;
+}
+
+.totalBalanceTR {
+  border: 1px solid #E8E8E8;
+  height: 54px;
+  font-size: 16px;
+  color: #7d95b6;
+}
+
+.divTotalBalance{
+  text-align: center;
+}
+
+.YourPortfolio {
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.circleYP {
+    height: 8px;
+    border-radius: 10px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+
+.circlePercentageYP{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 150px;
+}
+
+.amountYP{
+  width: 98px;
+}
