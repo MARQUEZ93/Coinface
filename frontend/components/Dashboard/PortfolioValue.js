@@ -4,6 +4,7 @@ import { GridLoader } from 'halogenium';
 import _ from 'lodash';
 import FiveBoxes from '../Welcome/FiveBoxes';
 import YourPortfolio from './YourPortfolio';
+import Footer from '../Welcome/Footer';
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
 class PortfolioValue extends React.Component {
@@ -84,7 +85,7 @@ class PortfolioValue extends React.Component {
     }
     const floorWithCommas = numberWithCommas(floor);
     return (
-      <div>
+      <div className="pvComponent">
         <div className="portfolioValue">
           <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
           <div className="pvDiv">
@@ -102,6 +103,7 @@ class PortfolioValue extends React.Component {
           etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
           ltcPrice={this.state["LTC"]}
           />
+        <Footer />
       </div>
     );
   }

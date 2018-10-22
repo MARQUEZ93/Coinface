@@ -47,7 +47,7 @@ class YourPortfolio extends React.Component {
     return _.round((( (amount * price) / this.props.portfolioValue) * 100));
   }
 
-  displayPrice(price) {
+  displayUSD(price) {
     var parts = price.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
@@ -56,32 +56,32 @@ class YourPortfolio extends React.Component {
   renderTable() {
     let listItems = [];
     listItems.push(this.renderTableRow(btcSrc, "Bitcoin", "#FF9900", this.getPercentage(this.state["btcAmount"], this.props.btcPrice),
-    this.state["btcAmount"], "BTC", this.displayPrice((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)) ));
+    parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)) ));
 
     listItems.push(this.renderTableRow(ethSrc, "Ethereum", "#4169E1", this.getPercentage(this.state["ethAmount"], this.props.ethPrice),
-    this.state["ethAmount"], "ETH", this.displayPrice((this.state["ethAmount"] * this.props.ethPrice).toFixed(2)) ));
+    parseFloat(this.state["ethAmount"]).toFixed(4), "ETH", this.displayUSD((this.state["ethAmount"] * this.props.ethPrice).toFixed(2)) ));
 
     listItems.push(this.renderTableRow(ltcSrc, "Litecoin", "#b8b8b8", this.getPercentage(this.state["ltcAmount"], this.props.ltcPrice),
-    this.state["ltcAmount"], "LTC", this.displayPrice((this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2)) ));
+    parseFloat(this.state["ltcAmount"]).toFixed(4), "LTC", this.displayUSD((this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2)) ));
 
     listItems.push(this.renderTableRow(bchSrc, "Bitcoin Cash", "#4cca47", this.getPercentage(this.state["bchAmount"], this.props.bchPrice),
-    this.state["bchAmount"], "BCH", this.displayPrice((this.state["bchAmount"] * this.props.bchPrice).toFixed(2)) ));
+    parseFloat(this.state["bchAmount"]).toFixed(4), "BCH", this.displayUSD((this.state["bchAmount"] * this.props.bchPrice).toFixed(2)) ));
 
     listItems.push(this.renderTableRow(etcSrc, "Ethereum Classic", "#00cc99", this.getPercentage(this.state["etcAmount"], this.props.etcPrice),
-    this.state["etcAmount"], "ETC", this.displayPrice((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2))));
+    parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2))));
 
     return listItems;
   }
   renderTableRow(imgLink, name, color, percentage, amount, symbol, sum) {
     return (
-      <tr key={symbol} className="trYP">
-        <td className="imgNameTD"><img className="imgYP" src={imgLink} /><p className="nameYP"> {name}</p></td>
-        <td className="circlePercentageYP"><div className="circleYP"
+      <div key={symbol} className="trYP">
+        <div className="imgNameTD"><img className="imgYP" src={imgLink} /><p className="nameYP"> {name}</p></div>
+        <div className="circlePercentageYP"><div className="circleYP"
           style={ {backgroundColor: color, width: (percentage+8) + 'px'} }></div>
-        {percentage}%</td>
-      <td className="amountYP">{amount} {symbol}</td>
-        <td className="sumYP">${sum}</td>
-      </tr>
+        {percentage}%</div>
+        <div className="amountYP">{amount} {symbol}</div>
+        <div className="sumYP">${sum}</div>
+      </div>
     );
   }
   render() {
@@ -92,15 +92,14 @@ class YourPortfolio extends React.Component {
         </div>
       );
     }
+    const renderPortfolioValue = this.displayUSD(this.props.portfolioValue);
     return (
       <div className="YourPortfolio">
-        <table className="tableYP">
-          <tbody>
-            <tr className="headerTR"><td><div className="divHeaderTR">Your Portfolio</div></td></tr>
+        <div className="tableYP">
+            <div className="headerTR"><p>Your Portfolio</p></div>
             {this.renderTable()}
-            <tr className="totalBalanceTR"><td><div className="divTotalBalance">Total Balance ≈ {this.props.portfolioValue}</div></td></tr>
-          </tbody>
-        </table>
+            <div className="divTotalBalance"><p>Total Balance ≈ ${renderPortfolioValue}</p></div>
+        </div>
       </div>
     );
   }

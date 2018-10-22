@@ -1,9 +1,14 @@
 .portfolioValue {
-  margin-top: 25px;
+  padding-top: 25px;
   text-align: center;
   display: flex;
   flex-direction: column;
   margin-bottom: 250px;
+  background-color: #f4f7fa;
+}
+
+.pvComponent{
+  background-color: #f4f7fa;
 }
 
 .yourPortfolioValue {

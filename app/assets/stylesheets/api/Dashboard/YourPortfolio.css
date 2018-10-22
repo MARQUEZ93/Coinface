@@ -5,9 +5,12 @@
 }
 
 .trYP {
+  background-color: white;
   display: flex;
   align-items: center;
-  border: 1px solid #E8E8E8;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
   height: 68px;
   font-size: 16px;
 }
@@ -15,7 +18,8 @@
 .imgNameTD{
   display: flex;
   align-items: center;
-  width: 229px;
+  width: 200px;
+  margin-right: 15px;
 }
 .nameYP {
 font-size: 18px;
@@ -24,40 +28,49 @@ padding-left: 22px;
 
 .sumYP {
   color: #9ba6b2;
-  padding-right: 22px;
+  text-align: right;
+  width: 100px;
 }
 
 .tableYP{
   margin-left: 25px;
-  width: 576px;
+  width: 600px;
   padding-left: 20px;
   padding-right: 20px;
-  border-collapse: collapse;
-}
-.divHeaderTR{
-  margin-left: 25px;
-  font-weight: 500;
 }
 
 .headerTR{
-  border: 1px solid #E8E8E8;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  font-weight: 500;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
   height: 54px;
   font-size: 18px;
   color: #1652f0;
-}
-
-.totalBalanceTR {
-  border: 1px solid #E8E8E8;
-  height: 54px;
-  font-size: 16px;
-  color: #7d95b6;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .divTotalBalance{
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  border: 1px solid #DCDCDC;
+  height: 54px;
+  font-size: 16px;
+  color: #7d95b6;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .YourPortfolio {
+  padding-bottom: 125px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .circleYP {
