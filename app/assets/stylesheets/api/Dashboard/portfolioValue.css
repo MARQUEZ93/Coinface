@@ -1,0 +1,30 @@
+.portfolioValue {
+  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 250px;
+}
+
+.yourPortfolioValue {
+  color: #7d95b6;
+  font-size: 14px;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 2px;
+}
+.pvDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: #4e5c6e;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.pvDollarSign{
+  font-size: 30px;
+}
+.pvFloor {
+  font-size: 48px;
+}
+.decimalsPV {
+  font-size: 30px;
+}

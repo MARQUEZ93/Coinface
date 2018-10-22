@@ -75,13 +75,22 @@ class PortfolioValue extends React.Component {
     let strPV = portfolioValue.toString();
     const decimals = strPV.charAt(strPV.length - 2) +  strPV.charAt(strPV.length - 1);
     const floor = _.floor(portfolioValue);
+    const numberWithCommas = (num) => {
+      var parts = num.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    const floorWithCommas = numberWithCommas(floor);
     return (
-      <div>
-        <p className="$PV">$</p>
-        <h3 className="yourPortfolioValue">
-          {floor}
-        </h3>
-        <p className="decimals">.{decimals}</p>
+      <div className="portfolioValue">
+        <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
+        <div className="pvDiv">
+          <p className="pvDollarSign">$</p>
+          <p className="pvFloor">
+            {floorWithCommas}
+          </p>
+          <p className="decimalsPV">.{decimals}</p>
+        </div>
       </div>
     );
   }
