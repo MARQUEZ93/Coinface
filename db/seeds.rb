@@ -20,4 +20,22 @@ wallets.each do |wallet|
     wallet.amount = 0.0100
   end
   wallet.save!
-end 
+end
+
+recruiter = User.create!( email:'Recruiter@coinface.com', password: "password" )
+recruiterWallets = recruiter.wallets
+
+recruiterWallets.each do |wallet|
+  if wallet.asset_type == "BTC"
+    wallet.amount = 55
+  elsif wallet.asset_type == "ETH"
+    wallet.amount = 25.654
+  elsif wallet.asset_type == "LTC"
+    wallet.amount = 2.4
+  elsif wallet.asset_type == "BCH"
+    wallet.amount = 0.0405
+  elsif wallet.asset_type == "ETC"
+    wallet.amount = 0.850769
+  end
+  wallet.save!
+end

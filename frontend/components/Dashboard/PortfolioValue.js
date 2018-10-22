@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { GridLoader } from 'halogenium';
 import _ from 'lodash';
+import FiveBoxes from '../Welcome/FiveBoxes';
+import YourPortfolio from './YourPortfolio';
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
 class PortfolioValue extends React.Component {
@@ -82,15 +84,24 @@ class PortfolioValue extends React.Component {
     }
     const floorWithCommas = numberWithCommas(floor);
     return (
-      <div className="portfolioValue">
-        <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
-        <div className="pvDiv">
-          <p className="pvDollarSign">$</p>
-          <p className="pvFloor">
-            {floorWithCommas}
-          </p>
-          <p className="decimalsPV">.{decimals}</p>
+      <div>
+        <div className="portfolioValue">
+          <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
+          <div className="pvDiv">
+            <p className="pvDollarSign">$</p>
+            <p className="pvFloor">
+              {floorWithCommas}
+            </p>
+            <p className="decimalsPV">.{decimals}</p>
+          </div>
         </div>
+        <FiveBoxes />
+        <YourPortfolio
+          wallets={this.props.wallets} portfolioValue={portfolioValue}
+          btcPrice={this.state["BTC"]} bchPrice={this.state["BCH"]}
+          etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
+          ltcPrice={this.state["LTC"]} 
+          />
       </div>
     );
   }

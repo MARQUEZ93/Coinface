@@ -15,7 +15,7 @@ class SessionForm extends React.Component {
     this.state = {
       email: email,
       password: '',
-      submit: false
+      submit: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
     const emailArray = 'Alejandro@coinface.com'.split('');
     const passwordArray = 'password'.split('');
     const button = document.getElementById('login');
-    this.setState({email: '', password: ''}, () =>
+    this.setState({ email: '', password: '', submit: false }, () =>
       this.loginAsGuestHelper(emailArray, passwordArray, button)
     );
   }

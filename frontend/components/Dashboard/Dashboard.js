@@ -4,7 +4,6 @@ import { logout } from '../../actions/session_actions';
 import Header from './Header';
 import NavBar from './NavBar';
 import PortfolioValue from './PortfolioValue';
-import FiveBoxes from '../Welcome/FiveBoxes';
 
 class Dashboard extends Component {
   render() {
@@ -13,7 +12,6 @@ class Dashboard extends Component {
         <Header email={this.props.email} action={this.props.action}/>
         <NavBar />
         <PortfolioValue wallets={this.props.wallets} />
-        <FiveBoxes />
       </div>
     );
   }
