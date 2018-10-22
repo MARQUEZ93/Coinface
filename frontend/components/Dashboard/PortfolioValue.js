@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { GridLoader } from 'halogenium';
+import _ from 'lodash';
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
 class PortfolioValue extends React.Component {
@@ -70,7 +71,19 @@ class PortfolioValue extends React.Component {
     for (let i = 0; i < wallets.length; i++) {
       portfolioValue+=this.getValue(wallets[i]);
     }
-    return <div>${portfolioValue}</div>;
+    portfolioValue = portfolioValue.toFixed(2);
+    let strPV = portfolioValue.toString();
+    const decimals = strPV.charAt(strPV.length - 2) +  strPV.charAt(strPV.length - 1);
+    const floor = _.floor(portfolioValue);
+    return (
+      <div>
+        <p className="$PV">$</p>
+        <h3 className="yourPortfolioValue">
+          {floor}
+        </h3>
+        <p className="decimals">.{decimals}</p>
+      </div>
+    );
   }
 
 }
