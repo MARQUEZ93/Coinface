@@ -14,6 +14,7 @@ class User < ApplicationRecord
   after_create :generate_wallets
 
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
+  has_one :cash, foreign_key: :user_id, class_name: :Cash
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -42,12 +43,14 @@ class User < ApplicationRecord
     eth = Wallet.new(:asset_type => 'ETH', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     etc = Wallet.new(:asset_type => 'ETC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     ltc = Wallet.new(:asset_type => 'LTC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
+    usd = Cash.new(:user_id => self.id, :amount => 0.00)
 
     btc.save!
     bch.save!
     eth.save!
     etc.save!
     ltc.save!
+    usd.save!
   end
 
   def ensure_session_token

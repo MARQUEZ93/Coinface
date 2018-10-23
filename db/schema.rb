@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_022255) do
+ActiveRecord::Schema.define(version: 2018_10_23_071213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cashes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cash_id"
+    t.integer "wallet_id"
+    t.decimal "cash_amount"
+  end
+
+  create_table "sellings", force: :cascade do |t|
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cash_id"
+    t.integer "wallet_id"
+    t.decimal "cash_amount"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.integer "sender_wallet_address", null: false
+    t.integer "receiver_wallet_address", null: false
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
