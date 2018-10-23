@@ -5,6 +5,8 @@ import _ from 'lodash';
 import FiveBoxes from '../Welcome/FiveBoxes';
 import YourPortfolio from './YourPortfolio';
 import Footer from '../Welcome/Footer';
+import RecentActivity from './RecentActivity';
+
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
 class PortfolioValue extends React.Component {
@@ -97,12 +99,18 @@ class PortfolioValue extends React.Component {
           </div>
         </div>
         <FiveBoxes />
-        <YourPortfolio
-          wallets={this.props.wallets} portfolioValue={portfolioValue}
-          btcPrice={this.state["BTC"]} bchPrice={this.state["BCH"]}
-          etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
-          ltcPrice={this.state["LTC"]}
-          />
+        <div className="divYPRA">
+          <YourPortfolio
+            wallets={this.props.wallets} portfolioValue={portfolioValue}
+            btcPrice={this.state["BTC"]} bchPrice={this.state["BCH"]}
+            etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
+            ltcPrice={this.state["LTC"]}
+            />
+          <RecentActivity
+            transfers={this.props.transfers} sellings={this.props.sellings}
+            purchases={this.props.purchases} receivers={this.props.receivers}
+            />
+        </div>
         <Footer />
       </div>
     );
