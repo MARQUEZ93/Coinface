@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_071213) do
+ActiveRecord::Schema.define(version: 2018_10_23_191142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,32 +20,39 @@ ActiveRecord::Schema.define(version: 2018_10_23_071213) do
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cashes_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cash_id"
-    t.integer "wallet_id"
     t.decimal "cash_amount"
+    t.integer "cash_id", null: false
+    t.integer "wallet_id", null: false
+    t.index ["cash_id"], name: "index_purchases_on_cash_id"
+    t.index ["wallet_id"], name: "index_purchases_on_wallet_id"
   end
 
   create_table "sellings", force: :cascade do |t|
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cash_id"
-    t.integer "wallet_id"
     t.decimal "cash_amount"
+    t.integer "cash_id", null: false
+    t.integer "wallet_id", null: false
+    t.index ["cash_id"], name: "index_sellings_on_cash_id"
+    t.index ["wallet_id"], name: "index_sellings_on_wallet_id"
   end
 
   create_table "transfers", force: :cascade do |t|
-    t.integer "sender_wallet_address", null: false
-    t.integer "receiver_wallet_address", null: false
+    t.string "sender_wallet_address", null: false
+    t.string "receiver_wallet_address", null: false
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["receiver_wallet_address"], name: "index_transfers_on_receiver_wallet_address"
+    t.index ["sender_wallet_address"], name: "index_transfers_on_sender_wallet_address"
   end
 
   create_table "users", force: :cascade do |t|

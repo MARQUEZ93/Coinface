@@ -5,6 +5,6 @@ class Purchase < ApplicationRecord
 
   belongs_to :purchaser, through: :wallet, source: :user_id
 
-  validates :amount, :usd_amount, :cash_id, :wallet_id, presence: true
+  validates :amount, :cash_amount, :cash_id, :wallet_id, presence: true
 
 end
