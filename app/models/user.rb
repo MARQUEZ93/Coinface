@@ -28,6 +28,12 @@ class User < ApplicationRecord
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
   has_one :cash, foreign_key: :user_id, class_name: :Cash
 
+  has_many :transfers, through: :wallets, source: :transfers
+  has_many :receivers, through: :wallets, source: :receivers
+
+  has_many :sellings, through: :wallets, source: :sellings
+  has_many :purchases, through: :wallets, source: :purchases
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user && user.valid_password?(password)

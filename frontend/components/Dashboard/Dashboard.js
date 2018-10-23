@@ -25,7 +25,9 @@ const mdp = (dispatch) => (
 
 const msp = ({ session }) => (
   {
-    email: session.email, wallets: session.wallets
+    email: session.email, wallets: session.wallets,
+    transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
+    cash: session.cash, receivers: session.receivers
   }
 );
 
