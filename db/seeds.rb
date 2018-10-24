@@ -51,7 +51,8 @@ recruiterWallets.each do |wallet|
   end
   wallet.save!
 end
-transfer = Transfer.create!( amount: 1.00, sender_wallet_address: recruiterLTCwallet.address, receiver_wallet_address: alejandroLTCwallet.address )
+transfer = Transfer.create!( amount: 1.00, cash_amount: 52.07, asset_type: "LTC",
+  sender_wallet_address: recruiterLTCwallet.address, receiver_wallet_address: alejandroLTCwallet.address )
 transfer.save!
 recruiterLTCwallet.amount = recruiterLTCwallet.amount - 1.00
 recruiterLTCwallet.save!
@@ -59,21 +60,24 @@ recruiterLTCwallet.save!
 alejandroLTCwallet.amount = alejandroLTCwallet.amount + 1.00
 alejandroLTCwallet.save!
 
-selling = Selling.create!(amount:0.5, cash_amount:26.00, cash_id: alejandro.cash.id, wallet_id: alejandroLTCwallet.id)
+selling = Selling.create!(amount: 0.5, cash_amount: 26.00, cash_id: alejandro.cash.id,
+  asset_type: "LTC", wallet_id: alejandroLTCwallet.id)
 selling.save!
 alejandro.cash.amount+= 26.00
 alejandro.cash.save!
 alejandroLTCwallet.amount +=0.5
 alejandroLTCwallet.save!
 
-purchase = Purchase.create!(amount: 0.75, cash_amount: 7.00, cash_id: alejandro.cash.id, wallet_id: alejandroETCwallet.id)
+purchase = Purchase.create!(amount: 0.75, cash_amount: 7.00, cash_id: alejandro.cash.id,
+  asset_type: "ETC", wallet_id: alejandroETCwallet.id)
 purchase.save!
 alejandro.cash.amount-= 7.00
 alejandro.cash.save!
 alejandroETCwallet.amount+=0.75
 alejandroETCwallet.save!
 
-purchase1 = Purchase.create!(amount: 0.25, cash_amount: 3.00, cash_id: alejandro.cash.id, wallet_id: alejandroETCwallet.id)
+purchase1 = Purchase.create!(amount: 0.25, cash_amount: 3.00, cash_id: alejandro.cash.id,
+  asset_type: "ETC", wallet_id: alejandroETCwallet.id)
 purchase1.save!
 
 alejandro.cash.amount-= 3.00

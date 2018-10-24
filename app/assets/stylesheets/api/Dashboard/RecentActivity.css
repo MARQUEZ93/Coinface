@@ -1,6 +1,13 @@
 .RecentActivity {
   padding-bottom: 125px;
-  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
+  Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif;
+  margin-right: 20px;
+  margin-left: 25px;
+  width: 598px;
+  background-color: white;
+  margin-bottom: 125px;
 }
 
 .recentActivitySVG {
