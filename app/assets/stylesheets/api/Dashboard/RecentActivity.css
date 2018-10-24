@@ -2,3 +2,9 @@
   padding-bottom: 125px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
+.recentActivitySVG {
+    width: 80px;
+    height: 80px;
+    stroke-width: 0.8;
+}

@@ -17,8 +17,8 @@ class PageNotFound extends Component {
       <div className="PageNotFound">
         <Header />
         <div className="PNFCenter">
-          <h1 className="PNFHeader">PAGE NOT FOUND</h1>
-          <p className="PNFP">Sorry we couldn't find what you were looking for.</p>
+          <h1 className="PNFHeader">{"PAGE NOT FOUND"}</h1>
+          <p className="PNFP">Sorry we {"couldn't"} find what you were looking {"for"}.</p>
           <button className="PNFButton" onClick={this.onClick}>Back to Coinface ›</button>
         </div>
       </div>
