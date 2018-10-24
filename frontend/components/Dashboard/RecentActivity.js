@@ -11,41 +11,51 @@ class RecentActivity extends React.Component {
     let activitiesArray = [];
     this.props.purchases.forEach(function(purchase){
       if (purchase != null) {
-        activitiesArray.push(purchase);
+        activitiesArray.push(Object.assign(purchase, {activity_type: "purchase"}));
       }
     });
     this.props.sellings.forEach(function(selling){
       if (selling != null) {
-        activitiesArray.push(selling);
+        activitiesArray.push(Object.assign(selling, {activity_type: "selling"}));
       }
     });
     this.props.receivers.forEach(function(receiver){
       if (receiver != null) {
-        activitiesArray.push(Object.assign(receiver, {imgType: "receive"}));
+        activitiesArray.push(Object.assign(receiver, {activity_type: "receive"}));
       }
     });
     this.props.transfers.forEach(function(transfer){
       if (transfer != null) {
-        activitiesArray.push(Object.assign(transfer, {imgType: "transfer"}));
+        activitiesArray.push(Object.assign(transfer, {activity_type: "transfer"}));
       }
     });
 
 
     activitiesArray = this.mergesort(activitiesArray);
-    this.lastFour = [];
 
-    //grab last four recent activies (transfer, receiver, selling, purchase) of user
-    this.lastFour.push(activitiesArray[activitiesArray.length-1]);
-    this.lastFour.push(activitiesArray[activitiesArray.length-2]);
-    this.lastFour.push(activitiesArray[activitiesArray.length-3]);
-    this.lastFour.push(activitiesArray[activitiesArray.length-4]);
+
+    this.lastFour = []; //most recent activity is lastFour[0]
+
+    if (activitiesArray.length == 0) { //do mothing
+    } else if (activitiesArray.length < 4) {
+      for (let i = activitiesArray.length - 1; i >= 0; i--){
+        this.lastFour.push(activitiesArray[i]);
+      }
+    } else if (activitiesArray.length >= 4) {
+      //grab last four recent activities (transfer, receiver, selling, purchase) of user
+      this.lastFour.push(activitiesArray[activitiesArray.length-1]);
+      this.lastFour.push(activitiesArray[activitiesArray.length-2]);
+      this.lastFour.push(activitiesArray[activitiesArray.length-3]);
+      this.lastFour.push(activitiesArray[activitiesArray.length-4]);
+    }
+
 
   }
 
   merge(leftArr, rightArr) {
     var sortedArr = [];
       while (leftArr.length && rightArr.length) {
-        if (Date.parse(leftArr[0]) <= Date.parse(rightArr[0])) {
+        if (Date.parse(leftArr[0].created_at) <= Date.parse(rightArr[0].created_at)) {
           sortedArr.push(leftArr[0]);
           leftArr = leftArr.slice(1)
        } else {
@@ -70,14 +80,6 @@ mergesort(arr) {
     return this.merge(this.mergesort(leftArr), this.mergesort(rightArr));
   }
 }
-
-  renderActivityList(){
-    let activityList = [];
-    for (let i = 0; i < this.lastFour.length; i++) {
-      activityList.push(this.renderActivity(this.lastFour[i]));
-    }
-    return activityList;
-  }
 
   getSvg(activity) {
 
@@ -106,11 +108,11 @@ mergesort(arr) {
       <circle cx="14" cy="14" r="14"></circle></g></svg>
     );
 
-      if (!activity.imgType) {
+      if (activity.activity_type == "purchase" || activity.activity_type == "selling") {
         return BuySold;
-      } else if (activity.imgType == "receive") {
+      } else if (activity.activity_type == "receive") {
         return Receive;
-      } else if (activity.imgType == "transfer") {
+      } else if (activity.activity_type == "transfer") {
         return Transfer;
       }
   }
@@ -144,6 +146,49 @@ mergesort(arr) {
   }
 
   getDescription(activity) {
+    let activityVerb = "";
+    if (activity.activity_type == "purchase") {
+      activityVerb+= "Bought "
+    } else if (activity.activity_type == "receive") {
+      activityVerb+="Received  "
+    } else if (activity.activity_type == "transfer") {
+      activityVerb+="Sent "
+    } else if (activity.activity_type == "selling") {
+      activityVerb+="Sold "
+    }
+
+    let asset = "";
+
+    if (activity.asset_type == "BTC") {
+      asset+= "Bitcoin"
+    } else if (activity.asset_type  == "BCH") {
+      asset+="Bitcoin Cash"
+    } else if (activity.asset_type  == "ETC") {
+      asset+="Ethereum Classic"
+    } else if (activity.asset_type  == "ETH") {
+      asset+="Ethereum"
+    } else if (activity.asset_type  == "LTC") {
+      asset+="Litecoin"
+    }
+
+    let underDescription = "";
+    if (activity.activity_type == "purchase") {
+      underDescription+= "Credited MasterCard *********6955"
+    } else if (activity.activity_type == "receive") {
+      underDescription+="From  " + {asset} + " address"
+    } else if (activity.activity_type == "transfer") {
+      underDescription+="To " + {asset} + " address"
+    } else if (activity.activity_type == "selling") {
+      underDescription+="Debited MasterCard *********6955"
+    }
+
+    return (
+      <div className="descriptionRecentActivity">
+        <p className="topDescriptionRecentActivity">{activityVerb + asset}</p>
+        <p className="underDescriptionRecentActivity">{underDescription}</p>
+      </div>
+    );
+
 
   }
 
@@ -178,8 +223,47 @@ mergesort(arr) {
       <div className="recentActivityTableRow">
         {this.getDate(activity.created_at)}
         {this.getImage(activity)}
+        {this.getDescription(activity)}
       </div>
     )
+  }
+
+  addEmptyRow() {
+    return (
+      <div className="recentActivityTableRow">
+        <p className="lessThanFourActivities"> ADD BUY/SELL LINK HERE SOON </p>
+      </div>
+    );
+  }
+
+  renderEmptyList() {
+    let returnList = [];
+    for (let i = 0; i < 4; i++) {
+      returnList.push(this.addEmptyRow());
+    }
+    return (
+      returnList
+    );
+  }
+
+  renderActivityList(){
+    let activityList = [];
+    if (this.lastFour.length == 0) {
+      console.log(this.lastFour);
+      return this.renderEmptyList();
+    } else {
+      for (let i = 0; i < this.lastFour.length; i++) {
+        activityList.push(this.renderActivity(this.lastFour[i]));
+      }
+      if (this.lastFour.length < 4) {
+        let count = this.lastFour.length;
+        while (count < 4) {
+          activityList.push(this.addEmptyRow());
+          count++;
+        }
+      }
+    }
+    return activityList;
   }
   render() {
     return (
