@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_235241) do
+ActiveRecord::Schema.define(version: 2018_10_24_000119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_235241) do
     t.decimal "cash_amount"
     t.integer "cash_id", null: false
     t.integer "wallet_id", null: false
-    t.string "type", default: "purchases"
+    t.string "modelType", default: "purchase"
     t.index ["cash_id"], name: "index_purchases_on_cash_id"
     t.index ["wallet_id"], name: "index_purchases_on_wallet_id"
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_235241) do
     t.decimal "cash_amount"
     t.integer "cash_id", null: false
     t.integer "wallet_id", null: false
-    t.string "type", default: "sellings"
+    t.string "modelType", default: "selling"
     t.index ["cash_id"], name: "index_sellings_on_cash_id"
     t.index ["wallet_id"], name: "index_sellings_on_wallet_id"
   end
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_235241) do
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "transfers"
+    t.string "modelType", default: "transfer"
     t.index ["receiver_wallet_address"], name: "index_transfers_on_receiver_wallet_address"
     t.index ["sender_wallet_address"], name: "index_transfers_on_sender_wallet_address"
   end

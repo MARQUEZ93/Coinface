@@ -5,31 +5,39 @@ class RecentActivity extends React.Component {
     super(props);
     this.merge = this.merge.bind(this);
     this.mergesort = this.mergesort.bind(this);
-    let activitesArray = [];
+    this.renderActivityList = this.renderActivityList.bind(this);
+    let activitiesArray = [];
     this.props.purchases.forEach(function(purchase){
       if (purchase != null) {
-        activitesArray.push(purchase);
+        activitiesArray.push(purchase);
       }
     });
     this.props.sellings.forEach(function(selling){
       if (selling != null) {
-        activitesArray.push(selling);
+        activitiesArray.push(selling);
       }
     });
     this.props.receivers.forEach(function(receiver){
       if (receiver != null) {
-        activitesArray.push(receiver);
+        activitiesArray.push(receiver);
       }
     });
     this.props.transfers.forEach(function(transfer){
       if (transfer != null) {
-        activitesArray.push(transfer);
+        activitiesArray.push(transfer);
       }
     });
 
 
-    activitesArray = this.mergesort(activitesArray);
-    console.log(activitesArray);
+    activitiesArray = this.mergesort(activitiesArray);
+    let lastFour = [];
+
+    //grab last four recent activies (transfer, receiver, selling, purchase) of user
+    lastFour.push(activitiesArray[activitiesArray.length-1]);
+    lastFour.push(activitiesArray[activitiesArray.length-2]);
+    lastFour.push(activitiesArray[activitiesArray.length-3]);
+    lastFour.push(activitiesArray[activitiesArray.length-4]);
+
   }
 
   merge(leftArr, rightArr) {
@@ -61,7 +69,11 @@ mergesort(arr) {
   }
 }
 
-  renderActivity(){
+  renderActivityList(){
+
+  }
+
+  renderActivity(activity) {
 
   }
   render() {
