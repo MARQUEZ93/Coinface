@@ -107,6 +107,7 @@ class PortfolioValue extends React.Component {
             ltcPrice={this.state["LTC"]}
             />
           <RecentActivity
+            email={this.props.email}
             transfers={this.props.transfers} sellings={this.props.sellings}
             purchases={this.props.purchases} receivers={this.props.receivers}
             />

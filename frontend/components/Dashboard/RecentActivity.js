@@ -21,12 +21,12 @@ class RecentActivity extends React.Component {
     });
     this.props.receivers.forEach(function(receiver){
       if (receiver != null) {
-        activitiesArray.push(receiver);
+        activitiesArray.push(Object.assign(receiver, {imgType: "receive"}));
       }
     });
     this.props.transfers.forEach(function(transfer){
       if (transfer != null) {
-        activitiesArray.push(transfer);
+        activitiesArray.push(Object.assign(transfer, {imgType: "transfer"}));
       }
     });
 
@@ -106,19 +106,15 @@ mergesort(arr) {
       <circle cx="14" cy="14" r="14"></circle></g></svg>
     );
 
-    if (activity.model_type === "BTC") {
-      return btcColor;
-    } else if (activity.model_type === "BCH") {
-      return bchColor;
-    } else if (activity.model_type === "ETC") {
-      return etcColor;
-    } else if (activity.model_type === "ETH") {
-      return ethColor;
-    } else if (activity.model_type === "LTC") {
-      return ltcColor;
-    }
-
+      if (!activity.imgType) {
+        return BuySold;
+      } else if (activity.imgType == "receive") {
+        return Receive;
+      } else if (activity.imgType == "transfer") {
+        return Transfer;
+      }
   }
+
 
   getImage(activity) {
     let color = this.getColor(activity);

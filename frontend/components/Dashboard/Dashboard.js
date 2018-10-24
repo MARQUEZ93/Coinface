@@ -11,7 +11,7 @@ class Dashboard extends Component {
       <div className="Dashboard">
         <Header email={this.props.email} action={this.props.action}/>
         <NavBar />
-        <PortfolioValue transfers={this.props.transfers} sellings={this.props.sellings}
+        <PortfolioValue email={this.props.email} transfers={this.props.transfers} sellings={this.props.sellings}
           purchases={this.props.purchases} receivers={this.props.receivers}
           wallets={this.props.wallets} />
       </div>
