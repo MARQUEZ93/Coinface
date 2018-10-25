@@ -2,19 +2,18 @@
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
   Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
   "Helvetica Neue", sans-serif;
-  margin-right: 20px;
-  margin-left: 25px;
-  width: 598px;
+  width: 576px;
   height: 458px;
   background-color: white;
   margin-bottom: 125px;
+  margin-left: 20px;
 }
 
 .headerRA{
   background-color: white;
   display: flex;
   align-items: center;
-  padding-left: 22px;
+  padding-left: 20px;
   font-weight: 500;
   border-top: 1px solid #DCDCDC;
   border-left: 1px solid #DCDCDC;
@@ -46,7 +45,6 @@
   height: 29px;
   width: 29px;
   margin-top: 5px;
-  margin-right: 20px;
 }
 
 .dateRecentActivityMonth{
@@ -62,6 +60,7 @@
     height: 42px;
     stroke-width: 0.8;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 .footerRA{

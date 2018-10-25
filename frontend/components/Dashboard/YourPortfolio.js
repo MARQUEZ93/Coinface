@@ -74,11 +74,14 @@ class YourPortfolio extends React.Component {
   }
   renderTableRow(imgLink, name, color, percentage, amount, symbol, sum) {
     return (
-      <div key={symbol} className="trYP">
+      <div key={symbol} className="tableRowYourPortfolio">
         <div className="imgNameTD"><img className="imgYP" src={imgLink} /><p className="nameYP"> {name}</p></div>
-        <div className="circlePercentageYP"><div className="circleYP"
-          style={ {backgroundColor: color, width: (percentage+8) + 'px'} }></div>
-        {percentage}%</div>
+        <div className="circlePercentageYP">
+          <div
+            className="circleYP" style={ {backgroundColor: color, width: (percentage+8) + 'px'} }>
+          </div>
+          <div>{percentage}%</div>
+        </div>
         <div className="amountYP">{amount} {symbol}</div>
         <div className="sumYP">${sum}</div>
       </div>
@@ -95,11 +98,9 @@ class YourPortfolio extends React.Component {
     const renderPortfolioValue = this.displayUSD(this.props.portfolioValue);
     return (
       <div className="YourPortfolio">
-        <div className="tableYP">
-            <div className="headerTR"><p>Your Portfolio</p></div>
-            {this.renderTable()}
-            <div className="divTotalBalance"><p>Total Balance ≈ ${renderPortfolioValue}</p></div>
-        </div>
+          <div className="headerTR"><p>Your Portfolio</p></div>
+          {this.renderTable()}
+          <div className="divTotalBalance"><p>Total Balance ≈ ${renderPortfolioValue}</p></div>
       </div>
     );
   }
