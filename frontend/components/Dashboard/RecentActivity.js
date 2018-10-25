@@ -160,7 +160,7 @@ mergesort(arr) {
     let asset = "";
 
     if (activity.asset_type == "BTC") {
-      asset+= "Bitcoin"
+      asset+="Bitcoin"
     } else if (activity.asset_type  == "BCH") {
       asset+="Bitcoin Cash"
     } else if (activity.asset_type  == "ETC") {
@@ -175,9 +175,9 @@ mergesort(arr) {
     if (activity.activity_type == "purchase") {
       underDescription+= "Credited MasterCard *********6955"
     } else if (activity.activity_type == "receive") {
-      underDescription+="From  " + {asset} + " address"
+      underDescription+="From  " + asset + " address"
     } else if (activity.activity_type == "transfer") {
-      underDescription+="To " + {asset} + " address"
+      underDescription+="To " + asset + " address"
     } else if (activity.activity_type == "selling") {
       underDescription+="Debited MasterCard *********6955"
     }
@@ -218,12 +218,31 @@ mergesort(arr) {
     );
   }
 
+  getAmount(activity) {
+    let assetAmount = activity.amount;
+    let cashAmount = activity.cash_amount;
+    let isNegative = "+";
+    if (activity.activity_type == "transfer" || activity.activity_type == "selling") {
+      isNegative= "-";
+    }
+    console.log(activity);
+    return (
+      <div className="amountRecentActivity">
+        <p className="assetAmountRecentActivity">{isNegative}{activity.amount}{" "}{activity.asset_type}</p>
+        <p className="cashAmountRecentActivity">{isNegative + "$"}{activity.cash_amount}</p>
+      </div>
+    );
+  }
+
   renderActivity(activity) {
     return (
       <div className="recentActivityTableRow">
-        {this.getDate(activity.created_at)}
-        {this.getImage(activity)}
-        {this.getDescription(activity)}
+        <div className="firstHalfRecentActivityTableRow">
+          {this.getDate(activity.created_at)}
+          {this.getImage(activity)}
+          {this.getDescription(activity)}
+        </div>
+        <div className="secondHalfRecentActivityTableRow">{this.getAmount(activity)}</div>
       </div>
     )
   }

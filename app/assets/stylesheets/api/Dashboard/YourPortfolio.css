@@ -1,3 +1,11 @@
+.YourPortfolio {
+  margin-left: 25px;
+  width: 598px;
+  height: 458px;
+  margin-bottom: 125px;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
 .imgYP{
   height: 38px;
   width: 38px;
@@ -11,7 +19,7 @@
   border-top: 1px solid #DCDCDC;
   border-left: 1px solid #DCDCDC;
   border-right: 1px solid #DCDCDC;
-  height: 68px;
+  height: 70px;
   font-size: 16px;
 }
 
@@ -65,15 +73,6 @@ padding-left: 22px;
   color: #7d95b6;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-
-.YourPortfolio {
-  margin-right: 20px;
-  margin-left: 25px;
-  width: 598px;
-  background-color: white;
-  margin-bottom: 125px;
-  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .circleYP {
     height: 8px;

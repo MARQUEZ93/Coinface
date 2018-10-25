@@ -24,14 +24,17 @@ class MiddleLayer extends Component {
   }
 
   render() {
-    if (!this.state.price || !this.state.change) {
+    if (this.state.price == null || this.state.change == null) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
         </div>
       );
     }
-    const changeDirection = this.state.change > 0 ? "+":"";
+    let changeDirection = this.state.change > 0 ? "+":"";
+    if (this.state.change == 0) {
+      changeDirection = "+-";
+    }
     return (
       <div className="MiddleLayer">
         <p className="WelcomePrice"> { "$" + this.state.price } </p>

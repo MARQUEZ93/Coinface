@@ -1,11 +1,11 @@
 .RecentActivity {
-  padding-bottom: 125px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
   Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
   "Helvetica Neue", sans-serif;
   margin-right: 20px;
   margin-left: 25px;
   width: 598px;
+  height: 458px;
   background-color: white;
   margin-bottom: 125px;
 }
@@ -28,6 +28,7 @@
 .recentActivityTableRow {
   background-color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-top: 1px solid #DCDCDC;
   border-left: 1px solid #DCDCDC;
@@ -85,6 +86,7 @@
 .descriptionRecentActivity{
   display: flex;
   flex-direction: column;
+  width: 265px;
 }
 
 .topDescriptionRecentActivity{
@@ -95,4 +97,30 @@
 .underDescriptionRecentActivity{
   color: #9ba6b2;
   font-size: 14px;
+}
+
+.amountRecentActivity{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.assetAmountRecentActivity{
+  font-size: 18px;
+  color:#4e5c6e;
+}
+
+.cashAmountRecentActivity{
+  color: #9ba6b2;
+  font-size: 14px;
+}
+
+.firstHalfRecentActivityTableRow{
+  display: flex;
+  align-items: center;
+}
+
+.secondHalfRecentActivityTableRow{
+  display: flex;
+  align-items: center;
 }
