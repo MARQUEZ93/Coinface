@@ -4,7 +4,6 @@
   "Helvetica Neue", sans-serif;
   width: 576px;
   height: 458px;
-  background-color: white;
   margin-bottom: 125px;
   margin-left: 20px;
 }
@@ -21,8 +20,8 @@
   height: 54px;
   font-size: 18px;
   color: #1652f0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 .recentActivityTableRow {
   background-color: white;
@@ -48,8 +47,10 @@
 }
 
 .dateRecentActivityMonth{
-  color: #4e5c6e;
+  color: rgb(78, 92, 110);
   font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 .dateRecentActivityDay{
   color: #9ba6b2;
@@ -73,8 +74,8 @@
   height: 54px;
   font-size: 16px;
   color: #7d95b6;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .lessThanFourActivities{
@@ -89,8 +90,9 @@
 }
 
 .topDescriptionRecentActivity{
-  color: #4e5c6e;
+  color: rgb(78, 92, 110);
   font-size: 18px;
+  font-weight: 500;
 }
 
 .underDescriptionRecentActivity{

@@ -19,6 +19,7 @@
   padding-right: 20px;
   background-color: white;
   display: flex;
+  color:#4e5c6e;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #DCDCDC;
@@ -35,11 +36,13 @@
 }
 .nameYP {
 font-size: 18px;
+font-weight: 500;
 }
 
 .sumYP {
   color: #9ba6b2;
   text-align: right;
+  width: 80px;
 }
 
 .headerTR{
@@ -54,8 +57,8 @@ font-size: 18px;
   height: 54px;
   font-size: 18px;
   color: #1652f0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .divTotalBalance{
@@ -69,13 +72,14 @@ font-size: 18px;
   height: 54px;
   font-size: 16px;
   color: #7d95b6;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 .circleYP {
     height: 8px;
     border-radius: 10px;
     text-align: left;
+    margin-right: 5px;
 }
 
 

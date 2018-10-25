@@ -9,7 +9,7 @@ class Footer extends React.Component {
           <div className="WelcomeFooterInfo">
             <a className="FooterATag" href="https://github.com/MARQUEZ93/Coinface">
               https://github.com/MARQUEZ93/Coinface </a>
-            <a href="mailto:alejandroeduardomarquez@gmail.com"> alejandroeduardomarquez@gmail.com </a>
+            <a className="FooterATag" href="mailto:alejandroeduardomarquez@gmail.com"> alejandroeduardomarquez@gmail.com </a>
           </div>
           <p className="copyright"> &copy; 2018 Coinface </p>
         </div>

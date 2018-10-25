@@ -5,6 +5,7 @@ import CenterMessage from './CenterMessage';
 import FiveBoxes from './FiveBoxes';
 import Footer from './Footer';
 import GetStarted from './GetStarted';
+import CustomersServed from './CustomersServed';
 
 class Welcome extends Component {
 
@@ -17,6 +18,7 @@ class Welcome extends Component {
           <CenterMessage />
         </div>
         <FiveBoxes />
+        <CustomersServed />
         <GetStarted />
         <Footer />
       </div>
