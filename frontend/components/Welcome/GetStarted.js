@@ -6,17 +6,17 @@ const GetStarted = () => {
         <h1> Get started in a few minutes </h1>
         <div className="GetStartedDivs">
           <div className="GSThreeDivs">
-            <img src="https://www2.coinbase.com/assets/icon-add.png" />
+            <img src={window.icon_add} />
             <h3> Create an account </h3>
           </div>
           <div className="GSPillarLine"></div>
           <div className="GSThreeDivs">
-            <img src="https://www2.coinbase.com/assets/icon-bank.png" />
+            <img src={window.icon_bank}/>
             <h3> Link your bank account </h3>
           </div>
           <div className="GSPillarLine"></div>
           <div className="GSThreeDivs">
-            <img src="https://www2.coinbase.com/assets/icon-handout.png" />
+            <img src={window.icon_handout} />
             <h3> Start buying and selling </h3>
           </div>
         </div>

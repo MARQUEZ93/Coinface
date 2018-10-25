@@ -9,12 +9,13 @@
   background-size: 661px;
   height: 600px;
 
-  background-image: url(https://www2.coinbase.com/assets/topBackground.png);
+  background-image: image-url("background.png"); 
+
   background-position: 100% 0%;
 
   background-repeat: no-repeat;
   border-bottom-left-radius: 50% 8%;
-border-bottom-right-radius: 50% 8%;
+  border-bottom-right-radius: 50% 8%;
 }
 
 .Welcome-pTag {
