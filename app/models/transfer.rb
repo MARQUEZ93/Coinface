@@ -8,6 +8,9 @@
 #  amount                  :decimal(, )      not null
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  cash_amount             :decimal(, )
+#  asset_type              :string
+#  model_type              :string           default("transfer")
 #
 
 class Transfer < ApplicationRecord

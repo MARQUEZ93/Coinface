@@ -9,6 +9,8 @@
 #  cash_amount :decimal(, )
 #  cash_id     :integer          not null
 #  wallet_id   :integer          not null
+#  asset_type  :string
+#  model_type  :string           default("selling")
 #
 
 class Selling < ApplicationRecord
