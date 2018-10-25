@@ -225,11 +225,12 @@ mergesort(arr) {
     if (activity.activity_type == "transfer" || activity.activity_type == "selling") {
       isNegative= "-";
     }
-    console.log(activity.amount);
+    assetAmount = parseFloat(assetAmount).toFixed(4);
+    cashAmount = parseFloat(cashAmount).toFixed(2);
     return (
       <div className="amountRecentActivity">
-        <p className="assetAmountRecentActivity">{isNegative}{activity.amount}{" "}{activity.asset_type}</p>
-        <p className="cashAmountRecentActivity">{isNegative + "$"}{activity.cash_amount}</p>
+        <p className="assetAmountRecentActivity">{isNegative}{assetAmount}{" "}{activity.asset_type}</p>
+        <p className="cashAmountRecentActivity">{isNegative + "$"}{cashAmount}</p>
       </div>
     );
   }

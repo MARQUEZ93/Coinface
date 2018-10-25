@@ -35,10 +35,11 @@ class MiddleLayer extends Component {
     if (this.state.change == 0) {
       changeDirection = "+-";
     }
+    let renderChange = parseFloat(this.state.change).toFixed(2);
     return (
       <div className="MiddleLayer">
         <p className="WelcomePrice"> { "$" + this.state.price } </p>
-        <p className="WelcomePriceChange"> {changeDirection + this.state.change + "%"} </p>
+        <p className="WelcomePriceChange"> {changeDirection + renderChange + "%"} </p>
       </div>
     );
   }
