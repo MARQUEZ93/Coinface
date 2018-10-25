@@ -9,7 +9,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <Header email={this.props.email} action={this.props.action}/>
+        <Header firstName={this.props.firstName} lastName={this.props.lastName} action={this.props.action}/>
         <NavBar />
         <PortfolioValue email={this.props.email} transfers={this.props.transfers} sellings={this.props.sellings}
           purchases={this.props.purchases} receivers={this.props.receivers}
@@ -29,7 +29,8 @@ const msp = ({ session }) => (
   {
     email: session.email, wallets: session.wallets,
     transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
-    cash: session.cash, receivers: session.receivers
+    cash: session.cash, receivers: session.receivers, firstName: session.firstName,
+    lastName: session.lastName
   }
 );
 

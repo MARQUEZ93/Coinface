@@ -16,7 +16,7 @@ class SignOut extends React.Component {
   render() {
     return (
       <form className="SignOutForm" onSubmit={this.signOut}>
-        <p className="userEmail">{this.props.email}</p>
+        <p className="userEmail">{this.props.firstName}{" "}{this.props.lastName}</p>
         <input type="submit" className="SignOutInput" value="Sign Out"></input>
       </form>
     );

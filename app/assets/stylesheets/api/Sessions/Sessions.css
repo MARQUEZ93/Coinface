@@ -30,6 +30,21 @@
   border: 1px solid #474a54;
 }
 
+.SignUpForm {
+  margin: auto;
+  text-align: start;
+  color: black;
+  background-color: white;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 250px;
+  width: 340px;
+  border-radius: 4px;
+  padding-top: 22px;
+  padding-bottom: 32px;
+  border: 1px solid #474a54;
+}
+
 .SessionsInput {
   font-size: 14px;
   text-align: start;

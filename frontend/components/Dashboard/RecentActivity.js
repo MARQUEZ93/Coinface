@@ -237,7 +237,7 @@ mergesort(arr) {
 
   renderActivity(activity) {
     return (
-      <div className="recentActivityTableRow">
+      <div key={activity.id} className="recentActivityTableRow">
         <div className="firstHalfRecentActivityTableRow">
           {this.getDate(activity.created_at)}
           {this.getImage(activity)}
@@ -248,9 +248,9 @@ mergesort(arr) {
     )
   }
 
-  addEmptyRow() {
+  addEmptyRow(i) {
     return (
-      <div className="recentActivityTableRow">
+      <div key={i} className="recentActivityTableRow">
         <p className="lessThanFourActivities"> ADD BUY/SELL LINK HERE SOON </p>
       </div>
     );
@@ -259,7 +259,7 @@ mergesort(arr) {
   renderEmptyList() {
     let returnList = [];
     for (let i = 0; i < 4; i++) {
-      returnList.push(this.addEmptyRow());
+      returnList.push(this.addEmptyRow(i));
     }
     return (
       returnList
@@ -269,7 +269,6 @@ mergesort(arr) {
   renderActivityList(){
     let activityList = [];
     if (this.lastFour.length == 0) {
-      console.log(this.lastFour);
       return this.renderEmptyList();
     } else {
       for (let i = 0; i < this.lastFour.length; i++) {

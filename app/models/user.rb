@@ -12,7 +12,7 @@
 
 class User < ApplicationRecord
 
-  validates :email, :password_digest, :session_token, presence: true
+  validates :email, :password_digest, :session_token, :firstName, :lastName, presence: true
 
   validates :email, uniqueness: true
   #we never keep passwords in db, so allow_nil is needed
