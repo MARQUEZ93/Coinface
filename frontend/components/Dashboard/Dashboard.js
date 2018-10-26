@@ -10,7 +10,6 @@ class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <Header firstName={this.props.firstName} middleName={this.props.middleName} lastName={this.props.lastName} action={this.props.action}/>
-        <NavBar />
         <PortfolioValue email={this.props.email} transfers={this.props.transfers} sellings={this.props.sellings}
           purchases={this.props.purchases} receivers={this.props.receivers}
           wallets={this.props.wallets} />

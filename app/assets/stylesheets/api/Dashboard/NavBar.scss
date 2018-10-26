@@ -1,9 +1,12 @@
 .navBar{
   height: 63px;
-  border-bottom: 1px solid #f4f7fa;
+  margin-top: -5px;
+  // border-bottom: 1px solid #f4f7fa;
   margin-left: 25px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .unorderedListNavBar {
@@ -15,7 +18,7 @@
 .listItemNavBar{
   margin-right: 35px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #7d95b6;
   display: flex;
   align-items: center;
@@ -23,7 +26,7 @@
 
 .listItemNavBar:active, .listItemNavBar:focus, .listItemNavBar:hover {
   color: #1652f0;
-  border-bottom: 1px solid #1652f0;
+  transform: scale(1.03);
 }
 
 .svgNav {

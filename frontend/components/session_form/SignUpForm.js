@@ -63,7 +63,7 @@ class SignUpForm extends React.Component {
                   placeholder="First name"
                 />
                 <input type="text"
-                  value={this.state.firstName}
+                  value={this.state.middleName}
                   onChange={this.update('middleName')}
                   className="SessionsInput"
                   placeholder="Middle name"

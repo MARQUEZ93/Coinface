@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Header from '../Welcome/Header';
 
-class SessionForm extends React.Component {
+class SignInForm extends React.Component {
   constructor(props) {
     super(props);
     //grab email from welcome page
@@ -125,4 +125,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SignInForm);

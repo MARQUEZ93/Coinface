@@ -6,6 +6,7 @@ import FiveBoxes from '../Welcome/FiveBoxes';
 import YourPortfolio from './YourPortfolio';
 import Footer from '../Welcome/Footer';
 import RecentActivity from './RecentActivity';
+import NavBar from './NavBar';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
@@ -89,6 +90,7 @@ class PortfolioValue extends React.Component {
     return (
       <div className="pvComponent">
         <div className="portfolioValue">
+          <NavBar />
             <div className="pvDiv2">
               <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
               <div className="pvDiv">
