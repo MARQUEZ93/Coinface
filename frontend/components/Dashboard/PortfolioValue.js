@@ -89,14 +89,14 @@ class PortfolioValue extends React.Component {
     return (
       <div className="pvComponent">
         <div className="portfolioValue">
-          <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
-          <div className="pvDiv">
-            <p className="pvDollarSign">$</p>
-            <p className="pvFloor">
-              {floorWithCommas}
-            </p>
-            <p className="decimalsPV">.{decimals}</p>
-          </div>
+            <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
+            <div className="pvDiv">
+              <p className="pvDollarSign">$</p>
+              <p className="pvFloor">
+                {floorWithCommas}
+              </p>
+              <p className="decimalsPV">.{decimals}</p>
+            </div>
         </div>
         <FiveBoxes />
         <div className="divYPRA">
