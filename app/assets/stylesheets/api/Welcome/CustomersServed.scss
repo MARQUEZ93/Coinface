@@ -1,16 +1,20 @@
-.customersServed {
-  text-align: center;
+.CustomersServed{
   height: 205px;
+  font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   width: cover;
-  color: white;
   background-color: #1652f0;
+  color: white;
+  font-size: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.threeDivsCS{
   display: flex;
   justify-content: space-around;
-  font-size: 48px;
-  font-family: Graphik, "Avenir Next",
-  -apple-system, system-ui, "Segoe UI", Roboto,
-  Oxygen, Ubuntu, Cantarell, "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  align-items: center;
+  width: cover;
 }
 
 .littleCustomersServed{
@@ -20,8 +24,9 @@
 }
 
 .divCustomersServed {
+  width: 378px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
