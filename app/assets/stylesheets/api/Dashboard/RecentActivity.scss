@@ -77,6 +77,15 @@
   color: #7d95b6;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  fill: #7d95b6;
+}
+
+.footerRATransform:active, .footerRATransform:focus, .footerRATransform:hover {
+    color: #1652f0;
+    transform: scale(1.10);
+    font-weight: 500;
+    fill: #1652f0;
+    text-decoration: none;
 }
 
 .lessThanFourActivities{

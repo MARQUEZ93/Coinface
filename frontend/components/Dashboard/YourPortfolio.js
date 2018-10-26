@@ -37,7 +37,11 @@ class YourPortfolio extends React.Component {
   }
 
   getPercentage(amount, price) {
-    return _.round((( (amount * price) / this.props.portfolioValue) * 100));
+    let returnPercentage = _.round((( (amount * price) / this.props.portfolioValue) * 100));
+    if (!returnPercentage) {
+      return 0;
+    }
+    return returnPercentage;
   }
 
   displayUSD(price) {

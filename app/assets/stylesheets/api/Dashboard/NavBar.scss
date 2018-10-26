@@ -26,7 +26,8 @@
 
 .listItemNavBar:active, .listItemNavBar:focus, .listItemNavBar:hover {
   color: #1652f0;
-  transform: scale(1.03);
+  transform: scale(1.05);
+  font-weight: 500;
 }
 
 .svgNav {

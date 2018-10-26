@@ -290,8 +290,8 @@ mergesort(arr) {
         <div className="headerRA"><p>Recent Activity</p></div>
         {this.renderActivityList()}
         <div className="footerRA">
-          <p>View your accounts{" "}
-            <svg fill="#7d95b6" xmlns="http://www.w3.org/2000/svg" width="5" height="9" viewBox="0 0 5 9">
+          <p className="footerRATransform">View your accounts{" "}
+            <svg xmlns="http://www.w3.org/2000/svg" width="5" height="9" viewBox="0 0 5 9">
             <path d="M5 4.5a.503.503 0 0 1-.143.348L.903 9 0 8.303 3.622 4.5 0 .697.903 0l3.954 4.152c.095.1.143.224.143.348z">
             </path></svg>
           </p>
