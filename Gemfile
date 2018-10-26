@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-#loads stylesheets 
+#loads stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,6 +27,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap'
 gem "annotate", "~> 2.7"
 gem "jquery-rails", "~> 4.3"
+
+#make api calls in backend to get asset price 
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

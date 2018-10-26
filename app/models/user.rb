@@ -25,7 +25,7 @@ class User < ApplicationRecord
   #redux form will handle password validations
 
   after_initialize :ensure_session_token
-  after_create :generate_wallets
+  after_create :generate_defaults
 
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
   has_one :cash, foreign_key: :user_id, class_name: :Cash
@@ -57,24 +57,59 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  def generate_wallets
+  def generate_defaults
     btc = Wallet.new(:asset_type => 'BTC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     bch = Wallet.new(:asset_type => 'BCH', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     eth = Wallet.new(:asset_type => 'ETH', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     etc = Wallet.new(:asset_type => 'ETC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
     ltc = Wallet.new(:asset_type => 'LTC', :user_id => self.id, :amount => 0.00, :address => SecureRandom.hex(34))
-    usd = Cash.new(:user_id => self.id, :amount => 0.00)
 
     btc.save!
     bch.save!
     eth.save!
     etc.save!
     ltc.save!
+
+    self.generate_cash
+
+    self.generate_transfer(bch, "BCH")
+    # self.generate_transfer(btc, "BTC")
+    # self.generate_transfer(eth, "ETH")
+    # self.generate_transfer(etc, "ETC")
+    # self.generate_transfer(ltc, "LTC")
+  end
+
+  def generate_cash
+    usd = Cash.new(:user_id => self.id, :amount => 0.00)
     usd.save!
+  end
+
+  def generate_transfer(wallet, urlAsset)
+
+    url = "https://min-api.cryptocompare.com/data/generateAvg?fsym="
+    url_end = "&tsym=USD&e=Kraken"
+
+    response = RestClient::Request.execute(
+      method: :get,
+      url: url+urlAsset+url_end
+    )
+    response = JSON.parse(response)
+    puts(response["RAW"]["PRICE"]*0.01)
   end
 
   def ensure_session_token
    self.session_token ||= SecureRandom.urlsafe_base64(16)
+  end
+
+  #be careful with this Class method
+  #used in rails console when I clear database
+  def self.destroy_data
+    Wallet.destroy_all
+    Transfer.destroy_all
+    Selling.destroy_all
+    Purchase.destroy_all
+    Cash.destroy_all
+    User.destroy_all
   end
 
 end
