@@ -23,4 +23,15 @@ class Transfer < ApplicationRecord
 
   validates :receiver_wallet_address, :sender_wallet_address, :amount, presence: true
 
+  after_create :update_wallets
+
+  def update_wallets
+    receiver_wallet = Wallet.find_by(address: self.receiver_wallet_address)
+    transfer_wallet = Wallet.find_by(address: self.sender_wallet_address)
+
+    receiver_wallet.receive(self.amount)
+    transfer_wallet.transfer(self.amount)
+  end
+
+
 end

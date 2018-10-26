@@ -29,22 +29,21 @@
   margin-bottom: 25px;
 }
 .pvDiv {
-  font-weight: 400;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   color: #4e5c6e;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .pvDollarSign{
-  font-size: 36px;
+  font-size: 37.5px;
   font-weight: 500;
 }
 .pvFloor {
   font-size: 60px;
+  font-weight: 400;
+  margin-top: -7px;
 }
 .decimalsPV {
-  font-size: 36px;
+  font-size: 37.5px;
   font-weight: 500;
 }
 

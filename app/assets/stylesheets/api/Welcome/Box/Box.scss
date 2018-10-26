@@ -18,3 +18,17 @@
   border-radius: 5px;
   border: 1px solid #DCDCDC;
 }
+
+.loadbar {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.GridLoader {
+   color:"white";
+   size:24px;
+   margin:4px;
+}

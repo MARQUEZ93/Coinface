@@ -18,4 +18,14 @@ class Cash < ApplicationRecord
 
   validates :user_id, :amount, presence: true
 
+  def credit (amount)
+    self.amount+=amount
+    self.save
+  end
+
+  def debit (amount)
+    self.amount-=amount
+    self.save
+  end
+
 end

@@ -73,10 +73,10 @@ class User < ApplicationRecord
     self.generate_cash
 
     self.generate_transfer(bch, "BCH")
-    # self.generate_transfer(btc, "BTC")
-    # self.generate_transfer(eth, "ETH")
-    # self.generate_transfer(etc, "ETC")
-    # self.generate_transfer(ltc, "LTC")
+    self.generate_transfer(btc, "BTC")
+    self.generate_transfer(eth, "ETH")
+    self.generate_transfer(etc, "ETC")
+    self.generate_transfer(ltc, "LTC")
   end
 
   def generate_cash
@@ -84,17 +84,33 @@ class User < ApplicationRecord
     usd.save!
   end
 
-  def generate_transfer(wallet, urlAsset)
+  def generate_transfer(wallet, asset_symbol)
 
     url = "https://min-api.cryptocompare.com/data/generateAvg?fsym="
     url_end = "&tsym=USD&e=Kraken"
 
     response = RestClient::Request.execute(
       method: :get,
-      url: url+urlAsset+url_end
+      url: url+asset_symbol+url_end
     )
     response = JSON.parse(response)
-    puts(response["RAW"]["PRICE"]*0.01)
+    transfer_cash_amount = (response["RAW"]["PRICE"]*0.001)
+
+    coinface = User.find_by(email: "coinface@coinface.com")
+    coinfaceWallet = coinface.get_wallet_by_asset(asset_symbol)
+    # I give each user .001 of the 5 assets to start out
+    Transfer.create!( amount: 0.001, cash_amount: transfer_cash_amount, asset_type: asset_symbol,
+      sender_wallet_address: coinfaceWallet.address,
+      receiver_wallet_address: wallet.address )
+  end
+
+  def get_wallet_by_asset (asset_symbol)
+    self.wallets.each do |wallet|
+      if (wallet.asset_type == asset_symbol)
+        return wallet
+      end
+    end
+    nil
   end
 
   def ensure_session_token

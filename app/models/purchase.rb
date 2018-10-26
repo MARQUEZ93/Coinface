@@ -22,4 +22,14 @@ class Purchase < ApplicationRecord
 
   validates :amount, :cash_amount, :cash_id, :wallet_id, presence: true
 
+  after_create :update_purchase
+
+  def update_purchase
+    wallet = Wallet.find_by(id: self.wallet_id)
+    cash = Cash.find_by(id: self.cash_id)
+
+    wallet.receive(self.amount)
+    cash.debit(self.cash_amount)
+  end
+
 end

@@ -22,4 +22,15 @@ class Wallet < ApplicationRecord
 
   validates :asset_type, :user_id, :amount, :address, presence: true
 
+  def receive(amount)
+    self.amount+=amount
+    self.save
+  end
+
+  def transfer(amount)
+    self.amount-=amount
+    self.save
+  end
+
+
 end

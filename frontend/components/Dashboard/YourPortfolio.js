@@ -70,12 +70,16 @@ class YourPortfolio extends React.Component {
     return listItems;
   }
   renderTableRow(imgLink, name, color, percentage, amount, symbol, sum) {
+    let percentageImgSize = percentage;
+    if (percentageImgSize <= 58){
+      percentageImgSize += 8;
+    }
     return (
       <div key={symbol} className="tableRowYourPortfolio">
         <div className="imgNameTD"><img className="imgYP" src={imgLink} /><p className="nameYP"> {name}</p></div>
         <div className="circlePercentageYP">
           <div
-            className="circleYP" style={ {backgroundColor: color, width: (percentage+8) + 'px'} }>
+            className="circleYP" style={ {backgroundColor: color, width: (percentageImgSize) + 'px'} }>
           </div>
           <div>{percentage}%</div>
         </div>

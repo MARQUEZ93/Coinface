@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { GridLoader } from 'halogenium';
 
 import Header from '../Welcome/Header';
 
@@ -18,9 +19,10 @@ class SignUpForm extends React.Component {
       firstName: "",
       middleName: "",
       lastName: "",
-      submit: true
+      loading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderLoader = this.renderLoader.bind(this);
   }
 
   update(field) {
@@ -31,6 +33,7 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState( { loading: true });
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }
@@ -45,6 +48,19 @@ class SignUpForm extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  renderLoader() {
+    if (!this.state.loading) {
+      return (
+        <div className="SessionsNavDiv">{this.props.navLink}</div>
+      );
+    }
+    return (
+      <div className='loadbar'>
+        <GridLoader/>
+      </div>
+    )
   }
 
   render() {
@@ -91,7 +107,7 @@ class SignUpForm extends React.Component {
               <input className="SessionsSubmit" type="submit" value={this.props.button} />
             </div>
         </form>
-        <div className="SessionsNavDiv">{this.props.navLink}</div>
+        {this.renderLoader()}
       </div>
     );
   }

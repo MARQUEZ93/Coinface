@@ -1,4 +1,5 @@
 import React from 'react';
+import { GridLoader } from 'halogenium';
 
 class RecentActivity extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class RecentActivity extends React.Component {
     this.renderActivityList = this.renderActivityList.bind(this);
     this.renderActivity = this.renderActivity.bind(this);
     this.getDate = this.getDate.bind(this);
+    this.getDescription = this.getDescription.bind(this);
+    this.state = { lastFour: null, onlyFive: null, activitiesArray: null }
+  }
+
+  componentDidMount(){
+
     let activitiesArray = [];
     this.props.purchases.forEach(function(purchase){
       if (purchase != null) {
@@ -33,22 +40,19 @@ class RecentActivity extends React.Component {
 
     activitiesArray = this.mergesort(activitiesArray);
 
-
-    this.lastFour = []; //most recent activity is lastFour[0]
-
-    if (activitiesArray.length == 0) { //do mothing
-    } else if (activitiesArray.length < 4) {
-      for (let i = activitiesArray.length - 1; i >= 0; i--){
-        this.lastFour.push(activitiesArray[i]);
-      }
-    } else if (activitiesArray.length >= 4) {
-      //grab last four recent activities (transfer, receiver, selling, purchase) of user
-      this.lastFour.push(activitiesArray[activitiesArray.length-1]);
-      this.lastFour.push(activitiesArray[activitiesArray.length-2]);
-      this.lastFour.push(activitiesArray[activitiesArray.length-3]);
-      this.lastFour.push(activitiesArray[activitiesArray.length-4]);
+    let onlyFive = false;
+    if (activitiesArray.length == 5) { //tell user that default transfers are from Coinface
+      onlyFive = true;
     }
+    let lastFour = []; //most recent activity is lastFour[0]
 
+    //grab last four recent activities (transfer, receiver, selling, purchase) of user
+    lastFour.push(activitiesArray[activitiesArray.length-1]);
+    lastFour.push(activitiesArray[activitiesArray.length-2]);
+    lastFour.push(activitiesArray[activitiesArray.length-3]);
+    lastFour.push(activitiesArray[activitiesArray.length-4]);
+
+    this.setState ({ lastFour: lastFour, activitiesArray: activitiesArray, onlyFive: onlyFive });
 
   }
 
@@ -173,15 +177,18 @@ mergesort(arr) {
 
     let underDescription = "";
     if (activity.activity_type == "purchase") {
-      underDescription+= "Credited MasterCard *********6955"
+      underDescription+= "Debited MasterCard *********6955"
     } else if (activity.activity_type == "receive") {
       underDescription+="From  " + asset + " address"
     } else if (activity.activity_type == "transfer") {
       underDescription+="To " + asset + " address"
     } else if (activity.activity_type == "selling") {
-      underDescription+="Debited MasterCard *********6955"
+      underDescription+="Credited MasterCard *********6955"
     }
 
+    if(this.state.onlyFive){
+      underDescription = "A gift for joining Coinface!"
+    }
     return (
       <div className="descriptionRecentActivity">
         <p className="topDescriptionRecentActivity">{activityVerb + asset}</p>
@@ -230,7 +237,7 @@ mergesort(arr) {
     return (
       <div className="amountRecentActivity">
         <p className="assetAmountRecentActivity">{isNegative}{assetAmount}{" "}{activity.asset_type}</p>
-        <p className="cashAmountRecentActivity">{isNegative + "$"}{cashAmount}</p>
+        <p className="cashAmountRecentActivity">{"$"}{cashAmount}</p>
       </div>
     );
   }
@@ -248,43 +255,21 @@ mergesort(arr) {
     )
   }
 
-  addEmptyRow(i) {
-    return (
-      <div key={i} className="recentActivityTableRow">
-        <p className="lessThanFourActivities"> ADD BUY/SELL LINK HERE SOON </p>
-      </div>
-    );
-  }
-
-  renderEmptyList() {
-    let returnList = [];
-    for (let i = 0; i < 4; i++) {
-      returnList.push(this.addEmptyRow(i));
-    }
-    return (
-      returnList
-    );
-  }
-
   renderActivityList(){
     let activityList = [];
-    if (this.lastFour.length == 0) {
-      return this.renderEmptyList();
-    } else {
-      for (let i = 0; i < this.lastFour.length; i++) {
-        activityList.push(this.renderActivity(this.lastFour[i]));
-      }
-      if (this.lastFour.length < 4) {
-        let count = this.lastFour.length;
-        while (count < 4) {
-          activityList.push(this.addEmptyRow());
-          count++;
-        }
-      }
+    for (let i = 0; i < this.state.lastFour.length; i++) {
+      activityList.push(this.renderActivity(this.state.lastFour[i]));
     }
     return activityList;
   }
   render() {
+    if(!this.state.lastFour) {
+      return (
+        <div className='loadbar'>
+          <GridLoader color="#6495ED" size="10px" margin="4px"/>
+        </div>
+      );
+    }
     return (
       <div className="RecentActivity">
         <div className="headerRA"><p>Recent Activity</p></div>

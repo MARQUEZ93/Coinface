@@ -22,4 +22,16 @@ class Selling < ApplicationRecord
 
   validates :amount, :cash_amount, :cash_id, :wallet_id, presence: true
 
+  after_create :update_selling
+
+  def update_selling
+    wallet = Wallet.find_by(id: self.wallet_id)
+    cash = Cash.find_by(id: self.cash_id)
+
+    wallet.transfer(self.amount)
+    cash.credit(self.cash_amount)
+  end
+
+
+
 end

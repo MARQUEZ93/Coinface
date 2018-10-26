@@ -68,7 +68,7 @@ class PortfolioValue extends React.Component {
     if (stillFetchingData) {
       return (
         <div className='loadbar'>
-          <GridLoader color="#6495ED" size="10px" margin="4px"/>
+          <GridLoader className="GridLoader" />
         </div>
       );
     }
@@ -91,14 +91,14 @@ class PortfolioValue extends React.Component {
       <div className="pvComponent">
         <div className="portfolioValue">
           <NavBar />
-            <div className="pvDiv2">
-              <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
-              <div className="pvDiv">
-                <p className="pvDollarSign">$</p>
-                <p className="pvFloor">
-                  {floorWithCommas}
-                </p>
-                <p className="decimalsPV">.{decimals}</p>
+          <div className="pvDiv2">
+            <p className="yourPortfolioValue">YOUR PORTFOLIO VALUE</p>
+            <div className="pvDiv">
+              <p className="pvDollarSign">$</p>
+              <p className="pvFloor">
+                {floorWithCommas}
+              </p>
+              <p className="decimalsPV">.{decimals}</p>
             </div>
           </div>
         </div>
