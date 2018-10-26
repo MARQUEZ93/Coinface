@@ -9,8 +9,10 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
+    console.log(window.currentUser);
     const preloadedState = {
-      session: { id: window.currentUser.id, firstName: window.currentUser.firstName, lastName: window.currentUser.lastName, 
+      session: { id: window.currentUser.id, firstName: window.currentUser.firstName,
+        middleName: window.currentUser.middleName, lastName: window.currentUser.lastName,
         email: window.currentUser.email, wallets: window.currentUser.wallets,
       cash: window.currentUser.cash, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
       purchases: window.currentUser.purchases , receivers: window.currentUser.receivers },

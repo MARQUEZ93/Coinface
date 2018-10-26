@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-alejandro = User.create!( email:'Alejandro@coinface.com', password: "password", firstName: "Alejandro", lastName: "Marquez" )
+alejandro = User.create!( email:'Alejandro@coinface.com', password: "password",
+  firstName: "Alejandro", middleName: "E.", lastName: "Marquez" )
 wallets = alejandro.wallets
 alejandroCash = alejandro.cash
 alejandroCash.amount = 250000.85
@@ -38,7 +39,8 @@ wallets.each do |wallet|
   wallet.save!
 end
 
-recruiter = User.create!( firstName: "Satoshi", lastName: "Nakmato", email:'guest@coinface.com', password: "password" )
+recruiter = User.create!( firstName: "Satoshi", middleName: "Bitcoin", lastName: "Nakamoto", email:'guest@coinface.com', 
+  password: "password" )
 recruiterWallets = recruiter.wallets
 
 recruiterLTCwallet = nil

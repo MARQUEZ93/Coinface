@@ -23,6 +23,7 @@ class Header extends React.Component {
           <p className="HeaderLink" onClick={this.historyPush}> coinface </p>
         </div>
         <SignOut email={this.props.email} firstName={this.props.firstName}
+          middleName={this.props.middleName}
           lastName={this.props.lastName} action={this.props.action} />
       </div>
     );

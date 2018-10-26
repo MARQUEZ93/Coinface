@@ -16,6 +16,7 @@ class SignUpForm extends React.Component {
       email: email,
       password: '',
       firstName: "",
+      middleName: "",
       lastName: "",
       submit: true
     };
@@ -60,6 +61,12 @@ class SignUpForm extends React.Component {
                   onChange={this.update('firstName')}
                   className="SessionsInput"
                   placeholder="First name"
+                />
+                <input type="text"
+                  value={this.state.firstName}
+                  onChange={this.update('middleName')}
+                  className="SessionsInput"
+                  placeholder="Middle name"
                 />
                 <input type="text"
                   value={this.state.lastName}
