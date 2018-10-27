@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridLoader } from 'halogenium';
+import { withRouter } from 'react-router-dom';
 
 class RecentActivity extends React.Component {
   constructor(props) {
@@ -8,9 +9,10 @@ class RecentActivity extends React.Component {
     this.mergesort = this.mergesort.bind(this);
     this.renderActivityList = this.renderActivityList.bind(this);
     this.renderActivity = this.renderActivity.bind(this);
+    this.accountsPush = this.accountsPush.bind(this);
     this.getDate = this.getDate.bind(this);
     this.getDescription = this.getDescription.bind(this);
-    this.state = { lastFour: null, onlyFive: null, activitiesArray: null }
+    this.state = { lastFour: null, onlyFive: null, activitiesArray: null };
   }
 
   componentDidMount(){
@@ -225,6 +227,11 @@ mergesort(arr) {
     );
   }
 
+  accountsPush(e) {
+    e.preventDefault();
+    this.props.history.push("/accounts");
+  }
+
   getAmount(activity) {
     let assetAmount = activity.amount;
     let cashAmount = activity.cash_amount;
@@ -275,7 +282,7 @@ mergesort(arr) {
         <div className="headerRA"><p>Recent Activity</p></div>
         {this.renderActivityList()}
         <div className="footerRA">
-          <p className="footerRATransform">View your accounts{" "}
+          <p onClick={this.accountsPush} className="footerRATransform">View your accounts{" "}
             <svg xmlns="http://www.w3.org/2000/svg" width="5" height="9" viewBox="0 0 5 9">
             <path d="M5 4.5a.503.503 0 0 1-.143.348L.903 9 0 8.303 3.622 4.5 0 .697.903 0l3.954 4.152c.095.1.143.224.143.348z">
             </path></svg>
@@ -286,4 +293,4 @@ mergesort(arr) {
   }
 }
 
-export default RecentActivity;
+export default withRouter(RecentActivity);

@@ -11,9 +11,9 @@ class Accounts extends Component {
       <div className="Accounts">
         <Header firstName={this.props.firstName} middleName={this.props.middleName}
           lastName={this.props.lastName} action={this.props.logout}/>
+        <NavBar />
         <YourAccounts transfers={this.props.transfers} sellings={this.props.sellings}
         purchases={this.props.purchases} wallets={this.props.wallets} />
-        <NavBar />
         <Footer />
       </div>
     );

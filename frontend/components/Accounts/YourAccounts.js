@@ -4,7 +4,11 @@ class YourAccounts extends Component {
   render() {
     return (
       <div className="YourAccounts">
-        <h1>Your Account </h1>
+        <div className="headerYA"> <p>Your Account</p></div>
+        <div className="walletsTransactionsYA">
+          <div className="walletsYA"></div>
+          <div className="transactionsYA"></div>
+        </div>
       </div>
     );
   }
