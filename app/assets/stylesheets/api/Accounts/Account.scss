@@ -1,10 +1,31 @@
 .Accounts {
   background-color: #f4f7fa;
-  height: 700px;
+  height: 1000px;
+
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
+  Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+
 }
 .YourAccounts {
   height: 450px;
 }
-.walletsTransactionsYA{
+.headerYA{
+  margin-top: 15px;
+  width: cover;
+  padding-left: 20px;
+  height: 50px;
+  font-weight: 500;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #1652f0;
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 18px;
+  background-color: white;
+
+  border: 1px solid rgb(218, 225, 233);
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
 }
