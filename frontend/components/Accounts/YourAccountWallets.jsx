@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
 import axios from 'axios';
+import Transactions from './Transactions';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
@@ -13,7 +14,7 @@ const sendSVG = <svg
   </path></svg>;
 
 const receiveSVG = <svg
-  class="receiveSVG"
+  className="receiveSVG"
   xmlns="http://www.w3.org/2000/svg"
   width="14" height="14" viewBox="0 0 14 14">
   <path d="M6.417 6.417H0V0h6.417v6.417zM1.167 5.25H5.25V1.167H1.167V5.25zM14 6.417H7.583V0H14v6.417zM8.75 5.25h4.083V1.167H8.75V5.25zM6.417 14H0V7.583h6.417V14zm-5.25-1.167H5.25V8.75H1.167v4.083zM14 11.667h-1.167V8.75h-1.166v1.75h-3.5V7.583h1.166v1.75H10.5v-1.75H14zM14 14H8.167v-2.333h1.166v1.166H14z"></path><path d="M2.333 2.333h1.75v1.75h-1.75zM9.917 2.333h1.75v1.75h-1.75zM2.333 9.917h1.75v1.75h-1.75z">
@@ -26,13 +27,15 @@ class YourAccountWallets extends Component {
     this.state = {
       "BTC": null, "BCH": null, "ETC": null,
       "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
-      "ethAmount": null, "bchAmount":null, "ltcAmount":null
+      "ethAmount": null, "bchAmount":null, "ltcAmount":null,
+      "currentWallet": "BTC"
     };
     this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
     this.getAmounts = this.getAmounts.bind(this);
     this.renderWallet = this.renderWallet.bind(this);
     this.renderButtons = this.renderButtons.bind(this);
+    this.changeWallet = this.changeWallet.bind(this);
   }
 
   componentDidMount() {
@@ -94,6 +97,10 @@ class YourAccountWallets extends Component {
 
   }
 
+  getTransactions(wallet) {
+
+  }
+
   renderWallet(symbol, img, wallet) {
     //price * amount
     let walletAmount = parseFloat(wallet.amount).toFixed(4);
@@ -108,25 +115,30 @@ class YourAccountWallets extends Component {
     const floorWithCommas = numberWithCommas(cashAmount);
 
     return (
-      <div className="accountWallet">
-        <div className="imgDescriptionYA">
-          <img className="imgWalletYA" src={img} />
-          <div className="descriptionWalletYA">
-            <p className="accountTextTop">{symbol} Wallet</p>
-            <div className="accountTextBottom">
-              <p className="accountTextAmount">{walletAmount}</p>
-              <p className="accountTextEqualSign">{` ≈ `}</p>
-              <p className="accountTextCashAmount">{"$"}{floorWithCommas}</p>
+        <div className="accountWallet" onClick={()=>this.changeWallet(symbol)}>
+          <div className="imgDescriptionYA">
+            <img className="imgWalletYA" src={img} />
+            <div className="descriptionWalletYA">
+              <p className="accountTextTop">{symbol} Wallet</p>
+              <div className="accountTextBottom">
+                <p className="accountTextAmount">{walletAmount}</p>
+                <p className="accountTextEqualSign">{` ≈ `}</p>
+                <p className="accountTextCashAmount">{"$"}{floorWithCommas}</p>
+              </div>
             </div>
           </div>
+          <div className="buttonsDivYA">
+            <button className="buttonYA">{sendSVG}Send</button>
+            <button className="buttonYA">{receiveSVG}Receive</button>
+          </div>
         </div>
-        <div className="buttonsDivYA">
-          <button className="buttonYA">{sendSVG}Send</button>
-          <button className="buttonYA">{receiveSVG}Receive</button>
-        </div>
-      </div>
     );
   }
+
+  changeWallet(symbol) {
+    this.setState( { "currentWallet": symbol });
+  }
+
   render() {
 
     const values = Object.values(this.state);
@@ -161,13 +173,31 @@ class YourAccountWallets extends Component {
       }
     }
 
+    const currentWallet = this.state["currentWallet"];
+    let transactionWallet;
+    if (currentWallet === "BTC") {
+      transactionWallet = BTCwallet;
+    } else if (currentWallet === "BCH") {
+      transactionWallet = BCHwallet;
+    } else if (currentWallet === "ETH") {
+      transactionWallet = ETHwallet;
+    } else if (currentWallet === "ETC") {
+      transactionWallet = ETCwallet;
+    } else if (currentWallet === "LTC") {
+      transactionWallet = LTCwallet;
+    }
+
     return (
-      <div className="YourAccountWallets">
-        {this.renderWallet("BTC", window.btc, BTCwallet)}
-        {this.renderWallet("BCH", window.bch, BCHwallet)}
-        {this.renderWallet("ETH", window.eth, ETHwallet)}
-        {this.renderWallet("ETC", window.etc, ETCwallet)}
-        {this.renderWallet("LTC", window.ltc, LTCwallet)}
+      <div className="walletTransactions">
+        <div className="YourAccountWallets">
+          {this.renderWallet("BTC", window.btc, BTCwallet)}
+          {this.renderWallet("BCH", window.bch, BCHwallet)}
+          {this.renderWallet("ETH", window.eth, ETHwallet)}
+          {this.renderWallet("ETC", window.etc, ETCwallet)}
+          {this.renderWallet("LTC", window.ltc, LTCwallet)}
+        </div>
+        <Transactions currentWallet={transactionWallet} receivers={this.props.receivers}
+          transfers={this.props.transfers} sellings={this.props.sellings} purchases={this.props.purchases} />
       </div>
     );
   }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_044112) do
+ActiveRecord::Schema.define(version: 2018_10_29_204844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_044112) do
     t.decimal "cash_amount"
     t.string "asset_type"
     t.string "model_type", default: "transfer"
+    t.string "note", null: false
     t.index ["receiver_wallet_address"], name: "index_transfers_on_receiver_wallet_address"
     t.index ["sender_wallet_address"], name: "index_transfers_on_sender_wallet_address"
   end

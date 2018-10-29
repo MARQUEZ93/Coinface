@@ -10,6 +10,7 @@
 #  updated_at      :datetime         not null
 #  firstName       :string           not null
 #  lastName        :string           not null
+#  middleName      :string           not null
 #
 
 class User < ApplicationRecord
@@ -101,7 +102,7 @@ class User < ApplicationRecord
     # I give each user .001 of the 5 assets to start out
     Transfer.create!( amount: 0.001, cash_amount: transfer_cash_amount, asset_type: asset_symbol,
       sender_wallet_address: coinfaceWallet.address,
-      receiver_wallet_address: wallet.address )
+      receiver_wallet_address: wallet.address, note: "A gift for joining Coinface!" )
   end
 
   def get_wallet_by_asset (asset_symbol)

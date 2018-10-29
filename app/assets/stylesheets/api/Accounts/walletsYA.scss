@@ -5,7 +5,7 @@
 .accountWallet{
   margin-left: 25px;
   padding-left: 20px;
-  height: 130px;
+  height: 140px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,7 @@
 
 .imgDescriptionYA {
   display: flex;
+  margin-top: 10px;
 }
 
 .imgWalletYA {
@@ -53,6 +54,7 @@
 .buttonsDivYA {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .buttonYA {
@@ -65,6 +67,7 @@
   height: 41px;
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 4px;
   border: 1px solid rgb(218, 225, 233);
 }
@@ -75,4 +78,5 @@
 
 .sendSVG, .receiveSVG {
   margin-right: 10px;
+  fill: #9ba6b2;
 }

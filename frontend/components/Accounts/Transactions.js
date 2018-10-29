@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
-import { withRouter } from 'react-router-dom';
 
-class RecentActivity extends React.Component {
+class Transactions extends Component {
+
   constructor(props) {
     super(props);
+    this.state = { onlyFive: null, activitiesArray: null };
     this.merge = this.merge.bind(this);
     this.mergesort = this.mergesort.bind(this);
     this.renderActivityList = this.renderActivityList.bind(this);
     this.renderActivity = this.renderActivity.bind(this);
-    this.accountsPush = this.accountsPush.bind(this);
+
     this.getDate = this.getDate.bind(this);
     this.getDescription = this.getDescription.bind(this);
-    this.state = { lastFour: null, onlyFive: null, activitiesArray: null };
+    this.getMonth = this.getMonth.bind(this);
+    this.getSvg = this.getSvg.bind(this);
+    this.getColor = this.getColor.bind(this);
+    this.getImage = this.getImage.bind(this);
+    this.getDay = this.getDay.bind(this);
   }
 
   componentDidMount(){
@@ -46,15 +51,8 @@ class RecentActivity extends React.Component {
     if (activitiesArray.length == 5) { //tell user that default transfers are from Coinface
       onlyFive = true;
     }
-    let lastFour = []; //most recent activity is lastFour[0]
 
-    //grab last four recent activities (transfer, receiver, selling, purchase) of user
-    lastFour.push(activitiesArray[activitiesArray.length-1]);
-    lastFour.push(activitiesArray[activitiesArray.length-2]);
-    lastFour.push(activitiesArray[activitiesArray.length-3]);
-    lastFour.push(activitiesArray[activitiesArray.length-4]);
-
-    this.setState ({ lastFour: lastFour, activitiesArray: activitiesArray, onlyFive: onlyFive });
+    this.setState ({ activitiesArray: activitiesArray, onlyFive: onlyFive });
 
   }
 
@@ -189,6 +187,7 @@ mergesort(arr) {
     } else if (activity.activity_type == "selling") {
       underDescription+="Credited MasterCard *********6955"
     }
+
     return (
       <div className="descriptionRecentActivity">
         <p className="topDescriptionRecentActivity">{activityVerb + asset}</p>
@@ -210,7 +209,7 @@ mergesort(arr) {
     return months[parseInt(monthInt,10)];
   }
 
-  getDate(timestamp) {
+  getDate (timestamp) {
     let date = Date.parse(timestamp);
     date = new Date(date);
     let day = date.getDay();
@@ -223,11 +222,6 @@ mergesort(arr) {
           <p className="dateRecentActivityDay">{day}</p>
         </div>
     );
-  }
-
-  accountsPush(e) {
-    e.preventDefault();
-    this.props.history.push("/accounts");
   }
 
   getAmount(activity) {
@@ -262,13 +256,13 @@ mergesort(arr) {
 
   renderActivityList(){
     let activityList = [];
-    for (let i = 0; i < this.state.lastFour.length; i++) {
-      activityList.push(this.renderActivity(this.state.lastFour[i]));
+    for (let i = 0; i < this.state.activitiesArray.length; i++) {
+      activityList.push(this.renderActivity(this.state.activitiesArray[i]));
     }
     return activityList;
   }
   render() {
-    if(!this.state.lastFour) {
+    if(!this.state.activitiesArray) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
@@ -277,18 +271,11 @@ mergesort(arr) {
     }
     return (
       <div className="RecentActivity">
-        <div className="headerRA"><p>Recent Activity</p></div>
-        {this.renderActivityList()}
-        <div className="footerRA">
-          <p onClick={this.accountsPush} className="footerRATransform">View your accounts{" "}
-            <svg xmlns="http://www.w3.org/2000/svg" width="5" height="9" viewBox="0 0 5 9">
-            <path d="M5 4.5a.503.503 0 0 1-.143.348L.903 9 0 8.303 3.622 4.5 0 .697.903 0l3.954 4.152c.095.1.143.224.143.348z">
-            </path></svg>
-          </p>
-        </div>
+        <div className="headerRA"><p>Transactions</p></div>
+          {this.renderActivityList()}
       </div>
     );
   }
 }
 
-export default withRouter(RecentActivity);
+export default Transactions;

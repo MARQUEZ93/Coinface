@@ -59,7 +59,7 @@ wallets.each do |wallet|
   wallet.save!
 end
 
-recruiter = User.create!( firstName: "Satoshi", middleName: "Bitcoin", lastName: "Nakamoto", email:'guest@coinface.com',
+recruiter = User.create!( firstName: "Satoshi", middleName: "NS", lastName: "Nakamoto", email:'satoshi@vistomail.com',
   password: "password" )
 recruiterWallets = recruiter.wallets
 
@@ -90,7 +90,9 @@ recruiterWallets.each do |wallet|
 end
 
 transfer = Transfer.create!( amount: 1.00, cash_amount: 52.07, asset_type: "LTC",
-  sender_wallet_address: recruiterLTCwallet.address, receiver_wallet_address: alejandroLTCwallet.address )
+  sender_wallet_address: recruiterLTCwallet.address, receiver_wallet_address: alejandroLTCwallet.address,
+  note: "Alejandro, I've
+always hated projects with a lot of big dependencies" )
 transfer.save!
 
 
@@ -108,7 +110,8 @@ purchase1.save!
 
 
 transfer = Transfer.create!( amount: 0.1, cash_amount: 642.385, asset_type: "BTC",
-  sender_wallet_address: alejandroBTCwallet.address, receiver_wallet_address: recruiterBTCwallet.address )
+  sender_wallet_address: alejandroBTCwallet.address, receiver_wallet_address: recruiterBTCwallet.address,
+note: "thanks Satoshi! cheers - Alejandro " )
 transfer.save!
 
 selling = Selling.create!(amount: 0.5, cash_amount: 105.13, cash_id: recruiter.cash.id,
