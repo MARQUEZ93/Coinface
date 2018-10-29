@@ -72,6 +72,7 @@ class PortfolioValue extends React.Component {
         </div>
       );
     }
+
     const wallets = this.props.wallets;
     let portfolioValue = 0;
     for (let i = 0; i < wallets.length; i++) {
