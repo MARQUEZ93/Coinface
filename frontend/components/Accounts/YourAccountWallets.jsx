@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
 import axios from 'axios';
 import Transactions from './Transactions';
+import SendPopup from './SendPopup';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
@@ -28,7 +29,7 @@ class YourAccountWallets extends Component {
       "BTC": null, "BCH": null, "ETC": null,
       "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
       "ethAmount": null, "bchAmount":null, "ltcAmount":null,
-      "currentWallet": "BTC"
+      "currentWallet": "BTC", togglePopup: false
     };
     this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
@@ -36,6 +37,7 @@ class YourAccountWallets extends Component {
     this.renderWallet = this.renderWallet.bind(this);
     this.renderButtons = this.renderButtons.bind(this);
     this.changeWallet = this.changeWallet.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
   }
 
   componentDidMount() {
@@ -101,6 +103,12 @@ class YourAccountWallets extends Component {
 
   }
 
+  togglePopup() {
+   this.setState({
+     showPopup: !this.state.showPopup
+   });
+ }
+
   renderWallet(symbol, img, wallet) {
 
     let className = "accountWallet";
@@ -134,9 +142,15 @@ class YourAccountWallets extends Component {
             </div>
           </div>
           <div className="buttonsDivYA">
-            <button className="buttonYA">{sendSVG}Send</button>
+            <button onClick={this.togglePopup} className="buttonYA">{sendSVG}Send</button>
             <button className="buttonYA">{receiveSVG}Receive</button>
           </div>
+          {this.state.showPopup ?
+          <SendPopup
+            closePopup={this.togglePopup}
+          />
+          : null
+        }
         </div>
     );
   }
