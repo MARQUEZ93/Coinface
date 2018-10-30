@@ -29,13 +29,12 @@ class YourAccountWallets extends Component {
       "BTC": null, "BCH": null, "ETC": null,
       "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
       "ethAmount": null, "bchAmount":null, "ltcAmount":null,
-      "currentWallet": "BTC", togglePopup: false
+      "currentWallet": "BTC", showPopUp: ""
     };
     this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
     this.getAmounts = this.getAmounts.bind(this);
     this.renderWallet = this.renderWallet.bind(this);
-    this.renderButtons = this.renderButtons.bind(this);
     this.changeWallet = this.changeWallet.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
   }
@@ -95,18 +94,8 @@ class YourAccountWallets extends Component {
     return (this.state[asset] * wallet.amount);
   }
 
-  renderButtons() {
-
-  }
-
-  getTransactions(wallet) {
-
-  }
-
-  togglePopup() {
-   this.setState({
-     showPopup: !this.state.showPopup
-   });
+  togglePopup(symbol="") {
+    this.setState({ showPopup: symbol });
  }
 
   renderWallet(symbol, img, wallet) {
@@ -142,15 +131,12 @@ class YourAccountWallets extends Component {
             </div>
           </div>
           <div className="buttonsDivYA">
-            <button onClick={this.togglePopup} className="buttonYA">{sendSVG}Send</button>
+            <button onClick={()=> this.togglePopup(symbol)} className="buttonYA">{sendSVG}Send</button>
             <button className="buttonYA">{receiveSVG}Receive</button>
           </div>
-          {this.state.showPopup ?
-          <SendPopup
-            closePopup={this.togglePopup}
-          />
-          : null
-        }
+          {this.state.showPopup == symbol ?
+           <SendPopup cashAmount={cashAmount} floorWithCommas={floorWithCommas} symbol={symbol} closePopup={this.togglePopup.bind(this)} /> : null
+         }
         </div>
     );
   }
@@ -206,7 +192,6 @@ class YourAccountWallets extends Component {
     } else if (currentWallet === "LTC") {
       transactionWallet = LTCwallet;
     }
-    console.log(this.state["currentWallet"]);
     return (
       <div className="walletTransactions">
         <div className="YourAccountWallets">
