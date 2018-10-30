@@ -1,0 +1,43 @@
+.walletTransactions{
+  display: flex;
+  width: cover;
+}
+.transactionsYA{
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
+  Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif;
+  width: 700px;
+  height: 458px;
+  margin-bottom: 110px;
+}
+
+.transactionsHeader{
+  width: cover;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-weight: 500;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  height: 54px;
+  font-size: 18px;
+  color: #1652f0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.transactionsTableRow {
+  width: cover;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  height: 48px;
+  padding: 20px;
+  font-size: 16px;
+}

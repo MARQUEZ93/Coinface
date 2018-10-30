@@ -178,7 +178,7 @@ mergesort(arr) {
     }
 
     let underDescription = "";
-    if (!activity.note && activity.note === "A gift for joining Coinface!") {
+    if (!!activity.note && activity.note === "A gift for joining Coinface!") {
       underDescription = activity.note;
     } else if (activity.activity_type == "purchase") {
       underDescription+= "Debited MasterCard *********6955"

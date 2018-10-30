@@ -21,8 +21,8 @@ class Transactions extends Component {
   }
 
   componentDidMount(){
-
     let activitiesArray = [];
+    let symbol = this.props.symbol;
     this.props.purchases.forEach(function(purchase){
       if (purchase != null) {
         activitiesArray.push(Object.assign(purchase, {activity_type: "purchase"}));
@@ -59,7 +59,7 @@ class Transactions extends Component {
   merge(leftArr, rightArr) {
     var sortedArr = [];
       while (leftArr.length && rightArr.length) {
-        if (Date.parse(leftArr[0].created_at) <= Date.parse(rightArr[0].created_at)) {
+        if (Date.parse(leftArr[0].created_at) >= Date.parse(rightArr[0].created_at)) {
           sortedArr.push(leftArr[0]);
           leftArr = leftArr.slice(1)
        } else {
@@ -176,7 +176,7 @@ mergesort(arr) {
     }
 
     let underDescription = "";
-    if (!activity.note && activity.note === "A gift for joining Coinface!") {
+    if (!!activity.note && activity.note === "A gift for joining Coinface!") {
       underDescription = activity.note;
     } else if (activity.activity_type == "purchase") {
       underDescription+= "Debited MasterCard *********6955"
@@ -243,7 +243,7 @@ mergesort(arr) {
 
   renderActivity(activity) {
     return (
-      <div key={activity.id} className="recentActivityTableRow">
+      <div key={activity.id} className="transactionsTableRow">
         <div className="firstHalfRecentActivityTableRow">
           {this.getDate(activity.created_at)}
           {this.getImage(activity)}
@@ -257,6 +257,7 @@ mergesort(arr) {
   renderActivityList(){
     let activityList = [];
     for (let i = 0; i < this.state.activitiesArray.length; i++) {
+      if (this.state.activitiesArray[i].asset_type == this.props.symbol)
       activityList.push(this.renderActivity(this.state.activitiesArray[i]));
     }
     return activityList;
@@ -270,9 +271,9 @@ mergesort(arr) {
       );
     }
     return (
-      <div className="RecentActivity">
-        <div className="headerRA"><p>Transactions</p></div>
-          {this.renderActivityList()}
+      <div className="transactionsYA">
+        <p className="transactionsHeader">Transactions</p>
+        {this.renderActivityList()}
       </div>
     );
   }

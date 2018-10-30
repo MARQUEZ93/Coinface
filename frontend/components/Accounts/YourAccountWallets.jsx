@@ -186,7 +186,7 @@ class YourAccountWallets extends Component {
     } else if (currentWallet === "LTC") {
       transactionWallet = LTCwallet;
     }
-
+    console.log(this.state["currentWallet"]);
     return (
       <div className="walletTransactions">
         <div className="YourAccountWallets">
@@ -196,7 +196,7 @@ class YourAccountWallets extends Component {
           {this.renderWallet("ETC", window.etc, ETCwallet)}
           {this.renderWallet("LTC", window.ltc, LTCwallet)}
         </div>
-        <Transactions currentWallet={transactionWallet} receivers={this.props.receivers}
+        <Transactions symbol={this.state["currentWallet"]} currentWallet={transactionWallet} receivers={this.props.receivers}
           transfers={this.props.transfers} sellings={this.props.sellings} purchases={this.props.purchases} />
       </div>
     );
