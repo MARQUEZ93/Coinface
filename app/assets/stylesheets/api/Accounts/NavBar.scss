@@ -1,0 +1,38 @@
+.navBarAccounts{
+  width: cover;
+  height: 63px;
+  // border-bottom: 1px solid #f4f7fa;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(218, 225, 233);
+  background-color: white;
+}
+
+.unorderedListNavBarAccounts {
+  display: flex;
+  width: 50%;
+  padding-left: 25px;
+
+}
+
+.listItemNavBarAccounts{
+  margin-right: 35px;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  color: #7d95b6;
+  display: flex;
+  align-items: center;
+}
+
+.listItemNavBarAccounts:active, .listItemNavBarAccounts:focus, .listItemNavBarAccounts:hover {
+  color: #1652f0;
+  transform: scale(1.05);
+  font-weight: 500;
+}
+
+.svgNavAccounts {
+  margin-right: 10px;
+  background-color: #f4f7fa;
+}

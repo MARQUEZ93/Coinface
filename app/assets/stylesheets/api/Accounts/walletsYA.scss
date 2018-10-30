@@ -1,8 +1,7 @@
-.accountWallet:hover{
+.selectedWallet{
   background-color: white;
   cursor: pointer;
-}
-.accountWallet{
+
   margin-left: 25px;
   padding-left: 20px;
   height: 140px;
@@ -15,7 +14,27 @@
   Oxygen, Ubuntu, Cantarell,
   "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
-  border: 1px solid rgb(218, 225, 233);
+  border-bottom: 1px solid rgb(218, 225, 233);
+  border-left: 1px solid rgb(218, 225, 233);
+  border-right: 1px solid rgb(218, 225, 233);
+}
+.accountWallet{
+  cursor: pointer;
+  margin-left: 25px;
+  padding-left: 20px;
+  height: 140px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  border-bottom: 1px solid rgb(218, 225, 233);
+  border-left: 1px solid rgb(218, 225, 233);
+  border-right: 1px solid rgb(218, 225, 233);
 }
 
 .imgDescriptionYA {

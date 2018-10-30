@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Dashboard/Header';
-import NavBar from '../Dashboard/NavBar';
+import NavBar from './NavBar';
 import Footer from '../Welcome/Footer';
 import YourAccounts from './YourAccounts';
 

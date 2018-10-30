@@ -102,6 +102,12 @@ class YourAccountWallets extends Component {
   }
 
   renderWallet(symbol, img, wallet) {
+
+    let className = "accountWallet";
+
+    if (symbol === this.state["currentWallet"]) {
+      className = "selectedWallet";
+    }
     //price * amount
     let walletAmount = parseFloat(wallet.amount).toFixed(4);
     let cashAmount = (this.state[symbol] * wallet.amount);
@@ -115,7 +121,7 @@ class YourAccountWallets extends Component {
     const floorWithCommas = numberWithCommas(cashAmount);
 
     return (
-        <div className="accountWallet" onClick={()=>this.changeWallet(symbol)}>
+        <div className="accountWallet" className={className} onClick={()=>this.changeWallet(symbol)}>
           <div className="imgDescriptionYA">
             <img className="imgWalletYA" src={img} />
             <div className="descriptionWalletYA">
