@@ -135,7 +135,8 @@ class YourAccountWallets extends Component {
             <button className="buttonYA">{receiveSVG}Receive</button>
           </div>
           {this.state.showPopup == symbol ?
-           <SendPopup cashAmount={cashAmount} floorWithCommas={floorWithCommas} symbol={symbol} closePopup={this.togglePopup.bind(this)} /> : null
+           <SendPopup cashAmount={cashAmount}
+            symbol={symbol} closePopup={this.togglePopup} /> : null
          }
         </div>
     );

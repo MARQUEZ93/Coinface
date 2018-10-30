@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import YourAccountWallets from './YourAccountWallets';
+import SendPopup from './SendPopup';
 
 class YourAccounts extends Component {
   render() {

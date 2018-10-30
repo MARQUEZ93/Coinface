@@ -65,7 +65,6 @@ class YourPortfolio extends React.Component {
     let amountList = [btcPercent, ethPercent, ltcPercent, bchPercent, etcPercent];
 
     amountList = amountList.sort(this.sortNumber);
-    console.log(amountList);
     let btcTR = this.renderTableRow(window.btc, "Bitcoin", "#FF9900", btcPercent,
     parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)));
 
