@@ -50,22 +50,52 @@ class YourPortfolio extends React.Component {
     return parts.join(".");
   }
 
+  sortNumber(a,b) {
+    return a - b;
+  }
+
   renderTable() {
     let listItems = [];
-    listItems.push(this.renderTableRow(window.btc, "Bitcoin", "#FF9900", this.getPercentage(this.state["btcAmount"], this.props.btcPrice),
-    parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)) ));
+    let btcPercent = this.getPercentage(this.state["btcAmount"], this.props.btcPrice);
+    let ethPercent = this.getPercentage(this.state["ethAmount"], this.props.ethPrice);
+    let ltcPercent = this.getPercentage(this.state["ltcAmount"], this.props.ltcPrice);
+    let bchPercent = this.getPercentage(this.state["bchAmount"], this.props.bchPrice);
+    let etcPercent = this.getPercentage(this.state["etcAmount"], this.props.etcPrice);
 
-    listItems.push(this.renderTableRow(window.eth, "Ethereum", "#4169E1", this.getPercentage(this.state["ethAmount"], this.props.ethPrice),
-    parseFloat(this.state["ethAmount"]).toFixed(4), "ETH", this.displayUSD((this.state["ethAmount"] * this.props.ethPrice).toFixed(2)) ));
+    let amountList = [btcPercent, ethPercent, ltcPercent, bchPercent, etcPercent];
 
-    listItems.push(this.renderTableRow(window.ltc, "Litecoin", "#b8b8b8", this.getPercentage(this.state["ltcAmount"], this.props.ltcPrice),
-    parseFloat(this.state["ltcAmount"]).toFixed(4), "LTC", this.displayUSD((this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2)) ));
+    amountList = amountList.sort(this.sortNumber);
+    console.log(amountList);
+    let btcTR = this.renderTableRow(window.btc, "Bitcoin", "#FF9900", btcPercent,
+    parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)));
 
-    listItems.push(this.renderTableRow(window.bch, "Bitcoin Cash", "#4cca47", this.getPercentage(this.state["bchAmount"], this.props.bchPrice),
-    parseFloat(this.state["bchAmount"]).toFixed(4), "BCH", this.displayUSD((this.state["bchAmount"] * this.props.bchPrice).toFixed(2)) ));
+    let ethTR = this.renderTableRow(window.eth, "Ethereum", "#4169E1", ethPercent,
+    parseFloat(this.state["ethAmount"]).toFixed(4), "ETH", this.displayUSD((this.state["ethAmount"] * this.props.ethPrice).toFixed(2)));
 
-    listItems.push(this.renderTableRow(window.etc, "Ethereum Classic", "#00cc99", this.getPercentage(this.state["etcAmount"], this.props.etcPrice),
-    parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2))));
+    let ltcTR = this.renderTableRow(window.ltc, "Litecoin", "#b8b8b8", ltcPercent,
+    parseFloat(this.state["ltcAmount"]).toFixed(4), "LTC", this.displayUSD((this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2)));
+
+    let bchTR = this.renderTableRow(window.bch, "Bitcoin Cash", "#4cca47", bchPercent,
+    parseFloat(this.state["bchAmount"]).toFixed(4), "BCH", this.displayUSD((this.state["bchAmount"] * this.props.bchPrice).toFixed(2)));
+
+    let etcTR = this.renderTableRow(window.etc, "Ethereum Classic", "#00cc99", etcPercent,
+    parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2)));
+
+    for (let i = 0; i < amountList.length; i++) {
+      if (amountList[i] == btcPercent) {
+        listItems.push(btcTR);
+      } else if (amountList[i] == etcPercent) {
+        listItems.push(etcTR);
+      } else if (amountList[i] == ethPercent) {
+        listItems.push(ethTR);
+      } else if (amountList[i] == bchPercent) {
+        listItems.push(bchTR);
+      } else if (amountList[i] == ltcPercent) {
+        listItems.push(ltcTR);
+      }
+    }
+    listItems = listItems.reverse();
+
 
     return listItems;
   }
