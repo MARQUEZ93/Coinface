@@ -14,6 +14,6 @@ class Api::TransfersController < ApplicationController
   private
 
   def transfer_params
-    params.require(:user).permit(:cash_amount, :amount, :receiver_wallet_address, :sender_wallet_address, :note, :asset_type)
+    params.require(:transfer).permit(:cash_amount, :amount, :receiver_wallet_address, :sender_wallet_address, :note, :asset_type)
   end
 end

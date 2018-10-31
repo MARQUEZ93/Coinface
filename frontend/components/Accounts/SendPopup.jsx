@@ -22,9 +22,7 @@ class SendPopup extends Component {
       usdError:false,
       assetError:false,
       note:"",
-      receiver_wallet_address:"",
-      asset_type: this.props.symbol,
-      sender_wallet_address: this.props.walletAddress
+      receiver_wallet_address:""
     }
     this.updateInputs = this.updateInputs.bind(this);
     this.methodInState = this.methodInState.bind(this);
@@ -35,7 +33,7 @@ class SendPopup extends Component {
   methodInState(field, e) {
     let otherState = "cash_amount";
     if (field == "cash_amount") {
-      otherState = "asset_amount";
+      otherState = "amount";
       if (parseFloat(e.currentTarget.value) > this.props.cashAmount){
         this.setState({ usdError: true });
       } else {
@@ -53,7 +51,7 @@ class SendPopup extends Component {
       }
     }
     let getProduct;
-    if (otherState == "asset_amount") { //user is typing into usd input
+    if (otherState == "amount") { //user is typing into usd input
       getProduct = parseFloat(e.currentTarget.value) / this.props.currentPrice;
     } else { //user is typing into asset input
       getProduct = parseFloat(e.currentTarget.value) * this.props.currentPrice;
@@ -70,7 +68,7 @@ class SendPopup extends Component {
   updateInputs(field) {
     let otherState = "cash_amount";
     if (field == "cash_amount") {
-      otherState = "asset_amount";
+      otherState = "amount";
     }
     return e => this.setState({
       [field]: e.currentTarget.value,
@@ -86,8 +84,17 @@ class SendPopup extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processTransfer(user);
+    let transferObject = {
+      cash_amount: this.state.cash_amount,
+      amount: this.state.amount,
+      note: this.state.note,
+      receiver_wallet_address: this.state.receiver_wallet_address,
+      asset_type: this.props.symbol,
+      sender_wallet_address: this.props.walletAddress
+    };
+    console.log(transferObject);
+    const transfer = Object.assign({}, transferObject);
+    this.props.processTransfer(transfer);
   }
 
   render() {
@@ -144,7 +151,7 @@ class SendPopup extends Component {
               <div className="SymbolusdAssetInputsDiv">{equalsSVG}</div>
               <div className="assetAmountIdentifierDiv">
                 <p style={pStyle} className="assetAmountIdentifier">{symbol}</p>
-                <input value={this.state.asset_amount} onChange={this.updateInputs('asset_amount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
+                <input value={this.state.amount} onChange={this.updateInputs('amount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
               </div>
             </div>
             {this.state.usdError || this.state.assetError ? amountError: null}

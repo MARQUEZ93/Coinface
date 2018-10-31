@@ -59,8 +59,8 @@ wallets.each do |wallet|
   wallet.save!
 end
 
-recruiter = User.create!( firstName: "Satoshi", middleName: "NS", lastName: "Nakamoto", email:'satoshi@vistomail.com',
-  password: "password" )
+recruiter = User.create!( firstName: "Satoshi", middleName: "NS", lastName: "Nakamoto",
+  email:'satoshi@vistomail.com', password: "password" )
 recruiterWallets = recruiter.wallets
 
 recruiterBCHwallet = nil

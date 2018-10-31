@@ -8,7 +8,7 @@ export const fetchUser = (id) => (
 export const processTransfer = (transfer) => (
   $.ajax({
     data: {transfer},
-    url:'/api/transfer',
+    url:'/api/transfers',
     method: 'POST'
   })
 );
