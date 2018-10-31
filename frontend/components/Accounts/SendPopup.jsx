@@ -18,7 +18,9 @@ class SendPopup extends Component {
     super(props);
     this.state = {
       usdAmount: "",
-      assetAmount: ""
+      assetAmount: "",
+      usdError:false,
+      assetError:false
     }
     this.update = this.update.bind(this);
     this.methodInState = this.methodInState.bind(this);
@@ -28,13 +30,30 @@ class SendPopup extends Component {
     let otherState = "usdAmount";
     if (field == "usdAmount") {
       otherState = "assetAmount";
+      if (parseFloat(e.currentTarget.value) > this.props.cashAmount){
+        this.setState({ usdError: true });
+      } else {
+        if (this.state.usdError) {
+          this.setState({ usdError: false });
+        }
+      }
+    } else {
+      if (parseFloat(e.currentTarget.value) > this.props.assetAmount){
+        this.setState({ assetError: true });
+      } else {
+        if (this.state.assetError) {
+          this.setState({ assetError: false });
+        }
+      }
     }
     let getProduct;
-    console.log(typeof this.props.currentPrice);
     if (otherState == "assetAmount") { //user is typing into usd input
       getProduct = parseFloat(e.currentTarget.value) / this.props.currentPrice;
     } else { //user is typing into asset input
       getProduct = parseFloat(e.currentTarget.value) * this.props.currentPrice;
+    }
+    if (e.currentTarget.value == "") {
+      return "";
     }
     if (field == "usdAmount") {
       return getProduct.toFixed(4);
@@ -61,6 +80,7 @@ class SendPopup extends Component {
     const pStyle = {
       color: this.props.color
     };
+    let amountError = <p className="amountError">You {"do"} not have enough funds to send at {"this"} amount.</p>;
     let availablePlaceholder = (
       <div className="availablePlaceholder">
         <div className="availablePlaceholderFirstHalf">
@@ -106,6 +126,7 @@ class SendPopup extends Component {
                 <input value={this.state.assetAmount} onChange={this.update('assetAmount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
               </div>
             </div>
+            {this.state.usdError || this.state.assetError ? amountError: null}
           </div>
         </div>
       </div>
