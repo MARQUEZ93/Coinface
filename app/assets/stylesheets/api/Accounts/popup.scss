@@ -184,6 +184,7 @@
   margin-right:11px;
   margin-top: 22px;
   margin-bottom: 22px;
+  align-self: flex-end;
 }
 .equalsSVG{
   width: 20px;
@@ -193,4 +194,31 @@
 .amountError{
   color: red;
   margin-top: 5px;
+}
+.inputNoteDiv{
+  margin-top: 15px;
+  margin-left: 25px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.inputNote{
+  width: 410px;
+  margin-top: 5px;
+  color: #4e5c6e;
+  font-size: 18px;
+  padding: 20px;
+  height: 25px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+}
+.buttonSendTransactionDiv{
+  color:white;
+  border-radius: 4px;
+  width: 410px;
+  text-align: center;
+  align-self: center;
+  height: 25px;
+  padding: 20px;
+  margin-top: 15px;
 }
