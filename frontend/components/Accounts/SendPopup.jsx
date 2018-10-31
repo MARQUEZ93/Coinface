@@ -16,6 +16,41 @@ class SendPopup extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      usdAmount: "",
+      assetAmount: ""
+    }
+    this.update = this.update.bind(this);
+    this.methodInState = this.methodInState.bind(this);
+  }
+
+  methodInState(field, e) {
+    let otherState = "usdAmount";
+    if (field == "usdAmount") {
+      otherState = "assetAmount";
+    }
+    let getProduct;
+    console.log(typeof this.props.currentPrice);
+    if (otherState == "assetAmount") { //user is typing into usd input
+      getProduct = parseFloat(e.currentTarget.value) / this.props.currentPrice;
+    } else { //user is typing into asset input
+      getProduct = parseFloat(e.currentTarget.value) * this.props.currentPrice;
+    }
+    if (field == "usdAmount") {
+      return getProduct.toFixed(4);
+    }
+    return getProduct.toFixed(2);
+  }
+
+  update(field) {
+    let otherState = "usdAmount";
+    if (field == "usdAmount") {
+      otherState = "assetAmount";
+    }
+    return e => this.setState({
+      [field]: e.currentTarget.value,
+      [otherState]: this.methodInState(field, e)
+    });
   }
 
   render() {
@@ -61,9 +96,15 @@ class SendPopup extends Component {
           <div className="inputsAmountsDiv">
             Amount
             <div className="usdAssetInputsDiv">
-              <input className="inputUSDAmount" placeholder={usdAmountPlaceholder}></input>
+              <div className="usdAmountIdentifierDiv">
+                <p className="usdAmountIdentifier">USD</p>
+                <input value={this.state.usdAmount} onChange={this.update('usdAmount')} className="inputUSDAmount" placeholder={usdAmountPlaceholder}></input>
+              </div>
               <div className="SymbolusdAssetInputsDiv">{equalsSVG}</div>
-              <input className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
+              <div className="assetAmountIdentifierDiv">
+                <p style={pStyle} className="assetAmountIdentifier">{symbol}</p>
+                <input value={this.state.assetAmount} onChange={this.update('assetAmount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
+              </div>
             </div>
           </div>
         </div>

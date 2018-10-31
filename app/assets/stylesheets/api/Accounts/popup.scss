@@ -141,17 +141,32 @@
   margin-top: 15px;
   font-size: 14px;
 }
-
+.usdAmountIdentifier{
+  font-size: 16px;
+  color: #85bb65;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.assetAmountIdentifier{
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.usdAmountIdentifierDiv, .assetAmountIdentifierDiv{
+  display: flex;
+  flex-direction: column;
+}
 .inputUSDAmount{
   width:163px;
   border: 1px solid rgb(218, 225, 233);
   padding: 20px;
   border-radius: 4px;
-}
-.inputUSDAmount{
   font-size: 18px;
 }
 .inputAssetAmount{
+  font-size: 18px;
   width:163px;
   border: 1px solid rgb(218, 225, 233);
   padding: 20px;
@@ -163,7 +178,6 @@
 }
 .usdAssetInputsDiv{
   display: flex;
-  margin-top: 5px;
 }
 .SymbolusdAssetInputsDiv{
   margin-left:11px;
