@@ -9,7 +9,7 @@ const xSVG = <svg className="xSymbol" xmlns="http://www.w3.org/2000/svg"
 const equalsSVG = <svg className="equalsSVG"
   ui="[object Object]" xmlns="http://www.w3.org/2000/svg" width="21" height="22"
   viewBox="0 0 21 22">
-  <path d="M20 14.8a.8.8 0 1 0 0-1.6H1a.8.8 0 0 0-.58 1.351l6.65 7a.8.8 0 0 0 1.16-1.102L2.863 14.8H20zM1 7.2a.8.8 0 1 0 0 1.6h19a.8.8 0 0 0 .58-1.351l-6.65-7a.8.8 0 1 0-1.16 1.102L18.137 7.2H1z">
+  <path className="equalsSVGpath" d="M20 14.8a.8.8 0 1 0 0-1.6H1a.8.8 0 0 0-.58 1.351l6.65 7a.8.8 0 0 0 1.16-1.102L2.863 14.8H20zM1 7.2a.8.8 0 1 0 0 1.6h19a.8.8 0 0 0 .58-1.351l-6.65-7a.8.8 0 1 0-1.16 1.102L18.137 7.2H1z">
 </path></svg>;
 
 class SendPopup extends Component {
@@ -42,7 +42,7 @@ class SendPopup extends Component {
         }
       }
     } else {
-      if (parseFloat(e.currentTarget.value) > this.props.assetAmount){
+      if (parseFloat(e.currentTarget.value) > this.props.walletAmount){
         this.setState({ assetError: true });
       } else {
         if (this.state.assetError) {
@@ -60,7 +60,7 @@ class SendPopup extends Component {
       return "";
     }
     if (field == "cash_amount") {
-      return getProduct.toFixed(4);
+      return getProduct.toFixed(6);
     }
     return getProduct.toFixed(2);
   }
@@ -92,9 +92,10 @@ class SendPopup extends Component {
       asset_type: this.props.symbol,
       sender_wallet_address: this.props.walletAddress
     };
-    console.log(transferObject);
     const transfer = Object.assign({}, transferObject);
-    this.props.processTransfer(transfer);
+    this.props.processTransfer(transfer).then(res => {
+      this.props.closePopup();
+    });
   }
 
   render() {

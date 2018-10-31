@@ -3,6 +3,8 @@ import { GridLoader } from 'halogenium';
 import axios from 'axios';
 import Transactions from './Transactions';
 import SendPopup from './SendPopup';
+import { connect } from 'react-redux';
+import { processTransfer } from '../../actions/user_actions';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
@@ -99,8 +101,6 @@ class YourAccountWallets extends Component {
  }
 
   renderWallet(symbol, img, wallet) {
-    console.log(wallet.address);
-    console.log(wallet.asset_type);
 
     let address = wallet.address;
 
@@ -211,11 +211,23 @@ class YourAccountWallets extends Component {
           {this.renderWallet("ETC", window.etc, ETCwallet)}
           {this.renderWallet("LTC", window.ltc, LTCwallet)}
         </div>
-        <Transactions symbol={this.state["currentWallet"]} currentWallet={transactionWallet} receivers={this.props.receivers}
-          transfers={this.props.transfers} sellings={this.props.sellings} purchases={this.props.purchases} />
+        <Transactions symbol={this.state["currentWallet"]} />
       </div>
     );
   }
 }
 
-export default YourAccountWallets;
+const mdp = (dispatch) => (
+  {
+    processTransfer: (user) => dispatch(processTransfer(user))
+  }
+);
+
+const msp = ({ session }) => (
+  {
+    wallets: session.wallets,
+    transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
+    receivers: session.receivers
+  }
+);
+export default connect(msp, mdp) (YourAccountWallets);

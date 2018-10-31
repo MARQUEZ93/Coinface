@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
+import { connect } from 'react-redux';
 
 class Transactions extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { onlyFive: null, activitiesArray: null };
     this.merge = this.merge.bind(this);
     this.mergesort = this.mergesort.bind(this);
     this.renderActivityList = this.renderActivityList.bind(this);
@@ -18,41 +18,6 @@ class Transactions extends Component {
     this.getColor = this.getColor.bind(this);
     this.getImage = this.getImage.bind(this);
     this.getDay = this.getDay.bind(this);
-  }
-
-  componentDidMount(){
-    let activitiesArray = [];
-    let symbol = this.props.symbol;
-    this.props.purchases.forEach(function(purchase){
-      if (purchase != null) {
-        activitiesArray.push(Object.assign(purchase, {activity_type: "purchase"}));
-      }
-    });
-    this.props.sellings.forEach(function(selling){
-      if (selling != null) {
-        activitiesArray.push(Object.assign(selling, {activity_type: "selling"}));
-      }
-    });
-    this.props.receivers.forEach(function(receiver){
-      if (receiver != null) {
-        activitiesArray.push(Object.assign(receiver, {activity_type: "receive"}));
-      }
-    });
-    this.props.transfers.forEach(function(transfer){
-      if (transfer != null) {
-        activitiesArray.push(Object.assign(transfer, {activity_type: "transfer"}));
-      }
-    });
-
-
-    activitiesArray = this.mergesort(activitiesArray);
-
-    let onlyFive = false;
-    if (activitiesArray.length == 5) { //tell user that default transfers are from Coinface
-      onlyFive = true;
-    }
-
-    this.setState ({ activitiesArray: activitiesArray, onlyFive: onlyFive });
 
   }
 
@@ -231,7 +196,7 @@ mergesort(arr) {
     if (activity.activity_type == "transfer" || activity.activity_type == "selling") {
       isNegative= "-";
     }
-    assetAmount = parseFloat(assetAmount).toFixed(4);
+    assetAmount = parseFloat(assetAmount).toFixed(6);
     cashAmount = parseFloat(cashAmount).toFixed(2);
     return (
       <div className="amountRecentActivity">
@@ -254,16 +219,44 @@ mergesort(arr) {
     )
   }
 
-  renderActivityList(){
+  renderActivityList(activitiesArray){
     let activityList = [];
-    for (let i = 0; i < this.state.activitiesArray.length; i++) {
-      if (this.state.activitiesArray[i].asset_type == this.props.symbol)
-      activityList.push(this.renderActivity(this.state.activitiesArray[i]));
+    for (let i = 0; i < activitiesArray.length; i++) {
+      if (activitiesArray[i].asset_type == this.props.symbol)
+      activityList.push(this.renderActivity(activitiesArray[i]));
     }
     return activityList;
   }
   render() {
-    if(!this.state.activitiesArray) {
+
+    let activitiesArray = [];
+    let symbol = this.props.symbol;
+    this.props.purchases.forEach(function(purchase){
+      if (purchase != null) {
+        activitiesArray.push(Object.assign(purchase, {activity_type: "purchase"}));
+      }
+    });
+    this.props.sellings.forEach(function(selling){
+      if (selling != null) {
+        activitiesArray.push(Object.assign(selling, {activity_type: "selling"}));
+      }
+    });
+    this.props.receivers.forEach(function(receiver){
+      if (receiver != null) {
+        activitiesArray.push(Object.assign(receiver, {activity_type: "receive"}));
+      }
+    });
+    this.props.transfers.forEach(function(transfer){
+      if (transfer != null) {
+        activitiesArray.push(Object.assign(transfer, {activity_type: "transfer"}));
+      }
+    });
+
+
+    activitiesArray = this.mergesort(activitiesArray);
+
+
+    if(!activitiesArray) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
@@ -273,10 +266,18 @@ mergesort(arr) {
     return (
       <div className="transactionsYA">
         <p className="transactionsHeader">Transactions</p>
-        {this.renderActivityList()}
+        {this.renderActivityList(activitiesArray)}
       </div>
     );
   }
 }
 
-export default Transactions;
+const msp = ({ session }) => (
+  {
+    wallets: session.wallets, transfers: session.transfers,
+    sellings: session.sellings, purchases: session.purchases,
+    receivers: session.receivers
+  }
+);
+
+export default connect(msp) (Transactions);
