@@ -12,7 +12,7 @@ class Accounts extends Component {
         <Header firstName={this.props.firstName} middleName={this.props.middleName}
           lastName={this.props.lastName} action={this.props.logout}/>
         <NavBar />
-        <YourAccounts receivers={this.props.receivers}
+        <YourAccounts processTransfer={this.props.processTransfer} receivers={this.props.receivers}
         transfers={this.props.transfers} sellings={this.props.sellings}
         purchases={this.props.purchases} wallets={this.props.wallets} />
         <Footer />

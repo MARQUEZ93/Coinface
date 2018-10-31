@@ -22,11 +22,14 @@ class SendPopup extends Component {
       usdError:false,
       assetError:false,
       note:"",
-      receiver_wallet_address:""
+      receiver_wallet_address:"",
+      asset_type: this.props.symbol,
+      sender_wallet_address: this.props.walletAddress
     }
     this.updateInputs = this.updateInputs.bind(this);
     this.methodInState = this.methodInState.bind(this);
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   methodInState(field, e) {
@@ -79,6 +82,12 @@ class SendPopup extends Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    const user = Object.assign({}, this.state[]);
+    this.props.processTransfer(user);
   }
 
   render() {
@@ -143,7 +152,7 @@ class SendPopup extends Component {
           <div className="inputNoteDiv">
             Note <input onChange={this.update('note')} className="inputNote" placeholder={"Write a message"}></input>
           </div>
-          <button style={buttonStyle} className="buttonSendTransactionDiv">Send</button>
+          <button style={buttonStyle} onClick={this.handleSubmit} className="buttonSendTransactionDiv">Send</button>
         </div>
       </div>
     );

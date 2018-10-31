@@ -100,6 +100,8 @@ class YourAccountWallets extends Component {
 
   renderWallet(symbol, img, wallet) {
 
+    let address = wallet.address;
+
     let colorsHash = {"BTC": "#FF9900", "ETC":"#00cc99", "LTC":"#b8b8b8", "ETH":"#4169E1", "BCH":"#4cca47"};
 
     let className = "accountWallet";
@@ -138,9 +140,9 @@ class YourAccountWallets extends Component {
             <button className="buttonYA">{receiveSVG}Receive</button>
           </div>
           {this.state.showPopup == symbol ?
-           <SendPopup cashAmount={cashAmount} floorWithCommas={floorWithCommas}
+           <SendPopup walletAddress={address} cashAmount={cashAmount} floorWithCommas={floorWithCommas}
            walletAmount={walletAmount} symbol={symbol} img={img} color={colorsHash[symbol]}
-           closePopup={this.togglePopup} currentPrice={currentPrice} />
+           closePopup={this.togglePopup} currentPrice={currentPrice} processTransfer={this.props.processTransfer} />
             : null
          }
         </div>

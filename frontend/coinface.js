@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cash: window.currentUser.cash, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
       purchases: window.currentUser.purchases , receivers: window.currentUser.receivers },
       entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+        users: { [window.currentUser.id]: window.currentUser },
+        transfers: window.currentUser.transfers 
       },
       errors: {}
     };

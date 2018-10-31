@@ -11,6 +11,7 @@
 #  cash_amount             :decimal(, )
 #  asset_type              :string
 #  model_type              :string           default("transfer")
+#  note                    :string           not null
 #
 
 class Transfer < ApplicationRecord

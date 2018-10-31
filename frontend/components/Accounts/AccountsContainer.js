@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { logout } from '../../actions/session_actions';
+import { processTransfer } from '../../actions/user_actions';
 import Accounts from './Accounts';
 
 const mdp = (dispatch) => (
   {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    processTransfer: (user) => dispatch(processTransfer(user))
   }
 );
 
