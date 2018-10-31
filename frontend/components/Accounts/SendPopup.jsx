@@ -143,17 +143,17 @@ class SendPopup extends Component {
             Available to send {availablePlaceholder}
           </div>
           <div className="inputsAmountsDiv">
-            Amount
+            <div className="typesIdentifiersPopup">
+              <div className="titleInputsAmountsDiv"><p>Amount</p></div>
+            </div>
+            <div className="twoIdentifiers">
+              <p className="usdAmountIdentifier">USD</p>
+              <p style={pStyle} className="assetAmountIdentifier">{symbol}</p>
+            </div>
             <div className="usdAssetInputsDiv">
-              <div className="usdAmountIdentifierDiv">
-                <p className="usdAmountIdentifier">USD</p>
-                <input value={this.state.cash_amount} onChange={this.updateInputs('cash_amount')} className="inputUSDAmount" placeholder={usdAmountPlaceholder}></input>
-              </div>
-              <div className="SymbolusdAssetInputsDiv">{equalsSVG}</div>
-              <div className="assetAmountIdentifierDiv">
-                <p style={pStyle} className="assetAmountIdentifier">{symbol}</p>
-                <input value={this.state.amount} onChange={this.updateInputs('amount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
-              </div>
+              <input value={this.state.cash_amount} onChange={this.updateInputs('cash_amount')} className="inputUSDAmount" placeholder={usdAmountPlaceholder}></input>
+              {equalsSVG}
+              <input value={this.state.amount} onChange={this.updateInputs('amount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
             </div>
             {this.state.usdError || this.state.assetError ? amountError: null}
           </div>

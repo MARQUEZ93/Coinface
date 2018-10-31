@@ -24,7 +24,7 @@
   margin: auto;
   background: white;
   width: 500px;
-  height: 630px;
+  height: 615px;
 }
 
 .firstLinePopup {
@@ -70,6 +70,7 @@
   font-size: 14px;
   display: flex;
   flex-direction: column;
+  width: 450px;
 }
 .inputReceipient{
   width: 410px;
@@ -136,27 +137,42 @@
   color: #9ba6b2;
 }
 
+.titleInputsAmountsDiv{
+  display: flex;
+  justify-content: flex-start;
+}
+.typesIdentifiersPopup{
+  display: flex;
+  width: 450px;
+  height: 20px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.twoIdentifiers {
+  width: 450px;
+  display: flex;
+}
+
 .inputsAmountsDiv{
   margin-left: 25px;
-  margin-top: 15px;
   font-size: 14px;
+  width: 450px;
 }
 .usdAmountIdentifier{
   font-size: 16px;
   color: #85bb65;
-  text-align: center;
   font-weight: 500;
   margin-bottom: 5px;
+  text-align: center;
+  width: 225px;
 }
-.assetAmountIdentifier{
+.assetAmountIdentifier {
+  width: 225px;
+  text-align: center;
   font-size: 16px;
-  text-align: center;
   font-weight: 500;
   margin-bottom: 5px;
-}
-.usdAmountIdentifierDiv, .assetAmountIdentifierDiv{
-  display: flex;
-  flex-direction: column;
 }
 .inputUSDAmount{
   width:163px;
@@ -178,18 +194,17 @@
 }
 .usdAssetInputsDiv{
   display: flex;
+  align-items: center;
 }
-.SymbolusdAssetInputsDiv{
-  margin-left:11px;
-  margin-right:11px;
-  margin-top: 22px;
-  margin-bottom: 22px;
-  align-self: flex-end;
-}
+
 .equalsSVG{
   width: 20px;
   height: 22px;
   fill: rgb(155, 166, 178);
+  margin-left:11px;
+  margin-right:11px;
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
 .amountError{
   color: red;
