@@ -20,10 +20,13 @@ class SendPopup extends Component {
         <div className='popup_inner'>
           <div className="firstLinePopup">
             <p className="symbolPopUp">Send {symbol}</p>
-            <button className="buttonPopup" onClick={this.props.closePopup}>{xSVG}</button>
+            <button className="closePopupButton" onClick={this.props.closePopup}>{xSVG}</button>
           </div>
           <div className="inputReceipientDiv">
-            Receipient <input className="inputReceipient" placeholder={placeholder}></input>
+            Recipient <input className="inputReceipient" placeholder={placeholder}></input>
+          </div>
+          <div className="inputReceipientDiv">
+            Available to send <input className="inputReceipient" placeholder={placeholder}></input>
           </div>
         </div>
       </div>

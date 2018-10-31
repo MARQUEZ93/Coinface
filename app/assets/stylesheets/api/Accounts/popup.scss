@@ -7,23 +7,28 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.05);
+  background-color: rgba(17,51,85, 0.5);
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto,
   Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans","Helvetica Neue", sans-serif;
 }
 .popup_inner {
+  border-radius: 5px;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   left: 25%;
   right: 25%;
-  top: 25%;
+  top: 23%;
   bottom: 25%;
   margin: auto;
   background: white;
-  width: 550px;
-  height: 500px;
+  width: 500px;
+  height: 625px;
 }
 
 .firstLinePopup {
+  background-color: #f9fbfc;
   padding-top: 15px;
   padding-bottom: 15px;
   display: flex;
@@ -39,10 +44,10 @@
 .symbolPopUp{
   margin-left: 25px;
 }
-.buttonPopup{
-  margin-left: 10px;
-  width: 70px;
+.closePopupButton{
+  width: 18px;
   height: 30px;
+  margin-right: 25px;
 }
 .xSymbol {
   width: 18px;
@@ -51,4 +56,24 @@
   fill: rgb(155, 166, 178);
   cursor: pointer;
   transition: fill 0.15s ease 0s;
+}
+.inputReceipientDiv{
+  margin-top: 15px;
+  margin-left: 25px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.inputReceipient{
+  width: 410px;
+  margin-top: 5px;
+  color: #4e5c6e;
+  font-size: 18px;
+  padding: 20px;
+  height: 25px;
+  border: 1px solid rgb(218, 225, 233);
+}
+
+.inputReceipient::placeholder {
+  color: rgb(155, 166, 178);
 }
