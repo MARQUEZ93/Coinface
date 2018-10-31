@@ -99,6 +99,8 @@ class YourAccountWallets extends Component {
  }
 
   renderWallet(symbol, img, wallet) {
+    console.log(wallet.address);
+    console.log(wallet.asset_type);
 
     let address = wallet.address;
 

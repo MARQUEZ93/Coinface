@@ -80,17 +80,29 @@ class YourPortfolio extends React.Component {
     let etcTR = this.renderTableRow(window.etc, "Ethereum Classic", "#00cc99", etcPercent,
     parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2)));
 
+    let alreadyHappened = {
+      "BTC": false,
+      "ETC": false,
+      "LTC": false,
+      "BCH": false,
+      "ETH": false
+    };
     for (let i = 0; i < amountList.length; i++) {
-      if (amountList[i] == btcPercent) {
+      if (amountList[i] == btcPercent && !alreadyHappened["BTC"]) {
         listItems.push(btcTR);
-      } else if (amountList[i] == etcPercent) {
+        alreadyHappened["BTC"] = true;
+      } else if (amountList[i] == etcPercent && !alreadyHappened["ETC"]) {
         listItems.push(etcTR);
-      } else if (amountList[i] == ethPercent) {
+        alreadyHappened["ETC"] = true;
+      } else if (amountList[i] == ethPercent && !alreadyHappened["LTC"]) {
         listItems.push(ethTR);
-      } else if (amountList[i] == bchPercent) {
+        alreadyHappened["LTC"] = true;
+      } else if (amountList[i] == bchPercent && !alreadyHappened["BCH"]) {
         listItems.push(bchTR);
-      } else if (amountList[i] == ltcPercent) {
+        alreadyHappened["BCH"] = true;
+      } else if (amountList[i] == ltcPercent && !alreadyHappened["ETH"]) {
         listItems.push(ltcTR);
+        alreadyHappened["ETH"] = true;
       }
     }
     listItems = listItems.reverse();
