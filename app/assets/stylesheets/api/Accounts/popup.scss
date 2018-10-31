@@ -19,7 +19,7 @@
   justify-content: flex-start;
   left: 25%;
   right: 25%;
-  top: 23%;
+  top: 25%;
   bottom: 25%;
   margin: auto;
   background: white;
@@ -29,6 +29,8 @@
 
 .firstLinePopup {
   background-color: #f9fbfc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding-top: 15px;
   padding-bottom: 15px;
   display: flex;
@@ -43,6 +45,11 @@
 
 .symbolPopUp{
   margin-left: 25px;
+  display: flex;
+}
+.pstyle{
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .closePopupButton{
   width: 18px;
@@ -72,8 +79,100 @@
   padding: 20px;
   height: 25px;
   border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
 }
 
 .inputReceipient::placeholder {
   color: rgb(155, 166, 178);
+}
+
+.availablePlaceholder{
+  margin-top: 5px;
+  border: 1px solid rgb(218, 225, 233);
+  display: flex;
+  justify-content: space-between;
+  width: 410px;
+  height: 25px;
+  padding: 20px;
+  align-items: center;
+  border-radius: 4px;
+
+}
+
+.availablePlaceholderImg{
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+
+}
+
+.availablePlaceholderFirstHalf{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+
+}
+.availablePlaceholderSecondHalf{
+  display: flex;
+  flex-direction: column;
+
+}
+.amountsAvailable{
+
+}
+
+.assetAmountAvailable{
+  font-size: 16px;
+}
+
+.amountsAvailableDiv{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.assetUSDAmountAvailable{
+  font-size: 12px;
+  color: #9ba6b2;
+}
+
+.inputsAmountsDiv{
+  margin-left: 25px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.inputUSDAmount{
+  width:163px;
+  border: 1px solid rgb(218, 225, 233);
+  padding: 20px;
+  border-radius: 4px;
+}
+.inputUSDAmount{
+  font-size: 18px;
+}
+.inputAssetAmount{
+  width:163px;
+  border: 1px solid rgb(218, 225, 233);
+  padding: 20px;
+  border-radius: 4px;
+}
+.inputAssetAmount::placeholder, .inputUSDAmount::placeholder{
+  font-size: 18px;
+  color:rgb(155, 166, 178);
+}
+.usdAssetInputsDiv{
+  display: flex;
+  margin-top: 5px;
+}
+.SymbolusdAssetInputsDiv{
+  margin-left:11px;
+  margin-right:11px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+.equalsSVG{
+  width: 20px;
+  height: 22px;
+  fill: rgb(155, 166, 178);
 }

@@ -100,14 +100,17 @@ class YourAccountWallets extends Component {
 
   renderWallet(symbol, img, wallet) {
 
+    let colorsHash = {"BTC": "#FF9900", "ETC":"#00cc99", "LTC":"#b8b8b8", "ETH":"#4169E1", "BCH":"#4cca47"};
+
     let className = "accountWallet";
+    let currentPrice = this.state[symbol];
 
     if (symbol === this.state["currentWallet"]) {
       className = "selectedWallet";
     }
     //price * amount
     let walletAmount = parseFloat(wallet.amount).toFixed(4);
-    let cashAmount = (this.state[symbol] * wallet.amount);
+    let cashAmount = (currentPrice * wallet.amount);
 
     cashAmount = cashAmount.toFixed(2);
     const numberWithCommas = (num) => {
@@ -135,8 +138,10 @@ class YourAccountWallets extends Component {
             <button className="buttonYA">{receiveSVG}Receive</button>
           </div>
           {this.state.showPopup == symbol ?
-           <SendPopup cashAmount={cashAmount}
-            symbol={symbol} closePopup={this.togglePopup} /> : null
+           <SendPopup cashAmount={cashAmount} floorWithCommas={floorWithCommas}
+           walletAmount={walletAmount} symbol={symbol} img={img} color={colorsHash[symbol]}
+           closePopup={this.togglePopup} currentPrice={currentPrice} />
+            : null
          }
         </div>
     );
