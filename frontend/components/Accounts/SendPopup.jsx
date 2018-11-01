@@ -35,6 +35,7 @@ class SendPopup extends Component {
   }
 
   methodInState(field, e) {
+    e.preventDefault();
     let otherState = "cash_amount";
     if (field == "cash_amount") {
       otherState = "amount";
@@ -46,6 +47,9 @@ class SendPopup extends Component {
       } else {
         if (this.state.usdError) {
           this.setState({ usdError: false });
+        }
+        if (this.state.assetError) {
+          this.setState({ usdError: false, amount: "" });
         }
         if (this.state.negativeError) {
           this.setState( {negativeError: false });
@@ -59,6 +63,9 @@ class SendPopup extends Component {
       } else {
         if (this.state.assetError) {
           this.setState({ assetError: false });
+        }
+        if (this.state.usdError) {
+          this.setState({ usdError: false, cash_amount:"" });
         }
         if (this.state.negativeError) {
           this.setState( {negativeError: false });
@@ -98,7 +105,8 @@ class SendPopup extends Component {
   }
 
   changeState(field, e){
-    if (e.currentTarget.value.length != 34 && e.currentTarget.value.length > 0 ) {
+    e.preventDefault();
+    if (e.currentTarget.value.length < 32 && e.currentTarget.value.length > 0 ) {
       this.setState( {
         addressError: true
       })
@@ -107,7 +115,7 @@ class SendPopup extends Component {
         addressError: false
       })
     }
-    return field;
+    return e.currentTarget.value;
   }
 
   updateAddress(field) {
@@ -119,7 +127,9 @@ class SendPopup extends Component {
   handleSubmit(e){
     e.preventDefault();
     //don't let invalid post attempts
-    if (!this.state.assetError && !this.state.usdError & !this.state.addressError &!this.state.negativeError) {
+    if (!this.state.assetError && !this.state.usdError &&
+      !this.state.addressError && !this.state.negativeError
+      && this.state.cash_amount !== "NaN" && this.state.amount !== "NaN") {
       let transferObject = {
         cash_amount: this.state.cash_amount,
         amount: this.state.amount,
