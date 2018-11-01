@@ -65,7 +65,11 @@ class SignInForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    let userObject = {
+      password: this.state.password,
+      email: this.state.email,
+    };
+    const user = Object.assign({}, userObject);
     if (this.state.submit || this.props.button === "CREATE ACCOUNT" ) {
       this.props.processForm(user);
     }

@@ -34,7 +34,11 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState( { loading: true });
-    const user = Object.assign({}, this.state);
+    let userObject = {
+      password: this.state.password,
+      email: this.state.email,
+    };
+    const user = Object.assign({}, userObject);
     this.props.processForm(user);
   }
 
