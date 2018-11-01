@@ -23,6 +23,7 @@ class SignUpForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderLoader = this.renderLoader.bind(this);
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -42,20 +43,8 @@ class SignUpForm extends React.Component {
     this.props.processForm(user);
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
   renderLoader() {
-    if (!this.state.loading) {
+    if (!this.state.loading || this.props.errors.length > 0) {
       return (
         <div className="SessionsNavDiv">{this.props.navLink}</div>
       );
@@ -69,12 +58,19 @@ class SignUpForm extends React.Component {
 
   render() {
 
+    let errors = this.props.errors;
+    let x = 0;
+    if (errors.length > 1) {
+      x = errors.length -1;
+    }
+    let invalidSession= <p className="invalidSession">Invalid Sign Up</p>;
+
     return (
       <div className="Sessions">
         <Header />
         <h2 className="SessionsHeader"> {this.props.header} </h2>
         <form onSubmit={this.handleSubmit} className="SignUpForm">
-            {this.renderErrors()}
+          {this.props.errors.length > 0 ? invalidSession: null}
             <div className="SessionsInputsDiv">
                 <input type="text"
                   value={this.state.firstName}
@@ -110,6 +106,7 @@ class SignUpForm extends React.Component {
             <div className="SessionsSubmitDivs">
               <input className="SessionsSubmit" type="submit" value={this.props.button} />
             </div>
+
         </form>
         {this.renderLoader()}
       </div>

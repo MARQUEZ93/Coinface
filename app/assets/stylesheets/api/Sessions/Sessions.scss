@@ -22,7 +22,7 @@
   background-color: white;
   padding-left: 24px;
   padding-right: 24px;
-  height: 150px;
+  height: 160px;
   width: 340px;
   border-radius: 4px;
   padding-top: 22px;
@@ -37,7 +37,7 @@
   background-color: white;
   padding-left: 24px;
   padding-right: 24px;
-  height: 300px;
+  height: 310px;
   width: 340px;
   border-radius: 4px;
   padding-top: 22px;
@@ -106,4 +106,12 @@
 .SessionsNavDiv{
   margin-top: 15px;
   text-align: center;
+}
+
+.invalidSession{
+  margin-top: -20px;
+  color: red;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
 }

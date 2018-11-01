@@ -20,6 +20,7 @@ class SignInForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -75,19 +76,14 @@ class SignInForm extends React.Component {
     }
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
   render() {
+
+    let errors = this.props.errors;
+    let x = 0;
+    if (errors.length > 1) {
+      x = errors.length -1;
+    }
+    let invalidSession= <p className="invalidSession">Invalid Sign In</p>;
 
     let SignIn = <input className="SessionsSubmit" type="submit" value={this.props.button} />;
     if (this.props.button == "SIGN IN") {
@@ -104,7 +100,7 @@ class SignInForm extends React.Component {
         <Header />
         <h2 className="SessionsHeader"> {this.props.header} </h2>
         <form onSubmit={this.handleSubmit} className="SessionsForm">
-            {this.renderErrors()}
+          {this.props.errors.length > 0 ? invalidSession: null}
             <div className="SessionsInputsDiv">
                 <input type="text"
                   value={this.state.email}

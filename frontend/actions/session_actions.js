@@ -6,9 +6,14 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_TRANSFER_ERRORS = 'RECEIVE_TRANSFER_ERRORS';
 export const CLEAR_TRANSFER_ERRORS = 'CLEAR_TRANSFER_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const clearTransferErrors = () => ({
   type: CLEAR_TRANSFER_ERRORS
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });
 
 export const signUpUser = user => ({
