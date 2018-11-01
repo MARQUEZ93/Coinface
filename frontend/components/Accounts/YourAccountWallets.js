@@ -4,7 +4,7 @@ import axios from 'axios';
 import Transactions from './Transactions';
 import SendPopup from './SendPopup';
 import { connect } from 'react-redux';
-import { processTransfer } from '../../actions/user_actions';
+import { processTransfer } from '../../actions/session_actions';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;

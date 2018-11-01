@@ -24,7 +24,7 @@
   margin: auto;
   background: white;
   width: 500px;
-  height: 615px;
+  height: 635px;
 }
 
 .firstLinePopup {
@@ -82,7 +82,14 @@
   border: 1px solid rgb(218, 225, 233);
   border-radius: 4px;
 }
-
+.addressError {
+  color: red;
+}
+.negativeError{
+  color:red;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
 .inputReceipient::placeholder {
   color: rgb(155, 166, 178);
 }

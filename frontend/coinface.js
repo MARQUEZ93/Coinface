@@ -13,13 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
       session: { id: window.currentUser.id, firstName: window.currentUser.firstName,
         middleName: window.currentUser.middleName, lastName: window.currentUser.lastName,
         email: window.currentUser.email, wallets: window.currentUser.wallets,
-      cash: window.currentUser.cash, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
-      purchases: window.currentUser.purchases , receivers: window.currentUser.receivers },
-      entities: {
-        users: { [window.currentUser.id]: window.currentUser },
-        transfers: window.currentUser.transfers 
-      },
-      errors: {}
+        cash: window.currentUser.cash, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
+        purchases: window.currentUser.purchases , receivers: window.currentUser.receivers }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;

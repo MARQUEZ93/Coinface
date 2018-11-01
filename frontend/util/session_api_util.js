@@ -20,3 +20,11 @@ export const signup = (user) => (
     data:{user}
   })
 );
+
+export const processTransfer = (transfer) => (
+  $.ajax({
+    data: {transfer},
+    url:'/api/transfers',
+    method: 'POST'
+  })
+);

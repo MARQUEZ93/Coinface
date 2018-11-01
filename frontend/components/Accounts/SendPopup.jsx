@@ -21,32 +21,47 @@ class SendPopup extends Component {
       amount: "",
       usdError:false,
       assetError:false,
+      addressError:false,
       note:"",
-      receiver_wallet_address:""
+      receiver_wallet_address:"",
+      negativeError: false
     }
     this.updateInputs = this.updateInputs.bind(this);
     this.methodInState = this.methodInState.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateAddress = this.updateAddress.bind(this);
+    this.changeState = this.changeState.bind(this);
   }
 
   methodInState(field, e) {
     let otherState = "cash_amount";
     if (field == "cash_amount") {
       otherState = "amount";
+      //prevent negative submission
       if (parseFloat(e.currentTarget.value) > this.props.cashAmount){
         this.setState({ usdError: true });
+      } else if (parseFloat(e.currentTarget.value) < 0) {
+        this.setState( { negativeError : true } );
       } else {
         if (this.state.usdError) {
           this.setState({ usdError: false });
         }
+        if (this.state.negativeError) {
+          this.setState( {negativeError: false });
+        }
       }
     } else {
-      if (parseFloat(e.currentTarget.value) > this.props.walletAmount){
+      if (parseFloat(e.currentTarget.value) > this.props.walletAmount) {
         this.setState({ assetError: true });
+      } else if (parseFloat(e.currentTarget.value) < 0) {
+        this.setState( { negativeError : true } );
       } else {
         if (this.state.assetError) {
           this.setState({ assetError: false });
+        }
+        if (this.state.negativeError) {
+          this.setState( {negativeError: false });
         }
       }
     }
@@ -82,20 +97,42 @@ class SendPopup extends Component {
     });
   }
 
+  changeState(field, e){
+    if (e.currentTarget.value.length != 34 && e.currentTarget.value.length > 0 ) {
+      this.setState( {
+        addressError: true
+      })
+    } else if (this.state.addressError) {
+      this.setState({
+        addressError: false
+      })
+    }
+    return field;
+  }
+
+  updateAddress(field) {
+    return e => this.setState({
+      [field]: this.changeState(field, e)
+    });
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    let transferObject = {
-      cash_amount: this.state.cash_amount,
-      amount: this.state.amount,
-      note: this.state.note,
-      receiver_wallet_address: this.state.receiver_wallet_address,
-      asset_type: this.props.symbol,
-      sender_wallet_address: this.props.walletAddress
-    };
-    const transfer = Object.assign({}, transferObject);
-    this.props.processTransfer(transfer).then(res => {
-      this.props.closePopup();
-    });
+    //don't let invalid post attempts
+    if (!this.state.assetError && !this.state.usdError & !this.state.addressError &!this.state.negativeError) {
+      let transferObject = {
+        cash_amount: this.state.cash_amount,
+        amount: this.state.amount,
+        note: this.state.note,
+        receiver_wallet_address: this.state.receiver_wallet_address,
+        asset_type: this.props.symbol,
+        sender_wallet_address: this.props.walletAddress
+      };
+      const transfer = Object.assign({}, transferObject);
+      this.props.processTransfer(transfer).then(res => {
+        this.props.closePopup();
+      });
+    }
   }
 
   render() {
@@ -109,6 +146,8 @@ class SendPopup extends Component {
     const buttonStyle = {
       backgroundColor: this.props.color
     };
+    let negativeAmount= <p className="negativeError">NOT GONNA HAPPEN</p>;
+    let improperAddress= <p className="addressError">Please enter a valid {symbol} address</p>;
     let amountError = <p className="amountError">You {"do"} not have enough funds to send at {"this"} amount.</p>;
     let availablePlaceholder = (
       <div className="availablePlaceholder">
@@ -137,7 +176,8 @@ class SendPopup extends Component {
             <button className="closePopupButton" onClick={this.props.closePopup}>{xSVG}</button>
           </div>
           <div className="inputReceipientDiv">
-            Recipient <input onChange={this.update('receiver_wallet_address')} className="inputReceipient" placeholder={placeholder}></input>
+            Recipient <input onChange={this.updateAddress('receiver_wallet_address')} className="inputReceipient" placeholder={placeholder}></input>
+            {this.state.addressError ? improperAddress:null}
           </div>
           <div className="inputReceipientDiv">
             Available to send {availablePlaceholder}
@@ -156,6 +196,7 @@ class SendPopup extends Component {
               <input value={this.state.amount} onChange={this.updateInputs('amount')}  className="inputAssetAmount" placeholder={assetAmountPlaceholder}></input>
             </div>
             {this.state.usdError || this.state.assetError ? amountError: null}
+            {this.state.negativeError ? negativeAmount: null}
           </div>
           <div className="inputNoteDiv">
             Note <input onChange={this.update('note')} className="inputNote" placeholder={"Write a message"}></input>
