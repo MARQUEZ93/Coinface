@@ -82,7 +82,7 @@
   border: 1px solid rgb(218, 225, 233);
   border-radius: 4px;
 }
-.addressError {
+.addressError, .invalidError {
   color: red;
 }
 .negativeError{

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Transactions from './Transactions';
 import SendPopup from './SendPopup';
 import { connect } from 'react-redux';
-import { processTransfer } from '../../actions/session_actions';
+import { clearTransferErrors } from '../../actions/session_actions';
 
 const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
 const URL_END = `&tsym=USD&e=Kraken`;
@@ -31,7 +31,7 @@ class YourAccountWallets extends Component {
       "BTC": null, "BCH": null, "ETC": null,
       "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
       "ethAmount": null, "bchAmount":null, "ltcAmount":null,
-      "currentWallet": "BTC", showPopUp: ""
+      "currentWallet": "BTC", showPopUp: false
     };
     this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
@@ -96,7 +96,10 @@ class YourAccountWallets extends Component {
     return (this.state[asset] * wallet.amount);
   }
 
-  togglePopup(symbol="") {
+  togglePopup(symbol) {
+    if (symbol == false){
+      this.props.clearTransfersErrors();
+    }
     this.setState({ showPopup: symbol });
  }
 
@@ -217,17 +220,19 @@ class YourAccountWallets extends Component {
   }
 }
 
-const mdp = (dispatch) => (
-  {
-    processTransfer: (user) => dispatch(processTransfer(user))
-  }
-);
-
 const msp = ({ session }) => (
   {
-    wallets: session.wallets,
-    transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
+    wallets: session.wallets, transfers: session.transfers,
+    sellings: session.sellings, purchases: session.purchases,
     receivers: session.receivers
   }
 );
-export default connect(msp, mdp) (YourAccountWallets);
+
+const mdp = (dispatch) => (
+  {
+    clearTransfersErrors: () => dispatch(clearTransferErrors())
+  }
+);
+
+
+export default connect(msp,mdp)(YourAccountWallets);

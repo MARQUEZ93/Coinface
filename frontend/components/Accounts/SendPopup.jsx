@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { processTransfer } from '../../actions/session_actions';
 
 const xSVG = <svg className="xSymbol" xmlns="http://www.w3.org/2000/svg"
   width="20" height="20" viewBox="0 0 20 20">
@@ -140,7 +142,7 @@ class SendPopup extends Component {
       };
       const transfer = Object.assign({}, transferObject);
       this.props.processTransfer(transfer).then(res => {
-        this.props.closePopup();
+        this.props.closePopup(false);
       });
     }
   }
@@ -156,6 +158,7 @@ class SendPopup extends Component {
     const buttonStyle = {
       backgroundColor: this.props.color
     };
+    let invalidTransfer= <p className="invalidError">{this.props.transferError}</p>;
     let negativeAmount= <p className="negativeError">NOT GONNA HAPPEN</p>;
     let improperAddress= <p className="addressError">Please enter a valid {symbol} address</p>;
     let amountError = <p className="amountError">You {"do"} not have enough funds to send at {"this"} amount.</p>;
@@ -183,7 +186,7 @@ class SendPopup extends Component {
             <div className="symbolPopUp">
               <p>Send</p><p className="pstyle" style={pStyle}>{symbol}</p>
             </div>
-            <button className="closePopupButton" onClick={this.props.closePopup}>{xSVG}</button>
+            <button className="closePopupButton" onClick={() => this.props.closePopup(false)}>{xSVG}</button>
           </div>
           <div className="inputReceipientDiv">
             Recipient <input onChange={this.updateAddress('receiver_wallet_address')} className="inputReceipient" placeholder={placeholder}></input>
@@ -207,6 +210,7 @@ class SendPopup extends Component {
             </div>
             {this.state.usdError || this.state.assetError ? amountError: null}
             {this.state.negativeError ? negativeAmount: null}
+            {this.props.transferError.length == 1 ? invalidTransfer: null}
           </div>
           <div className="inputNoteDiv">
             Note <input onChange={this.update('note')} className="inputNote" placeholder={"Write a message"}></input>
@@ -218,4 +222,17 @@ class SendPopup extends Component {
   }
 }
 
-export default SendPopup;
+const mdp = (dispatch) => (
+  {
+    processTransfer: (user) => dispatch(processTransfer(user))
+  }
+);
+
+
+const msp = ({ errors }) => (
+  {
+    transferError: errors.transfer
+  }
+);
+
+export default connect(msp, mdp)(SendPopup);
