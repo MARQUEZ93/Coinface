@@ -18,6 +18,7 @@ class SendPopup extends Component {
 
   constructor(props){
     super(props);
+    console.log(this.props.walletAddress);
     this.state = {
       cash_amount: "",
       amount: "",
@@ -131,7 +132,7 @@ class SendPopup extends Component {
     //don't let invalid post attempts
     if (!this.state.assetError && !this.state.usdError &&
       !this.state.addressError && !this.state.negativeError
-      && this.state.cash_amount !== "NaN" && this.state.amount !== "NaN") {
+      && this.state.amount != "NaN" && this.state.cash_amount != "NaN") {
       let transferObject = {
         cash_amount: this.state.cash_amount,
         amount: this.state.amount,
@@ -158,6 +159,7 @@ class SendPopup extends Component {
     const buttonStyle = {
       backgroundColor: this.props.color
     };
+    let nonInteger= <p className="invalidError">Type only numbers please.</p>;
     let invalidTransfer= <p className="invalidError">{this.props.transferError}</p>;
     let negativeAmount= <p className="negativeError">NOT GONNA HAPPEN</p>;
     let improperAddress= <p className="addressError">Please enter a valid {symbol} address</p>;
@@ -211,6 +213,7 @@ class SendPopup extends Component {
             {this.state.usdError || this.state.assetError ? amountError: null}
             {this.state.negativeError ? negativeAmount: null}
             {this.props.transferError.length == 1 ? invalidTransfer: null}
+            {this.state.amount == "NaN" || this.state.cash_amount == "NaN" ? nonInteger: null}
           </div>
           <div className="inputNoteDiv">
             Note <input onChange={this.update('note')} className="inputNote" placeholder={"Write a message"}></input>
