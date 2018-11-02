@@ -36,6 +36,9 @@ class SignUpForm extends React.Component {
     e.preventDefault();
     this.setState( { loading: true });
     let userObject = {
+      firstName: this.state.firstName,
+      middleName: this.state.middleName,
+      lastName: this.state.lastName,
       password: this.state.password,
       email: this.state.email,
     };
