@@ -24,7 +24,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   #redux form will handle password validations
-
+  before_validation :downcase_email
   after_initialize :ensure_session_token
   after_create :generate_defaults
 
@@ -127,6 +127,12 @@ class User < ApplicationRecord
     Purchase.destroy_all
     Cash.destroy_all
     User.destroy_all
+  end
+
+  private
+
+  def downcase_email
+    self.email = email.downcase if email.present?
   end
 
 end
