@@ -3,6 +3,7 @@ import { GridLoader } from 'halogenium';
 import axios from 'axios';
 import Transactions from './Transactions';
 import SendPopup from './SendPopup';
+import WalletAddress from './WalletAddress';
 import { connect } from 'react-redux';
 import { clearTransferErrors } from '../../actions/session_actions';
 
@@ -31,7 +32,7 @@ class YourAccountWallets extends Component {
       "BTC": null, "BCH": null, "ETC": null,
       "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
       "ethAmount": null, "bchAmount":null, "ltcAmount":null,
-      "currentWallet": "BTC", showPopUp: false
+      "currentWallet": "BTC", showPopUp: false, showBarcode: false
     };
     this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
@@ -39,6 +40,7 @@ class YourAccountWallets extends Component {
     this.renderWallet = this.renderWallet.bind(this);
     this.changeWallet = this.changeWallet.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.toggleBarcode= this.toggleBarcode.bind(this);
   }
 
   componentDidMount() {
@@ -103,6 +105,10 @@ class YourAccountWallets extends Component {
     this.setState({ showPopup: symbol });
  }
 
+ toggleBarcode(symbol) {
+   this.setState({ showBarcode: symbol });
+}
+
   renderWallet(symbol, img, wallet) {
 
     let address = wallet.address;
@@ -142,14 +148,19 @@ class YourAccountWallets extends Component {
           </div>
           <div className="buttonsDivYA">
             <button onClick={()=> this.togglePopup(symbol)} className="buttonYA">{sendSVG}Send</button>
-            <button className="buttonYA">{receiveSVG}Receive</button>
+            <button className="buttonYA" onClick={()=> this.toggleBarcode(symbol)} >{receiveSVG}Receive</button>
           </div>
-          {this.state.showPopup == symbol ?
+          { this.state.showPopup == symbol ?
            <SendPopup walletAddress={address} cashAmount={cashAmount} floorWithCommas={floorWithCommas}
            walletAmount={walletAmount} symbol={symbol} img={img} color={colorsHash[symbol]}
            closePopup={this.togglePopup} currentPrice={currentPrice} processTransfer={this.props.processTransfer} />
             : null
          }
+         { this.state.showBarcode == symbol ?
+          <WalletAddress closePopup={this.toggleBarcode} address={address}
+            symbol={symbol} color={colorsHash[symbol]} />
+          : null
+        }
         </div>
     );
   }

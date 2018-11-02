@@ -1,0 +1,134 @@
+.WalletAddress {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(17,51,85, 0.5);
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans","Helvetica Neue", sans-serif;
+}
+.innerWalletAddress {
+  border-radius: 5px;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+  width: 500px;
+  height: 400px;
+}
+
+.headerWalletAddress {
+  background-color: #f9fbfc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  color: #4e5c6e;
+  border-bottom: 1px solid rgb(218, 225, 233);
+}
+
+.symbolPopUp{
+  margin-left: 25px;
+  display: flex;
+}
+.pstyle{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.closePopupButton{
+  display: flex;
+  align-items: center;
+}
+
+.imgWalletAddress{
+  width: 200px;
+  height: 200px;
+}
+
+.walletAddressBarcode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.xSymbolBarcode{
+  margin-right: 25px;
+  width: 18px;
+  height: 18px;
+  fill: rgb(155, 166, 178);
+  cursor: pointer;
+  transition: fill 0.15s ease 0s;
+}
+
+.walletAddressInput{
+  height: 27px;
+  width: 367px;
+  padding: 16px;
+
+  font-family: Monaco, monospace;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 18px;
+  color: rgb(78, 92, 110);
+  background-color: #f9fbfc;
+
+  border: 1px solid rgb(218, 225, 233);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+}
+
+.clipboard {
+    fill: rgb(218, 225, 233);
+}
+
+.clipboardDiv{
+  display: flex;
+  align-items: center;
+  height: 27px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 23px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-top: 1px solid rgb(218, 225, 233);
+  border-right: 1px solid rgb(218, 225, 233);
+  border-bottom: 1px solid rgb(218, 225, 233);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.addressClipboard{
+  display: flex;
+  align-items: center;
+}
+
+.mainWalletAddress{
+  height: 100%;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.centerDivWalletAddress{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+}

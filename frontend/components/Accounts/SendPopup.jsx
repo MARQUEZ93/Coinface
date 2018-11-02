@@ -18,7 +18,6 @@ class SendPopup extends Component {
 
   constructor(props){
     super(props);
-    console.log(this.props.walletAddress);
     this.state = {
       cash_amount: "",
       amount: "",
