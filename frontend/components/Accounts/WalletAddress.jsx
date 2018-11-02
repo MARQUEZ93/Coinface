@@ -10,6 +10,7 @@ class WalletAddress extends Component {
 
   constructor(props) {
     super(props);
+    this.copyText = this.copyText.bind(this);
   }
   componentDidMount() {
     document.getElementById("walletAddressInput").disabled = true;
@@ -17,9 +18,11 @@ class WalletAddress extends Component {
   //do I need to unsubscribe w/ componentWillUnmount?
 
   copyText() {
-    const copyText = document.getElementById("walletAddressInput");
+    document.getElementById("walletAddressInput").disabled = false;
+    var copyText = document.getElementById("walletAddressInput");
     copyText.select();
     document.execCommand("copy");
+    document.getElementById("walletAddressInput").disabled = true;
   }
 
   render() {
@@ -47,8 +50,8 @@ class WalletAddress extends Component {
                 <img className="imgWalletAddress" src={window.address} />
               </div>
               <div className="addressClipboard">
-                <input type="text" className="walletAddressInput" value={this.props.address} id="walletAddressInput" />
-                <div className="clipboardDiv" id="copyWalletAddress" onclick={this.copyText}>{clipboard}</div>
+                <input type="text" className="walletAddressInput" defaultValue={this.props.address} id="walletAddressInput" />
+                <div className="clipboardDiv" id="copyWalletAddress" onClick={this.copyText}>{clipboard}</div>
               </div>
             </div>
           </div>
