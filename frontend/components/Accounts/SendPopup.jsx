@@ -26,7 +26,8 @@ class SendPopup extends Component {
       addressError:false,
       note:"",
       receiver_wallet_address:"",
-      negativeError: false
+      negativeError: false,
+      provideNote: false
     }
     this.updateInputs = this.updateInputs.bind(this);
     this.methodInState = this.methodInState.bind(this);
@@ -131,7 +132,8 @@ class SendPopup extends Component {
     //don't let invalid post attempts
     if (!this.state.assetError && !this.state.usdError &&
       !this.state.addressError && !this.state.negativeError
-      && this.state.amount != "NaN" && this.state.cash_amount != "NaN") {
+      && this.state.amount != "NaN" && this.state.cash_amount != "NaN" &&
+      /\S/.test(this.state.note)) {
       let transferObject = {
         cash_amount: this.state.cash_amount,
         amount: this.state.amount,
@@ -144,6 +146,9 @@ class SendPopup extends Component {
       this.props.processTransfer(transfer).then(res => {
         this.props.closePopup(false);
       });
+    }
+    else if (!/\S/.test(this.state.note)){
+      this.setState({provideNote: true });
     }
   }
 
@@ -158,6 +163,7 @@ class SendPopup extends Component {
     const buttonStyle = {
       backgroundColor: this.props.color
     };
+    let emptyNote= <p className="emptyNote">Provide a note please.</p>;
     let nonInteger= <p className="invalidError">Type only numbers please.</p>;
     let invalidTransfer= <p className="invalidError">{this.props.transferError}</p>;
     let negativeAmount= <p className="negativeError">NOT GONNA HAPPEN</p>;
@@ -217,6 +223,7 @@ class SendPopup extends Component {
           <div className="inputNoteDiv">
             Note <input onChange={this.update('note')} className="inputNote" placeholder={"Write a message"}></input>
           </div>
+          {this.state.provideNote ? emptyNote: null}
           <button style={buttonStyle} onClick={this.handleSubmit} className="buttonSendTransactionDiv">Send</button>
         </div>
       </div>

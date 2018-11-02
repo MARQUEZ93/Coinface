@@ -125,9 +125,6 @@
   flex-direction: column;
 
 }
-.amountsAvailable{
-
-}
 
 .assetAmountAvailable{
   font-size: 16px;
@@ -243,4 +240,9 @@
   height: 25px;
   padding: 20px;
   margin-top: 15px;
+}
+.emptyNote{
+  margin-top: 5px;
+  margin-left: 25px;
+  color:red;
 }
