@@ -5,16 +5,26 @@ class CenterMessage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { email: "" };
+    this.state = { email: "", invalidEmail: false};
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.history.push({
-      pathname: '/signup',
-      state: { email: this.state.email }
-    });
+    let validated = this.validateEmail(this.state.email);
+    if ( validated) {
+      this.props.history.push({
+        pathname: '/signup',
+        state: { email: this.state.email }
+      });
+    } else {
+      this.setState({ invalidEmail: true });
+    }
   }
 
   onInputChange(email) {
@@ -22,6 +32,8 @@ class CenterMessage extends Component {
   }
 
   render () {
+
+    let invalidEmail = <p className="invalidEmailWelcome">Invalid email</p>;
 
     return (
       <div className="Welcome-CenterMessage">
@@ -34,6 +46,7 @@ class CenterMessage extends Component {
           <input onChange={event => this.onInputChange(event.target.value)} value={this.state.email} type="text" className="centerInput" placeholder="Email address" />
           <button onClick={event => this.handleSubmit(event)} className="centerButton" type="button"> Get Started </button>
         </div>
+        {this.state.invalidEmail ? invalidEmail:null}
       </div>
     );
   }
