@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-
+gem "loofah", ">= 2.2.3"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,7 +28,7 @@ gem 'bootsnap'
 gem "annotate", "~> 2.7"
 gem "jquery-rails", "~> 4.3"
 
-#make api calls in backend to get asset price 
+#make api calls in backend to get asset price
 gem 'rest-client'
 
 group :development, :test do
