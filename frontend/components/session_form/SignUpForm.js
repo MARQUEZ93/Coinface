@@ -40,8 +40,8 @@ class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.clearErrors();
     let validatedEmail = this.validateEmail(this.state.email);
-    this.setState( { loading: true });
     let userObject = {
       firstName: this.state.firstName,
       middleName: this.state.middleName,
@@ -51,6 +51,7 @@ class SignUpForm extends React.Component {
     };
     const user = Object.assign({}, userObject);
     if (validatedEmail) {
+      this.setState( { invalidEmail: false, loading: true });
       this.props.processForm(user);
     } else if (!validatedEmail) {
       this.setState({invalidEmail: true, loading: false });

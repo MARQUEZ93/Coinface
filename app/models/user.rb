@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   validates :email, :password_digest, :session_token, :firstName, :middleName, :lastName, presence: true
 
-  validates :email, uniqueness: true
+  validates :email, :uniqueness => { :case_sensitive => false }
   #we never keep passwords in db, so allow_nil is needed
   validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :purchases, through: :wallets, source: :purchases
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email: email.downcase)
     return nil unless user && user.valid_password?(password)
     user
   end
