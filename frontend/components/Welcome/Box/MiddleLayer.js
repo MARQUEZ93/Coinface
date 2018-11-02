@@ -31,15 +31,20 @@ class MiddleLayer extends Component {
         </div>
       );
     }
+    //negative comes w/ api data
     let changeDirection = this.state.change > 0 ? "+":"";
+    let cssColor = "WelcomePriceChangeGreen";
     if (this.state.change == 0) {
       changeDirection = "+-";
+      cssColor= "WelcomePriceChangeYellow";
+    } else if (this.state.change < 0) {
+      cssColor = "WelcomePriceChangeRed";
     }
     let renderChange = parseFloat(this.state.change).toFixed(2);
     return (
       <div className="MiddleLayer">
         <p className="WelcomePrice"> { "$" + this.state.price } </p>
-        <p className="WelcomePriceChange"> {changeDirection + renderChange + "%"} </p>
+        <p className={cssColor}> {changeDirection + renderChange + "%"} </p>
       </div>
     );
   }
