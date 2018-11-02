@@ -108,10 +108,17 @@
   text-align: center;
 }
 
-.invalidSession{
+.invalidSession {
   margin-top: -20px;
   color: red;
   text-align: center;
   font-size: 18px;
   margin-bottom: 8px;
+}
+
+.noAtSymbol{
+  font-weight: 500;
+  font-size: 18px;
+  color: red;
+  text-align: center;
 }

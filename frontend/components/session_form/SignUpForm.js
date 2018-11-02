@@ -19,7 +19,8 @@ class SignUpForm extends React.Component {
       firstName: "",
       middleName: "",
       lastName: "",
-      loading: false
+      loading: false,
+      invalidEmail: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderLoader = this.renderLoader.bind(this);
@@ -32,8 +33,14 @@ class SignUpForm extends React.Component {
     });
   }
 
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    let validatedEmail = this.validateEmail(this.state.email);
     this.setState( { loading: true });
     let userObject = {
       firstName: this.state.firstName,
@@ -43,7 +50,11 @@ class SignUpForm extends React.Component {
       email: this.state.email,
     };
     const user = Object.assign({}, userObject);
-    this.props.processForm(user);
+    if (validatedEmail) {
+      this.props.processForm(user);
+    } else if (!validatedEmail) {
+      this.setState({invalidEmail: true, loading: false });
+    }
   }
 
   renderLoader() {
@@ -60,6 +71,8 @@ class SignUpForm extends React.Component {
   }
 
   render() {
+
+    let invalidEmail = <p className="noAtSymbol">Invalid email</p>;
 
     let errors = this.props.errors;
     let x = 0;
@@ -106,6 +119,7 @@ class SignUpForm extends React.Component {
                 placeholder="Password"
               />
             </div>
+            {this.state.invalidEmail ? invalidEmail:null}
             <div className="SessionsSubmitDivs">
               <input className="SessionsSubmit" type="submit" value={this.props.button} />
             </div>
