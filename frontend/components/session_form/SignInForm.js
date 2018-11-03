@@ -16,7 +16,8 @@ class SignInForm extends React.Component {
       email: email,
       password: '',
       submit: true,
-      invalidEmail: false
+      invalidEmail: false,
+      allowClick: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
@@ -36,12 +37,14 @@ class SignInForm extends React.Component {
   // of my app academy cohort. I loved it, and wanted it in my app!
 
   loginAsGuest() {
-    const emailArray = 'Alejandro@coinface.com'.split('');
-    const passwordArray = 'password'.split('');
-    const button = document.getElementById('login');
-    this.setState({ email: '', password: '', submit: false }, () =>
+    if (this.state.allowClick) {
+      const emailArray = 'Alejandro@coinface.com'.split('');
+      const passwordArray = 'password'.split('');
+      const button = document.getElementById('login');
+      this.setState({ email: '', password: '', submit: false, allowClick: false  }, () =>
       this.loginAsGuestHelper(emailArray, passwordArray, button)
     );
+    }
   }
 
   loginAsGuestHelper(emailArray, passwordArray, button){
