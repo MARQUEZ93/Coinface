@@ -16,6 +16,7 @@ import Welcome from './Welcome/Welcome';
 import Dashboard from './Dashboard/Dashboard';
 import PageNotFound from './PageNotFound';
 import Accounts from './Accounts/AccountsContainer';
+import Buy from './BuySell/BuyContainer';
 
 const App = () => (
     <Switch>
@@ -23,6 +24,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={SignIn} />
       <AuthRoute exact path="/signup" component={SignUp} />
       <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+      <ProtectedRoute exact path="/buy" component={Buy} />
       <ProtectedRoute exact path="/accounts" component={Accounts} />
       <Route component={PageNotFound} />
     </Switch>

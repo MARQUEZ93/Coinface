@@ -237,7 +237,7 @@ mergesort(arr) {
     if (activity.activity_type == "transfer" || activity.activity_type == "selling") {
       isNegative= "-";
     }
-    assetAmount = parseFloat(assetAmount).toFixed(4);
+    assetAmount = parseFloat(assetAmount).toFixed(6);
     cashAmount = parseFloat(cashAmount).toFixed(2);
     return (
       <div className="amountRecentActivity">
