@@ -2,9 +2,9 @@ class Api::TransfersController < ApplicationController
 
   def create
     @transfer = Transfer.new(transfer_params)
-    
+
     if @transfer.save
-      render "api/users/show"
+      render "api/transfers/show"
     else
       render json: @transfer.errors.full_messages, status: 402
     end

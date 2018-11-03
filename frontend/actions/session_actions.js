@@ -7,9 +7,15 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const RECEIVE_TRANSFER_ERRORS = 'RECEIVE_TRANSFER_ERRORS';
 export const CLEAR_TRANSFER_ERRORS = 'CLEAR_TRANSFER_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const RECEIVE_TRANSFER = 'RECEIVE_TRANSFER';
 
 export const clearTransferErrors = () => ({
   type: CLEAR_TRANSFER_ERRORS
+});
+
+export const receiveTransfer = transfer => ({
+  type: RECEIVE_TRANSFER,
+  transfer
 });
 
 export const clearErrors = () => ({
@@ -63,8 +69,8 @@ export const logout = () => dispatch => (
 );
 
 export const processTransfer = transfer => dispatch => (
-  APIUtil.processTransfer(transfer).then(user => (
-    dispatch(loginUser(user))
+  APIUtil.processTransfer(transfer).then(transfer => (
+    dispatch(receiveTransfer(transfer))
     ), err => (
     dispatch(transferErrors(err.responseJSON))
   ))

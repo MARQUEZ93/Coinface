@@ -2,7 +2,10 @@ import {
   LOGIN_USER,
   SIGNUP_USER,
   LOGOUT_CURRENT_USER,
+  RECEIVE_TRANSFER
 } from '../../actions/session_actions';
+
+import merge from 'lodash/merge';
 
 const _nullUser = Object.freeze({
   id: null,
@@ -24,6 +27,13 @@ const sessionReducer = (state = _nullUser, action) => {
     middleName: action.user.middleName, lastName: action.user.lastName };
     case LOGOUT_CURRENT_USER:
       return _nullUser;
+    case RECEIVE_TRANSFER:
+      console.log(state);
+      let newState = merge({}, state);
+      newState.transfers.push(action.transfer.id);
+      console.log(newState.transfers);
+      newState.transfers[action.transfer.id] = action.transfer;
+      return newState;
     default:
       return state;
   }

@@ -233,7 +233,7 @@ class SendPopup extends Component {
 
 const mdp = (dispatch) => (
   {
-    processTransfer: (user) => dispatch(processTransfer(user))
+    processTransfer: (transfer) => dispatch(processTransfer(transfer))
   }
 );
 
