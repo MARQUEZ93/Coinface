@@ -129,11 +129,12 @@ class SendPopup extends Component {
 
   handleSubmit(e){
     e.preventDefault();
+    console.log(this.state);
     //don't let invalid post attempts
     if (!this.state.assetError && !this.state.usdError &&
       !this.state.addressError && !this.state.negativeError
       && this.state.amount != "NaN" && this.state.cash_amount != "NaN" &&
-      /\S/.test(this.state.note) && this.state.assetAmount > 0) {
+      /\S/.test(this.state.note) && this.state.amount > 0) {
       let transferObject = {
         cash_amount: this.state.cash_amount,
         amount: this.state.amount,

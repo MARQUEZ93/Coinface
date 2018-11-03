@@ -28,6 +28,7 @@ const sessionReducer = (state = _nullUser, action) => {
     case LOGOUT_CURRENT_USER:
       return _nullUser;
     case RECEIVE_TRANSFER:
+      let newState = merge({}, state);
       newState.transfers.push(action.transfer.id);
       newState.transfers[action.transfer.id] = action.transfer;
       return newState;

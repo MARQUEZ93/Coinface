@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { GridLoader } from 'halogenium';
 
 import Header from '../Welcome/Header';
 
@@ -17,10 +18,12 @@ class SignInForm extends React.Component {
       password: '',
       submit: true,
       invalidEmail: false,
+      loading: false,
       allowClick: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.renderLoader = this.renderLoader.bind(this);
     this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
     this.props.clearErrors();
   }
@@ -77,15 +80,29 @@ class SignInForm extends React.Component {
     };
     const user = Object.assign({}, userObject);
     if (this.state.submit && validatedEmail) {
+      this.setState( { loading: true });
       this.props.processForm(user);
     } else if (this.state.submit && !validatedEmail) {
-      this.setState({invalidEmail: true});
+      this.setState({invalidEmail: true, loading: false});
     }
   }
 
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+  }
+
+  renderLoader() {
+    if (!this.state.loading || this.props.errors.length > 0) {
+      return (
+        <div className="SessionsNavDiv">{this.props.navLink}</div>
+      );
+    }
+    return (
+      <div className='loadbar'>
+        <GridLoader/>
+      </div>
+    )
   }
 
   render() {
@@ -134,7 +151,7 @@ class SignInForm extends React.Component {
               {SignIn}
             </div>
         </form>
-        <div className="SessionsNavDiv">{this.props.navLink}</div>
+        {this.renderLoader()}
       </div>
     );
   }

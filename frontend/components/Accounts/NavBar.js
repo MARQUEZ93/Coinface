@@ -6,6 +6,7 @@ class NavBar extends React.Component {
     super(props);
     this.dashboardPush = this.dashboardPush.bind(this);
     this.accountsPush = this.accountsPush.bind(this);
+    this.buyPush = this.buyPush.bind(this);
   }
   renderSvg(pathArg) {
     return (
@@ -26,6 +27,12 @@ class NavBar extends React.Component {
       this.props.history.push("/accounts");
     }
   }
+  buyPush(e) {
+    e.preventDefault();
+    if (this.props.location.pathname !== "/buy") {
+      this.props.history.push("/buy");
+    }
+  }
   render() {
     const dashImg = "M6 9H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1zm0 7H1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1zm9-10h-5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1zm0 10h-5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1z";
     const buyImg = "M2 5h10.6l-1.3 1.3c-.4.4-.4 1 0 1.4.2.2.4.3.7.3.3 0 .5-.1.7-.3l3-3c.4-.4.4-1 0-1.4l-3-3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4L12.6 3H1c-.6 0-1 .4-1 1v3h2V5zm12 6H3.4l1.3-1.3c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0l-3 3c-.4.4-.4 1 0 1.4l3 3c.2.2.4.3.7.3.3 0 .5-.1.7-.3.4-.4.4-1 0-1.4L3.4 13H15c.6 0 1-.4 1-1V9h-2v2z";
@@ -37,7 +44,7 @@ class NavBar extends React.Component {
             {this.renderSvg(dashImg)}
             Dashboard
           </li>
-          <li className="listItemNavBarAccounts">
+          <li className="listItemNavBarAccounts" onClick={this.buyPush}>
             {this.renderSvg(buyImg)}
             Buy/Sell
           </li>
