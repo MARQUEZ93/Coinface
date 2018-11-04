@@ -1,0 +1,39 @@
+.BuyAsset{
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+  height: 100%;
+
+}
+.BuyAssetNavBar{
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
+  Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  width: 574px;
+  height: 54px;
+}
+.BuyNav{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 287px;
+  background-color: white;
+  color: #0667d0;
+  border-top: 1px solid #0667d0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-right: 1px solid rgb(218, 225, 233);
+}
+.SellNav{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 287px;
+  color: #7d95b6;
+  background-color: #f9fbfc;
+  border-bottom: 1px solid rgb(218, 225, 233);
+}
