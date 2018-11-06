@@ -14,7 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         middleName: window.currentUser.middleName, lastName: window.currentUser.lastName,
         email: window.currentUser.email, wallets: window.currentUser.wallets,
         cash: window.currentUser.cash, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
-        purchases: window.currentUser.purchases , receivers: window.currentUser.receivers }
+        purchases: window.currentUser.purchases , receivers: window.currentUser.receivers },
+      entities: { currentPrices: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null },
+        currentChanges: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null },
+        currentSparklines: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null } }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;

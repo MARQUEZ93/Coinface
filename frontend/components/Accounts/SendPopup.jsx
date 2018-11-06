@@ -129,7 +129,6 @@ class SendPopup extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state);
     //don't let invalid post attempts
     if (!this.state.assetError && !this.state.usdError &&
       !this.state.addressError && !this.state.negativeError
