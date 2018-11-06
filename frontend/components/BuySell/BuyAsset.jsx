@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { GridLoader } from 'halogenium';
+import { getPrice } from '../../actions/prices_actions';
 
 const scrollSVG = <svg
   className="scrollSVG" xmlns="http://www.w3.org/2000/svg"
@@ -10,6 +13,69 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
+    this.state = {currentAsset: "BTC"};
+  }
+
+  componentDidMount() {
+    this.props.getPrice("BTC");
+    this.props.getPrice("LTC");
+    this.props.getPrice("BCH");
+    this.props.getPrice("ETH");
+    this.props.getPrice("ETC");
+  }
+  getImage() {
+    if (this.state.currentAsset === "BTC") {
+      return window.btc;
+    } else if (this.state.currentAsset === "BCH") {
+      return window.bch;
+    } else if (this.state.currentAsset === "ETH") {
+      return window.eth;
+    } else if (this.state.currentAsset === "ETC") {
+      return window.etc;
+    } else if (this.state.currentAsset === "LTC") {
+      return window.ltc;
+    }
+  }
+  getName() {
+    if (this.state.currentAsset === "BTC") {
+      return "Bitcoin";
+    } else if (this.state.currentAsset === "BCH") {
+      return "Bitcoin Cash";
+    } else if (this.state.currentAsset === "ETH") {
+      return "Ethereum";
+    } else if (this.state.currentAsset === "ETC") {
+      return "Ethereum Classic";
+    } else if (this.state.currentAsset === "LTC") {
+      return "Litecoin";
+    }
+  }
+  getCashAmount(){
+    let cashAmount = this.props.prices[this.state.currentAsset];
+    const numberWithCommas = (num) => {
+      var parts = num.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    }
+    return (numberWithCommas(cashAmount));
+  }
+  renderCryptocurrency(){
+    let img = this.getImage();
+    let name = this.getName();
+    let cashAmount = this.getCashAmount()
+    return (
+      <div className="BuyCryptocurrencyRow">
+          <div className="BCRImageNames">
+            <img className="BCRImage" src={img} />
+            <div className="BCRNames">
+              <p className="BCRName">{name}</p>
+              <p className="BCRSymbol">{this.state.currentAsset}</p>
+            </div>
+          </div>
+          <div className="BCRPrice">
+            <p>@ ${cashAmount}</p>
+          </div>
+      </div>
+    );
   }
   renderBuyAsset() {
     return (
@@ -18,11 +84,23 @@ class BuyAsset extends Component {
           <div className="BuyNav"><p>Buy</p></div>
           <div className="SellNav"><p>Sell</p></div>
         </div>
+        <p className="BuyCryptocurrencyAssetP">Cryptocurrency</p>
+        <div className="BuyCryptocurrency">
+          {this.renderCryptocurrency()}
+          <div className="scrollDiv">{scrollSVG}</div>
+        </div>
       </div>
     );
 
   }
   render() {
+    if (!this.props.prices[this.state.currentAsset]){
+      return (
+        <div className='loadbar'>
+          <GridLoader color="#6495ED" size="10px" margin="4px"/>
+        </div>
+      )
+    }
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderBuyAsset()}
@@ -31,4 +109,18 @@ class BuyAsset extends Component {
   }
 }
 
-export default BuyAsset;
+const mdp = ( dispatch ) => (
+  {
+    getPrice: (symbol) => dispatch(getPrice(symbol))
+  }
+);
+
+
+const msp = ({ entities }) => (
+  {
+    prices: entities.currentPrices
+  }
+);
+
+
+export default connect(msp, mdp)(BuyAsset);

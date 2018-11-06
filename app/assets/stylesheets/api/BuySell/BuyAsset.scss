@@ -2,6 +2,7 @@
   border: 1px solid rgb(218, 225, 233);
   border-radius: 4px;
   height: 100%;
+  background-color: white;
 
 }
 .BuyAssetNavBar{
@@ -39,5 +40,76 @@
 }
 
 .scrollSVG{
-  
+
+}
+.BuyCryptocurrency{
+  display: flex;
+  margin-left: 20px;
+
+}
+.BuyCryptocurrencyAssetP{
+color:#0667d0;
+font-size: 18px;
+margin-bottom: 10px;
+margin-top: 10px;
+font-weight: 500;
+margin-left: 20px;
+}
+.BuyCryptocurrencyRow{
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 480px;
+  height: 68px;
+  border: 1px solid rgb(218, 225, 233);
+  justify-content: space-between;
+}
+.BCRImageNames{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.BCRImage{
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+}
+.BCRNames{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Avenir Next", -apple-system, system-ui,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.BCRName{
+  color: #4e5c6e;
+  font-weight: 500;
+  font-size: 18px;
+}
+.BCRSymbol{
+  color: #9ba6b2;
+  font-size: 12px;
+}
+.BCRPrice{
+  color: #9ba6b2;
+  font-size: 18px;
+}
+.scrollDiv{
+  background-color: #f9fbfc;
+  border-top: 1px solid rgb(218, 225, 233);
+  border-bottom: 1px solid rgb(218, 225, 233);
+  border-right: 1px solid rgb(218, 225, 233);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+}
+.scrollSVG{
+  fill: rgb(125, 149, 182);
 }
