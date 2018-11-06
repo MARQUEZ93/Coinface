@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GridLoader } from 'halogenium';
 import { getPrice } from '../../actions/prices_actions';
+import BuyPopup from './BuyPopup';
 
 const scrollSVG = <svg
   className="scrollSVG" xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +14,8 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC"};
+    this.state = {currentAsset: "BTC", buyPopup: false};
+    this.toggleBuyPopup = this.toggleBuyPopup.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +24,9 @@ class BuyAsset extends Component {
     this.props.getPrice("BCH");
     this.props.getPrice("ETH");
     this.props.getPrice("ETC");
+  }
+  toggleBuyPopup(){
+    this.setState( { buyPopup: !this.state.buyPopup });
   }
   getImage() {
     if (this.state.currentAsset === "BTC") {
@@ -87,8 +92,15 @@ class BuyAsset extends Component {
         <p className="BuyCryptocurrencyAssetP">Cryptocurrency</p>
         <div className="BuyCryptocurrency">
           {this.renderCryptocurrency()}
-          <div className="scrollDiv">{scrollSVG}</div>
+          <div onClick={this.toggleBuyPopup} className="scrollDiv">{scrollSVG}</div>
         </div>
+        {this.state.buyPopup ?
+          <BuyPopup currentAsset={this.state.currentAsset} btcPrice={this.props.prices["BTC"]}
+            etcPrice={this.props.prices["ETC"]}
+            ethPrice={this.props.prices["ETH"]}
+            ltcPrice={this.props.prices["LTC"]}
+            bchPrice={this.props.prices["BCH"]}
+            />: null}
       </div>
     );
 
