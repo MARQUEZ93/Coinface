@@ -6,9 +6,7 @@ import SendPopup from './SendPopup';
 import WalletAddress from './WalletAddress';
 import { connect } from 'react-redux';
 import { clearTransferErrors } from '../../actions/session_actions';
-
-const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
-const URL_END = `&tsym=USD&e=Kraken`;
+import { getPrice } from '../../actions/prices_actions';
 
 const sendSVG = <svg
   className="sendSVG"
@@ -29,12 +27,10 @@ class YourAccountWallets extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      "BTC": null, "BCH": null, "ETC": null,
-      "ETH": null, "LTC": null, "btcAmount": null, "etcAmount":null,
+      "btcAmount": null, "etcAmount":null,
       "ethAmount": null, "bchAmount":null, "ltcAmount":null,
       "currentWallet": "BTC", showPopUp: false, showBarcode: false
     };
-    this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
     this.getAmounts = this.getAmounts.bind(this);
     this.renderWallet = this.renderWallet.bind(this);
@@ -44,11 +40,11 @@ class YourAccountWallets extends Component {
   }
 
   componentDidMount() {
-    this.getPrice("BTC");
-    this.getPrice("BCH");
-    this.getPrice("ETC");
-    this.getPrice("ETH");
-    this.getPrice("LTC");
+    this.props.getPrice("BTC");
+    this.props.getPrice("BCH");
+    this.props.getPrice("ETC");
+    this.props.getPrice("ETH");
+    this.props.getPrice("LTC");
     this.getAmounts();
   }
 
@@ -69,28 +65,6 @@ class YourAccountWallets extends Component {
       }
     }
     this.setState ({ "btcAmount": btc, "etcAmount": etc,  "bchAmount": bch, "ltcAmount": ltc, "ethAmount": eth, "gotAmounts": true });
-  }
-
-  getPrice(symbol) {
-    const url = `${URL}`+`${symbol}`+`${URL_END}`;
-    axios.get(url).then(res => {
-      const price = res.data.RAW.PRICE;
-      if (symbol === "BTC") {
-        this.setState( { "BTC" : price });
-      }
-      if (symbol === "ETC") {
-        this.setState( { "ETC" : price });
-      }
-      if (symbol === "ETH") {
-        this.setState( { "ETH" : price });
-      }
-      if (symbol === "LTC") {
-        this.setState( { "LTC" : price });
-      }
-      if (symbol === "BCH") {
-        this.setState( { "BCH" : price });
-      }
-    });
   }
 
   getValue(wallet) {
@@ -116,7 +90,7 @@ class YourAccountWallets extends Component {
     let colorsHash = {"BTC": "#FF9900", "ETC":"#00cc99", "LTC":"#b8b8b8", "ETH":"#4169E1", "BCH":"#4cca47"};
 
     let className = "accountWallet";
-    let currentPrice = this.state[symbol];
+    let currentPrice = this.props.currentPrices[symbol];
 
     if (symbol === this.state["currentWallet"]) {
       className = "selectedWallet";
@@ -231,17 +205,18 @@ class YourAccountWallets extends Component {
   }
 }
 
-const msp = ({ session }) => (
+const msp = (state) => (
   {
-    wallets: session.wallets, transfers: session.transfers,
-    sellings: session.sellings, purchases: session.purchases,
-    receivers: session.receivers
+    wallets: state.session.wallets, transfers: state.session.transfers,
+    sellings: state.session.sellings, purchases: state.session.purchases,
+    receivers: state.session.receivers, currentPrices: state.entities.currentPrices
   }
 );
 
 const mdp = (dispatch) => (
   {
-    clearTransfersErrors: () => dispatch(clearTransferErrors())
+    clearTransfersErrors: () => dispatch(clearTransferErrors()),
+    getPrice: (symbol) => dispatch(getPrice(symbol))
   }
 );
 
