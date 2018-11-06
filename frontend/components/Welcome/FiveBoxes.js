@@ -31,7 +31,7 @@ class FiveBoxes extends Component {
           price={this.props.priceETH} change={this.props.changeETH} sparklines={this.props.sparklinesETH}/>
         <Box color="#b8b8b8" src={window.ltc} symbol="LTC" name="Litecoin"
           price={this.props.priceLTC} change={this.props.changeLTC} sparklines={this.props.sparklinesLTC}/>
-        <Box color="#00cc99" src={window.etc} symbol="ETC" name="Ethereum Classic"
+        <Box color="#0FDF8E" src={window.etc} symbol="ETC" name="Ethereum Classic"
           price={this.props.priceETC} change={this.props.changeETC} sparklines={this.props.sparklinesETC}/>
       </div>
     );

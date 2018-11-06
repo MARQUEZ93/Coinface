@@ -9,6 +9,8 @@ class BuyAsset extends Component {
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
     this.state = {currentAsset: "BTC"};
     this.handleRadioChange = this.handleRadioChange.bind(this);
+    this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
+    this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +46,20 @@ class BuyAsset extends Component {
       return "Litecoin";
     }
   }
+  getColor(symbol) {
+
+    if (symbol === "BTC") {
+      return "rgb(247, 147, 26)";
+    } else if (symbol === "BCH") {
+      return "rgb(141, 195, 81)";
+    } else if (symbol === "ETC") {
+      return "#0FDF8E";
+    } else if (symbol === "ETH") {
+      return "rgb(98, 126, 234)";
+    } else if (symbol === "LTC") {
+      return "rgb(191, 187, 187)";
+    }
+  }
   getCashAmount(symbol){
     let cashAmount = this.props.prices[symbol];
     const numberWithCommas = (num) => {
@@ -59,45 +75,35 @@ class BuyAsset extends Component {
     });
   }
   renderCryptocurrency(symbol){
+    const pStyle = {
+      backgroundColor: this.getColor(symbol)
+    };
     let img = this.getImage(symbol);
     let name = this.getName(symbol);
     let cashAmount = this.getCashAmount(symbol);
     return (
-      <div className="BCRRowAndInput">
-        <div className="BuyCryptocurrencyRow">
+      <div className="BCRRowAndInput" key={symbol}>
+        <div className="BuyCryptocurrencyRow" style={pStyle}>
             <div className="BCRImageNames">
               <img className="BCRImage" src={img} />
               <div className="BCRNames">
                 <p className="BCRName">{name}</p>
-                <p className="BCRSymbol">{this.state.currentAsset}</p>
+                <p className="BCRSymbol">{symbol}</p>
               </div>
             </div>
             <div className="BCRPrice">
               <p>@ ${cashAmount}</p>
             </div>
         </div>
-        <input onChange={this.handleRadioChange} type="radio" value={symbol} name={symbol} checked={ this.state.currentAsset === symbol } className="BCRInput" />
+        <input onChange={this.handleRadioChange} type="radio" value={symbol}
+          name={symbol} checked={this.state.currentAsset == symbol} className="BCRInput" />
        </div>
     );
   }
-  //list of non-currentAsset assets
-  getList(){
-    let assets = {"BTC": null, "BCH": null, "ETH":null, "ETC":null, "LTC": null};
-    let array = Object.keys(assets);
-    for (let i = 0; i < array.length; i++) {
-      if (array[i]==this.state.currentAsset){
-        delete assets[array[i]];
-        break;
-      }
-    }
-    return Object.keys(assets);
-  }
   renderCryptocurrenies() {
-    let list = [this.renderCryptocurrency(this.state.currentAsset)];
-    let fourLi = this.getList();
-    fourLi.map(el => {
-      list.push(this.renderCryptocurrency(el));
-    })
+    let list = [ this.renderCryptocurrency("BTC"), this.renderCryptocurrency("BCH"),
+    this.renderCryptocurrency("ETH"), this.renderCryptocurrency("ETC"),
+    this.renderCryptocurrency("LTC") ];
     return list;
   }
   renderBuyAsset() {
@@ -112,6 +118,9 @@ class BuyAsset extends Component {
           <form>
             {this.renderCryptocurrenies()}
           </form>
+        </div>
+        <p className="BuyCryptocurrencyAssetP">Payment Method</p>
+        <div className="BuyCryptocurrency">
         </div>
     </div>
     );

@@ -97,7 +97,7 @@ mergesort(arr) {
 
     const btcColor = "rgb(247, 147, 26)";
     const bchColor = "rgb(141, 195, 81)";
-    const etcColor = "#00cc99";
+    const etcColor = "#0FDF8E";
     const ethColor = "rgb(98, 126, 234)";
     const ltcColor = "rgb(191, 187, 187)";
 

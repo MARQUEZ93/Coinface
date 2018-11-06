@@ -56,6 +56,7 @@ margin-left: 20px;
 .BCRRowAndInput{
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 .BCRInput{
   margin-left: 20px;
@@ -92,15 +93,15 @@ margin-left: 20px;
   "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .BCRName{
-  color: #4e5c6e;
+  color: white;
   font-weight: 500;
   font-size: 18px;
 }
 .BCRSymbol{
-  color: #9ba6b2;
+  color: white;
   font-size: 12px;
 }
 .BCRPrice{
-  color: #9ba6b2;
+  color: white;
   font-size: 18px;
 }
