@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GridLoader } from 'halogenium';
 import { getPrice } from '../../actions/prices_actions';
-import BuyPopup from './BuyPopup';
-
-const scrollSVG = <svg
-  className="scrollSVG" xmlns="http://www.w3.org/2000/svg"
-  width="9" height="14" viewBox="0 0 9 14">
-  <path d="M4.5 14a.47.47 0 0 1-.325-.134l-3.88-3.694.651-.844L4.5 12.713l3.554-3.385.651.844-3.88 3.694A.47.47 0 0 1 4.5 14zm3.554-9.295L4.5 1.659.946 4.704l-.651-.76L4.175.62a.5.5 0 0 1 .65 0l3.88 3.326-.651.759z">
-  </path></svg>;
 
 class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", buyPopup: false};
-    this.toggleBuyPopup = this.toggleBuyPopup.bind(this);
+    this.state = {currentAsset: "BTC"};
+    this.handleRadioChange = this.handleRadioChange.bind(this);
   }
 
   componentDidMount() {
@@ -25,37 +18,34 @@ class BuyAsset extends Component {
     this.props.getPrice("ETH");
     this.props.getPrice("ETC");
   }
-  toggleBuyPopup(){
-    this.setState( { buyPopup: !this.state.buyPopup });
-  }
-  getImage() {
-    if (this.state.currentAsset === "BTC") {
+  getImage(symbol) {
+    if (symbol === "BTC") {
       return window.btc;
-    } else if (this.state.currentAsset === "BCH") {
+    } else if (symbol === "BCH") {
       return window.bch;
-    } else if (this.state.currentAsset === "ETH") {
+    } else if (symbol === "ETH") {
       return window.eth;
-    } else if (this.state.currentAsset === "ETC") {
+    } else if (symbol === "ETC") {
       return window.etc;
-    } else if (this.state.currentAsset === "LTC") {
+    } else if (symbol === "LTC") {
       return window.ltc;
     }
   }
-  getName() {
-    if (this.state.currentAsset === "BTC") {
+  getName(symbol) {
+    if (symbol === "BTC") {
       return "Bitcoin";
-    } else if (this.state.currentAsset === "BCH") {
+    } else if (symbol === "BCH") {
       return "Bitcoin Cash";
-    } else if (this.state.currentAsset === "ETH") {
+    } else if (symbol === "ETH") {
       return "Ethereum";
-    } else if (this.state.currentAsset === "ETC") {
+    } else if (symbol === "ETC") {
       return "Ethereum Classic";
-    } else if (this.state.currentAsset === "LTC") {
+    } else if (symbol === "LTC") {
       return "Litecoin";
     }
   }
-  getCashAmount(){
-    let cashAmount = this.props.prices[this.state.currentAsset];
+  getCashAmount(symbol){
+    let cashAmount = this.props.prices[symbol];
     const numberWithCommas = (num) => {
       var parts = num.toString().split(".");
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -63,24 +53,52 @@ class BuyAsset extends Component {
     }
     return (numberWithCommas(cashAmount));
   }
-  renderCryptocurrency(){
-    let img = this.getImage();
-    let name = this.getName();
-    let cashAmount = this.getCashAmount()
+  handleRadioChange(e){
+    this.setState({
+      currentAsset: e.target.value
+    });
+  }
+  renderCryptocurrency(symbol){
+    let img = this.getImage(symbol);
+    let name = this.getName(symbol);
+    let cashAmount = this.getCashAmount(symbol);
     return (
-      <div className="BuyCryptocurrencyRow">
-          <div className="BCRImageNames">
-            <img className="BCRImage" src={img} />
-            <div className="BCRNames">
-              <p className="BCRName">{name}</p>
-              <p className="BCRSymbol">{this.state.currentAsset}</p>
+      <div className="BCRRowAndInput">
+        <div className="BuyCryptocurrencyRow">
+            <div className="BCRImageNames">
+              <img className="BCRImage" src={img} />
+              <div className="BCRNames">
+                <p className="BCRName">{name}</p>
+                <p className="BCRSymbol">{this.state.currentAsset}</p>
+              </div>
             </div>
-          </div>
-          <div className="BCRPrice">
-            <p>@ ${cashAmount}</p>
-          </div>
-      </div>
+            <div className="BCRPrice">
+              <p>@ ${cashAmount}</p>
+            </div>
+        </div>
+        <input onChange={this.handleRadioChange} type="radio" value={symbol} name={symbol} checked={ this.state.currentAsset === symbol } className="BCRInput" />
+       </div>
     );
+  }
+  //list of non-currentAsset assets
+  getList(){
+    let assets = {"BTC": null, "BCH": null, "ETH":null, "ETC":null, "LTC": null};
+    let array = Object.keys(assets);
+    for (let i = 0; i < array.length; i++) {
+      if (array[i]==this.state.currentAsset){
+        delete assets[array[i]];
+        break;
+      }
+    }
+    return Object.keys(assets);
+  }
+  renderCryptocurrenies() {
+    let list = [this.renderCryptocurrency(this.state.currentAsset)];
+    let fourLi = this.getList();
+    fourLi.map(el => {
+      list.push(this.renderCryptocurrency(el));
+    })
+    return list;
   }
   renderBuyAsset() {
     return (
@@ -91,22 +109,15 @@ class BuyAsset extends Component {
         </div>
         <p className="BuyCryptocurrencyAssetP">Cryptocurrency</p>
         <div className="BuyCryptocurrency">
-          {this.renderCryptocurrency()}
-          <div onClick={this.toggleBuyPopup} className="scrollDiv">{scrollSVG}</div>
+          <form>
+            {this.renderCryptocurrenies()}
+          </form>
         </div>
-        {this.state.buyPopup ?
-          <BuyPopup currentAsset={this.state.currentAsset} btcPrice={this.props.prices["BTC"]}
-            etcPrice={this.props.prices["ETC"]}
-            ethPrice={this.props.prices["ETH"]}
-            ltcPrice={this.props.prices["LTC"]}
-            bchPrice={this.props.prices["BCH"]}
-            />: null}
-      </div>
+    </div>
     );
-
   }
   render() {
-    if (!this.props.prices[this.state.currentAsset]){
+    if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>

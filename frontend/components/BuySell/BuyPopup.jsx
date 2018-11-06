@@ -58,7 +58,7 @@ class BuyPopup extends Component {
     let name = this.getName(symbol);
     let cashAmount = this.getCashAmount(symbol);
     return (
-      <div className="BuyCryptocurrencyRow">
+      <div key={symbol} className="BuyCryptocurrencyRow">
           <div className="BCRImageNames">
             <img className="BCRImage" src={img} />
             <div className="BCRNames">
@@ -94,7 +94,11 @@ class BuyPopup extends Component {
   }
   render(){
     return (
-      this.renderList()
+      <div className="BuyPopup">
+        <div className="BuyPopupInner">
+          {this.renderList()}
+        </div>
+      </div>
     )
   }
 }

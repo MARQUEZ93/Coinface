@@ -7,13 +7,13 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(17,51,85, 0.5);
+  background-color: rgba(17,51,85, 0.01);
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto,
   Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans","Helvetica Neue", sans-serif;
 }
 .BuyPopupInner {
   border-radius: 5px;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,8 +21,9 @@
   right: 25%;
   top: 25%;
   bottom: 25%;
-  margin: auto;
   background: white;
   width: 500px;
   height: 635px;
+  margin-left: -280px;
+  margin-top: 110px;
 }

@@ -12,7 +12,7 @@
   font-size: 18px;
   font-weight: 500;
   display: flex;
-  width: 574px;
+  width: 600px;
   height: 54px;
 }
 .BuyNav{
@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 287px;
+  width: 300px;
   background-color: white;
   color: #0667d0;
   border-top: 1px solid #0667d0;
@@ -33,18 +33,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 287px;
+  width: 300px;
   color: #7d95b6;
   background-color: #f9fbfc;
   border-bottom: 1px solid rgb(218, 225, 233);
 }
 
-.scrollSVG{
-
-}
 .BuyCryptocurrency{
   display: flex;
   margin-left: 20px;
+  flex-direction: column;
 
 }
 .BuyCryptocurrencyAssetP{
@@ -52,8 +50,15 @@ color:#0667d0;
 font-size: 18px;
 margin-bottom: 10px;
 margin-top: 10px;
-font-weight: 500;
+font-weight: 600;
 margin-left: 20px;
+}
+.BCRRowAndInput{
+  display: flex;
+  align-items: center;
+}
+.BCRInput{
+  margin-left: 20px;
 }
 .BuyCryptocurrencyRow{
   display: flex;
@@ -63,7 +68,7 @@ margin-left: 20px;
   padding-left: 15px;
   padding-right: 15px;
   width: 480px;
-  height: 68px;
+  height: 58px;
   border: 1px solid rgb(218, 225, 233);
   justify-content: space-between;
 }
@@ -98,18 +103,4 @@ margin-left: 20px;
 .BCRPrice{
   color: #9ba6b2;
   font-size: 18px;
-}
-.scrollDiv{
-  background-color: #f9fbfc;
-  border-top: 1px solid rgb(218, 225, 233);
-  border-bottom: 1px solid rgb(218, 225, 233);
-  border-right: 1px solid rgb(218, 225, 233);
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-}
-.scrollSVG{
-  fill: rgb(125, 149, 182);
 }
