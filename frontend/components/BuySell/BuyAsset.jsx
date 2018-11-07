@@ -7,7 +7,7 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC"};
+    this.state = {currentAsset: "BTC", hasPayment: false};
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);

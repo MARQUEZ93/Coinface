@@ -28,3 +28,11 @@ export const processTransfer = (transfer) => (
     method: 'POST'
   })
 );
+
+export const processCard = (card) => (
+  $.ajax({
+    data: {card},
+    url:'/api/cards',
+    method: 'POST'
+  })
+);

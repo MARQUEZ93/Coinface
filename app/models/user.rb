@@ -23,13 +23,13 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  #redux form will handle password validations
+  #will handle password validations in frontend 
   before_validation :downcase_email
   after_initialize :ensure_session_token
   after_create :generate_defaults
 
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
-  has_one :cash, foreign_key: :user_id, class_name: :Cash
+  has_many :cards, foreign_key: :user_id, class_name: :Card
 
   has_many :transfers, through: :wallets, source: :transfers
   has_many :receivers, through: :wallets, source: :receivers
@@ -71,18 +71,11 @@ class User < ApplicationRecord
     etc.save!
     ltc.save!
 
-    self.generate_cash
-
     self.generate_transfer(bch, "BCH")
     self.generate_transfer(btc, "BTC")
     self.generate_transfer(eth, "ETH")
     self.generate_transfer(etc, "ETC")
     self.generate_transfer(ltc, "LTC")
-  end
-
-  def generate_cash
-    usd = Cash.new(:user_id => self.id, :amount => 0.00)
-    usd.save!
   end
 
   def generate_transfer(wallet, asset_symbol)
@@ -125,7 +118,7 @@ class User < ApplicationRecord
     Transfer.destroy_all
     Selling.destroy_all
     Purchase.destroy_all
-    Cash.destroy_all
+    Card.destroy_all
     User.destroy_all
   end
 

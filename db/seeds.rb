@@ -29,9 +29,9 @@ end
 alejandro = User.create!( email:'Alejandro@coinface.com', password: "password",
   firstName: "Alejandro", middleName: "E.", lastName: "Marquez" )
 wallets = alejandro.wallets
-alejandroCash = alejandro.cash
-alejandroCash.amount = 250000.85
-alejandroCash.save!
+alejandroName = alejandro.firstName + " " + alejandro.middleName + " " + alejandro.lastName
+alejandroCard = Card.create!( number: 1234567891234567, name: alejandroName, exp: "12/19", cvs: 123, postal: 20815, user_id: alejandro.id)
+alejandroCard.save!
 
 alejandroLTCwallet = nil
 alejandroETCwallet = nil
@@ -62,6 +62,10 @@ end
 recruiter = User.create!( firstName: "Satoshi", middleName: "NS", lastName: "Nakamoto",
   email:'satoshi@vistomail.com', password: "password" )
 recruiterWallets = recruiter.wallets
+
+recruiterName = recruiter.firstName + " " + recruiter.middleName + " " + recruiter.lastName
+recruiterCard = Card.create!( number: 9834567891234567, name: recruiterName, exp: "11/20", cvs: 123, postal: 10810, user_id: recruiter.id)
+recruiterCard.save!
 
 recruiterBCHwallet = nil
 recruiterBTCwallet = nil

@@ -16,20 +16,20 @@
 class Purchase < ApplicationRecord
 
   belongs_to :wallet, foreign_key: :wallet_id, class_name: :Wallet
-  belongs_to :cash, foreign_key: :cash_id, class_name: :Cash
+  belongs_to :card, foreign_key: :card_id, class_name: :Card
 
   has_one :purchaser, through: :wallet, source: :user
 
-  validates :amount, :cash_amount, :cash_id, :wallet_id, presence: true
+  validates :amount, :cash_amount, :card_id, :wallet_id, presence: true
 
   after_create :update_purchase
 
   def update_purchase
     wallet = Wallet.find_by(id: self.wallet_id)
-    cash = Cash.find_by(id: self.cash_id)
+    card = Card.find_by(id: self.card_id)
 
     wallet.receive(self.amount)
-    cash.debit(self.cash_amount)
+    card.debit(self.cash_amount)
   end
 
 end
