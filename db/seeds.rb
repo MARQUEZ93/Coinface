@@ -101,17 +101,17 @@ transfer.save!
 
 
 selling = Selling.create!(amount: 0.5, cash_amount: 26.00,
-  asset_type: "LTC", wallet_id: alejandroLTCwallet.id, card_type: alejandroCard.card_type,
+  asset_type: "LTC", wallet_address: alejandroLTCwallet.address, card_type: alejandroCard.card_type,
   last_four_digits: alejandroCard.last_four_digits)
 selling.save!
 
 purchase = Purchase.create!(amount: 0.75, cash_amount: 7.00,
-  asset_type: "ETC", wallet_id: alejandroETCwallet.id, card_type: alejandroCard.card_type,
+  asset_type: "ETC", wallet_address: alejandroETCwallet.address, card_type: alejandroCard.card_type,
   last_four_digits: alejandroCard.last_four_digits)
 purchase.save!
 
 purchase1 = Purchase.create!(amount: 0.25, cash_amount: 3.00,
-  asset_type: "ETC", wallet_id: alejandroETCwallet.id, card_type: alejandroCard.card_type,
+  asset_type: "ETC", wallet_address: alejandroETCwallet.address, card_type: alejandroCard.card_type,
   last_four_digits: alejandroCard.last_four_digits)
 purchase1.save!
 
@@ -122,6 +122,6 @@ note: "thanks Satoshi! cheers - Alejandro " )
 transfer.save!
 
 selling = Selling.create!(amount: 0.5, cash_amount: 105.13,
-  asset_type: "ETH", wallet_id: recruiterETHwallet.id, card_type: recruiterCard.card_type,
+  asset_type: "ETH", wallet_address: recruiterETHwallet.address, card_type: recruiterCard.card_type,
   last_four_digits: recruiterCard.last_four_digits)
 selling.save!

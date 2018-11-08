@@ -14,7 +14,7 @@ class Api::SellingsController < ApplicationController
   private
 
   def selling_params
-    params.require(:selling).permit(:cash_amount, :amount,
+    params.require(:selling).permit(:wallet_address, :cash_amount, :amount,
       :asset_type, :card_type, :last_four_digits)
   end
 end

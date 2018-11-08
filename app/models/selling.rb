@@ -16,16 +16,16 @@
 
 class Selling < ApplicationRecord
 
-  belongs_to :wallet, foreign_key: :wallet_id, class_name: :Wallet
+  belongs_to :wallet, foreign_key: :wallet_address, class_name: :Wallet
 
   has_one :seller, through: :wallet, source: :user
 
-  validates :amount, :cash_amount, :wallet_id, :card_type, :last_four_digits, presence: true
+  validates :amount, :cash_amount, :wallet_address, :card_type, :last_four_digits, presence: true
 
   after_create :update_selling
 
   def update_selling
-    wallet = Wallet.find_by(id: self.wallet_id)
+    wallet = Wallet.find_by(address: self.wallet_address)
 
     wallet.transfer(self.amount)
   end
