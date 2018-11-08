@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
+import AddCard from './AddCard';
 
-const houseSVG = <svg className="
-  " xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+const houseSVG = <svg className="houseSVG" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
   viewBox="0 0 18 18">
   <path d="M17.25 7.538c.45 0 .75-.3.75-.75v-1.5c0-.3-.15-.526-.375-.675l-8.25-4.5a.681.681 0 0 0-.75 0l-8.25 4.5A.788.788 0 0 0 0 5.287v1.5c0 .45.3.75.75.75h1.5v8.25H.75c-.45 0-.75.3-.75.75s.3.75.75.75h16.5c.45 0 .75-.3.75-.75s-.3-.75-.75-.75h-1.5v-8.25h1.5zm-9.75 8.25H5.25v-8.25H7.5v8.25zM9 6.038c-.825 0-1.5-.675-1.5-1.5s.675-1.5 1.5-1.5 1.5.675 1.5 1.5-.675 1.5-1.5 1.5zm3.75 9.75H10.5v-8.25h2.25v8.25z">
   </path></svg>;
@@ -16,7 +16,7 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", hasPayment: false};
+    this.state = {currentAsset: "BTC", showPopup: false};
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -117,22 +117,36 @@ class BuyAsset extends Component {
     return list;
   }
   togglePopup() {
-
+    this.setState({ showPopup: !this.state.showPopup });
   }
   addCard(){
+    let id = this.props.id;
+    let name = this.props.firstName + " " + this.props.middleName + " " + this.props.lastName;
     return (
-      <div className="addCardDiv">
+      <div className="addCardDiv" onClick={this.togglePopup}>
         <div className="addCardText">
           {addSVG} <p className="addCardTextP">Add a new account</p>
         </div>
+        {this.state.showPopup? <AddCard name={name} id={id}/>:null}
       </div>
     );
   }
-  hasCard(){
+  hasCard(card){
     return (
-      <div className="hasCardDiv">
+      <div>
+        <div className="hasCardDiv">
+          <div className="addCardText">
+            {houseSVG}
+            <div className="cardInfoDiv">
+              <p className="cardInfoType">{card.type}</p>
+              <p className="cardInfoNumber">Checking: ********{card.last_four_digits}</p>
+            </div>
 
-      </div>
+          </div>
+
+        </div>
+        <p className="deleteCardP" onClick={this.props.deleteCard}>Remove your card on file</p>
+    </div>
     );
 
   }
@@ -150,7 +164,7 @@ class BuyAsset extends Component {
           </form>
         </div>
         <p className="BuyCryptocurrencyAssetP">Payment Method</p>
-        {this.props.card ? this.hasCard() : this.addCard()}
+        {this.props.card ? this.hasCard(this.props.card) : this.addCard()}
     </div>
     );
   }

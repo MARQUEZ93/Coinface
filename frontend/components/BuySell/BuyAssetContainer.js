@@ -18,7 +18,7 @@ const msp = ({ session, entities }) => (
     transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
     receivers: session.receivers, firstName: session.firstName,
     middleName: session.middleName, lastName: session.lastName, card: session.card,
-    prices: entities.currentPrices
+    prices: entities.currentPrices, id: session.id
   }
 );
 

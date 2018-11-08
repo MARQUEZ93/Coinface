@@ -11,10 +11,16 @@
   height: 68px;
   border: 1px solid rgb(218, 225, 233);
   justify-content: space-between;
+  color: rgb(78, 92, 110);
+  fill: rgb(6, 103, 208);
 }
-.addCardDiv:hover{
+.addCardDiv:hover, .addCardDiv:active, .addCardDiv:focus{
   cursor: pointer;
+  background-color: #1652f0;
+  color: white;
+  fill: white;
 }
+
 .addCardText{
   display: flex;
   align-items: center;
@@ -22,16 +28,15 @@
 }
 .addCardTextP{
   font-size: 18px;
-  color: rgb(78, 92, 110);
   font-weight: 600;
 }
 
 .houseSVG{
-
+  margin-right: 10px;
+  fill: rgb(155, 166, 178);
 }
 .addCardSVG{
   margin-right: 10px;
-  fill: rgb(155, 166, 178);
 }
 .hasCardDiv{
   display: flex;
@@ -44,4 +49,20 @@
   height: 68px;
   border: 1px solid rgb(218, 225, 233);
   justify-content: space-between;
+}
+
+.cardInfoDiv{
+  display: flex;
+  flex-direction: column;
+}
+.cardInfoType{
+  font-size: 18px;
+  color: rgb(78, 92, 110);
+}
+.cardInfoNumber{
+  font-size: 12px;
+  color: rgb(155, 166, 178);
+}
+.deleteCardP{
+  margin-left: 20px;
 }

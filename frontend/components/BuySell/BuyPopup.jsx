@@ -73,7 +73,7 @@ class BuyPopup extends Component {
     );
   }
   renderList(){
-    let list = [this.renderCryptocurrency(this.props.currentAsset)];
+    let list = [this.renderCryptocurrency(this.props.symbol)];
     let newLi = this.getList();
     for (let i = 0; i < newLi.length; i++) {
       list.push(this.renderCryptocurrency(newLi[i]));
