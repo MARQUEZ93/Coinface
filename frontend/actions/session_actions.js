@@ -19,7 +19,7 @@ export const clearCardErrors = () => ({
   type: CLEAR_CARD_ERRORS
 });
 
-export const removeCard= () => {
+export const removeCard = () => {
   return {
     type: REMOVE_CARD
   };

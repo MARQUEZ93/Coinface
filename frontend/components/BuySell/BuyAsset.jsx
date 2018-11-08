@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { GridLoader } from 'halogenium';
-import { getPrice } from '../../actions/prices_actions';
 
 class BuyAsset extends Component {
   constructor(props) {
@@ -141,18 +139,4 @@ class BuyAsset extends Component {
   }
 }
 
-const mdp = ( dispatch ) => (
-  {
-    getPrice: (symbol) => dispatch(getPrice(symbol))
-  }
-);
-
-
-const msp = ({ entities }) => (
-  {
-    prices: entities.currentPrices
-  }
-);
-
-
-export default connect(msp, mdp)(BuyAsset);
+export default BuyAsset;

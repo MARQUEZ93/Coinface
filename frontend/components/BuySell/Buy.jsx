@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Dashboard/Header';
 import NavBar from '../Accounts/NavBar';
 import Footer from '../Welcome/Footer';
-import BuyAsset from './BuyAsset';
+import BuyAsset from './BuyAssetContainer';
 
 class Buy extends Component {
   render() {
