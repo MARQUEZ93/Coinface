@@ -43,3 +43,19 @@ export const removeCard = () => (
     method: 'DELETE'
   })
 );
+
+export const processSelling = (selling) => (
+  $.ajax({
+    data: {selling},
+    url:'/api/sellings',
+    method: 'POST'
+  })
+);
+
+export const processPurchase = (purchase) => (
+  $.ajax({
+    data: {purchase},
+    url:'/api/purchases',
+    method: 'POST'
+  })
+);

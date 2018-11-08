@@ -4,7 +4,9 @@ import {
   LOGOUT_CURRENT_USER,
   RECEIVE_TRANSFER,
   RECEIVE_CARD,
-  REMOVE_CARD
+  REMOVE_CARD,
+  RECEIVE_PURCHASE,
+  RECEIVE_SELLING
 } from '../../actions/session_actions';
 
 import merge from 'lodash/merge';
@@ -41,6 +43,14 @@ const sessionReducer = (state = _nullUser, action) => {
       let newState2 = merge({}, state);
       newState2.card = null;
       return newState2;
+    case RECEIVE_PURCHASE:
+      let newState3 = merge({}, state);
+      newState.purchases.push(action.purchase);
+      return newState3;
+    case RECEIVE_SELLING:
+      let newState4 = merge({}, state);
+      newState.transfers.push(action.selling);
+      return newState4;
     default:
       return state;
   }
