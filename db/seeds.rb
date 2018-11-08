@@ -30,7 +30,7 @@ alejandro = User.create!( email:'Alejandro@coinface.com', password: "password",
   firstName: "Alejandro", middleName: "E.", lastName: "Marquez" )
 wallets = alejandro.wallets
 alejandroName = alejandro.firstName + " " + alejandro.middleName + " " + alejandro.lastName
-alejandroCard = Card.create!( number: 1234567891234567, name: alejandroName, exp: "12/19", cvs: 123, postal: 20815, user_id: alejandro.id)
+alejandroCard = Card.create!( number: 1234567891234567, name: alejandroName, exp: "12/19", cvc: 123, postal: 20815, user_id: alejandro.id)
 alejandroCard.save!
 
 alejandroLTCwallet = nil
@@ -64,7 +64,7 @@ recruiter = User.create!( firstName: "Satoshi", middleName: "NS", lastName: "Nak
 recruiterWallets = recruiter.wallets
 
 recruiterName = recruiter.firstName + " " + recruiter.middleName + " " + recruiter.lastName
-recruiterCard = Card.create!( number: 9834567891234567, name: recruiterName, exp: "11/20", cvs: 123, postal: 10810, user_id: recruiter.id)
+recruiterCard = Card.create!( number: 9834567891234567, name: recruiterName, exp: "11/20", cvc: 123, postal: 10810, user_id: recruiter.id)
 recruiterCard.save!
 
 recruiterBCHwallet = nil
@@ -100,16 +100,19 @@ always hated projects with a lot of big dependencies" )
 transfer.save!
 
 
-selling = Selling.create!(amount: 0.5, cash_amount: 26.00, cash_id: alejandro.cash.id,
-  asset_type: "LTC", wallet_id: alejandroLTCwallet.id)
+selling = Selling.create!(amount: 0.5, cash_amount: 26.00,
+  asset_type: "LTC", wallet_id: alejandroLTCwallet.id, card_type: alejandroCard.card_type,
+  last_four_digits: alejandroCard.last_four_digits)
 selling.save!
 
-purchase = Purchase.create!(amount: 0.75, cash_amount: 7.00, cash_id: alejandro.cash.id,
-  asset_type: "ETC", wallet_id: alejandroETCwallet.id)
+purchase = Purchase.create!(amount: 0.75, cash_amount: 7.00,
+  asset_type: "ETC", wallet_id: alejandroETCwallet.id, card_type: alejandroCard.card_type,
+  last_four_digits: alejandroCard.last_four_digits)
 purchase.save!
 
-purchase1 = Purchase.create!(amount: 0.25, cash_amount: 3.00, cash_id: alejandro.cash.id,
-  asset_type: "ETC", wallet_id: alejandroETCwallet.id)
+purchase1 = Purchase.create!(amount: 0.25, cash_amount: 3.00,
+  asset_type: "ETC", wallet_id: alejandroETCwallet.id, card_type: alejandroCard.card_type,
+  last_four_digits: alejandroCard.last_four_digits)
 purchase1.save!
 
 
@@ -118,6 +121,7 @@ transfer = Transfer.create!( amount: 0.1, cash_amount: 642.385, asset_type: "BTC
 note: "thanks Satoshi! cheers - Alejandro " )
 transfer.save!
 
-selling = Selling.create!(amount: 0.5, cash_amount: 105.13, cash_id: recruiter.cash.id,
-  asset_type: "ETH", wallet_id: recruiterETHwallet.id)
+selling = Selling.create!(amount: 0.5, cash_amount: 105.13,
+  asset_type: "ETH", wallet_id: recruiterETHwallet.id, card_type: recruiterCard.card_type,
+  last_four_digits: recruiterCard.last_four_digits)
 selling.save!

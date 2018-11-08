@@ -5,6 +5,7 @@ export const SIGNUP_USER = 'SIGNUP_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
 export const RECEIVE_TRANSFER_ERRORS = 'RECEIVE_TRANSFER_ERRORS';
 export const CLEAR_TRANSFER_ERRORS = 'CLEAR_TRANSFER_ERRORS';
 export const RECEIVE_TRANSFER = 'RECEIVE_TRANSFER';
@@ -12,10 +13,17 @@ export const RECEIVE_TRANSFER = 'RECEIVE_TRANSFER';
 export const RECEIVE_CARD_ERRORS = 'RECEIVE_CARD_ERRORS';
 export const CLEAR_CARD_ERRORS = 'CLEAR_CARD_ERRORS';
 export const RECEIVE_CARD = 'RECEIVE_CARD';
+export const REMOVE_CARD = 'REMOVE_CARd';
 
 export const clearCardErrors = () => ({
   type: CLEAR_CARD_ERRORS
 });
+
+export const removeCard= () => {
+  return {
+    type: REMOVE_CARD
+  };
+};
 
 export const receiveCard = card => ({
   type: RECEIVE_CARD,
@@ -96,3 +104,8 @@ export const processCard = card => dispatch => (
     dispatch(cardErrors(err.responseJSON))
   ))
 );
+
+export const deleteCard = () => dispatch => (
+  APIUtil.deleteCard().then( () => (
+    dispatch(removeCard()))
+));

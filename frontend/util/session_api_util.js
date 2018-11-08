@@ -32,7 +32,14 @@ export const processTransfer = (transfer) => (
 export const processCard = (card) => (
   $.ajax({
     data: {card},
-    url:'/api/cards',
+    url:'/api/card',
     method: 'POST'
+  })
+);
+
+export const removeCard = () => (
+  $.ajax({
+    url: '/api/card',
+    method: 'DELETE'
   })
 );

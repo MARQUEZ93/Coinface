@@ -1,2 +1,2 @@
 json.extract! user, :id, :firstName, :middleName, :lastName, :email, :wallets,
-:transfers, :receivers, :sellings, :purchases, :cards
+:transfers, :receivers, :sellings, :purchases, :card

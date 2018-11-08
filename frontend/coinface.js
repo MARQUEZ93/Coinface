@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
       session: { id: window.currentUser.id, firstName: window.currentUser.firstName,
         middleName: window.currentUser.middleName, lastName: window.currentUser.lastName,
         email: window.currentUser.email, wallets: window.currentUser.wallets,
-        cards: window.currentUser.cards, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
-        purchases: window.currentUser.purchases , receivers: window.currentUser.receivers },
+        card: window.currentUser.card, transfers: window.currentUser.transfers, sellings: window.currentUser.sellings,
+        purchases: window.currentUser.purchases, receivers: window.currentUser.receivers },
       entities: { currentPrices: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null },
         currentChanges: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null },
         currentSparklines: { BTC: null, LTC: null, ETH: null, ETC: null, BCH: null } }

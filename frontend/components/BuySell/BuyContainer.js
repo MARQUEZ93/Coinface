@@ -14,7 +14,7 @@ const msp = ({ session }) => (
     email: session.email, wallets: session.wallets,
     transfers: session.transfers, sellings: session.sellings, purchases: session.purchases,
     cash: session.cash, receivers: session.receivers, firstName: session.firstName,
-    middleName: session.middleName, lastName: session.lastName
+    middleName: session.middleName, lastName: session.lastName, card: session.card
   }
 );
 

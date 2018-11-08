@@ -8,7 +8,7 @@
 #  amount                  :decimal(, )      not null
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
-#  cash_amount             :decimal(, )
+#  cash_amount             :decimal(, )      not null
 #  asset_type              :string
 #  model_type              :string           default("transfer")
 #  note                    :string           not null

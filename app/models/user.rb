@@ -23,13 +23,13 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  #will handle password validations in frontend 
+  #will handle password validations in frontend
   before_validation :downcase_email
   after_initialize :ensure_session_token
   after_create :generate_defaults
 
   has_many :wallets, foreign_key: :user_id, class_name: :Wallet
-  has_many :cards, foreign_key: :user_id, class_name: :Card
+  has_one :card, foreign_key: :user_id, class_name: :Card
 
   has_many :transfers, through: :wallets, source: :transfers
   has_many :receivers, through: :wallets, source: :receivers
