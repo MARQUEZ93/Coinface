@@ -2,15 +2,16 @@
 #
 # Table name: sellings
 #
-#  id          :bigint(8)        not null, primary key
-#  amount      :decimal(, )      not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  cash_amount :decimal(, )      not null
-#  wallet_id   :integer          not null
-#  asset_type  :string
-#  model_type  :string           default("selling")
-#  card_id     :integer          not null
+#  id               :bigint(8)        not null, primary key
+#  amount           :decimal(, )      not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  cash_amount      :decimal(, )      not null
+#  wallet_id        :integer          not null
+#  asset_type       :string
+#  model_type       :string           default("selling")
+#  card_type        :string           not null
+#  last_four_digits :integer          not null
 #
 
 class Selling < ApplicationRecord
