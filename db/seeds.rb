@@ -94,14 +94,15 @@ recruiterWallets.each do |wallet|
 end
 
 transfer = Transfer.create!( amount: 1.00, cash_amount: 52.07, asset_type: "LTC",
-  sender_wallet_address: recruiterLTCwallet.address, receiver_wallet_address: alejandroLTCwallet.address,
+  sender_wallet_address: recruiterLTCwallet.address,
+  receiver_wallet_address: alejandroLTCwallet.address,
   note: "Alejandro, I've
 always hated projects with a lot of big dependencies" )
 transfer.save!
 
-
 selling = Selling.create!(amount: 0.5, cash_amount: 26.00,
-  asset_type: "LTC", wallet_address: alejandroLTCwallet.address, card_type: alejandroCard.card_type,
+  asset_type: "LTC", wallet_address: alejandroLTCwallet.address,
+  card_type: alejandroCard.card_type,
   last_four_digits: alejandroCard.last_four_digits)
 selling.save!
 

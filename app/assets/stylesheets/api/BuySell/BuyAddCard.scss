@@ -1,0 +1,47 @@
+
+.addCardDiv{
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 480px;
+  height: 68px;
+  border: 1px solid rgb(218, 225, 233);
+  justify-content: space-between;
+}
+.addCardDiv:hover{
+  cursor: pointer;
+}
+.addCardText{
+  display: flex;
+  align-items: center;
+
+}
+.addCardTextP{
+  font-size: 18px;
+  color: rgb(78, 92, 110);
+  font-weight: 600;
+}
+
+.houseSVG{
+
+}
+.addCardSVG{
+  margin-right: 10px;
+  fill: rgb(155, 166, 178);
+}
+.hasCardDiv{
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 480px;
+  height: 68px;
+  border: 1px solid rgb(218, 225, 233);
+  justify-content: space-between;
+}

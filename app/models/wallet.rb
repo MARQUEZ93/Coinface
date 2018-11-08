@@ -14,8 +14,8 @@
 class Wallet < ApplicationRecord
 
   belongs_to :user, foreign_key: :user_id, class_name: :User
-  has_many :sellings, foreign_key: :wallet_id, class_name: :Selling
-  has_many :purchases, foreign_key: :wallet_id, class_name: :Purchase
+  has_many :sellings, foreign_key: :wallet_address, class_name: :Selling, primary_key: :address
+  has_many :purchases, foreign_key: :wallet_address, class_name: :Purchase, primary_key: :address
 
   has_many :transfers, foreign_key: :sender_wallet_address, class_name: :Transfer, primary_key: :address
   has_many :receivers, foreign_key: :receiver_wallet_address, class_name: :Transfer, primary_key: :address
