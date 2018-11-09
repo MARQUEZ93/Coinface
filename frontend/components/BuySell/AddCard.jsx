@@ -22,7 +22,8 @@ const visaSVG = <svg className="visaSVG" xmlns="http://www.w3.org/2000/svg" widt
 class AddCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { numbers: "", year: "", postal: "", cvc: "", clickedName: false, month: "" };
+    this.state = { numbers: "", year: "", postal: "",
+      cvc: "", clickedName: false, month: "", invalidCard: false };
     this.handleNumbers = this.handleNumbers.bind(this);
     this.toggleName = this.toggleName.bind(this);
     this.updateYear = this.updateYear.bind(this);
@@ -36,11 +37,32 @@ class AddCard extends Component {
         hasNaN = true; break;
       }
     }
-    if (!hasNaN) {
+    if (!hasNaN && e.currentTarget.value.length < 17) {
       this.setState({ numbers: e.currentTarget.value });
     }
   }
-  //zip cvc
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const cardObject = {
+      numbers: this.state.numbers,
+      cvc: this.state.cvc,
+      name: this.props.name,
+      postal: this.state.postal,
+      exp: this.state.month + this.state.year,
+      user_id: this.props.id
+    };
+    if(this.state.numbers.length == 16 && this.state.month != "0" &&
+    this.state.postal.length == 5 && this.state.cvs.length == 3 && this.state.year.length == 2){
+      const card = Object.assign({}, cardObject);
+      this.props.processCard(card).then(res => {
+        this.props.closePopup();
+      });
+    } else {
+      this.setState( { invalidCard: true });
+    }
+
+  }
 
   update(field) {
       return e => {
@@ -83,8 +105,10 @@ class AddCard extends Component {
       }
     }
     let monthInBounds = true;
-    if (!hasNaN && e.currentTarget.value.length == 2){
-      if ((parseInt(e.currentTarget.value[1]) > 2 && parseInt(e.currentTarget.value[0]) != 0) || parseInt(e.currentTarget.value[0]) > 1 ){
+    if (!hasNaN && e.currentTarget.value.length == 2) {
+      if ( (parseInt(e.currentTarget.value[1]) > 2 && parseInt(e.currentTarget.value[0]) != 0)
+      || parseInt(e.currentTarget.value[0]) > 1 || (parseInt(e.currentTarget.value[0]) == 0
+      && parseInt(e.currentTarget.value[1]) == 0) ) {
         monthInBounds = false;
       }
     }
@@ -111,14 +135,12 @@ class AddCard extends Component {
         this.setState({ year: e.currentTarget.value });
       }
   }
-  processCard(){
-
-  }
   render(){
     let name = this.props.name;
     let id = this.props.id;
     let placeholderNumbers = "XXXX XXXX XXXX XXXX";
     let nameClicked = <p className="nameClickedP">Card name must match account name.</p>;
+    let invalidSubmission = <p className="nameClickedP">Invalid card information.</p>;
     return (
       <div className="addCard">
         <div className="addCardInner">
@@ -160,6 +182,7 @@ class AddCard extends Component {
           <div className="cardButtonDiv">
             <button onClick={this.processCard} className="addCardButton">Add Card</button>
           </div>
+          {this.state.invalidCard ? {invalidSubmission}:null}
         </div>
       </div>
     )

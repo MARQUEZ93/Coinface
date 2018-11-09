@@ -119,7 +119,7 @@ class BuyAsset extends Component {
   togglePopup() {
     this.setState({ showPopup: !this.state.showPopup });
  }
-  addCard(){
+  renderCard(){
     let id = this.props.id;
     let name = this.props.firstName + " " + this.props.middleName + " " + this.props.lastName;
     return (
@@ -130,7 +130,8 @@ class BuyAsset extends Component {
           </div>
         </div>
         {this.state.showPopup?
-          <AddCard processCard={this.props.processCard} closePopup={this.togglePopup} name={name} id={id} />: null}
+          <AddCard processCard={this.props.processCard}
+            closePopup={this.togglePopup} name={name} id={id} />: null}
     </div>
     );
   }
@@ -167,11 +168,13 @@ class BuyAsset extends Component {
           </form>
         </div>
         <p className="BuyCryptocurrencyAssetP">Payment Method</p>
-        {this.props.card ? this.hasCard(this.props.card) : this.addCard()}
+        {this.props.card !== null ? this.hasCard(this.props.card) :
+          this.renderCard}
     </div>
     );
   }
   render() {
+    console.log(this.props);
     if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
