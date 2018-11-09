@@ -22,9 +22,11 @@ const visaSVG = <svg className="visaSVG" xmlns="http://www.w3.org/2000/svg" widt
 class AddCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { numbers: "", expYear: "", postal: "", cvc: "", clickedName: false, expMonth: "" };
+    this.state = { numbers: "", year: "", postal: "", cvc: "", clickedName: false, month: "" };
     this.handleNumbers = this.handleNumbers.bind(this);
     this.toggleName = this.toggleName.bind(this);
+    this.updateYear = this.updateYear.bind(this);
+    this.updateMonth = this.updateMonth.bind(this);
   }
   handleNumbers(e) {
     let hasNaN = false;
@@ -38,8 +40,76 @@ class AddCard extends Component {
       this.setState({ numbers: e.currentTarget.value });
     }
   }
+  //zip cvc
+
+  update(field) {
+      return e => {
+        let hasNaN = false;
+        for (let i = 0; i < e.currentTarget.value.length; i++){
+          //NaN equality
+          if (isNaN(parseInt(e.currentTarget.value[i]))) {
+            hasNaN = true; break;
+          }
+        }
+        let isValid = true;
+        //cvc
+        if (field === "cvc" && !hasNaN) {
+          if (e.currentTarget.value.length > 3) {
+            isValid=false;
+          }
+        }
+        if (field === "postal" && !hasNaN) {
+          if (e.currentTarget.value.length > 5) {
+            isValid=false;
+          }
+        }
+        if (!hasNaN && isValid) {
+          this.setState({
+            [field]: e.currentTarget.value
+          });
+        }
+    }
+  }
   toggleName(){
     this.setState ({ clickedName: !this.state.clickedName });
+  }
+  updateMonth(e) {
+    //nan; 1-12; not greater than 2 length
+    let hasNaN = false;
+    for (let i = 0; i < e.currentTarget.value.length; i++){
+      //NaN equality
+      if (isNaN(parseInt(e.currentTarget.value[i]))) {
+        hasNaN = true; break;
+      }
+    }
+    let monthInBounds = true;
+    if (!hasNaN && e.currentTarget.value.length == 2){
+      if ((parseInt(e.currentTarget.value[1]) > 2 && parseInt(e.currentTarget.value[0]) != 0) || parseInt(e.currentTarget.value[0]) > 1 ){
+        monthInBounds = false;
+      }
+    }
+    if (!hasNaN && monthInBounds && e.currentTarget.value.length < 3) {
+      this.setState({ month: e.currentTarget.value });
+    }
+  }
+  updateYear(e) {
+    //nan; > 18; not greater than 2 length
+      let hasNaN = false;
+      for (let i = 0; i < e.currentTarget.value.length; i++){
+        //NaN equality
+        if (isNaN(parseInt(e.currentTarget.value[i]))) {
+          hasNaN = true; break;
+        }
+      }
+      let yearInBounds = true;
+      if (!hasNaN && e.currentTarget.value.length == 2){
+        if (parseInt(e.currentTarget.value) < 19){
+          monthInBounds = false;
+        }
+      }
+      if (!hasNaN && yearInBounds && e.currentTarget.value.length < 3) {
+        this.setState({ year: e.currentTarget.value });
+      }
   }
   processCard(){
 
@@ -74,17 +144,17 @@ class AddCard extends Component {
               <div className="expDiv">
                 Expiration
                 <div className="expInputsDiv">
-                  <input className="expMonthInput" placeholder={"MM"}></input>
-                  <input className="expYearInput" placeholder={"YY"}></input>
+                  <input value={this.state.month} onChange={this.updateMonth} className="expMonthInput" placeholder={"MM"}></input>
+                  <input value={this.state.year}onChange={this.updateYear} className="expYearInput" placeholder={"YY"}></input>
               </div>
             </div>
             <div className="cvcDiv">
               CVC
-              <input className="cvcInput" placeholder={"123"}></input>
+              <input value={this.state['cvc']} onChange={this.update('cvc')} className="cvcInput" placeholder={"123"}></input>
             </div>
             <div className="postalDiv">
               Postal code
-              <input className="postalInput" placeholder={"ZIP"}></input>
+              <input value={this.state['postal']} onChange={this.update('postal')}className="postalInput" placeholder={"ZIP"}></input>
             </div>
           </div>
           <div className="cardButtonDiv">

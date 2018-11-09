@@ -11,7 +11,6 @@ export const CLEAR_TRANSFER_ERRORS = 'CLEAR_TRANSFER_ERRORS';
 export const RECEIVE_TRANSFER = 'RECEIVE_TRANSFER';
 
 export const RECEIVE_CARD_ERRORS = 'RECEIVE_CARD_ERRORS';
-export const CLEAR_CARD_ERRORS = 'CLEAR_CARD_ERRORS';
 export const RECEIVE_CARD = 'RECEIVE_CARD';
 export const REMOVE_CARD = 'REMOVE_CARD';
 
@@ -36,10 +35,6 @@ export const clearPurchaseErrors = () => ({
 export const receivePurchase = purchase => ({
   type: RECEIVE_PURCHASE,
   purchase
-});
-
-export const clearCardErrors = () => ({
-  type: CLEAR_CARD_ERRORS
 });
 
 export const removeCard = () => {
@@ -123,10 +118,7 @@ export const processTransfer = transfer => dispatch => (
 export const processCard = card => dispatch => (
   APIUtil.processCard(card).then(card => (
     dispatch(receiveCard(card))
-    ), err => (
-    dispatch(cardErrors(err.responseJSON))
-  ))
-);
+)));
 
 export const deleteCard = () => dispatch => (
   APIUtil.deleteCard().then( () => (

@@ -117,7 +117,6 @@ class BuyAsset extends Component {
     return list;
   }
   togglePopup() {
-    this.props.clearCardErrors();
     this.setState({ showPopup: !this.state.showPopup });
  }
   addCard(){
