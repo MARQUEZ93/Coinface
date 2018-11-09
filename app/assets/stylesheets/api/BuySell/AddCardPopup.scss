@@ -24,7 +24,7 @@
   margin: auto;
   background: white;
   width: 500px;
-  height: 635px;
+  height: 535px;
 }
 .cardNumberDiv{
   display: flex;
@@ -72,10 +72,9 @@
   margin-left: 25px;
   color: #4e5c6e;
   margin-top: 15px;
-  justify-content: space-between;
 }
 .postalInput{
-  width: 150px;
+  width: 140px;
   height: 25px;
   padding: 20px;
   font-size: 18px;
@@ -84,17 +83,20 @@
   margin-top: 5px;
 }
 .cvcInput{
-  width: 35px;
+  margin-right: 10px;
+  width: 40px;
   margin-top: 5px;
   height: 25px;
   padding: 20px;
+  font-size: 18px;
   border: 1px solid rgb(218, 225, 233);
   border-radius: 4px;
 
 }
 .expMonthInput{
-  width: 25px;
+  width: 35px;
   margin-top: 5px;
+  font-size: 18px;
   height: 25px;
   padding: 20px;
   border: 1px solid rgb(218, 225, 233);
@@ -102,8 +104,10 @@
   margin-right: 10px;
 }
 .expYearInput{
+  margin-right: 10px;
+  font-size: 18px;
   height: 25px;
-  width: 25px;
+  width: 35px;
   margin-top: 5px;
   padding: 20px;
   border: 1px solid rgb(218, 225, 233);
@@ -112,10 +116,26 @@
 .expInputsDiv{
   display: flex;
   align-items: center;
-  width: 155px;
+  width: 175px;
 }
 .cvcDiv, .postalDiv, .expDiv {
   display: flex;
   flex-direction: column;
   font-size: 14px;
+}
+.addCardButton{
+  color: white;
+  background-color: #3c90df;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #3c90df;
+  padding: 25px 35px 25px 35px;
+  height: 27px;
+  width: 366px;
+}
+.cardButtonDiv{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }

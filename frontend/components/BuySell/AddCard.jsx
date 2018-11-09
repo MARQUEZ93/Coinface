@@ -41,6 +41,9 @@ class AddCard extends Component {
   toggleName(){
     this.setState ({ clickedName: !this.state.clickedName });
   }
+  processCard(){
+
+  }
   render(){
     let name = this.props.name;
     let id = this.props.id;
@@ -83,6 +86,9 @@ class AddCard extends Component {
               Postal code
               <input className="postalInput" placeholder={"ZIP"}></input>
             </div>
+          </div>
+          <div className="cardButtonDiv">
+            <button onClick={this.processCard} className="addCardButton">Add Card</button>
           </div>
         </div>
       </div>
