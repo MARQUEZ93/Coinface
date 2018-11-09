@@ -22,6 +22,6 @@ class Api::CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:transfer).permit(:number, :name, :postal, :cvc, :exp, :user_id)
+    params.require(:card).permit(:number, :name, :postal, :cvc, :exp, :user_id)
   end
 end

@@ -22,12 +22,13 @@ const visaSVG = <svg className="visaSVG" xmlns="http://www.w3.org/2000/svg" widt
 class AddCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { numbers: "", year: "", postal: "",
+    this.state = { number: "", year: "", postal: "",
       cvc: "", clickedName: false, month: "", invalidCard: false };
     this.handleNumbers = this.handleNumbers.bind(this);
     this.toggleName = this.toggleName.bind(this);
     this.updateYear = this.updateYear.bind(this);
     this.updateMonth = this.updateMonth.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleNumbers(e) {
     let hasNaN = false;
@@ -38,24 +39,25 @@ class AddCard extends Component {
       }
     }
     if (!hasNaN && e.currentTarget.value.length < 17) {
-      this.setState({ numbers: e.currentTarget.value });
+      this.setState({ number: e.currentTarget.value });
     }
   }
 
   handleSubmit(e) {
+    console.log(this.state);
     e.preventDefault();
     const cardObject = {
-      numbers: this.state.numbers,
+      number: this.state.number,
       cvc: this.state.cvc,
       name: this.props.name,
       postal: this.state.postal,
       exp: this.state.month + this.state.year,
       user_id: this.props.id
     };
-    if(this.state.numbers.length == 16 && this.state.month != "0" &&
-    this.state.postal.length == 5 && this.state.cvs.length == 3 && this.state.year.length == 2){
+    if(this.state.number.length == 16 && this.state.month != "0" &&
+    this.state.postal.length == 5 && this.state.cvc.length == 3 && this.state.year.length == 2){
       const card = Object.assign({}, cardObject);
-      this.props.processCard(card).then(res => {
+      this.props.addCard(card).then(res => {
         this.props.closePopup();
       });
     } else {
@@ -128,7 +130,7 @@ class AddCard extends Component {
       let yearInBounds = true;
       if (!hasNaN && e.currentTarget.value.length == 2){
         if (parseInt(e.currentTarget.value) < 19){
-          monthInBounds = false;
+          yearInBounds = false;
         }
       }
       if (!hasNaN && yearInBounds && e.currentTarget.value.length < 3) {
@@ -139,7 +141,7 @@ class AddCard extends Component {
     let name = this.props.name;
     let id = this.props.id;
     let placeholderNumbers = "XXXX XXXX XXXX XXXX";
-    let nameClicked = <p className="nameClickedP">Card name must match account name.</p>;
+    let nameClicked = <p className="nameClickedP">Card name must match your account name.</p>;
     let invalidSubmission = <p className="nameClickedP">Invalid card information.</p>;
     return (
       <div className="addCard">
@@ -152,13 +154,13 @@ class AddCard extends Component {
             <button className="closePopupButton" onClick={() => this.props.closePopup()}>{xSVG}</button>
           </div>
           <div className="inputReceipientDiv">
-            Name on card <div onClick={this.toggleName} className="inputReceipient">{name}</div>
+            Name on card <div onClick={this.toggleName} className="addCardName">{name}</div>
           {this.state.clickedName ? nameClicked:null}
           </div>
           <div className="cardNumberDiv">
             Card number
             <div className="inputDivCardNumber">
-              <input value={this.state.numbers} onChange={this.handleNumbers}placeholder={placeholderNumbers} className="cardInput"></input>
+              <input value={this.state.number} onChange={this.handleNumbers}placeholder={placeholderNumbers} className="cardInput"></input>
               <div className="cardSVGS">{visaSVG}{masterCardSVG}</div>
             </div>
           </div>
@@ -180,9 +182,9 @@ class AddCard extends Component {
             </div>
           </div>
           <div className="cardButtonDiv">
-            <button onClick={this.processCard} className="addCardButton">Add Card</button>
+            <button onClick={this.handleSubmit} className="addCardButton">Add Card</button>
           </div>
-          {this.state.invalidCard ? {invalidSubmission}:null}
+          {this.state.invalidCard ? invalidSubmission:null}
         </div>
       </div>
     )

@@ -144,7 +144,7 @@ class BuyAsset extends Component {
           </div>
         </div>
         {this.state.showPopup?
-          <AddCard processCard={this.props.processCard}
+          <AddCard addCard={this.props.addCard}
             closePopup={this.togglePopup} name={name} id={id} />: null}
     </div>
     );
