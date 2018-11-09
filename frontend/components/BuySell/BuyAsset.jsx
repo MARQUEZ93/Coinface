@@ -117,18 +117,22 @@ class BuyAsset extends Component {
     return list;
   }
   togglePopup() {
+    this.props.clearCardErrors();
     this.setState({ showPopup: !this.state.showPopup });
-  }
+ }
   addCard(){
     let id = this.props.id;
     let name = this.props.firstName + " " + this.props.middleName + " " + this.props.lastName;
     return (
-      <div className="addCardDiv" onClick={this.togglePopup}>
-        <div className="addCardText">
-          {addSVG} <p className="addCardTextP">Add a new account</p>
+      <div>
+        <div onClick={this.togglePopup} className="addCardDiv">
+          <div className="addCardText">
+            {addSVG} <p className="addCardTextP">Add a new account</p>
+          </div>
         </div>
-        {this.state.showPopup? <AddCard name={name} id={id}/>:null}
-      </div>
+        {this.state.showPopup?
+          <AddCard processCard={this.props.processCard} closePopup={this.togglePopup} name={name} id={id} />: null}
+    </div>
     );
   }
   hasCard(card){

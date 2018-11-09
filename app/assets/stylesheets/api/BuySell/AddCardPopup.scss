@@ -1,0 +1,121 @@
+.addCard{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(17,51,85, 0.5);
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans","Helvetica Neue", sans-serif;
+}
+.addCardInner{
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+  width: 500px;
+  height: 635px;
+}
+.cardNumberDiv{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: 25px;
+  font-size: 14px;
+  width: 450px;
+}
+.inputDivCardNumber{
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 25px;
+  padding: 20px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+}
+.cardInput{
+  color: #4e5c6e;
+  font-size: 18px;
+  width: 280px;
+
+}
+
+.inputDivCardNumber{
+
+}
+.cardSVGS{
+  display: flex;
+  width: 90px;
+  justify-content: space-around;
+}
+.nameClickedP{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #f8b700;
+  font-size: 14px;
+}
+.threeCardDetails{
+  display: flex;
+  height: 107px;
+  width: 448px;
+  margin-left: 25px;
+  color: #4e5c6e;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+.postalInput{
+  width: 150px;
+  height: 25px;
+  padding: 20px;
+  font-size: 18px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+  margin-top: 5px;
+}
+.cvcInput{
+  width: 35px;
+  margin-top: 5px;
+  height: 25px;
+  padding: 20px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+
+}
+.expMonthInput{
+  width: 25px;
+  margin-top: 5px;
+  height: 25px;
+  padding: 20px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.expYearInput{
+  height: 25px;
+  width: 25px;
+  margin-top: 5px;
+  padding: 20px;
+  border: 1px solid rgb(218, 225, 233);
+  border-radius: 4px;
+}
+.expInputsDiv{
+  display: flex;
+  align-items: center;
+  width: 155px;
+}
+.cvcDiv, .postalDiv, .expDiv {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
