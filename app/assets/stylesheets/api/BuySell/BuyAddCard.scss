@@ -30,15 +30,24 @@
   font-size: 18px;
   font-weight: 600;
 }
-
+.houseSVGDiv{
+  height: 32px;
+width: 32px;
+background-color: rgb(235, 241, 250);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 10px;
+}
 .houseSVG{
-  margin-right: 10px;
-  fill: rgb(155, 166, 178);
+  fill: rgb(6, 103, 208);
 }
 .addCardSVG{
   margin-right: 10px;
 }
 .hasCardDiv{
+  margin-left: 20px;
   display: flex;
   align-items: center;
   border-top-left-radius: 4px;
@@ -54,15 +63,29 @@
 .cardInfoDiv{
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
 }
 .cardInfoType{
   font-size: 18px;
   color: rgb(78, 92, 110);
 }
 .cardInfoNumber{
-  font-size: 12px;
-  color: rgb(155, 166, 178);
+  font-weight: 100;
+  font-size: 16px;
+  color: #9ba6b2;
+  font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif;
 }
 .deleteCardP{
   margin-left: 20px;
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.deleteCardP:hover{
+  text-decoration: underline;
+}
+.visaSVG, .masterCardSVG{
+  height: 38px;
+  width: 38px;
 }

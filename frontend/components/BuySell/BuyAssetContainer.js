@@ -7,7 +7,7 @@ import BuyAsset from './BuyAsset';
 const mdp = (dispatch) => (
   {
     addCard: (card) => dispatch(processCard(card)),
-    deleteCard: () => dispatch(deleteCard()),
+    destroyCard: () => dispatch(deleteCard()),
     getPrice: (symbol) => dispatch(getPrice(symbol))
   }
 );

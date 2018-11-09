@@ -11,8 +11,8 @@ class Api::CardsController < ApplicationController
 
   def destroy
     card = current_user.card
-    current_user.card = null
     card.destroy
+    current_user.card = nil
     current_user.save
     #user will have no card on file
     render json: ['Card deleted from database'], status: 200

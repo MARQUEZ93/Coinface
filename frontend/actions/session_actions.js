@@ -121,7 +121,7 @@ export const processCard = card => dispatch => (
 )));
 
 export const deleteCard = () => dispatch => (
-  APIUtil.deleteCard().then( () => (
+  APIUtil.removeCard().then( () => (
     dispatch(removeCard()))
 ));
 
