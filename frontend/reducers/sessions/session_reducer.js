@@ -45,11 +45,11 @@ const sessionReducer = (state = _nullUser, action) => {
       return newState2;
     case RECEIVE_PURCHASE:
       let newState3 = merge({}, state);
-      newState.purchases.push(action.purchase);
+      newState3.purchases.push(action.purchase);
       return newState3;
     case RECEIVE_SELLING:
       let newState4 = merge({}, state);
-      newState.transfers.push(action.selling);
+      newState4.transfers.push(action.selling);
       return newState4;
     default:
       return state;

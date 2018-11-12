@@ -234,7 +234,7 @@ class BuyAsset extends Component {
         card_type: this.props.card.card_type,
         asset_type: this.state.currentAsset
       };
-      this.props.makePurchase(purchaseObject).then(res => this.props.history.push('/dashboard'));
+      this.props.makePurchase(purchaseObject).then(()=> this.props.history.push('/dashboard'));
     }
   }
   renderBuyAsset() {
