@@ -16,20 +16,10 @@ export const REMOVE_CARD = 'REMOVE_CARD';
 
 export const RECEIVE_PURCHASE = 'RECEIVE_PURCHASE';
 export const RECEIVE_SELLING= 'RECEIVE_SELLING';
-export const CLEAR_SELLING_ERRORS = 'CLEAR_SELLING_ERRORS';
-export const CLEAR_PURCHASE_ERRORS = 'CLEAR_PURCHASE_ERRORS';
-
-export const clearSellingErrors = () => ({
-  type: CLEAR_SELLING_ERRORS
-});
 
 export const receiveSelling = selling => ({
   type: RECEIVE_SELLING,
   selling
-});
-
-export const clearPurchaseErrors = () => ({
-  type: CLEAR_PURCHASE_ERRORS
 });
 
 export const receivePurchase = purchase => ({
@@ -128,15 +118,13 @@ export const deleteCard = () => dispatch => (
 export const processSelling = selling => dispatch => (
   APIUtil.processSelling(selling).then(selling => (
     dispatch(receiveSelling(selling))
-    ), err => (
-    dispatch(sellingErrors(err.responseJSON))
-  ))
+    )
+  )
 );
 
 export const processPurchase = purchase => dispatch => (
   APIUtil.processPurchase(purchase).then(purchase => (
     dispatch(receivePurchase(purchase))
-    ), err => (
-    dispatch(purchaseErrors(err.responseJSON))
-  ))
+    )
+  )
 );

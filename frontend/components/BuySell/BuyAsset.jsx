@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
 import AddCard from './AddCard';
+import { withRouter } from 'react-router-dom';
 
 const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
   viewBox="0 0 18 18">
@@ -35,16 +36,20 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,  showPopup: false, usdAmount: "", assetAmount: "" };
+    this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,
+       showPopup: false, usdAmount: "", assetAmount: ""};
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
     this.hasCard = this.hasCard.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handlePurchase = this.handlePurchase.bind(this);
+    this.getAddress = this.getAddress.bind(this);
   }
 
   componentDidMount() {
+    let wallet = this.props.wallets
     this.props.getPrice("LTC");
     this.props.getPrice("BCH");
     this.props.getPrice("ETH");
@@ -52,6 +57,13 @@ class BuyAsset extends Component {
     this.props.getPrice("BTC").then(res => this.setState(
       { currentPrice: this.props.prices[this.state.currentAsset]
       }));
+  }
+  getAddress(symbol = this.state.currentAsset) {
+    for (let i = 0; i < this.props.wallets.length; i++){
+      if (this.props.wallets[i].asset_type == symbol){
+        return this.props.wallets[i].address;
+      }
+    }
   }
   getImage(symbol) {
     if (symbol === "BTC") {
@@ -212,6 +224,18 @@ class BuyAsset extends Component {
   handlePurchase(){
     //make sure card is on file
     //less than 25 000 usd
+    if (!this.state.amountError && this.props.card && this.state.usdAmount != ""){
+      let address = this.getAddress(this.state.currentAsset);
+      let purchaseObject = {
+        wallet_address: address,
+        cash_amount: this.state.usdAmount,
+        amount: this.state.assetAmount,
+        last_four_digits: this.props.card.last_four_digits,
+        card_type: this.props.card.card_type,
+        asset_type: this.state.currentAsset
+      };
+      this.props.makePurchase(purchaseObject).then(res => this.props.history.push('/dashboard'));
+    }
   }
   renderBuyAsset() {
     let tooMuchError = <p className="nameClickedPBuy">
@@ -221,6 +245,7 @@ class BuyAsset extends Component {
     let usdAmountPlaceholder = "0.00                   USD";
     let assetAmountPlaceholder = "0.00                   " + symbol;
     let card = this.props.card;
+    let name = this.getName(symbol);
 
     return (
       <div className="BuyAsset">
@@ -254,7 +279,7 @@ class BuyAsset extends Component {
         </div>
         {this.state.amountError ? tooMuchError:null}
         <button className="buyButton" onClick={this.handlePurchase}
-        >Buy {symbol}</button>
+        >Buy {name}</button>
 
     </div>
     );
@@ -275,4 +300,4 @@ class BuyAsset extends Component {
   }
 }
 
-export default BuyAsset;
+export default withRouter(BuyAsset);

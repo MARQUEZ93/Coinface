@@ -145,7 +145,19 @@ margin-left: 20px;
   color:rgb(155, 166, 178);
 }
 .buyButton{
-
+  margin-top: 15px;
+  font-weight: 500;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 510px;
+  height: 68px;
+  text-align: center;
+  background-color: #1652f0;
+  color: white;
+  font-size: 18px;
+  font-family: "Avenir Next", -apple-system, system-ui,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .nameClickedPBuy{
   font-family: "Avenir Next", -apple-system, system-ui,

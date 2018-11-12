@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPrice } from '../../actions/prices_actions';
-import { deleteCard, processCard } from '../../actions/session_actions';
+import { deleteCard, processCard, processPurchase } from '../../actions/session_actions';
 import BuyAsset from './BuyAsset';
 
 const mdp = (dispatch) => (
   {
     addCard: (card) => dispatch(processCard(card)),
     destroyCard: () => dispatch(deleteCard()),
-    getPrice: (symbol) => dispatch(getPrice(symbol))
+    getPrice: (symbol) => dispatch(getPrice(symbol)),
+    makePurchase: (purchase) => dispatch(processPurchase(purchase))
   }
 );
 
