@@ -35,7 +35,7 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", showPopup: false, usdAmount: "", assetAmount: "" };
+    this.state = {currentAsset: "BTC", currentPrice: 0,  showPopup: false, usdAmount: "", assetAmount: "" };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -45,11 +45,13 @@ class BuyAsset extends Component {
   }
 
   componentDidMount() {
-    this.props.getPrice("BTC");
     this.props.getPrice("LTC");
     this.props.getPrice("BCH");
     this.props.getPrice("ETH");
     this.props.getPrice("ETC");
+    this.props.getPrice("BTC").then(res => this.setState(
+      { currentPrice: this.props.prices[this.state.currentAsset]
+      }));
   }
   getImage(symbol) {
     if (symbol === "BTC") {
@@ -102,7 +104,8 @@ class BuyAsset extends Component {
   }
   handleRadioChange(e){
     this.setState({
-      currentAsset: e.target.value
+      currentAsset: e.target.value,
+      currentPrice: this.props.prices[e.target.value]
     });
   }
   renderCryptocurrency(symbol){
@@ -114,7 +117,7 @@ class BuyAsset extends Component {
     let cashAmount = this.getCashAmount(symbol);
     return (
       <div className="BCRRowAndInput" key={symbol}>
-        <div onClick={()=>this.setState({ currentAsset: symbol })}
+        <div onClick={()=>this.setState({ currentAsset: symbol, currentPrice: this.props.prices[symbol] })}
           className="BuyCryptocurrencyRow" style={pStyle}>
             <div className="BCRImageNames">
               <img className="BCRImage" src={img} />
@@ -183,9 +186,19 @@ class BuyAsset extends Component {
   }
   handleInput(field){
     return e => {
-      if (!isNaN(parseInt(e.currentTarget.value)) || e.currentTarget.value == "") {
+      if (!isNaN(parseFloat(e.currentTarget.value))) {
         let stateField = `${field}Amount`;
-        this.setState({ [stateField] : e.currentTarget.value });
+        let otherField = "usdAmount";
+        let otherVal;
+        if (field == "usd"){
+          otherField = "assetAmount";
+          otherVal = (parseFloat(e.currentTarget.value) / this.state.currentPrice).toFixed(6);
+        } else {
+          otherVal = (parseFloat(e.currentTarget.value) * this.state.currentPrice).toFixed(6);
+        }
+        this.setState({ [stateField] : e.currentTarget.value, [otherField] : otherVal });
+      } else if (e.currentTarget.value == "") {
+        this.setState({ usdAmount: "", assetAmount: "" });
       }
     }
   }
