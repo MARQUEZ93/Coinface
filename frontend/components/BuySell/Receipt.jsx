@@ -16,6 +16,7 @@ const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="h
 
 class Receipt extends React.Component {
   render(){
+    let card = this.props.card;
     return (
     <div className="Receipt">
       <div className="receiptHeaderDiv">
@@ -23,10 +24,21 @@ class Receipt extends React.Component {
           YOU ARE {this.props.type}
         </div>
         <div className="receiptAmount">
-          {this.props.asset}{this.props.symbol}
+          {this.props.asset}{" "}{this.props.symbol}
         </div>
         <div className="receiptPrice">
           @ {this.props.price} per {this.props.symbol}
+        </div>
+      </div>
+      <div className="receiptPaymentDiv">
+        <div className="receiptPaymentMethod">
+          {houseSVG}
+          <div className="receiptPaymentMethodDetails">
+            <p className="receiptPMP">Payment Method</p>
+            <p className="receiptCard">{card.card_type} ************{card.last_four_digits}</p>
+          </div>
+        </div>
+        <div className="receiptDepositTo">
         </div>
       </div>
     </div>

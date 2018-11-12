@@ -297,12 +297,14 @@ class BuyAsset extends Component {
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderBuyAsset()}
-        <Receipt type="BUYING"
-          price={this.state.currentPrice}
-          asset={this.state.assetAmount}
-          usd={this.state.usdAmount}
-          card={this.props.card}
-          symbol={this.state.currentAsset} />
+        <div className="receiptComponent">
+          <Receipt type="BUYING"
+            price={this.state.currentPrice}
+            asset={this.state.assetAmount}
+            usd={this.state.usdAmount}
+            card={this.props.card}
+            symbol={this.state.currentAsset} />
+        </div>
       </div>
     );
   }
