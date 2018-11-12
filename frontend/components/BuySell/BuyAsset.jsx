@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GridLoader } from 'halogenium';
 import AddCard from './AddCard';
 import { withRouter } from 'react-router-dom';
+import Receipt from './Receipt';
 
 const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
   viewBox="0 0 18 18">
@@ -246,6 +247,7 @@ class BuyAsset extends Component {
     let assetAmountPlaceholder = "0.00                   " + symbol;
     let card = this.props.card;
     let name = this.getName(symbol);
+    let color = { backgroundColor: this.getColor(symbol)};
 
     return (
       <div className="BuyAsset">
@@ -278,7 +280,7 @@ class BuyAsset extends Component {
             placeholder={assetAmountPlaceholder}></input>
         </div>
         {this.state.amountError ? tooMuchError:null}
-        <button className="buyButton" onClick={this.handlePurchase}
+        <button style={color} className="buyButton" onClick={this.handlePurchase}
         >Buy {name}</button>
 
     </div>
@@ -295,6 +297,12 @@ class BuyAsset extends Component {
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderBuyAsset()}
+        <Receipt type="BUYING"
+          price={this.state.currentPrice}
+          asset={this.state.assetAmount}
+          usd={this.state.usdAmount}
+          card={this.props.card}
+          symbol={this.state.currentAsset} />
       </div>
     );
   }

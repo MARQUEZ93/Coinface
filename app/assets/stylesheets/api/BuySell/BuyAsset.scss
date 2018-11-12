@@ -14,6 +14,7 @@
   display: flex;
   width: 600px;
   height: 54px;
+  cursor: pointer;
 }
 .BuyNav{
   height: 100%;
@@ -67,6 +68,7 @@ margin-left: 20px;
 .BuyCryptocurrencyRow:hover{
    opacity:1.0;
    transform: scale(1.05);
+   cursor: pointer;
 }
 .BuyCryptocurrencyRow{
   opacity:0.90;
@@ -144,6 +146,11 @@ margin-left: 20px;
   font-size: 18px;
   color:rgb(155, 166, 178);
 }
+.buyButton:hover, .buttonSendTransactionDiv:hover{
+  transform: scale(1.07);
+  border-radius: 50%;
+  font-size: 20px;
+}
 .buyButton{
   margin-top: 15px;
   font-weight: 500;
@@ -152,7 +159,6 @@ margin-left: 20px;
   width: 510px;
   height: 68px;
   text-align: center;
-  background-color: #1652f0;
   color: white;
   font-size: 18px;
   font-family: "Avenir Next", -apple-system, system-ui,

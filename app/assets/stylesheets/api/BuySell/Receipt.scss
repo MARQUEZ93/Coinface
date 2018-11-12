@@ -1,0 +1,29 @@
+.receiptLine{
+    flex: 1 1 0%;
+    margin: 6px -1px 6px 0px;
+    border-right: 1px dashed rgb(6, 103, 208);
+}
+.Receipt{
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 429px;
+  width: 420px;
+  padding: 24px;
+  background-color: white;
+  color: #0667d0;
+}
+.receiptHeaderDiv{
+  border-bottom: 1px solid rgb(188, 209, 238);
+}
+.receiptHeader{
+  text-align: center;
+  letter-spacing: 2px;
+  color: #7aa4de;
+}
+
+.receiptDetails{
+  color: #7aa4de;
+  font-size: 14px;
+}
