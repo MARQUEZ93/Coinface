@@ -179,6 +179,9 @@
   margin-bottom: 5px;
 }
 .inputUSDAmount{
+  font-family: "Avenir Next", -apple-system, system-ui,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   width:163px;
   border: 1px solid rgb(218, 225, 233);
   padding: 20px;
@@ -186,6 +189,9 @@
   font-size: 18px;
 }
 .inputAssetAmount{
+  font-family: "Avenir Next", -apple-system, system-ui,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 18px;
   width:163px;
   border: 1px solid rgb(218, 225, 233);
@@ -193,6 +199,9 @@
   border-radius: 4px;
 }
 .inputAssetAmount::placeholder, .inputUSDAmount::placeholder{
+  font-family: "Avenir Next", -apple-system, system-ui,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 18px;
   color:rgb(155, 166, 178);
 }

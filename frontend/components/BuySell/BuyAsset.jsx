@@ -25,16 +25,23 @@ const addSVG = <svg className="addCardSVG"
   <path fill="#FF5F00" d="M15.96 15.637a9.55 9.55 0 0 0 2.279-6.225 9.55 9.55 0 0 0-2.28-6.226 9.55 9.55 0 0 0-2.28 6.226 9.55 9.55 0 0 0 2.28 6.225z">
   </path></g></svg>;
 
+  const equalsSVG = <svg className="equalsSVG"
+    ui="[object Object]" xmlns="http://www.w3.org/2000/svg" width="21" height="22"
+    viewBox="0 0 21 22">
+    <path className="equalsSVGpath" d="M20 14.8a.8.8 0 1 0 0-1.6H1a.8.8 0 0 0-.58 1.351l6.65 7a.8.8 0 0 0 1.16-1.102L2.863 14.8H20zM1 7.2a.8.8 0 1 0 0 1.6h19a.8.8 0 0 0 .58-1.351l-6.65-7a.8.8 0 1 0-1.16 1.102L18.137 7.2H1z">
+  </path></svg>;
+
 class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", showPopup: false};
+    this.state = {currentAsset: "BTC", showPopup: false, usdAmount: null, assetAmount: null };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
     this.hasCard = this.hasCard.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   componentDidMount() {
@@ -107,7 +114,8 @@ class BuyAsset extends Component {
     let cashAmount = this.getCashAmount(symbol);
     return (
       <div className="BCRRowAndInput" key={symbol}>
-        <div className="BuyCryptocurrencyRow" style={pStyle}>
+        <div onClick={()=>this.setState({ currentAsset: symbol })}
+          className="BuyCryptocurrencyRow" style={pStyle}>
             <div className="BCRImageNames">
               <img className="BCRImage" src={img} />
               <div className="BCRNames">
@@ -173,8 +181,23 @@ class BuyAsset extends Component {
     );
 
   }
+  handleInput(field){
+    return e => {
+      if (!isNaN(parseInt(e.currentTarget.value))) {
+        let stateField = `${field}Amount`;
+        this.setState({ stateField: e.currentTarget.value });
+      }
+    }
+  }
   renderBuyAsset() {
+    let tooMuchError = <p className="nameClickedP">
+    You can only purchase up to $25,000 of digital currency per transaction using this linked account.</p>
+    let symbol = this.state.currentAsset;
+    let placeholder = "Enter a " + symbol + " address";
+    let usdAmountPlaceholder = "0.00                   USD";
+    let assetAmountPlaceholder = "0.00                   " + symbol;
     let card = this.props.card;
+
     return (
       <div className="BuyAsset">
         <div className="BuyAssetNavBar">
@@ -190,6 +213,22 @@ class BuyAsset extends Component {
         <p className="BuyCryptocurrencyAssetP">Payment Method</p>
         {this.props.card !== null ? this.hasCard() :
           this.addCard()}
+        <p className="BuyCryptocurrencyAssetP">Amount</p>
+        <div className="buyAssetPriceConverterDiv">
+          <input
+            value={this.state.usdAmount}
+            onChange={this.handleInput('usd')}
+            className="inputUSDAmountBuy"
+            placeholder={usdAmountPlaceholder}>
+          </input>
+          {equalsSVG}
+          <input
+            value={this.state.assetAmount}
+            onChange={this.handleInput('asset')}
+            className="inputAssetAmountBuy"
+            placeholder={assetAmountPlaceholder}></input>
+        </div>
+
     </div>
     );
   }
