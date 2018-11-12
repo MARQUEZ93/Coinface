@@ -35,7 +35,7 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", currentPrice: 0,  showPopup: false, usdAmount: "", assetAmount: "" };
+    this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,  showPopup: false, usdAmount: "", assetAmount: "" };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -190,21 +190,32 @@ class BuyAsset extends Component {
         let stateField = `${field}Amount`;
         let otherField = "usdAmount";
         let otherVal;
+        let error = false;
         if (field == "usd"){
+          if (parseFloat(e.currentTarget.value) > 25000) {
+            error = true;
+          }
           otherField = "assetAmount";
           otherVal = (parseFloat(e.currentTarget.value) / this.state.currentPrice).toFixed(6);
         } else {
           otherVal = (parseFloat(e.currentTarget.value) * this.state.currentPrice).toFixed(6);
+          if (otherVal > 25000) {
+            error = true;
+          }
         }
-        this.setState({ [stateField] : e.currentTarget.value, [otherField] : otherVal });
+        this.setState({ [stateField] : e.currentTarget.value, [otherField] : otherVal, amountError: error });
       } else if (e.currentTarget.value == "") {
-        this.setState({ usdAmount: "", assetAmount: "" });
+        this.setState({ usdAmount: "", assetAmount: "",  amountError: false });
       }
     }
   }
+  handlePurchase(){
+    //make sure card is on file
+    //less than 25 000 usd
+  }
   renderBuyAsset() {
-    let tooMuchError = <p className="nameClickedP">
-    You can only purchase up to $25,000 of digital currency per transaction using this linked account.</p>
+    let tooMuchError = <p className="nameClickedPBuy">
+    You can only purchase up to $25,000 of digital currency per transaction.</p>
     let symbol = this.state.currentAsset;
     let placeholder = "Enter a " + symbol + " address";
     let usdAmountPlaceholder = "0.00                   USD";
@@ -241,6 +252,9 @@ class BuyAsset extends Component {
             className="inputAssetAmountBuy"
             placeholder={assetAmountPlaceholder}></input>
         </div>
+        {this.state.amountError ? tooMuchError:null}
+        <button className="buyButton" onClick={this.handlePurchase}
+        >Buy {symbol}</button>
 
     </div>
     );
