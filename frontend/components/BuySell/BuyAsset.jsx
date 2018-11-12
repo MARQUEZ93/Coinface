@@ -35,7 +35,7 @@ class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", showPopup: false, usdAmount: null, assetAmount: null };
+    this.state = {currentAsset: "BTC", showPopup: false, usdAmount: "", assetAmount: "" };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -183,9 +183,9 @@ class BuyAsset extends Component {
   }
   handleInput(field){
     return e => {
-      if (!isNaN(parseInt(e.currentTarget.value))) {
+      if (!isNaN(parseInt(e.currentTarget.value)) || e.currentTarget.value == "") {
         let stateField = `${field}Amount`;
-        this.setState({ stateField: e.currentTarget.value });
+        this.setState({ [stateField] : e.currentTarget.value });
       }
     }
   }
@@ -233,7 +233,6 @@ class BuyAsset extends Component {
     );
   }
   render() {
-    console.log(this.props);
     if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
