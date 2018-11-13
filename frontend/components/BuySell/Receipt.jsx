@@ -27,7 +27,7 @@ class Receipt extends React.Component {
     let last_four_digits = "";
     if (card) {
       card_type = card.card_type;
-      last_four_digits = card.last_four_digits;
+      last_four_digits = "************" + card.last_four_digits;
     }
     return (
     <div className="Receipt" style={this.props.style}>
@@ -47,7 +47,7 @@ class Receipt extends React.Component {
           {houseSVG}
           <div className="receiptPaymentMethodDetails">
             <p className="receiptPMP">{this.props.walletVerb}</p>
-            <p className="receiptCard">{card_type} ************{last_four_digits}</p>
+            <p className="receiptCard">{card_type} {last_four_digits}</p>
           </div>
         </div>
         <div className="receiptDepositTo">
