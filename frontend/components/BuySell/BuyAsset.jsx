@@ -253,7 +253,7 @@ class BuyAsset extends Component {
       <div className="BuyAsset">
         <div className="BuyAssetNavBar">
           <div className="BuyNav"><p>Buy</p></div>
-          <div className="SellNav"><p>Sell</p></div>
+          <div className="SellNav" onClick={()=>this.props.history.push("/sell")}><p>Sell</p></div>
         </div>
         <p className="BuyCryptocurrencyAssetP">Cryptocurrency</p>
         <div className="BuyCryptocurrency">

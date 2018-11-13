@@ -252,16 +252,16 @@ class SellAsset extends Component {
     return (
       <div className="BuyAsset">
         <div className="BuyAssetNavBar">
-          <div className="BuyNav"><p>Buy</p></div>
-          <div className="SellNav"><p>Sell</p></div>
+          <div className="BuyNav1" onClick={()=>this.props.history.push("/buy")}><p>Buy</p></div>
+          <div className="SellNav1"><p>Sell</p></div>
         </div>
-        <p className="BuyCryptocurrencyAssetP">Cryptocurrency</p>
+        <p className="BuyCryptocurrencyAssetP">Sell From</p>
         <div className="BuyCryptocurrency">
           <form>
             {this.renderCryptocurrenies()}
           </form>
         </div>
-        <p className="BuyCryptocurrencyAssetP">Payment Method</p>
+        <p className="BuyCryptocurrencyAssetP">Deposit To</p>
         {this.props.card !== null ? this.hasCard() :
           this.addCard()}
         <p className="BuyCryptocurrencyAssetP">Amount</p>
@@ -281,7 +281,7 @@ class SellAsset extends Component {
         </div>
         {this.state.amountError ? tooMuchError:null}
         <button style={color} className="buyButton" onClick={this.handleSelling}
-        >Buy {name}</button>
+        >Sell {name} Instantly</button>
 
     </div>
     );
