@@ -1,6 +1,7 @@
 .Accounts {
   background-color: #f4f7fa;
   height: 1250px;
+  width:100%;
 
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI",
   Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
@@ -9,7 +10,7 @@
 }
 .YourAccounts {
   height: 950px;
-  width: cover;
+  width: 100%;
   overflow:auto;
 }
 .headerYA{

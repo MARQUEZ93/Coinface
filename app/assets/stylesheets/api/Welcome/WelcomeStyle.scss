@@ -1,8 +1,6 @@
-#root{
-  width: auto;
-  height: auto;
+.WelcomeComponent{
+  width: 100%;
 }
-
 .WelcomeHeader p {
   font-weight: 500;
   color: white;
@@ -14,6 +12,7 @@
   background-color: #1652f0;
   background-size: 661px;
   height: 600px;
+  width: 100%;
 
   background-image: image-url("background.png");
 
