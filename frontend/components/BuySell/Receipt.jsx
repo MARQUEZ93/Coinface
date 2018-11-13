@@ -57,7 +57,7 @@ class Receipt extends React.Component {
       <div className="receiptNumbers">
         <div className="receiptNumbersAmount">
           <p>
-            {asset}{" " + this.props.symbol}{": $"}{total}
+            {"Total: "}{asset}{" " + this.props.symbol}{" .......... $"}{total}
           </p>
         </div>
 

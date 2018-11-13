@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Header from './Header';
 import NavBar from './NavBar';
-import PortfolioValue from './PortfolioValue';
+import PortfolioValue from './PortfolioValueContainer';
 
 class Dashboard extends Component {
   render() {
     return (
       <div className="Dashboard">
         <Header firstName={this.props.firstName} middleName={this.props.middleName} lastName={this.props.lastName} action={this.props.action}/>
-        <PortfolioValue email={this.props.email} transfers={this.props.transfers} sellings={this.props.sellings}
-          purchases={this.props.purchases} receivers={this.props.receivers}
-          wallets={this.props.wallets} />
+        <PortfolioValue  />
       </div>
     );
   }

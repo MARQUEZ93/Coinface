@@ -15,6 +15,11 @@ class YourPortfolio extends React.Component {
 
   componentDidMount() {
     this.getAmounts();
+    this.props.getPrice("BTC");
+    this.props.getPrice("ETC");
+    this.props.getPrice("ETH");
+    this.props.getPrice("LTC");
+    this.props.getPrice("BCH");
   }
 
   getAmounts() {
@@ -56,29 +61,29 @@ class YourPortfolio extends React.Component {
 
   renderTable() {
     let listItems = [];
-    let btcPercent = this.getPercentage(this.state["btcAmount"], this.props.btcPrice);
-    let ethPercent = this.getPercentage(this.state["ethAmount"], this.props.ethPrice);
-    let ltcPercent = this.getPercentage(this.state["ltcAmount"], this.props.ltcPrice);
-    let bchPercent = this.getPercentage(this.state["bchAmount"], this.props.bchPrice);
-    let etcPercent = this.getPercentage(this.state["etcAmount"], this.props.etcPrice);
+    let btcPercent = this.getPercentage(this.state["btcAmount"], this.props.prices["BTC"]);
+    let ethPercent = this.getPercentage(this.state["ethAmount"], this.props.prices["ETH"]);
+    let ltcPercent = this.getPercentage(this.state["ltcAmount"], this.props.prices["LTC"]);
+    let bchPercent = this.getPercentage(this.state["bchAmount"], this.props.prices["BCH"]);
+    let etcPercent = this.getPercentage(this.state["etcAmount"], this.props.prices["ETC"]);
 
     let amountList = [btcPercent, ethPercent, ltcPercent, bchPercent, etcPercent];
 
     amountList = amountList.sort(this.sortNumber);
     let btcTR = this.renderTableRow(window.btc, "Bitcoin", "#FF9900", btcPercent,
-    parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.btcPrice).toFixed(2)));
+    parseFloat(this.state["btcAmount"]).toFixed(4), "BTC", this.displayUSD((this.state["btcAmount"] * this.props.prices["BTC"]).toFixed(2)));
 
     let ethTR = this.renderTableRow(window.eth, "Ethereum", "#4169E1", ethPercent,
-    parseFloat(this.state["ethAmount"]).toFixed(4), "ETH", this.displayUSD((this.state["ethAmount"] * this.props.ethPrice).toFixed(2)));
+    parseFloat(this.state["ethAmount"]).toFixed(4), "ETH", this.displayUSD((this.state["ethAmount"] * this.props.prices["ETH"]).toFixed(2)));
 
     let ltcTR = this.renderTableRow(window.ltc, "Litecoin", "#b8b8b8", ltcPercent,
-    parseFloat(this.state["ltcAmount"]).toFixed(4), "LTC", this.displayUSD((this.state["ltcAmount"] * this.props.ltcPrice).toFixed(2)));
+    parseFloat(this.state["ltcAmount"]).toFixed(4), "LTC", this.displayUSD((this.state["ltcAmount"] * this.props.prices["LTC"]).toFixed(2)));
 
     let bchTR = this.renderTableRow(window.bch, "Bitcoin Cash", "#4cca47", bchPercent,
-    parseFloat(this.state["bchAmount"]).toFixed(4), "BCH", this.displayUSD((this.state["bchAmount"] * this.props.bchPrice).toFixed(2)));
+    parseFloat(this.state["bchAmount"]).toFixed(4), "BCH", this.displayUSD((this.state["bchAmount"] * this.props.prices["BCH"]).toFixed(2)));
 
     let etcTR = this.renderTableRow(window.etc, "Ethereum Classic", "#00cc99", etcPercent,
-    parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.etcPrice ).toFixed(2)));
+    parseFloat(this.state["etcAmount"]).toFixed(4), "ETC", this.displayUSD((this.state["etcAmount"] * this.props.prices["ETC"]).toFixed(2)));
 
     let alreadyHappened = {
       "BTC": false,
@@ -130,7 +135,15 @@ class YourPortfolio extends React.Component {
     );
   }
   render() {
-    if (!this.state["gotAmounts"]) {
+    const values = Object.values(this.props.prices);
+    let boo = false;
+    for (let i = 0; i < values.length; i++) {
+      if (values[i] === null) {
+        boo = true;
+        break;
+      }
+    }
+    if (!this.state["gotAmounts"] || boo) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>

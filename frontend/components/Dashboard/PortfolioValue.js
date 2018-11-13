@@ -3,61 +3,33 @@ import axios from 'axios';
 import { GridLoader } from 'halogenium';
 import _ from 'lodash';
 import FiveBoxes from '../Welcome/FiveBoxes';
-import YourPortfolio from './YourPortfolio';
+import YourPortfolio from './YourPortfolioContainer';
 import Footer from '../Welcome/Footer';
 import RecentActivity from './RecentActivity';
 import NavBar from './NavBar';
 
-const URL = `https://min-api.cryptocompare.com/data/generateAvg?fsym=`;
-const URL_END = `&tsym=USD&e=Kraken`;
 class PortfolioValue extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { "BTC": null, "BCH": null, "ETC": null,
-      "ETH": null, "LTC": null
-    };
-    this.getPrice = this.getPrice.bind(this);
     this.getValue = this.getValue.bind(this);
   }
 
   componentDidMount() {
-    this.getPrice("BTC");
-    this.getPrice("BCH");
-    this.getPrice("ETC");
-    this.getPrice("ETH");
-    this.getPrice("LTC");
-  }
-
-  getPrice(symbol) {
-    const url = `${URL}`+`${symbol}`+`${URL_END}`;
-    axios.get(url).then(res => {
-      const price = res.data.RAW.PRICE;
-      if (symbol === "BTC") {
-        this.setState( { "BTC" : price });
-      }
-      if (symbol === "ETC") {
-        this.setState( { "ETC" : price });
-      }
-      if (symbol === "ETH") {
-        this.setState( { "ETH" : price });
-      }
-      if (symbol === "LTC") {
-        this.setState( { "LTC" : price });
-      }
-      if (symbol === "BCH") {
-        this.setState( { "BCH" : price });
-      }
-    });
+    this.props.getPrice("BTC");
+    this.props.getPrice("BCH");
+    this.props.getPrice("ETC");
+    this.props.getPrice("ETH");
+    this.props.getPrice("LTC");
   }
 
   getValue(wallet) {
     const asset = wallet.asset_type;
-    return (this.state[asset] * wallet.amount);
+    return (this.props.prices[asset] * wallet.amount);
   }
 
   render() {
-    const values = Object.values(this.state);
+    const values = Object.values(this.props.prices);
     let stillFetchingData = false;
     for (let i = 0; i < values.length; i++) {
       if (values[i] === null) {
@@ -105,12 +77,7 @@ class PortfolioValue extends React.Component {
         </div>
         <FiveBoxes />
         <div className="divYPRA">
-          <YourPortfolio
-            wallets={this.props.wallets} portfolioValue={portfolioValue}
-            btcPrice={this.state["BTC"]} bchPrice={this.state["BCH"]}
-            etcPrice={this.state["ETC"]} ethPrice={this.state["ETH"]}
-            ltcPrice={this.state["LTC"]}
-            />
+          <YourPortfolio portfolioValue={portfolioValue}/>
           <RecentActivity
             email={this.props.email}
             transfers={this.props.transfers} sellings={this.props.sellings}
