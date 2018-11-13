@@ -17,16 +17,22 @@
 }
 
 .FooterLogo {
+  width: 120px;
+  cursor: pointer;
   color: white;
   letter-spacing: -1px;
   margin-left: 25px;
   font-size: 27px;
-  margin-bottom: 14px;
+  margin-bottom: 5px;
 }
 
 .copyright {
+  margin-left: 25px;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
 #gitCoin{
@@ -53,12 +59,9 @@
   background-size: cover;
   margin-right: 20px;
 }
-.footerTexts{
-  display: flex;
-  flex-direction: column;
-  margin-left: 25px;
-}
+
 .footerImages{
+  margin-top: 10px;
   margin-left: 25px;
   margin-bottom: 10px;
   display: flex;
