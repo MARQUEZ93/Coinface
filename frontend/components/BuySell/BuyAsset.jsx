@@ -287,6 +287,10 @@ class BuyAsset extends Component {
     );
   }
   render() {
+    let symbol = this.state.currentAsset;
+    const receiptStyle = {
+      color: this.getColor(symbol)
+    };
     if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
@@ -298,11 +302,14 @@ class BuyAsset extends Component {
       <div className="BuyAssetYouAreBuying">
         {this.renderBuyAsset()}
           <Receipt type="BUYING"
+            walletVerb="Payment Method"
             price={this.state.currentPrice}
             asset={this.state.assetAmount}
             usd={this.state.usdAmount}
             card={this.props.card}
-            symbol={this.state.currentAsset} />
+            symbol={symbol}
+            style={receiptStyle}
+            payout="" />
       </div>
     );
   }

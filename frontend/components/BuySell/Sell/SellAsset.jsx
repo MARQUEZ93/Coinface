@@ -294,15 +294,22 @@ class SellAsset extends Component {
         </div>
       )
     }
+    let symbol = this.state.currentAsset;
+    const receiptStyle = {
+      color: this.getColor(symbol)
+    };
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderSellAsset()}
           <Receipt type="SELLING"
+            payout={" Payout"}
+            walletVerb="Withdraw From"
             price={this.state.currentPrice}
             asset={this.state.assetAmount}
             usd={this.state.usdAmount}
             card={this.props.card}
-            symbol={this.state.currentAsset} />
+            symbol={symbol}
+            style={receiptStyle}/>
       </div>
     );
   }

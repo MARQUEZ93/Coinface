@@ -24,7 +24,7 @@ class Receipt extends React.Component {
     }
     let card = this.props.card;
     return (
-    <div className="Receipt">
+    <div className="Receipt" style={this.props.style}>
       <div className="receiptHeaderDiv">
         <div className="receiptHeader">
           YOU ARE {this.props.type}
@@ -40,7 +40,7 @@ class Receipt extends React.Component {
         <div className="receiptPaymentMethod">
           {houseSVG}
           <div className="receiptPaymentMethodDetails">
-            <p className="receiptPMP">Payment Method</p>
+            <p className="receiptPMP">{this.props.walletVerb}</p>
             <p className="receiptCard">{card.card_type} ************{card.last_four_digits}</p>
           </div>
         </div>
@@ -57,7 +57,7 @@ class Receipt extends React.Component {
       <div className="receiptNumbers">
         <div className="receiptNumbersAmount">
           <p>
-            {"Total: "}{asset}{" " + this.props.symbol}{" .......... $"}{total}
+            {"Total" + this.props.payout + ": "}{asset}{" " + this.props.symbol}{" ....... $"}{total}
           </p>
         </div>
 

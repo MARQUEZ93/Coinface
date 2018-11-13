@@ -1,16 +1,15 @@
 
 .Receipt{
-  border-radius: 4px;
+  border-radius: 10%;
   border: 1px solid rgb(218, 225, 233);
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 329px;
+  height: 409px;
   width: 350px;
   padding: 24px;
   background-color: white;
-  color: #0667d0;
 }
 .receiptHeaderDiv{
   display: flex;
@@ -20,7 +19,6 @@
 .receiptHeader{
   text-align: center;
   letter-spacing: 2px;
-  color: #7aa4de;
 }
 .receiptAmount {
   font-weight: 500;
@@ -42,7 +40,6 @@
   border-bottom: 1px solid rgb(188, 209, 238);
 }
 .receiptDetails{
-  color: #7aa4de;
   font-size: 14px;
 }
 .receiptPaymentMethod{
@@ -62,7 +59,6 @@
 }
 .receiptPMP{
   font-size: 14px;
-  color: #7aa4de;
   margin-bottom: 5px;
 }
 .receiptNumbers{
