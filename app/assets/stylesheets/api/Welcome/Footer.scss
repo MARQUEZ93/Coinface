@@ -1,4 +1,6 @@
 .WelcomeFooter {
+  display: flex;
+  flex-direction: column;
   padding-top: 30px;
   background-color: #113355;
   font-size: 15px;
@@ -8,14 +10,6 @@
   font-family: Graphik, "Avenir Next", -apple-system, system-ui,
   "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
   "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
-.WelcomeFooterInfo {
-  margin-top: 5px;
-  color: #B0B0B0;
-  margin-left: 25px;
-  display: flex;
-  flex-direction: column;
 }
 
 .FooterATag{
@@ -31,7 +25,41 @@
 }
 
 .copyright {
-  margin-top: 10px;
   font-size: 12px;
+  margin-bottom: 10px;
+}
+
+#gitCoin{
+  background-image: image_url("gitCoin.png");
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background-size: cover;
+  margin-right: 20px;
+}
+#linkedCoin{
+  background-image: image_url("linkedCoin.png");
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background-size: cover;
+  margin-right: 20px;
+}
+#angelCoin{
+  background-image: image_url("angelCoin.png");
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background-size: cover;
+  margin-right: 20px;
+}
+.footerTexts{
+  display: flex;
+  flex-direction: column;
   margin-left: 25px;
+}
+.footerImages{
+  margin-left: 25px;
+  margin-bottom: 10px;
+  display: flex;
 }
