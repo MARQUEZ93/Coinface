@@ -2,7 +2,7 @@
   margin-left: 25px;
   margin-right: 20px;
 
-  width: 576px;
+  width: 40%;
   height: 458px;
   margin-bottom: 110px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -15,8 +15,8 @@
 }
 
 .tableRowYourPortfolio {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: white;
   display: flex;
   color:#4e5c6e;
@@ -27,6 +27,7 @@
   border-right: 1px solid #DCDCDC;
   height: 70px;
   font-size: 16px;
+  width: 100%;
 }
 
 .imgNameTD{
@@ -46,6 +47,7 @@ font-weight: 500;
 }
 
 .headerTR{
+  width: 100%;
   padding-left: 20px;
   background-color: white;
   display: flex;
