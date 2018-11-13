@@ -46,10 +46,22 @@ const sessionReducer = (state = _nullUser, action) => {
     case RECEIVE_PURCHASE:
       let newState3 = merge({}, state);
       newState3.purchases.push(action.purchase);
+      for (let i = 0; i < newState3.wallets.length; i++) {
+        if (newState3.wallets[i].address == action.purchase.wallet_address){
+          newState3.wallets[i].amount+=action.purchase.amount;
+          break;
+        }
+      }
       return newState3;
     case RECEIVE_SELLING:
       let newState4 = merge({}, state);
-      newState4.transfers.push(action.selling);
+      newState4.sellings.push(action.selling);
+      for (let i = 0; i < newState4.wallets.length; i++) {
+        if (newState4.wallets[i].address == action.selling.wallet_address){
+          newState4.wallets[i].amount-=action.selling.amount;
+          break;
+        }
+      }
       return newState4;
     default:
       return state;

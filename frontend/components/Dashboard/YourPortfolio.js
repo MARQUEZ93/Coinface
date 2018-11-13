@@ -6,9 +6,7 @@ class YourPortfolio extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { "btcAmount": null, "etcAmount": null,
-      "ethAmount": null, "bchAmount": null, "ltcAmount": null, "gotAmounts": false };
-    this.getAmounts = this.getAmounts.bind(this);
+    this.getWalletAmounts = this.getWalletAmounts.bind(this);
     this.renderTableRow = this.renderTableRow.bind(this);
     this.renderTable = this.renderTable.bind(this);
   }
@@ -22,7 +20,7 @@ class YourPortfolio extends React.Component {
     this.props.getPrice("BCH");
   }
 
-  getAmounts() {
+  getWalletAmounts() {
     let btc; let etc; let ltc; let bch; let eth;
     const wallets = this.props.wallets;
     for (let i = 0; i < wallets.length; i++) {
@@ -38,7 +36,7 @@ class YourPortfolio extends React.Component {
         bch = wallets[i].amount;
       }
     }
-    this.setState ({ "btcAmount": btc, "etcAmount": etc,  "bchAmount": bch, "ltcAmount": ltc, "ethAmount": eth, "gotAmounts": true });
+    return { "BTC": btc, "ETC": etc, "LTC": ltc, "BCH": bch, "ETH": eth };
   }
 
   getPercentage(amount, price) {
@@ -135,6 +133,7 @@ class YourPortfolio extends React.Component {
     );
   }
   render() {
+    let wallets = this.getWalletAmounts();
     const values = Object.values(this.props.prices);
     let boo = false;
     for (let i = 0; i < values.length; i++) {
@@ -143,7 +142,7 @@ class YourPortfolio extends React.Component {
         break;
       }
     }
-    if (!this.state["gotAmounts"] || boo) {
+    if (boo) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
