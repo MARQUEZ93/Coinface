@@ -17,6 +17,7 @@ import Dashboard from './Dashboard/Dashboard';
 import PageNotFound from './PageNotFound';
 import Accounts from './Accounts/AccountsContainer';
 import Buy from './BuySell/BuyContainer';
+import Sell from './BuySell/Sell/SellContainer';
 
 const App = () => (
     <Switch>
@@ -25,6 +26,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUp} />
       <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       <ProtectedRoute exact path="/buy" component={Buy} />
+      <ProtectedRoute exact path="/sell" component={Sell} />
       <ProtectedRoute exact path="/accounts" component={Accounts} />
       <Route component={PageNotFound} />
     </Switch>
