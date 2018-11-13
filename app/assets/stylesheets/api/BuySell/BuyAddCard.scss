@@ -67,22 +67,33 @@ margin-right: 10px;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .cardInfoType{
   font-size: 18px;
   color: rgb(78, 92, 110);
 }
+.cardInfoDivFlex{
+  display: flex;
+  align-items: center;
+}
+.cardTypeBuy{
+  margin-left: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
 .cardInfoNumber{
-  font-weight: 100;
   font-size: 16px;
+  font-weight: 300;
   color: #9ba6b2;
-  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
 }
 .deleteCardP{
   margin-left: 20px;
   margin-top: 4px;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 11px;
+  color: #9ba6b2;
   cursor: pointer;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }

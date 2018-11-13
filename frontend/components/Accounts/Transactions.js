@@ -144,13 +144,13 @@ mergesort(arr) {
     if (!!activity.note && activity.note === "A gift for joining Coinface!") {
       underDescription = activity.note;
     } else if (activity.activity_type == "purchase") {
-      underDescription+= "Debited MasterCard *********6955"
+      underDescription+= "Debited Mastercard *********6955"
     } else if (activity.activity_type == "receive") {
       underDescription+="From  " + asset + " address"
     } else if (activity.activity_type == "transfer") {
       underDescription+="To " + asset + " address"
     } else if (activity.activity_type == "selling") {
-      underDescription+="Credited MasterCard *********6955"
+      underDescription+="Credited Mastercard *********6955"
     }
 
     return (

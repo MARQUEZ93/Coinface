@@ -1,11 +1,11 @@
 import React from 'react';
 
-const accountsImg = <svg className="svgNav" width="16" height="16" fill="#1652f0" viewBox="0 0 16 16">
+const accountsSVG = <div className="houseSVGDiv"><svg className="houseSVG" width="16" height="16" fill="#1652f0" viewBox="0 0 16 16">
   <path d="M12.337 0H1.5C.7 0 0 .7 0 1.5S.7 3 1.5
   3h10.837V0zM15 5H0v9c0 1.1.9 2 2 2h13c.6 0 1-.4
   1-1V6c0-.6-.4-1-1-1zm-2.5 7c-.8
   0-1.5-.7-1.5-1.5S11.7 9 12.5 9s1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"> </path>
-</svg>
+</svg></div>
 
 
 const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -16,6 +16,12 @@ const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="h
 
 class Receipt extends React.Component {
   render(){
+    let asset = this.props.asset;
+    let total = (this.props.asset * this.props.price).toFixed(2);
+    if (!asset){
+      total = "0.00";
+      asset = "0.00 ";
+    }
     let card = this.props.card;
     return (
     <div className="Receipt">
@@ -24,7 +30,7 @@ class Receipt extends React.Component {
           YOU ARE {this.props.type}
         </div>
         <div className="receiptAmount">
-          {this.props.asset}{" "}{this.props.symbol}
+          {asset}{" " + this.props.symbol}
         </div>
         <div className="receiptPrice">
           @ {this.props.price} per {this.props.symbol}
@@ -39,7 +45,22 @@ class Receipt extends React.Component {
           </div>
         </div>
         <div className="receiptDepositTo">
+          <div className="receiptPaymentMethod">
+            {accountsSVG}
+            <div className="receiptPaymentMethodDetails">
+              <p className="receiptPMP">Deposit To</p>
+              <p className="receiptCard">My {this.props.symbol} Wallet</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="receiptNumbers">
+        <div className="receiptNumbersAmount">
+          <p>
+            {asset}{" " + this.props.symbol}{": $"}{total}
+          </p>
+        </div>
+
       </div>
     </div>
   );
