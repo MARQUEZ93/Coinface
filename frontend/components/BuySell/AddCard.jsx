@@ -23,7 +23,7 @@ class AddCard extends Component {
   constructor(props) {
     super(props);
     this.state = { number: "", year: "", postal: "",
-      cvc: "", clickedName: false, month: "", invalidCard: false };
+      cvc: "", clickedName: false, month: "", invalidCard: false, hasFirstNumError: false };
     this.handleNumbers = this.handleNumbers.bind(this);
     this.toggleName = this.toggleName.bind(this);
     this.updateYear = this.updateYear.bind(this);
@@ -32,6 +32,7 @@ class AddCard extends Component {
   }
   handleNumbers(e) {
     let hasNaN = false;
+    let hasFirstNumError = false;
     for (let i = 0; i < e.currentTarget.value.length; i++){
       //NaN equality
       if (isNaN(parseInt(e.currentTarget.value[i]))) {
@@ -39,23 +40,44 @@ class AddCard extends Component {
       }
     }
     if (!hasNaN && e.currentTarget.value.length < 17) {
-      this.setState({ number: e.currentTarget.value });
+      if (e.currentTarget.value[0] == "4" || e.currentTarget.value[0] == "5" || e.currentTarget.value == ""){
+        let cardType = "Mastercard";
+        if (e.currentTarget.value == ""){
+          cardType = null;
+        }
+        else if (e.currentTarget.value[0] == "4"){
+          cardType = "Visa";
+        }
+        this.setState({ hasFirstNumError: false, number: e.currentTarget.value, card_type: cardType });
+      } else {
+        let hFNE = true;
+        if (e.currentTarget.value == ""){
+          hfNE = false;
+        }
+        this.setState( { hasFirstNumError: hFNE, card_type: null });
+      }
     }
   }
 
   handleSubmit(e) {
     console.log(this.state);
     e.preventDefault();
+    let cardType = "Mastercard";
+    if (number[0]==4){
+      cardType = "Visa";
+    }
     const cardObject = {
       number: this.state.number,
       cvc: this.state.cvc,
       name: this.props.name,
       postal: this.state.postal,
       exp: this.state.month + this.state.year,
-      user_id: this.props.id
+      user_id: this.props.id,
+      card_type: this.state.card_type
     };
     if(this.state.number.length == 16 && this.state.month != "0" &&
-    this.state.postal.length == 5 && this.state.cvc.length == 3 && this.state.year.length == 2){
+    this.state.postal.length == 5 &&
+    this.state.cvc.length == 3 && this.state.year.length == 2){
       const card = Object.assign({}, cardObject);
       this.props.addCard(card).then(res => {
         this.props.closePopup();
@@ -138,9 +160,16 @@ class AddCard extends Component {
       }
   }
   render(){
+    let showCard = visaSVG;
+    if (this.state.card_type) {
+      if (this.state.card_type == "Mastercard"){
+        showCard = masterCardSVG;
+      }
+    }
     let name = this.props.name;
     let id = this.props.id;
     let placeholderNumbers = "XXXX XXXX XXXX XXXX";
+    let hasFirstNumError = <p className="nameClickedP">We only accept Visa or Mastercard card numbers.</p>;
     let nameClicked = <p className="nameClickedP">Card name must match your account name.</p>;
     let invalidSubmission = <p className="nameClickedP">Invalid card information.</p>;
     return (
@@ -161,8 +190,9 @@ class AddCard extends Component {
             Card number
             <div className="inputDivCardNumber">
               <input value={this.state.number} onChange={this.handleNumbers}placeholder={placeholderNumbers} className="cardInput"></input>
-              <div className="cardSVGS">{visaSVG}{masterCardSVG}</div>
+              {this.state.card_type ? <div className="cardSVGS">{showCard}</div>:<div className="cardSVGS">{visaSVG}{masterCardSVG}</div>}
             </div>
+            {this.state.hasFirstNumError ? hasFirstNumError:null}
           </div>
           <div className="threeCardDetails">
               <div className="expDiv">

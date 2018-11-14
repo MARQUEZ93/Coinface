@@ -28,17 +28,17 @@ const addSVG = <svg className="addCardSVG"
   </path></g></svg>;
 
   const equalsSVG = <svg className="equalsSVG"
-    ui="[object Object]" xmlns="http://www.w3.org/2000/svg" width="21" height="22"
+    ui="[object Object]" xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 21 22">
-    <path className="equalsSVGpath" d="M20 14.8a.8.8 0 1 0 0-1.6H1a.8.8 0 0 0-.58 1.351l6.65 7a.8.8 0 0 0 1.16-1.102L2.863 14.8H20zM1 7.2a.8.8 0 1 0 0 1.6h19a.8.8 0 0 0 .58-1.351l-6.65-7a.8.8 0 1 0-1.16 1.102L18.137 7.2H1z">
+    <path d="M20 14.8a.8.8 0 1 0 0-1.6H1a.8.8 0 0 0-.58 1.351l6.65 7a.8.8 0 0 0 1.16-1.102L2.863 14.8H20zM1 7.2a.8.8 0 1 0 0 1.6h19a.8.8 0 0 0 .58-1.351l-6.65-7a.8.8 0 1 0-1.16 1.102L18.137 7.2H1z">
   </path></svg>;
 
 class BuyAsset extends Component {
   constructor(props) {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
-    this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,
-       showPopup: false, usdAmount: "", assetAmount: ""};
+    this.state = { currentAsset: "BTC", amountError: false, currentPrice: 0,
+       showPopup: false, usdAmount: "", assetAmount: "" };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);

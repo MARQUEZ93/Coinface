@@ -19,11 +19,9 @@ class Card < ApplicationRecord
 
   belongs_to :user, foreign_key: :user_id, class_name: :User
   validates :user_id, :name, :exp, :cvc, :postal,
-  :number, presence: true
+  :number, :card_type, presence: true
 
-  validates :number, length: { minimum: 16, maximum: 16, allow_nil: true }
-
-  after_create :randomize_card_type
+  validates :number, length: { minimum: 16, maximum: 16 }
 
   attr_reader :number
 
@@ -31,12 +29,6 @@ class Card < ApplicationRecord
     @number = number
     self.last_four_digits = number.to_s.split(//).last(4).join.to_i
     self.number_digest = BCrypt::Password.create(number)
-    self.save
-  end
-
-  def randomize_card_type
-    #i give user either visa or mastercard 
-    self.card_type = ["Mastercard", "Visa"].sample
     self.save
   end
 
