@@ -287,6 +287,15 @@ class SellAsset extends Component {
     );
   }
   render() {
+    //grab card type of card (if it exists)
+    let svg = "";
+    if (this.props.card != null) {
+      if (this.props.card.card_type == "Visa") {
+        svg = visaSVG;
+      } else {
+        svg = masterCardSVG;
+      }
+    }
     if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
@@ -301,7 +310,8 @@ class SellAsset extends Component {
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderSellAsset()}
-          <Receipt type="SELLING"
+          <Receipt
+            type="SELLING"
             payout={" Payout"}
             walletVerb="Withdraw From"
             price={this.state.currentPrice}
@@ -309,7 +319,9 @@ class SellAsset extends Component {
             usd={this.state.usdAmount}
             card={this.props.card}
             symbol={symbol}
-            style={receiptStyle}/>
+            style={receiptStyle}
+            svg={svg}
+          />
       </div>
     );
   }

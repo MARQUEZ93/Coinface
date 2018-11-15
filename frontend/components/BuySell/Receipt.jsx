@@ -15,9 +15,14 @@ const houseSVG = <div className="houseSVGDiv"><svg className="houseSVG" xmlns="h
 
 
 class Receipt extends React.Component {
+  numberWithCommas(num){
+    var parts = num.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
   render(){
     let asset = this.props.asset;
-    let total = (this.props.asset * this.props.price).toFixed(2);
+    let total = this.numberWithCommas(this.props.usd);
     if (!asset){
       total = "0.00";
       asset = "0.00 ";
@@ -27,7 +32,7 @@ class Receipt extends React.Component {
     let last_four_digits = "";
     if (card) {
       card_type = card.card_type;
-      last_four_digits = "************" + card.last_four_digits;
+      last_four_digits = <p className="receiptLastFourDigits">************{card.last_four_digits}</p>;
     }
     return (
     <div className="Receipt" style={this.props.style}>
@@ -47,7 +52,7 @@ class Receipt extends React.Component {
           {houseSVG}
           <div className="receiptPaymentMethodDetails">
             <p className="receiptPMP">{this.props.walletVerb}</p>
-            <p className="receiptCard">{card_type} {last_four_digits}</p>
+            <p className="receiptCard">{this.props.svg} {last_four_digits}</p>
           </div>
         </div>
         <div className="receiptDepositTo">
@@ -63,7 +68,7 @@ class Receipt extends React.Component {
       <div className="receiptNumbers">
         <div className="receiptNumbersAmount">
           <p>
-            {"Total" + this.props.payout + ": "}{asset}{" " + this.props.symbol}{" ....... $"}{total}
+            {"Total" + this.props.payout + ": "}{asset}{" " + this.props.symbol}{" ... $"}{total}
           </p>
         </div>
 

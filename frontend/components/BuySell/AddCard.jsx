@@ -50,11 +50,12 @@ class AddCard extends Component {
         }
         this.setState({ hasFirstNumError: false, number: e.currentTarget.value, card_type: cardType });
       } else {
+        //if first num is NOT 4, 5, or empty input
         let hFNE = true;
         if (e.currentTarget.value == ""){
           hfNE = false;
         }
-        this.setState( { hasFirstNumError: hFNE, card_type: null });
+        this.setState( { hasFirstNumError: hFNE });
       }
     }
   }
@@ -62,10 +63,6 @@ class AddCard extends Component {
   handleSubmit(e) {
     console.log(this.state);
     e.preventDefault();
-    let cardType = "Mastercard";
-    if (number[0]==4){
-      cardType = "Visa";
-    }
     const cardObject = {
       number: this.state.number,
       cvc: this.state.cvc,
@@ -189,7 +186,7 @@ class AddCard extends Component {
           <div className="cardNumberDiv">
             Card number
             <div className="inputDivCardNumber">
-              <input value={this.state.number} onChange={this.handleNumbers}placeholder={placeholderNumbers} className="cardInput"></input>
+              <input value={this.state.number} onChange={this.handleNumbers} placeholder={placeholderNumbers} className="cardInput"></input>
               {this.state.card_type ? <div className="cardSVGS">{showCard}</div>:<div className="cardSVGS">{visaSVG}{masterCardSVG}</div>}
             </div>
             {this.state.hasFirstNumError ? hasFirstNumError:null}

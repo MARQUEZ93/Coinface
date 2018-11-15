@@ -199,7 +199,12 @@ class BuyAsset extends Component {
   }
   handleInput(field){
     return e => {
-      if (!isNaN(parseFloat(e.currentTarget.value))) {
+      let hasNaN = false;
+      let hasFirstNumError = false;
+      if (isNaN(parseFloat(e.currentTarget.value))) {
+          hasNaN = true;
+      }
+      if (!hasNaN && e.currentTarget.value != "" && !e.currentTarget.value.match(/[a-z]/i)) {
         let stateField = `${field}Amount`;
         let otherField = "usdAmount";
         let otherVal;
@@ -211,7 +216,7 @@ class BuyAsset extends Component {
           otherField = "assetAmount";
           otherVal = (parseFloat(e.currentTarget.value) / this.state.currentPrice).toFixed(6);
         } else {
-          otherVal = (parseFloat(e.currentTarget.value) * this.state.currentPrice).toFixed(6);
+          otherVal = (parseFloat(e.currentTarget.value) * this.state.currentPrice).toFixed(2);
           if (otherVal > 25000) {
             error = true;
           }
@@ -287,6 +292,15 @@ class BuyAsset extends Component {
     );
   }
   render() {
+    //grab card type of card (if it exists)
+    let svg = "";
+    if (this.props.card != null) {
+      if (this.props.card.card_type == "Visa") {
+        svg = visaSVG;
+      } else {
+        svg = masterCardSVG;
+      }
+    }
     let symbol = this.state.currentAsset;
     const receiptStyle = {
       color: this.getColor(symbol)
@@ -301,7 +315,8 @@ class BuyAsset extends Component {
     return (
       <div className="BuyAssetYouAreBuying">
         {this.renderBuyAsset()}
-          <Receipt type="BUYING"
+          <Receipt
+            type="BUYING"
             walletVerb="Payment Method"
             price={this.state.currentPrice}
             asset={this.state.assetAmount}
@@ -309,7 +324,9 @@ class BuyAsset extends Component {
             card={this.props.card}
             symbol={symbol}
             style={receiptStyle}
-            payout="" />
+            payout=""
+            svg={svg}
+          />
       </div>
     );
   }

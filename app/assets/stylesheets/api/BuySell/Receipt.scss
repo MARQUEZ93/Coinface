@@ -2,7 +2,7 @@
 .Receipt{
   border-radius: 10%;
   border: 1px solid rgb(218, 225, 233);
-  font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: Courier, monospace;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,6 +55,8 @@
   justify-content: flex-start;
 }
 .receiptCard{
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 .receiptPMP{
@@ -64,9 +66,12 @@
 .receiptNumbers{
   margin-top: 10px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
 }
 .receiptNumbersAmount{
   display: flex;
   justify-content: center;
+}
+.receiptLastFourDigits{
+  margin-left: 5px;
 }
