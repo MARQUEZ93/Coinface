@@ -302,6 +302,12 @@ class BuyAsset extends Component {
       }
     }
     let symbol = this.state.currentAsset;
+    let deposit = <p className="receiptCard">My {symbol} Wallet</p>;
+    let last_four_digits = "";
+    if (this.props.card) {
+      last_four_digits = "************"+ `${this.props.card.last_four_digits}`;
+    }
+    let withdraw = <div className="receiptLFDDiv">{svg}<p className="receiptLastFourDigits">{last_four_digits}</p></div>;
     const receiptStyle = {
       color: this.getColor(symbol)
     };
@@ -326,6 +332,8 @@ class BuyAsset extends Component {
             style={receiptStyle}
             payout=""
             svg={svg}
+            deposit={deposit}
+            withdraw={withdraw}
           />
       </div>
     );

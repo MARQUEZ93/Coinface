@@ -52,7 +52,7 @@ class Receipt extends React.Component {
           {houseSVG}
           <div className="receiptPaymentMethodDetails">
             <p className="receiptPMP">{this.props.walletVerb}</p>
-            <p className="receiptCard">{this.props.svg} {last_four_digits}</p>
+            {this.props.withdraw}
           </div>
         </div>
         <div className="receiptDepositTo">
@@ -60,7 +60,7 @@ class Receipt extends React.Component {
             {accountsSVG}
             <div className="receiptPaymentMethodDetails">
               <p className="receiptPMP">Deposit To</p>
-              <p className="receiptCard">My {this.props.symbol} Wallet</p>
+              {this.props.deposit}
             </div>
           </div>
         </div>

@@ -239,6 +239,7 @@ class SellAsset extends Component {
     }
   }
   renderSellAsset() {
+
     let tooMuchError = <p className="nameClickedPBuy">
     You can only sell what is in your wallet amount.</p>
     let symbol = this.state.currentAsset;
@@ -296,6 +297,12 @@ class SellAsset extends Component {
         svg = masterCardSVG;
       }
     }
+    let last_four_digits = "";
+    if (this.props.card) {
+      last_four_digits = "************"+ `${this.props.card.last_four_digits}`;
+    }
+    let withdraw = <p className="receiptCard">My {symbol} Wallet</p>;
+    let deposit = <div className="receiptLFDDiv">{svg}<p className="receiptLastFourDigits">{last_four_digits}</p></div>;
     if (Object.values(this.props.prices).includes(null)) {
       return (
         <div className='loadbar'>
@@ -321,6 +328,8 @@ class SellAsset extends Component {
             symbol={symbol}
             style={receiptStyle}
             svg={svg}
+            deposit={deposit}
+            withdraw={withdraw}
           />
       </div>
     );
