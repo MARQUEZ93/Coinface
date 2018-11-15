@@ -1,1 +1,1 @@
-json.partial! 'api/sellings/selling', transfer: @selling
+json.partial! 'api/sellings/selling', selling: @selling

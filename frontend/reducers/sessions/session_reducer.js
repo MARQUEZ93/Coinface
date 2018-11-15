@@ -61,8 +61,8 @@ const sessionReducer = (state = _nullUser, action) => {
       for (let i = 0; i < newState4.wallets.length; i++) {
         if (newState4.wallets[i].address == action.selling.wallet_address){
           let amount = parseFloat(newState4.wallets[i].amount);
-          amount-= parseFloat(action.purchase.amount);
-          newState4.wallets[i].amount=amount.toString();
+          amount-= parseFloat(action.selling.amount);
+          newState4.wallets[i].amount = amount.toString();
           break;
         }
       }
