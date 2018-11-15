@@ -38,7 +38,7 @@ class SellAsset extends Component {
     super(props);
     this.renderSellAsset = this.renderSellAsset.bind(this);
     this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,
-       showPopup: false, usdAmount: "", assetAmount: ""};
+       showPopup: false, usdAmount: "", assetAmount: "", notEnough: false};
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -47,10 +47,10 @@ class SellAsset extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSelling = this.handleSelling.bind(this);
     this.getAddress = this.getAddress.bind(this);
+    this.grabWalletAmount = this.grabWalletAmount.bind(this);
   }
 
   componentDidMount() {
-    let wallet = this.props.wallets
     this.props.getPrice("LTC");
     this.props.getPrice("BCH");
     this.props.getPrice("ETH");
@@ -197,35 +197,54 @@ class SellAsset extends Component {
     );
 
   }
+  grabWalletAmount(){
+    console.log(this.state);
+    let wallets = this.props.wallets;
+    for (let i = 0; i < wallets.length; i++){
+      if (wallets[i].asset_type == this.state["currentAsset"]){
+        return parseFloat(wallets[i].amount);
+      }
+    }
+  }
   handleInput(field){
+    let amount = this.grabWalletAmount();
+    console.log(amount);
+    let tooMuch = false;
     return e => {
       if (!isNaN(parseFloat(e.currentTarget.value))) {
         let stateField = `${field}Amount`;
         let otherField = "usdAmount";
         let otherVal;
         let error = false;
-        if (field == "usd"){
+        if (field == "usd"){ //user is typing usd currency
           if (parseFloat(e.currentTarget.value) > 25000) {
             error = true;
           }
           otherField = "assetAmount";
           otherVal = (parseFloat(e.currentTarget.value) / this.state.currentPrice).toFixed(6);
+          if (otherVal > amount) {
+            tooMuch = true;
+          }
         } else {
+          if (parseFloat(e.currentTarget.value) > amount) {
+            tooMuch = true;
+          }
           otherVal = (parseFloat(e.currentTarget.value) * this.state.currentPrice).toFixed(6);
           if (otherVal > 25000) {
             error = true;
           }
         }
-        this.setState({ [stateField] : e.currentTarget.value, [otherField] : otherVal, amountError: error });
+        this.setState({ [stateField] : e.currentTarget.value, [otherField] : otherVal,
+          amountError: error, notEnough: tooMuch });
       } else if (e.currentTarget.value == "") {
-        this.setState({ usdAmount: "", assetAmount: "",  amountError: false });
+        this.setState({ usdAmount: "", assetAmount: "",  amountError: false, notEnough: false });
       }
     }
   }
   handleSelling(){
     //make sure card is on file
     //less than 25 000 usd
-    if (!this.state.amountError && this.props.card && this.state.usdAmount != ""){
+    if (!this.state.amountError && this.props.card && this.state.usdAmount != "" && !this.state.notEnough){
       let address = this.getAddress(this.state.currentAsset);
       let sellingObject = {
         wallet_address: address,
@@ -240,8 +259,10 @@ class SellAsset extends Component {
   }
   renderSellAsset() {
 
+    let notEnough = <p className="nameClickedPBuy">
+      You can only sell what is in your wallet amount.</p>;
     let tooMuchError = <p className="nameClickedPBuy">
-    You can only sell what is in your wallet amount.</p>
+      You can only purchase up to $25,000 of digital currency per transaction.</p>
     let symbol = this.state.currentAsset;
     let placeholder = "Enter a " + symbol + " address";
     let usdAmountPlaceholder = "0.00                   USD";
@@ -281,6 +302,7 @@ class SellAsset extends Component {
             placeholder={assetAmountPlaceholder}></input>
         </div>
         {this.state.amountError ? tooMuchError:null}
+        {this.state.notEnough ? notEnough:null}
         <button style={color} className="buyButton" onClick={this.handleSelling}
         >Sell {name} Instantly</button>
 

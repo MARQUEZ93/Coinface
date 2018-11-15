@@ -50,7 +50,6 @@ class BuyAsset extends Component {
   }
 
   componentDidMount() {
-    let wallet = this.props.wallets
     this.props.getPrice("LTC");
     this.props.getPrice("BCH");
     this.props.getPrice("ETH");
