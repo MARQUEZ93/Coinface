@@ -208,10 +208,14 @@ class SellAsset extends Component {
   }
   handleInput(field){
     let amount = this.grabWalletAmount();
-    console.log(amount);
     let tooMuch = false;
     return e => {
-      if (!isNaN(parseFloat(e.currentTarget.value))) {
+      let hasNaN = false;
+      let hasFirstNumError = false;
+      if (isNaN(parseFloat(e.currentTarget.value))) {
+          hasNaN = true;
+      }
+      if (!hasNaN && e.currentTarget.value != "" && !e.currentTarget.value.match(/[a-z]/i)) {
         let stateField = `${field}Amount`;
         let otherField = "usdAmount";
         let otherVal;
