@@ -38,7 +38,7 @@ class SellAsset extends Component {
     super(props);
     this.renderSellAsset = this.renderSellAsset.bind(this);
     this.state = {currentAsset: "BTC", amountError: false, currentPrice: 0,
-       showPopup: false, usdAmount: "", assetAmount: "", notEnough: false};
+       showPopup: false, usdAmount: "", assetAmount: "", notEnough: false, needCard: false };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -258,7 +258,10 @@ class SellAsset extends Component {
         card_type: this.props.card.card_type,
         asset_type: this.state.currentAsset
       };
+      this.setState( { needCard: false });
       this.props.makeSelling(sellingObject).then(()=> this.props.history.push('/dashboard'));
+    } else if (!this.props.card) {
+      this.setState ( { needCard: true });
     }
   }
   renderSellAsset() {
@@ -266,7 +269,9 @@ class SellAsset extends Component {
     let notEnough = <p className="nameClickedPBuy">
       You can only sell what is in your wallet amount.</p>;
     let tooMuchError = <p className="nameClickedPBuy">
-      You can only purchase up to $25,000 of digital currency per transaction.</p>
+      You can only purchase up to $25,000 of digital currency per transaction.</p>;
+    let needCard = <p className="nameClickedPBuy">
+      You need a card on file to make a selling.</p>;
     let symbol = this.state.currentAsset;
     let placeholder = "Enter a " + symbol + " address";
     let usdAmountPlaceholder = "0.00                   USD";
@@ -274,6 +279,11 @@ class SellAsset extends Component {
     let card = this.props.card;
     let name = this.getName(symbol);
     let color = { backgroundColor: this.getColor(symbol)};
+
+    let needsCard = this.state.needCard;
+    if (this.props.card && this.state.needCard){
+      needsCard = false;
+    }
 
     return (
       <div className="BuyAsset">
@@ -307,6 +317,7 @@ class SellAsset extends Component {
         </div>
         {this.state.amountError ? tooMuchError:null}
         {this.state.notEnough ? notEnough:null}
+        {needsCard ? needCard:null}
         <button style={color} className="buyButton" onClick={this.handleSelling}
         >Sell {name} Instantly</button>
 
@@ -314,6 +325,7 @@ class SellAsset extends Component {
     );
   }
   render() {
+
     //grab card type of card (if it exists)
     let svg = "";
     if (this.props.card != null) {

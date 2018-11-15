@@ -38,7 +38,7 @@ class BuyAsset extends Component {
     super(props);
     this.renderBuyAsset = this.renderBuyAsset.bind(this);
     this.state = { currentAsset: "BTC", amountError: false, currentPrice: 0,
-       showPopup: false, usdAmount: "", assetAmount: "" };
+       showPopup: false, usdAmount: "", assetAmount: "", needCard: false };
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.renderCryptocurrency = this.renderCryptocurrency.bind(this);
     this.renderCryptocurrenies = this.renderCryptocurrenies.bind(this);
@@ -239,12 +239,23 @@ class BuyAsset extends Component {
         card_type: this.props.card.card_type,
         asset_type: this.state.currentAsset
       };
+      this.setState( { needCard: false });
       this.props.makePurchase(purchaseObject).then(()=> this.props.history.push('/dashboard'));
+    } else if (!this.props.card) {
+      this.setState({ needCard: true });
     }
   }
   renderBuyAsset() {
+    let needsCard = this.state.needCard;
+    if (this.props.card && this.state.needCard){
+      needsCard = false;
+    }
     let tooMuchError = <p className="nameClickedPBuy">
-    You can only purchase up to $25,000 of digital currency per transaction.</p>
+    You can only purchase up to $25,000 of digital currency per transaction.</p>;
+
+    let needCard = <p className="nameClickedPBuy">
+    You need a card on file to make a purchase. </p>;
+
     let symbol = this.state.currentAsset;
     let placeholder = "Enter a " + symbol + " address";
     let usdAmountPlaceholder = "0.00                   USD";
@@ -283,7 +294,8 @@ class BuyAsset extends Component {
             className="inputAssetAmountBuy"
             placeholder={assetAmountPlaceholder}></input>
         </div>
-        {this.state.amountError ? tooMuchError:null}
+        {this.state.amountError ? tooMuchError:null }
+        {needsCard ? needCard: null }
         <button style={color} className="buyButton" onClick={this.handlePurchase}
         >Buy {name}</button>
 

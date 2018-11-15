@@ -166,8 +166,8 @@ class AddCard extends Component {
     let name = this.props.name;
     let id = this.props.id;
     let placeholderNumbers = "XXXX XXXX XXXX XXXX";
-    let hasFirstNumError = <p className="nameClickedP">We only accept Visa or Mastercard card numbers.</p>;
-    let nameClicked = <p className="nameClickedP">Card name must match your account name.</p>;
+    let hasFirstNumError = <p className="nameClickedP1">We only accept Visa or Mastercard card numbers.</p>;
+    let nameClicked = <p className="nameClickedP1">Card name must match your account name.</p>;
     let invalidSubmission = <p className="nameClickedP">Invalid card information.</p>;
     return (
       <div className="addCard">
