@@ -70,7 +70,6 @@ class AddCard extends Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state);
     e.preventDefault();
     const cardObject = {
       number: this.state.number,

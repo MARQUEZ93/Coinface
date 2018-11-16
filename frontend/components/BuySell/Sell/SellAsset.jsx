@@ -198,7 +198,6 @@ class SellAsset extends Component {
 
   }
   grabWalletAmount(){
-    console.log(this.state);
     let wallets = this.props.wallets;
     for (let i = 0; i < wallets.length; i++){
       if (wallets[i].asset_type == this.state["currentAsset"]){

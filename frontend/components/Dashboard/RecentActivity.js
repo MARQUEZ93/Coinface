@@ -39,7 +39,6 @@ class RecentActivity extends React.Component {
       }
     });
 
-
     activitiesArray = this.mergesort(activitiesArray);
 
     let onlyFive = false;
@@ -213,7 +212,7 @@ mergesort(arr) {
   getDate(timestamp) {
     let date = Date.parse(timestamp);
     date = new Date(date);
-    let day = date.getDay();
+    let day = date.getDate();
     day = this.getDay(parseInt(day));
     let month = date.getMonth();
     month = this.getMonth(month);

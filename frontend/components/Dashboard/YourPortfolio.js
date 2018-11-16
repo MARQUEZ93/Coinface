@@ -132,7 +132,6 @@ class YourPortfolio extends React.Component {
     );
   }
   render() {
-    console.log(this.props.wallets);
     let wallets = this.getWalletAmounts();
     const values = Object.values(this.props.prices);
     let boo = false;
