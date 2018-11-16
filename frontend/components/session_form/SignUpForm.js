@@ -92,31 +92,31 @@ class SignUpForm extends React.Component {
                 <input type="text"
                   value={this.state.firstName}
                   onChange={this.update('firstName')}
-                  className="SessionsInput"
+                  className="SignUpInput"
                   placeholder="First name"
                 />
                 <input type="text"
                   value={this.state.middleName}
                   onChange={this.update('middleName')}
-                  className="SessionsInput"
+                  className="SignUpInput"
                   placeholder="Middle name"
                 />
                 <input type="text"
                   value={this.state.lastName}
                   onChange={this.update('lastName')}
-                  className="SessionsInput"
+                  className="SignUpInput"
                   placeholder="Last name"
                 />
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="SessionsInput"
+                className="SignUpInput"
                 placeholder="Email"
               />
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="SessionsInput"
+                className="SignUpInput"
                 placeholder="Password"
               />
             </div>
