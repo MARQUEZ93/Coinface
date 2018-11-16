@@ -22,7 +22,7 @@ class Receipt extends React.Component {
   }
   render(){
     let asset = this.props.asset;
-    let total = this.numberWithCommas(this.props.usd);
+    let total = this.numberWithCommas(parseFloat(this.props.usd).toFixed(2));
     if (!asset){
       total = "0.00";
       asset = "0.00 ";

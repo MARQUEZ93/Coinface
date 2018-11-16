@@ -111,17 +111,6 @@ class User < ApplicationRecord
    self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
 
-  #be careful with this Class method
-  #used in rails console when I clear database
-  def self.destroy_data
-    Wallet.destroy_all
-    Transfer.destroy_all
-    Selling.destroy_all
-    Purchase.destroy_all
-    Card.destroy_all
-    User.destroy_all
-  end
-
   private
 
   def downcase_email

@@ -141,7 +141,6 @@ mergesort(arr) {
     }
 
     let underDescription = "";
-    console.log(activity);
     if (!!activity.note && activity.note === "A gift for joining Coinface!") {
       underDescription = activity.note;
     } else if (activity.activity_type == "purchase") {
