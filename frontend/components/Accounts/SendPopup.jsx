@@ -35,6 +35,29 @@ class SendPopup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateAddress = this.updateAddress.bind(this);
     this.changeState = this.changeState.bind(this);
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.props.closePopup();
+    }
   }
 
   methodInState(field, e) {
@@ -188,7 +211,7 @@ class SendPopup extends Component {
     );
     return (
       <div className='SendPopup'>
-        <div className='popup_inner'>
+        <div className='popup_inner' ref={this.setWrapperRef}>
           <div className="firstLinePopup">
             <div className="symbolPopUp">
               <p>Send</p><p className="pstyle" style={pStyle}>{symbol}</p>

@@ -11,12 +11,28 @@ class WalletAddress extends Component {
   constructor(props) {
     super(props);
     this.copyText = this.copyText.bind(this);
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
   componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
     document.getElementById("walletAddressInput").disabled = true;
   }
-  //do I need to unsubscribe w/ componentWillUnmount?
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
 
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.props.closePopup();
+    }
+  }
   copyText() {
     document.getElementById("walletAddressInput").disabled = false;
     var copyText = document.getElementById("walletAddressInput");
@@ -33,7 +49,7 @@ class WalletAddress extends Component {
 
     return (
       <div className='WalletAddress'>
-        <div className='innerWalletAddress'>
+        <div className='innerWalletAddress' ref={this.setWrapperRef}>
           <div className="headerWalletAddress">
             <div className="symbolPopUp">
               <p>My</p><p className="pstyle" style={pStyle}>{symbol}</p><p> Address</p>
