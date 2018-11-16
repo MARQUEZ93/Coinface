@@ -1,8 +1,5 @@
 .YourPortfolio {
-  margin-left: 25px;
-  margin-right: 20px;
-
-  width: 43%;
+  width: 45%;
   height: 458px;
   margin-bottom: 110px;
   font-family: "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -30,15 +27,15 @@
   width: 100%;
 }
 
-.imgNameTD{
-  display: flex;
-  align-items: center;
-  width: 205px;
-}
-.nameYP {
-font-size: 18px;
-font-weight: 500;
-}
+  .imgNameTD{
+    display: flex;
+    align-items: center;
+    width: 205px;
+  }
+  .nameYP {
+  font-size: 18px;
+  font-weight: 500;
+  }
 
 .sumYP {
   color: #9ba6b2;
@@ -59,8 +56,8 @@ font-weight: 500;
   height: 54px;
   font-size: 18px;
   color: #1652f0;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .divTotalBalance{
@@ -76,8 +73,8 @@ font-weight: 500;
   height: 54px;
   font-size: 16px;
   color: #7d95b6;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .circleYP {
     height: 8px;

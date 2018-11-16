@@ -29,6 +29,15 @@ class AddCard extends Component {
     this.updateYear = this.updateYear.bind(this);
     this.updateMonth = this.updateMonth.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
   handleNumbers(e) {
     let hasNaN = false;
@@ -156,6 +165,18 @@ class AddCard extends Component {
         this.setState({ year: e.currentTarget.value });
       }
   }
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.props.closePopup();
+    }
+  }
   render(){
     let showCard = visaSVG;
     if (this.state.card_type) {
@@ -171,8 +192,7 @@ class AddCard extends Component {
     let invalidSubmission = <p className="nameClickedP">Invalid card information.</p>;
     return (
       <div className="addCard">
-        <div className="addCardInner">
-
+        <div className="addCardInner" ref={this.setWrapperRef}>
           <div className="firstLinePopup">
             <div className="symbolPopUp">
               <p>Link Your Card</p>
@@ -213,6 +233,7 @@ class AddCard extends Component {
           </div>
           {this.state.invalidCard ? invalidSubmission:null}
         </div>
+        <div onClick={() => this.props.closePopup()}></div>
       </div>
     )
   }

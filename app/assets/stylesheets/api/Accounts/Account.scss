@@ -15,12 +15,11 @@
 }
 .headerYA{
   margin-top: 15px;
-  width: cover;
+  width: 95%;
   padding-left: 20px;
   height: 50px;
   font-weight: 500;
   margin-left: 25px;
-  margin-right: 25px;
   color: #1652f0;
   display: flex;
   align-items: center;
@@ -31,4 +30,7 @@
   border: 1px solid rgb(218, 225, 233);
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
+}
+.accountTransactionsDiv{
+  width: 100%;
 }

@@ -199,7 +199,7 @@ class YourAccountWallets extends Component {
           {this.renderWallet("ETC", window.etc, ETCwallet)}
           {this.renderWallet("LTC", window.ltc, LTCwallet)}
         </div>
-        <Transactions symbol={this.state["currentWallet"]} />
+        <Transactions className="accountTransactionsDiv" symbol={this.state["currentWallet"]} />
       </div>
     );
   }

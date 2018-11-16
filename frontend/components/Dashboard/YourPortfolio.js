@@ -154,7 +154,7 @@ class YourPortfolio extends React.Component {
       <div className="YourPortfolio">
           <div className="headerTR"><p>Your Portfolio</p></div>
           {this.renderTable(wallets)}
-          <div className="divTotalBalance"><p>Total Balance ≈ ${renderPortfolioValue}</p></div>
+          <div className="divTotalBalance"><p>Total Balance ≈ {renderPortfolioValue}</p></div>
       </div>
     );
   }
