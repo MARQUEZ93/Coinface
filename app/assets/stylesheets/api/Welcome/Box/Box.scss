@@ -19,6 +19,9 @@
   border-radius: 5px;
   border: 1px solid #DCDCDC;
 }
+.Box:hover{
+  transform: scale(1.15);
+}
 
 .loadbar {
   display: flex;
