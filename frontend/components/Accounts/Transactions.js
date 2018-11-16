@@ -141,16 +141,17 @@ mergesort(arr) {
     }
 
     let underDescription = "";
+    console.log(activity);
     if (!!activity.note && activity.note === "A gift for joining Coinface!") {
       underDescription = activity.note;
     } else if (activity.activity_type == "purchase") {
-      underDescription+= "Debited Mastercard *********6955"
+      underDescription+= "Debited  " + activity.card_type + " ************" + activity.last_four_digits.toString();
     } else if (activity.activity_type == "receive") {
       underDescription+="From  " + asset + " address"
     } else if (activity.activity_type == "transfer") {
       underDescription+="To " + asset + " address"
     } else if (activity.activity_type == "selling") {
-      underDescription+="Credited Mastercard *********6955"
+      underDescription+="Credited " + activity.card_type + " ************" + activity.last_four_digits.toString();
     }
 
     return (
