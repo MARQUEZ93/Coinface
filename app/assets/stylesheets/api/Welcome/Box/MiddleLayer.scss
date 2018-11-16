@@ -1,34 +1,32 @@
 .MiddleLayer {
   display: flex;
   height: 42px;
-  justify-content: flex-start;
-  margin-left: 8px;
+  justify-content: center;
   align-items: center;
 }
 .WelcomePrice {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .WelcomePriceChangeGreen {
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: rgb(97, 202, 0);
-  margin-left: 5px;
+  margin-left: 3px;
   font-weight: 500;
+  font-size: 12px;
 }
 .WelcomePriceChangeRed {
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: red;
-  margin-left: 5px;
+  margin-left: 3px;
   font-weight: 500;
+  font-size: 12px;
 }
 .WelcomePriceChangeYellow {
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: yellow;
-  margin-left: 5px;
+  margin-left: 3px;
   font-weight: 500;
+  font-size: 12px;
 }
-// .WelcomePriceChange {
-//   color: #33cc33;
-//   margin-left: 5px;
-// }
