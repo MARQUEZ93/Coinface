@@ -6,7 +6,7 @@ class YourAccounts extends Component {
   render() {
     return (
       <div className="YourAccounts">
-        <div className="headerYA"><p>Your Accounts</p></div>
+        <div className="headerYA"><p className="headerYAp">Your Accounts</p></div>
         <YourAccountWallets />
       </div>
     );

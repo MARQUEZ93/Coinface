@@ -266,7 +266,7 @@ mergesort(arr) {
     }
     return (
       <div className="transactionsYA">
-        <p className="transactionsHeader">Transactions</p>
+        <div className="transactionsHeader"><p className="transactionsHeaderP">Transactions</p></div>
         {this.renderActivityList(activitiesArray)}
       </div>
     );
