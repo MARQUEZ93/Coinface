@@ -71,14 +71,16 @@ class User < ApplicationRecord
     etc.save!
     ltc.save!
 
-    self.generate_transfer(bch, "BCH")
-    self.generate_transfer(btc, "BTC")
-    self.generate_transfer(eth, "ETH")
-    self.generate_transfer(etc, "ETC")
-    self.generate_transfer(ltc, "LTC")
+    coinface = User.find_by(email: "coinface@coinface.com")
+
+    self.generate_transfer(bch, "BCH", coinface)
+    self.generate_transfer(btc, "BTC", coinface)
+    self.generate_transfer(eth, "ETH", coinface)
+    self.generate_transfer(etc, "ETC", coinface)
+    self.generate_transfer(ltc, "LTC", coinface)
   end
 
-  def generate_transfer(wallet, asset_symbol)
+  def generate_transfer(wallet, asset_symbol, coinface)
 
     url = "https://min-api.cryptocompare.com/data/generateAvg?fsym="
     url_end = "&tsym=USD&e=Kraken"
@@ -90,9 +92,9 @@ class User < ApplicationRecord
     response = JSON.parse(response)
     transfer_cash_amount = (response["RAW"]["PRICE"]*0.001)
 
-    coinface = User.find_by(email: "coinface@coinface.com")
+    # coinface is master user who possseses infinite assets 
     coinfaceWallet = coinface.get_wallet_by_asset(asset_symbol)
-    # I give each user .001 of the 5 assets to start out
+    # I give each user .001 of the 5 assets as a welcome gift
     Transfer.create!( amount: 0.001, cash_amount: transfer_cash_amount, asset_type: asset_symbol,
       sender_wallet_address: coinfaceWallet.address,
       receiver_wallet_address: wallet.address, note: "A gift for joining Coinface!" )
