@@ -13,19 +13,19 @@ Coinface is a full stack single page app inspired by [Coinbase](https://www.coin
 
 * Two users have been seeded: 1) The guest user (email => alejandro@coinface.com, password => password) 2) An easter egg user (email => Satoshi@vistomail.com, password => password)
 * Crypto transfers can be tested with their wallet addresses:
-> Alejandro@coinface.com:
->> BTC wallet address: 507ca1d796ebf6f560d4cb9207fd92aa
->> BCH wallet address: b1e1ff9376ea358faaa4092d7635d7f5
->> ETC wallet address: 873ec767d8be295df050bee2005e04a7
->> ETH wallet address: 626de36bec6512c9851a3481161567e4
->> LTC wallet address: 0cae68ae1a33d5b5015cfc97223fdc8f
+> Alejandro@coinface.com: >
+>> BTC wallet address: 507ca1d796ebf6f560d4cb9207fd92aa >>
+>> BCH wallet address: b1e1ff9376ea358faaa4092d7635d7f5 >>
+>> ETC wallet address: 873ec767d8be295df050bee2005e04a7 >>
+>> ETH wallet address: 626de36bec6512c9851a3481161567e4 >>
+>> LTC wallet address: 0cae68ae1a33d5b5015cfc97223fdc8f >>
 
-> Satoshi@vistomail.com:
->> BTC wallet address: 9b786559dc88814e7949b40a69435d83
->> BCH wallet address: 22af812536d8e1b115f9da665cba680d
->> ETC wallet address: 8b8e2c777ac89935c6ac4b4f3b90d035
->> ETH wallet address: 64fc69276ce2a9d0a9cf5a3f4be20de6
->> LTC wallet address: e2a1598ecd95751bca3dbed474d217bd
+> Satoshi@vistomail.com: >
+>> BTC wallet address: 9b786559dc88814e7949b40a69435d83 >>
+>> BCH wallet address: 22af812536d8e1b115f9da665cba680d >>
+>> ETC wallet address: 8b8e2c777ac89935c6ac4b4f3b90d035 >>
+>> ETH wallet address: 64fc69276ce2a9d0a9cf5a3f4be20de6 >>
+>> LTC wallet address: e2a1598ecd95751bca3dbed474d217bd >>
 
 ## Built With
 
