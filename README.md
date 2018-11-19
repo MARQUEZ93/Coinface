@@ -48,6 +48,6 @@ Coinface is a full stack single page app inspired by [Coinbase](https://www.coin
 
 ## Acknowledgments
 
-* Stephen Grider: his courses (https://www.udemy.com/user/sgslo/) contributed to making React.js & Redux easy to understand
-* Boris Yankov: his React package (https://github.com/borisyankov/react-sparklines) was installed to visualize the live 24 hour movement of each of the crypto asset's prices
-* Crypto Compare: their API service (https://www.cryptocompare.com/api/) was deployed to provide realtime prices of each of the crypto assets
+* Stephen Grider: his [Modern React with Redux](https://www.udemy.com/react-redux/) course contributed to making React.js & Redux easy for me to understand
+* Boris Yankov: his [Sparklines](https://github.com/borisyankov/react-sparklines) package was installed to visualize the live 24 hour movement of each of the crypto asset's prices
+* Crypto Compare: their [API](https://www.cryptocompare.com/api/) service was deployed to provide realtime prices of each of the crypto assets
