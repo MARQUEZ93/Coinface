@@ -7,7 +7,7 @@ Coinface is a full stack single page app inspired by [Coinbase](https://www.coin
 ## Features
 
 * Fetch realtime prices of the crypto assets.
-* Simulate the purchase and selling of a user's assets at this live price.
+* Simulate the purchase and selling of a user's assets at live prices.
 * Create crypto wallets upon user sign up. Generate a random hexadecimal string address for each of the wallets.
 * Transfer & receive crypto assets amongst users with their aforementioned wallet address.
 
