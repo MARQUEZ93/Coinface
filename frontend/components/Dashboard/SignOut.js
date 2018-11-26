@@ -10,11 +10,14 @@ class SignOut extends React.Component {
 
   signOut(e){
     e.preventDefault();
-    this.props.action(res => {
-      console.log(res);
-      if (res.status == 404) {
-        this.props.history.push('/');
-      }
+    this.props.action().then(res =>
+      {
+        console.log(res);
+        //when multiple users use guest login on thecoinface.com
+        //this allows user to logout despite changed session tokens
+        if (res.status == 422) {
+          this.props.history.push('/');
+        }
     });
   }
 
