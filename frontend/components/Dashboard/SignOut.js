@@ -14,7 +14,7 @@ class SignOut extends React.Component {
       {
         //when multiple users use guest login on thecoinface.com
         //this allows user to logout despite changed session tokens
-        if (res.status == 422) {
+        if (res.status == 404) {
           this.props.history.push('/');
         }
     });
