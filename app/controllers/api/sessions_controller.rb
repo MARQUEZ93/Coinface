@@ -19,6 +19,7 @@ class Api::SessionsController < ApplicationController
       logout
       render json: [], status: 200
     else
+      #render no status code 
       render json: ["Nobody signed in"]
     end
   end
