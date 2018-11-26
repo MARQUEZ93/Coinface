@@ -61,9 +61,9 @@ export const loginUser = user => ({
   user
 });
 
-export const logoutCurrentUser = (res) => ({
+export const logoutCurrentUser = (jsonResponse) => ({
   type: LOGOUT_CURRENT_USER,
-  res: res
+  json: jsonResponse
 });
 
 export const receiveErrors = errors => ({
@@ -93,8 +93,8 @@ export const login = user => dispatch => (
 );
 
 export const logout = () => dispatch => (
-  APIUtil.logout().then((res) => (
-    dispatch(logoutCurrentUser(res))
+  APIUtil.logout().then((json) => (
+    dispatch(logoutCurrentUser(json))
   ))
 );
 
