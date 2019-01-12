@@ -6,7 +6,6 @@ class Header extends React.Component {
     super(props);
     this.historyPush = this.historyPush.bind(this);
     this.signUpPush = this.signUpPush.bind(this);
-    this.aboutPush = this.aboutPush.bind(this);
     this.loginPush = this.loginPush.bind(this);
   }
 
@@ -14,13 +13,6 @@ class Header extends React.Component {
     e.preventDefault();
     if (this.props.location.pathname !== "/") {
       this.props.history.push("/");
-    }
-  }
-
-  aboutPush(e) {
-    e.preventDefault();
-    if (this.props.location.pathname !== "/about") {
-      this.props.history.push("/about");
     }
   }
 
