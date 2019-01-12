@@ -41,11 +41,11 @@ class Transactions extends Component {
 
 mergesort(arr) {
   if (arr.length < 2) {
-    return arr; }
-  else {
+    return arr;
+  } else {
     var midpoint = parseInt(arr.length / 2);
-    var leftArr   = arr.slice(0, midpoint);
-    var rightArr  = arr.slice(midpoint, arr.length);
+    var leftArr = arr.slice(0, midpoint);
+    var rightArr = arr.slice(midpoint, arr.length);
     return this.merge(this.mergesort(leftArr), this.mergesort(rightArr));
   }
 }
@@ -117,27 +117,27 @@ mergesort(arr) {
   getDescription(activity) {
     let activityVerb = "";
     if (activity.activity_type == "purchase") {
-      activityVerb+= "Bought "
+      activityVerb+= "Bought ";
     } else if (activity.activity_type == "receive") {
-      activityVerb+="Received  "
+      activityVerb+="Received  ";
     } else if (activity.activity_type == "transfer") {
-      activityVerb+="Sent "
+      activityVerb+="Sent ";
     } else if (activity.activity_type == "selling") {
-      activityVerb+="Sold "
+      activityVerb+="Sold ";
     }
 
     let asset = "";
 
     if (activity.asset_type == "BTC") {
-      asset+="Bitcoin"
+      asset+="Bitcoin";
     } else if (activity.asset_type  == "BCH") {
-      asset+="Bitcoin Cash"
+      asset+="Bitcoin Cash";
     } else if (activity.asset_type  == "ETC") {
-      asset+="Ethereum Classic"
+      asset+="Ethereum Classic";
     } else if (activity.asset_type  == "ETH") {
-      asset+="Ethereum"
+      asset+="Ethereum";
     } else if (activity.asset_type  == "LTC") {
-      asset+="Litecoin"
+      asset+="Litecoin";
     }
 
     let underDescription = "";
@@ -146,9 +146,9 @@ mergesort(arr) {
     } else if (activity.activity_type == "purchase") {
       underDescription+= "Debited  " + activity.card_type + " ************" + activity.last_four_digits.toString();
     } else if (activity.activity_type == "receive") {
-      underDescription+="From  " + asset + " address"
+      underDescription+="From  " + asset + " address";
     } else if (activity.activity_type == "transfer") {
-      underDescription+="To " + asset + " address"
+      underDescription+="To " + asset + " address";
     } else if (activity.activity_type == "selling") {
       underDescription+="Credited " + activity.card_type + " ************" + activity.last_four_digits.toString();
     }
@@ -208,7 +208,7 @@ mergesort(arr) {
 
   renderActivity(activity) {
     return (
-      <div key={activity.id} className="transactionsTableRow">
+      <div key={activity.created_at} className="transactionsTableRow">
         <div className="firstHalfRecentActivityTableRow">
           {this.getDate(activity.created_at)}
           {this.getImage(activity)}
@@ -219,35 +219,37 @@ mergesort(arr) {
     )
   }
 
-  renderActivityList(activitiesArray){
-    let activityList = [];
-    for (let i = 0; i < activitiesArray.length; i++) {
-      if (activitiesArray[i].asset_type == this.props.symbol)
-      activityList.push(this.renderActivity(activitiesArray[i]));
-    }
-    return activityList;
+  renderActivityList(transactionArray){
+    let transactionList = [];
+    let that = this;
+    transactionArray.forEach(function(transaction){
+      if (transaction.asset_type === that.props.symbol) {
+        transactionList.push(that.renderActivity(transaction));
+      }
+    });
+    return transactionList;
   }
   render() {
 
     let activitiesArray = [];
     let symbol = this.props.symbol;
     this.props.purchases.forEach(function(purchase){
-      if (purchase != null) {
+      if (purchase) {
         activitiesArray.push(Object.assign(purchase, {activity_type: "purchase"}));
       }
     });
     this.props.sellings.forEach(function(selling){
-      if (selling != null) {
+      if (selling) {
         activitiesArray.push(Object.assign(selling, {activity_type: "selling"}));
       }
     });
     this.props.receivers.forEach(function(receiver){
-      if (receiver != null) {
+      if (receiver) {
         activitiesArray.push(Object.assign(receiver, {activity_type: "receive"}));
       }
     });
     this.props.transfers.forEach(function(transfer){
-      if (transfer != null) {
+      if (transfer) {
         activitiesArray.push(Object.assign(transfer, {activity_type: "transfer"}));
       }
     });
@@ -256,7 +258,7 @@ mergesort(arr) {
     activitiesArray = this.mergesort(activitiesArray);
 
 
-    if(!activitiesArray) {
+    if(!activitiesArray || !this.props.symbol) {
       return (
         <div className='loadbar'>
           <GridLoader color="#6495ED" size="10px" margin="4px"/>
