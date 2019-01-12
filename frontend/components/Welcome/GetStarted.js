@@ -12,7 +12,7 @@ const GetStarted = () => {
           <div className="GSPillarLine"></div>
           <div className="GSThreeDivs">
             <img src={window.icon_bank}/>
-            <h3> Link your bank account </h3>
+            <h3> Receive virtual cash </h3>
           </div>
           <div className="GSPillarLine"></div>
           <div className="GSThreeDivs">

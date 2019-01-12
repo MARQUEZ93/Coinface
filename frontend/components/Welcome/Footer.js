@@ -31,7 +31,7 @@ class Footer extends React.Component {
                 <div className="gitImg" id="angelCoin"></div>
             </a>
           </div>
-          <p className="copyright"> &copy; 2018 Coinface </p>
+          <p className="copyright"> &copy; 2019 Coinface </p>
         </div>
     );
   }

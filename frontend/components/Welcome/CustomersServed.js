@@ -6,10 +6,10 @@ const CustomersServed = () => {
       <div className="threeDivsCS">
           <div className="divCustomersServed">
             <p>$150B+</p>
-            <p className="littleCustomersServed">Digital currency exchanged</p>
+            <p className="littleCustomersServed">Virtual currency exchanged</p>
           </div>
           <div className="divCustomersServed">
-            <p>32</p>
+            <p>195</p>
             <p className="littleCustomersServed">Countries supported</p>
           </div>
           <div className="divCustomersServed">

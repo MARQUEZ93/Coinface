@@ -37,10 +37,10 @@ class CenterMessage extends Component {
 
     return (
       <div className="Welcome-CenterMessage">
-        <p className="Welcome-Center-Header"> Buy and sell digital currency </p>
+        <p className="Welcome-Center-Header"> Buy and sell virtual currency </p>
         <div className="Welcome-Center-pTag-Div">
-          <p className="Welcome-Center-pTag"> Coinface is the easiest and most trusted place to buy, </p>
-          <p className="Welcome-Center-pTag"> sell, and manage your digital currency. </p>
+          <p className="Welcome-Center-pTag"> Coinface is the easiest place to buy, sell, and manage  </p>
+          <p className="Welcome-Center-pTag"> a virtual cryptocurrency portfolio. </p>
         </div>
         <div className="centerForm">
           <input onChange={event => this.onInputChange(event.target.value)} value={this.state.email} type="text" className="centerInput" placeholder="Email address" />
