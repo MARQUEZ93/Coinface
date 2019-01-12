@@ -1,13 +1,13 @@
 
 .Receipt{
-  border-radius: 10%;
-  border: 1px solid rgb(218, 225, 233);
-  font-family: Courier, monospace;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  border-radius: 20px;
+  border: 6px outset rgb(218, 225, 233);
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 409px;
-  width: 350px;
+  width: 390px;
   padding: 24px;
   background-color: white;
 }
@@ -22,14 +22,14 @@
 }
 .receiptAmount {
   font-weight: 500;
-  font-size: 42px;
+  font-size: 48px;
   text-align: center;
   margin-top: 5px;
 }
 
 .receiptPrice{
   font-weight: 500;
-  font-size: 14px;
+  font-size: 20px;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -40,7 +40,7 @@
   border-bottom: 1px solid rgb(188, 209, 238);
 }
 .receiptDetails{
-  font-size: 14px;
+  font-size: 20px;
 }
 .receiptPaymentMethod{
   margin-bottom: 10px;
@@ -60,13 +60,13 @@
   text-align: center;
 }
 .receiptPMP{
-  font-size: 14px;
+  font-size: 20px;
   margin-bottom: 5px;
 }
 .receiptNumbers{
   margin-top: 10px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 20px;
 }
 .receiptNumbersAmount{
   display: flex;

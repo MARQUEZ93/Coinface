@@ -5,7 +5,7 @@ const CustomersServed = () => {
     <div className="CustomersServed">
       <div className="threeDivsCS">
           <div className="divCustomersServed">
-            <p>$150B+</p>
+            <p>$1M+</p>
             <p className="littleCustomersServed">Virtual currency exchanged</p>
           </div>
           <div className="divCustomersServed">
@@ -13,7 +13,7 @@ const CustomersServed = () => {
             <p className="littleCustomersServed">Countries supported</p>
           </div>
           <div className="divCustomersServed">
-            <p>20M+</p>
+            <p>20+</p>
             <p className="littleCustomersServed">Customers served</p>
           </div>
       </div>
