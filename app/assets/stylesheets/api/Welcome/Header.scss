@@ -48,7 +48,7 @@
   text-decoration: none;
 }
 
-.WelcomeSignup, .WelcomeAbout{
+.WelcomeSignup {
   color: white;
   font-family: Graphik, "Avenir Next", -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
@@ -63,7 +63,7 @@
   padding-bottom: 8px;
 }
 
-.WelcomeSignup:hover, .WelcomeAbout {
+.WelcomeSignup:hover {
   background-color: white;
   color: #1652f0;
   cursor: pointer;

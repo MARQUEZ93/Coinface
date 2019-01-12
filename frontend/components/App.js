@@ -18,7 +18,6 @@ import PageNotFound from './PageNotFound';
 import Accounts from './Accounts/AccountsContainer';
 import Buy from './BuySell/BuyContainer';
 import Sell from './BuySell/Sell/SellContainer';
-import About from './About';
 
 const App = () => (
     <Switch>
@@ -29,7 +28,6 @@ const App = () => (
       <ProtectedRoute exact path="/buy" component={Buy} />
       <ProtectedRoute exact path="/sell" component={Sell} />
       <ProtectedRoute exact path="/accounts" component={Accounts} />
-      <Route exact path="/about" component={About} />
       <Route component={PageNotFound} />
     </Switch>
 );
