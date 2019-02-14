@@ -30,6 +30,9 @@ class Footer extends React.Component {
             <a className="footerImage" href="https://angel.co/alejandro-eduardo-marquez">
                 <div className="gitImg" id="angelCoin"></div>
             </a>
+            <a className="footerImage" href="https://droMarquez.com">
+                <p className="siteImg">AEM</p>
+            </a>
           </div>
           <p className="copyright"> &copy; 2019 Coinface </p>
         </div>
