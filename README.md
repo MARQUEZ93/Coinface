@@ -1,6 +1,6 @@
 # [Coinface](http://www.thecoinface.com)
 
-[Coinface](http://www.thecoinface.com) is a full stack single page app inspired by [Coinbase](https://www.coinbase.com/). A user can buy, sell & transfer cryptocurrencies with virtual cash. Coinface is
+[Coinface](http://www.thecoinface.com) is a full stack app inspired by [Coinbase](https://www.coinbase.com/). A user can buy, sell & transfer cryptocurrencies with virtual cash. Coinface is
 a risk-free environment for someone to fully bathe in their Bitcoin FOMO.  
 
 <p align="center"><img src="https://i.imgur.com/XrksXQl.png" width="800px" /></p>
