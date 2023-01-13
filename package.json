@@ -25,7 +25,7 @@
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.3.12"
   },
   "description": "Coinbase clone!",
   "version": "1.0.0",
